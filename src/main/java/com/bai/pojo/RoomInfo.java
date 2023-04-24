@@ -3,7 +3,6 @@ package com.bai.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sun.print.PSPrinterJob;
 
 import java.io.Serializable;
 import java.util.List;

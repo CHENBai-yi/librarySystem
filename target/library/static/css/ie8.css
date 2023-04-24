@@ -1,0 +1,205 @@
+
+/**********************(ie8)***********************/
+body.page-ie8-front header.navbar{
+	height:768px;
+	background:url(../images/top-bg-4-ie89.png) no-repeat #014ffc;
+}
+body.page-ie8-front #block-quicktabs-search-quicktab{
+	display:block;
+}
+#block-tb-megamenu-menu-menu2018{
+	display:none;
+}
+
+
+/*搜索条*/
+#block-block-45{
+	width:100%;
+	height:60px;
+	display:none;
+}
+#custom-global-top-search-switch{
+	margin-top:60px;
+	background: rgb(13,211,255); /* rgb(32,172,255)) */
+	width:20%;
+	
+}
+
+#block-superfish-1{
+	display:block;
+	height:60px;
+	width:100%;
+	font-size: 16px;
+	line-height: 60px;
+	background:#fff;
+	color:#000;
+	padding-left:30%;
+}
+#block-superfish-1 #superfish-1{
+	line-height:60px;
+	color:#000;
+	z-index:999;
+}
+
+
+/*搜索Tab*/
+#block-quicktabs-search-quicktab{
+	background:#ffffff;
+	padding:0;
+}
+#quicktabs-search_quicktab{
+	background:#ffffff;
+	padding:0;
+}
+#block-quicktabs-search-quicktab ul.quicktabs-tabs{
+	background:#ffffff;
+	padding:0;
+	border:0;
+	width:20%;
+}
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li {
+	padding:0;
+	margin:0;
+}
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li a{
+	color:#000000;
+	background:#ffffff;
+	border:0;
+	margin:0;
+}
+#block-quicktabs-search-quicktab ul.quicktabs-tabs li.active a{
+	color:#ffffff;
+}
+#quicktabs-container-search_quicktab{
+	width:80%;
+	padding:0;
+}
+/*summon*/
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-0{
+	background: rgb(10,145,255) ; /* */
+}
+#quicktabs-tabpage-search_quicktab-0{
+	background:url(../images/block-search-backg-tab1.png) no-repeat right bottom rgb(10,145,255);
+}
+#summon-search-field {
+  line-height: 50px;
+  border: 0;
+  background:#ffffff;
+}
+#block-summon-summon input.submit{
+	background:#006299;
+	color:#ffffff;
+}
+
+/*opac*/
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-1{
+	background: rgb(2,209,77);
+}
+#quicktabs-tabpage-search_quicktab-1{
+	background: rgb(2,209,77);
+}
+#opac-search-select{
+	line-height:50px;
+	color:#000000;
+}
+#opac-search-field {
+  line-height: 50px;
+  background: #ffffff;
+}
+#custom-front-top-opac-searchbox{
+	padding:0;
+}
+#custom-front-top-opac-searchbox form{
+	padding:0;
+	margin:0;
+}
+#opac-search-input-box{
+	padding:0;
+	margin:0;
+}
+#opac-search-input-2{
+	height:50px;
+	padding:12px 0;
+}
+#opac-search-input-2 select{
+	border:0;
+}
+#opac-search-input-3 input.searchbutton{
+	background:rgb(16,136,39);
+	color:#ffffff;
+}
+/*database*/
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-2{
+	
+	background: rgb(255,194,52); /*  */
+}
+#quicktabs-tabpage-search_quicktab-2{
+	background:rgb(255,194,52);
+}
+#quicktabs-tabpage-search_quicktab-2{
+	color:#000000;
+}
+body #navbar #quicktabs-tabpage-search_quicktab-2 a{
+	color:#000000;
+}
+#eresource-search-field {
+  line-height: 50px;
+  background: #ffffff;
+}
+#block-block-5 input.searchbutton{
+	background:rgb(228,149,2);
+	color:#ffffff;
+}
+#quicktabs-container-search_quicktab ul.top-list {
+  padding-left: 56px;
+  background: url(../images/block-search-heart-3.png) no-repeat left top;
+}
+#quicktabs-container-search_quicktab ul.top-list li.bottom-text-label{
+  padding-left:0;
+  padding-bottom:0;
+  line-height:normal;
+  background:none;
+}
+#custom-front-top-eresource-bottom-text div{
+	padding:0;
+	margin:0;
+}
+/*e-journals*/
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-3{
+	
+	background: rgb(212,0,0);
+}
+#quicktabs-tabpage-search_quicktab-3{
+	background:rgb(212,0,0);
+}
+#select-first-dbtype{
+	line-height:50px;
+	color:#000000;
+}
+#select-second-searchtype{
+	line-height:50px;
+	color:#000000;
+}
+#ejournal-search-field {
+  line-height: 50px;
+  background:#ffffff;
+}
+#block-block-6 input.searchbutton{
+	background:rgb(169,12,0);
+	color:#ffffff;
+}
+/*site-search*/
+#block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-4{
+	background:rgb(80,46,122);
+}
+#quicktabs-tabpage-search_quicktab-4{
+	background:url(../images/block-search-backg-tab5.png) no-repeat right bottom rgb(80,46,122);
+}
+#block-views-exp-search-page--2 #edit-keywords {
+  line-height: 50px;
+  background:#ffffff;
+}
+#block-views-exp-search-page--2 button.form-submit{
+	background:rgb(48,10,94);
+	color:#ffffff;
+}
