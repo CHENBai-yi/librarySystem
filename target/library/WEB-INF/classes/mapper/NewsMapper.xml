@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.NewsMapper">
+
+    <select id="queryAllNews" resultType="News">
+        select *from library.news;
+    </select>
+
+     <select id="queryById" resultType="News">
+         select *from library.news where news_id=#{newsId};
+     </select>
+
+
+    <insert id="addNews" parameterType="News">
+        insert into library.news (news_admin,news_title,news_content,create_time) values (#{newsAdmin},#{newsTitle},#{newsContent},#{createTime});
+    </insert>
+
+   <update id="updateNews" parameterType="News">
+      update library.news set news_title=#{newsTitle},news_content=#{newsContent} where news_id=#{newsId};
+   </update>
+
+    <delete id="delNews" parameterType="long">
+       delete from library.news where news_id=#{newsId};
+    </delete>
+</mapper>
