@@ -1,32 +1,32 @@
 (function ($) {
 
-    /**
-     * A progressbar object. Initialized with the given id. Must be inserted into
-     * the DOM afterwards through progressBar.element.
-     *
-     * method is the function which will perform the HTTP request to get the
-     * progress bar state. Either "GET" or "POST".
-     *
-     * e.g. pb = new progressBar('myProgressBar');
-     *      some_element.appendChild(pb.element);
-     */
-    Drupal.progressBar = function (id, updateCallback, method, errorCallback) {
-        var pb = this;
-        this.id = id;
-        this.method = method || 'GET';
-        this.updateCallback = updateCallback;
-        this.errorCallback = errorCallback;
+/**
+ * A progressbar object. Initialized with the given id. Must be inserted into
+ * the DOM afterwards through progressBar.element.
+ *
+ * method is the function which will perform the HTTP request to get the
+ * progress bar state. Either "GET" or "POST".
+ *
+ * e.g. pb = new progressBar('myProgressBar');
+ *      some_element.appendChild(pb.element);
+ */
+Drupal.progressBar = function (id, updateCallback, method, errorCallback) {
+    var pb = this;
+    this.id = id;
+    this.method = method || 'GET';
+    this.updateCallback = updateCallback;
+    this.errorCallback = errorCallback;
 
-        // The WAI-ARIA setting aria-live="polite" will announce changes after users
-        // have completed their current activity and not interrupt the screen reader.
-        this.element = $('<div class="progress-wrapper" aria-live="polite"></div>');
-        this.element.html('<div id ="' + id + '" class="progress progress-striped active">' +
-            '<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
-            '<div class="percentage sr-only"></div>' +
-            '</div></div>' +
-            '</div><div class="percentage pull-right"></div>' +
-            '<div class="message">&nbsp;</div>');
-    };
+    // The WAI-ARIA setting aria-live="polite" will announce changes after users
+    // have completed their current activity and not interrupt the screen reader.
+    this.element = $('<div class="progress-wrapper" aria-live="polite"></div>');
+    this.element.html('<div id ="' + id + '" class="progress progress-striped active">' +
+        '<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
+        '<div class="percentage sr-only"></div>' +
+        '</div></div>' +
+        '</div><div class="percentage pull-right"></div>' +
+        '<div class="message">&nbsp;</div>');
+};
 
     /**
      * Set the percentage and status message for the progressbar.

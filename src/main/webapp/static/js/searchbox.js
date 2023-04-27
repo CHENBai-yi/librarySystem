@@ -1,5 +1,5 @@
 function T(s) {
-    return s
+  return s
 }
 
 (function (a, b) {

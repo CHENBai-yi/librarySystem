@@ -456,19 +456,15 @@ p.fbs-flyout-image-true, h3.fbs-flyout-image-true, h1.fbs-flyout-image-true {
 .fbs-pane, .fbs-flyout-pane {
     padding: 0
 }
-
 .fbs-item-name {
     background: #E6E6E6;
 }
-
 li.fbs-item {
     border: none;
 }
-
 .fbs-list, .fbs-list-icons, .fbs-flyout-content, .fbs-attribution, .fbs-header {
     background: #fff;
 }
-
 ul.fbs-list, .fbs-flyout-content, .fbs-attribution, .fbs-header {
     border: none;
 }

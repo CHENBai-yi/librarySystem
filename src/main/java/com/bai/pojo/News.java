@@ -17,5 +17,6 @@ public class News implements Serializable {
     private String newsTitle;
     private String newsContent;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date   createTime;
+    private Date createTime;
+    private int newsType;
 }

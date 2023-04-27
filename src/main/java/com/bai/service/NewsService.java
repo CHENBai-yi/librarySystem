@@ -1,6 +1,7 @@
 package com.bai.service;
 
 import com.bai.pojo.News;
+import com.bai.pojo.vo.NoticesVo;
 
 import java.util.List;
 
@@ -21,4 +22,5 @@ public interface NewsService {
     //删除对应的公告
     void delNews(long newsId);
 
+    NoticesVo showJournalismPage(Integer pageId, Integer pageSize);
 }

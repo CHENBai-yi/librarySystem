@@ -1,6 +1,6 @@
 (function ($) {
 
-    Drupal.extlink = Drupal.extlink || {};
+Drupal.extlink = Drupal.extlink || {};
 
     Drupal.extlink.attach = function (context, settings) {
         if (!settings.hasOwnProperty('extlink')) {

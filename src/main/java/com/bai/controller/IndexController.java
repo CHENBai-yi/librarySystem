@@ -18,7 +18,6 @@ public class IndexController {
     public String indexPage(Model model) {
         List<News> newsList = newsService.queryAllNews();
         model.addAttribute("newsList", newsList);
-        //DateUtil.format(newsList.get(1).createTime,"MM/dd")
-        return "indexPage";
+        return "index_page";
     }
 }

@@ -1,3 +1,4 @@
+
 /**********************(ie8)***********************/
 body.page-ie8-front header.navbar {
     height: 768px;
@@ -83,7 +84,6 @@ body.page-ie8-front #block-quicktabs-search-quicktab {
     width: 80%;
     padding: 0;
 }
-
 /*summon*/
 #block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-0 {
     background: rgb(10, 145, 255); /* */
@@ -150,7 +150,6 @@ body.page-ie8-front #block-quicktabs-search-quicktab {
     background: rgb(16, 136, 39);
     color: #ffffff;
 }
-
 /*database*/
 #block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-2 {
 
@@ -195,7 +194,6 @@ body #navbar #quicktabs-tabpage-search_quicktab-2 a {
     padding: 0;
     margin: 0;
 }
-
 /*e-journals*/
 #block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-3 {
 
@@ -225,7 +223,6 @@ body #navbar #quicktabs-tabpage-search_quicktab-2 a {
     background: rgb(169, 12, 0);
     color: #ffffff;
 }
-
 /*site-search*/
 #block-quicktabs-search-quicktab ul.quicktabs-tabs.quicktabs-style-navlist li.active #quicktabs-tab-search_quicktab-4 {
     background: rgb(80, 46, 122);

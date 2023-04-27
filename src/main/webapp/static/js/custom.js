@@ -95,7 +95,6 @@ jQuery(document).ready(function ($) {
         $("#custom-global-bottom-edge-wechat-official").css("bottom", customGlobalBottomEdgeBottom + 23);
         $("#custom-global-bottom-edge-label-ask").css("bottom", customGlobalBottomEdgeBottom + 20);*/
     }
-
     setCustomGlobalBottomEdgeBottom();
     $(window).on("resize", setCustomGlobalBottomEdgeBottom);
     $(window).on("scroll", setCustomGlobalBottomEdgeBottom);
@@ -122,7 +121,6 @@ jQuery(document).ready(function ($) {
         else
             $("#block-block-59").css("visibility", "hidden");
     }
-
     showHideCustomGlobalBottomEdge();
     $(window).on("scroll", showHideCustomGlobalBottomEdge);
     $('.custom-global-bttom-edge-wechat-btn').click(function (e) {

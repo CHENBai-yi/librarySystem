@@ -1,7 +1,8 @@
 <%@ page import="com.bai.utils.DateUtils" %>
 <%@ page import="cn.hutool.core.date.DateUtil" %>
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="zh-hans"
       prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
@@ -441,112 +442,75 @@
 
 
                                         <div class="view-content">
-                                            <div class="views-row views-row-1 views-row-odd views-row-first">
-
-                                                <span class="news-list-created"><span class="field-content">04/19</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-event" href="/portal/cn/events" target="_blank">活动</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/events/%E5%B1%95%E8%A7%88/6302"
-                                                        target="_blank"><span
-                                                        title=" “同人民一起开拓 同祖国一起奋进——北京大学学习贯彻习近平总书记‘5·2’重要讲话精神五周年暨庆祝建校125周年主题展览”开展"> “同人民一起开拓 同祖国一起奋进——北京大学学习贯彻习近平总书记‘5·2’重要讲话精神五周年暨庆祝建校125周年主题展览”开展</span></a></span></span>
-
-                                            </div>
-
-
                                             <c:set var="newsList" value="${newsList}"/>
+                                            <c:set var="newsListLength" value="${newsList.size()}"/>
                                             <c:set var="dateFormatter" value="<%=new DateUtil()%>"/>
                                             <c:if test="${newsList!=null&&newsList.size()>0}">
-                                              <c:forEach var="news" items="${newsList}">
-
-
-                                                  <div class="views-row views-row-2 views-row-even">
+                                                <c:forEach var="news" items="${newsList}">
+                                                    <c:choose>
+                                                        <c:when test="${news.newsType==0}">
+                                                            <div class="views-row views-row-2 views-row-even">
                                                       <span class="news-list-created"><span
                                                               class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
-                                                      <span class="news-list-link">
-                                                          <a class="links-type-class-anounce" href="/portal/cn/news/announcement" target="_blank">公告</a>
+                                                                <span class="news-list-link">
+                                                          <a class="links-type-class-anounce"
+                                                             href="/portal/cn/news/announcement"
+                                                             target="_blank"><%=Constants.News.NOTICE.type%></a>
                                                         </span>
-                                                      <span class="news-list-title"><span class="field-content"><a
-                                                              href="/portal/cn/news/0000002492" target="_blank"><span
-                                                              title="${news.newsTitle}">${news.newsContent}</span></a></span></span>
+                                                                <span class="news-list-title"><span
+                                                                        class="field-content"><a
+                                                                        href="/portal/cn/news/0000002492"
+                                                                        target="_blank"><span
+                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${news.newsType==1}">
+                                                            <div class="views-row views-row-3 views-row-odd">
 
-                                                  </div>
+                                                                <span class="news-list-created"><span
+                                                                        class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
+                                                                <span class="news-list-link">
 
-                                              </c:forEach>
+<a class="links-type-class-news" href="/portal/cn/news/notices"
+   target="_blank"><%=Constants.News.NEWS.type%></a>
+</span>
+                                                                <span class="news-list-title"><span
+                                                                        class="field-content"><a
+                                                                        href="/portal/cn/news/0000002491"
+                                                                        target="_blank"><span
+                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${news.newsType==2}">
+                                                            <div class="views-row views-row-1 views-row-odd views-row-first">
+
+                                                                <span class="news-list-created"><span
+                                                                        class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
+                                                                <span class="news-list-link">
+
+<a class="links-type-class-event" href="/portal/cn/events"
+   target="_blank"><%=Constants.News.ACTIVITY.type%></a>
+</span>
+                                                                <span class="news-list-title"><span
+                                                                        class="field-content"><a
+                                                                        href="/portal/cn/news/events/%E5%B1%95%E8%A7%88/6302"
+                                                                        target="_blank"><span
+                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+                                                            </div>
+                                                        </c:when>
+                                                    </c:choose>
+                                                </c:forEach>
                                             </c:if>
-
-
-                                            <div class="views-row views-row-3 views-row-odd">
-
-                                                <span class="news-list-created"><span class="field-content">04/18</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-news" href="/portal/cn/news/notices" target="_blank">新闻</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/0000002491" target="_blank"><span
-                                                        title="“数学之美”第二讲举行，范后宏解读数学思维的美与崇高">“数学之美”第二讲举行，范后宏解读数学思维的美与崇高</span></a></span></span>
-
-                                            </div>
-                                            <div class="views-row views-row-4 views-row-even">
-
-                                                <span class="news-list-created"><span class="field-content">04/13</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-anounce" href="/portal/cn/news/announcement" target="_blank">公告</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/0000002488" target="_blank"><span
-                                                        title="信息素质工作坊|“学术写作自习室”活动开始啦">信息素质工作坊|“学术写作自习室”活动开始啦</span></a></span></span>
-
-                                            </div>
-                                            <div class="views-row views-row-5 views-row-odd">
-
-                                                <span class="news-list-created"><span class="field-content">04/07</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-anounce" href="/portal/cn/news/announcement" target="_blank">公告</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/0000002482" target="_blank"><span
-                                                        title="阿卜杜勒•阿齐兹国王公共图书馆北京大学分馆世界读书日征文活动通知">阿卜杜勒•阿齐兹国王公共图书馆北京大学分馆世界读书日征文活动通知</span></a></span></span>
-
-                                            </div>
-                                            <div class="views-row views-row-6 views-row-even">
-
-                                                <span class="news-list-created"><span class="field-content">04/21</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-event" href="/portal/cn/events" target="_blank">活动</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/events/%E8%AE%B2%E5%BA%A7/6306"
-                                                        target="_blank"><span
-                                                        title="艺术鉴赏厅 | 中华传统艺术之美第六次活动“新柳拂云碧成行：看昆曲大师汪世瑜指导北昆版《西园记》”">艺术鉴赏厅 | 中华传统艺术之美第六次活动“新柳拂云碧成行：看昆曲大师汪世瑜指导北昆版《西园记》”</span></a></span></span>
-
-                                            </div>
-                                            <div class="views-row views-row-7 views-row-odd views-row-last">
-
-                                                <span class="news-list-created"><span class="field-content">04/19</span></span>
-                                                <span class="news-list-link">
-
-<a class="links-type-class-event" href="/portal/cn/events" target="_blank">活动</a>
-</span>
-                                                <span class="news-list-title"><span class="field-content"><a
-                                                        href="/portal/cn/news/events/%E8%AE%B2%E5%BA%A7/6304"
-                                                        target="_blank"><span
-                                                        title="阅读文化节｜北京大学2023年阅读文化节开幕式暨主题讲座">阅读文化节｜北京大学2023年阅读文化节开幕式暨主题讲座</span></a></span></span>
-
-                                            </div>
                                         </div>
 
 
-                                        <div class="more-link">
-                                            <a href="/portal/cn/news/notices" target="_blank">
-                                                更多+ </a>
-                                        </div>
+                                        <c:if test="${newsListLength>=7}">
+                                            <div class="more-link">
+                                                <a href='<c:url value="/news/journalism/page"/>' target="_blank">
+                                                    更多+ </a>
+                                            </div>
+                                        </c:if>
 
 
                                     </div>
@@ -1193,8 +1157,8 @@
                                                                 <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
                                                                    target="_blank"
                                                                    title="两汉魏晋南北朝宰相制度研究"><img alt=""
-                                                                                              class="custom-front-recomm-reading-cover"
-                                                                                              src="./static/picture/custom-front-recomm-reading-cover01.png"/></a>
+                                                                                                           class="custom-front-recomm-reading-cover"
+                                                                                                           src="./static/picture/custom-front-recomm-reading-cover01.png"/></a>
                                                                 <div class="custom-front-recomm-reading-detail">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
                                                                        target="_blank"
@@ -1278,8 +1242,8 @@
                                                             <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                                                 <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
                                                                    target="_blank" title="帛书老子校注"><img alt=""
-                                                                                                       class="custom-front-recomm-reading-cover"
-                                                                                                       src="./static/picture/custom-front-recomm-reading-cover03.png"/></a>
+                                                                                                             class="custom-front-recomm-reading-cover"
+                                                                                                             src="./static/picture/custom-front-recomm-reading-cover03.png"/></a>
                                                                 <div class="custom-front-recomm-reading-detail">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
                                                                        target="_blank" title="帛书老子校注">先秦诸子，自成一家学术，堪称子学中的经学。其中，道家和儒家形成最早，影响最深。次数集“黄老之术”·“老庄之学”·“仙风道骨”为一身，是道家道教的核心经典。</a>
