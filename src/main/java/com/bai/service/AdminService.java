@@ -1,9 +1,6 @@
 package com.bai.service;
 
-import com.bai.pojo.Admin;
-import com.bai.pojo.Lend;
-import com.bai.pojo.Reader;
-import com.bai.pojo.ReaderInfo;
+import com.bai.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
 import javax.servlet.http.HttpSession;

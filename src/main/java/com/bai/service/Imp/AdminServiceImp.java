@@ -2,10 +2,7 @@ package com.bai.service.Imp;
 
 import com.bai.dao.AdminMapper;
 import com.bai.dao.ReaderMapper;
-import com.bai.pojo.Admin;
-import com.bai.pojo.Lend;
-import com.bai.pojo.Reader;
-import com.bai.pojo.ReaderInfo;
+import com.bai.pojo.*;
 import com.bai.service.AdminService;
 import com.bai.service.ReaderService;
 import org.apache.ibatis.annotations.Param;
@@ -93,4 +90,6 @@ public class AdminServiceImp implements AdminService {
     public void delLend(long serNum) {
         adminMapper.delLend(serNum);
     }
+
+
 }

@@ -18,5 +18,4 @@ public class News implements Serializable {
     private String newsContent;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date   createTime;
-
 }
