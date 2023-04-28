@@ -349,19 +349,35 @@
 
                                     <div class="text-center">
                                         <ul class="pagination">
-                                            <li class="active"><span>1</span></li>
-                                            <c:forEach var="index"
-                                                       items="7">
-                                                <li><a title="到第 ${index} 页"
-                                                       href="/news/journalism/page?index=1">${index}</a></li>
-                                            </c:forEach>
-                                            <li class="pager-ellipsis disabled"><span>…</span></li>
-                                            <li class="next"><a title="去下一个页面"
-                                                                href="<c:url value="/news/journalism/page?index=${page.cur+1}"/>">下一页
-                                                ›</a></li>
-                                            <li class="pager-last"><a title="到最后一页"
-                                                                      href="<c:url value="/news/journalism/page?index=${page.total}"/>">末页
-                                                »</a></li>
+                                            <c:if test="${page.cur!=0}">
+                                                <li class="pager-first"><a title="到第一页"
+                                                                           href="<c:url value="/news/journalism/page?index=1"/>">«
+                                                    第一页</a></li>
+                                                <li class="prev"><a title="返回上一个页面"
+                                                                    href="<c:url value="/news/journalism/page?index=${page.cur-1}"/>">‹
+                                                    前一页</a></li>
+                                            </c:if>
+                                            <c:if test="${page.cur>7}">
+                                                <li class="pager-ellipsis disabled"><span>…</span></li>
+                                            </c:if>
+
+
+                                            <li><a title="到第 1 页" href="/portal/cn/news/notices">1</a></li>
+                                            <li class="active"><span>2</span></li>
+                                            <li><a title="到第 3 页" href="/portal/cn/news/notices?page=2">3</a></li>
+                                            <li><a title="到第 4 页" href="/portal/cn/news/notices?page=3">4</a></li>
+                                            <li><a title="到第 5 页" href="/portal/cn/news/notices?page=4">5</a></li>
+                                            <li><a title="到第 6 页" href="/portal/cn/news/notices?page=5">6</a></li>
+                                            <li><a title="到第 7 页" href="/portal/cn/news/notices?page=6">7</a></li>
+                                            <c:if test="${(page.total%page.page_size+1)>7}">
+                                                <li class="pager-ellipsis disabled"><span>…</span></li>
+                                                <li class="next"><a title="去下一个页面"
+                                                                    href="<c:url value="/news/journalism/page?index=${page.cur+1}"/>">下一页
+                                                    ›</a></li>
+                                                <li class="pager-last"><a title="到最后一页"
+                                                                          href="<c:url value="/news/journalism/page?index=${page.total}"/>">末页
+                                                    »</a></li>
+                                            </c:if>
                                         </ul>
                                     </div>
                                 </div>

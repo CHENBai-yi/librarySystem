@@ -48,6 +48,7 @@ public class NewsServiceImp implements NewsService {
     public NoticesVo showJournalismPage(Integer pageId, Integer pageSize) {
         if (pageSize == null) pageSize = Constants.PAGESIZE;
         if (pageId == null) pageId = 0;
+        else pageId = (pageId - 1) * pageSize;
         List<NewsDataVo> pageWithGroupByDate = newsMapper.findPageWithGroupByDate(pageId, pageSize, Constants.News.NEWS.code);
         int total = newsMapper.selectCnt(Constants.News.NEWS.code);
         NoticesVo noticesVo = new NoticesVo();

@@ -20,6 +20,7 @@
 
     <typeAliases>
         <package name="com.bai.pojo"/>
+        <package name="com.bai.pojo.vo"/>
     </typeAliases>
 
 </configuration>
