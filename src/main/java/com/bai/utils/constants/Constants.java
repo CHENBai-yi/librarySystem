@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class Constants {
-    public static final int PAGESIZE = 30;
+    public static final int PAGESIZE = 2;
+    public static final int HOME_PAGE_MSG_SIZE = 10;
+    public static final int PAGING_NUM = 7;
 
     public enum News {
         NOTICE("公告", 0),
@@ -37,5 +39,11 @@ public class Constants {
             }
 
         }
+    }
+
+    public static class AccessPageUrl {
+        public static final String NOTICE_URL = "/news/notice/page";
+        public static final String JOURNALISM_URL = "/news/journalism/page";
+        public static final String ACTIVITY_URL = "/news/activity/page";
     }
 }

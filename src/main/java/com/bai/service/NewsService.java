@@ -22,5 +22,5 @@ public interface NewsService {
     //删除对应的公告
     void delNews(long newsId);
 
-    NoticesVo showJournalismPage(Integer pageId, Integer pageSize);
+    NoticesVo showPageVo(Integer pageId, Integer pageSize, int type);
 }

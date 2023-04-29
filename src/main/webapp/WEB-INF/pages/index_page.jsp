@@ -445,67 +445,71 @@
                                             <c:set var="newsList" value="${newsList}"/>
                                             <c:set var="newsListLength" value="${newsList.size()}"/>
                                             <c:set var="dateFormatter" value="<%=new DateUtil()%>"/>
+                                            <c:set var="homePageSize" value="<%=Constants.HOME_PAGE_MSG_SIZE%>"/>
+
                                             <c:if test="${newsList!=null&&newsList.size()>0}">
-                                                <c:forEach var="news" items="${newsList}">
-                                                    <c:choose>
-                                                        <c:when test="${news.newsType==0}">
-                                                            <div class="views-row views-row-2 views-row-even">
+                                                <c:forEach var="news" varStatus="s" items="${newsList}">
+                                                    <c:if test="${s.index<homePageSize}">
+                                                        <c:choose>
+                                                            <c:when test="${news.newsType==0}">
+                                                                <div class="views-row views-row-2 views-row-even">
                                                       <span class="news-list-created"><span
                                                               class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
-                                                                <span class="news-list-link">
+                                                                    <span class="news-list-link">
                                                           <a class="links-type-class-anounce"
                                                              href="/portal/cn/news/announcement"
                                                              target="_blank"><%=Constants.News.NOTICE.type%></a>
                                                         </span>
-                                                                <span class="news-list-title"><span
-                                                                        class="field-content"><a
-                                                                        href="/portal/cn/news/0000002492"
-                                                                        target="_blank"><span
-                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
-                                                            </div>
-                                                        </c:when>
-                                                        <c:when test="${news.newsType==1}">
-                                                            <div class="views-row views-row-3 views-row-odd">
+                                                                    <span class="news-list-title"><span
+                                                                            class="field-content"><a
+                                                                            href="/portal/cn/news/0000002492"
+                                                                            target="_blank"><span
+                                                                            title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+                                                                </div>
+                                                            </c:when>
+                                                            <c:when test="${news.newsType==1}">
+                                                                <div class="views-row views-row-3 views-row-odd">
 
                                                                 <span class="news-list-created"><span
                                                                         class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
-                                                                <span class="news-list-link">
+                                                                    <span class="news-list-link">
 
 <a class="links-type-class-news" href="/portal/cn/news/notices"
    target="_blank"><%=Constants.News.NEWS.type%></a>
 </span>
-                                                                <span class="news-list-title"><span
-                                                                        class="field-content"><a
-                                                                        href="/portal/cn/news/0000002491"
-                                                                        target="_blank"><span
-                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+                                                                    <span class="news-list-title"><span
+                                                                            class="field-content"><a
+                                                                            href="<c:url value="/news/journalism/page/${news.newsId}"/>"
+                                                                            target="_blank"><span
+                                                                            title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
 
-                                                            </div>
-                                                        </c:when>
-                                                        <c:when test="${news.newsType==2}">
-                                                            <div class="views-row views-row-1 views-row-odd views-row-first">
+                                                                </div>
+                                                            </c:when>
+                                                            <c:when test="${news.newsType==2}">
+                                                                <div class="views-row views-row-1 views-row-odd views-row-first">
 
                                                                 <span class="news-list-created"><span
                                                                         class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
-                                                                <span class="news-list-link">
+                                                                    <span class="news-list-link">
 
 <a class="links-type-class-event" href="/portal/cn/events"
    target="_blank"><%=Constants.News.ACTIVITY.type%></a>
 </span>
-                                                                <span class="news-list-title"><span
-                                                                        class="field-content"><a
-                                                                        href="/portal/cn/news/events/%E5%B1%95%E8%A7%88/6302"
-                                                                        target="_blank"><span
-                                                                        title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
-                                                            </div>
-                                                        </c:when>
-                                                    </c:choose>
+                                                                    <span class="news-list-title"><span
+                                                                            class="field-content"><a
+                                                                            href="/portal/cn/news/events/%E5%B1%95%E8%A7%88/6302"
+                                                                            target="_blank"><span
+                                                                            title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
+                                                                </div>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </c:if>
                                                 </c:forEach>
                                             </c:if>
                                         </div>
 
 
-                                        <c:if test="${newsListLength>=7}">
+                                        <c:if test="${newsListLength>=homePageSize}">
                                             <div class="more-link">
                                                 <a href='<c:url value="/news/journalism/page"/>' target="_blank">
                                                     更多+ </a>

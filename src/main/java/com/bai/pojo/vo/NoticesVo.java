@@ -15,5 +15,6 @@ public class NoticesVo {
     private int total;
     private int cur;
     private int page_size = Constants.PAGESIZE;
+    private int type;
     private List<NewsDataVo> noticesDataVos;
 }

@@ -1,4 +1,8 @@
 <%@ page import="cn.hutool.core.date.DateUtil" %>
+<%@ page import="cn.hutool.core.util.NumberUtil" %>
+<%@ page import="sun.security.krb5.internal.crypto.dk.AesDkCrypto" %>
+<%@ page import="cn.hutool.crypto.symmetric.AES" %>
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -309,14 +313,55 @@
                                 <p>
                                     欢迎您阅读我们最近的新闻和公告。</p>
                                 <ul>
-                                    <li>
-                                        <a href="/portal/cn/news/headline">焦点新闻</a></li>
-                                    <li>
-                                        <a href="/portal/cn/news/notices" class="active active">新闻</a></li>
-                                    <li>
-                                        <a href="/portal/cn/news/announcement">公告</a></li>
-                                    <li>
-                                        <a href="/portal/cn/news/events">活动</a></li>
+                                    <c:set value="<%=Constants.News.NEWS.code%>" var="news_type"/>
+                                    <c:set value="<%=Constants.News.ACTIVITY.code%>" var="activity_type"/>
+                                    <c:set value="<%=Constants.News.NOTICE.code%>" var="notice_type"/>
+                                    <c:choose>
+                                        <c:when test="${page.type==news_type}">
+                                            <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <li>
+                                                <a href="<c:url value="/news/journalism/page"/>" class="active active">新闻</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.NOTICE_URL%>">公告</a></li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>">活动</a></li>
+                                        </c:when>
+                                        <c:when test="${page.type==notice_type}">
+                                            <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <li>
+                                                <a href="<c:url value="/news/journalism/page"/>">新闻</a></li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.NOTICE_URL%>" class="active active">公告</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>">活动</a></li>
+                                        </c:when>
+                                        <c:when test="${page.type==activity_type}">
+                                            <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <li>
+                                                <a href="<c:url value="/news/journalism/page"/>">新闻</a></li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.NOTICE_URL%>">公告</a></li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>"
+                                                   class="active active">活动</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <li>
+                                                <a href="<c:url value="/news/journalism/page"/>" class="active active">新闻</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.NOTICE_URL%>">公告</a></li>
+                                            <li>
+                                                <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>">活动</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </ul>
                             </div>
                         </div>
@@ -339,40 +384,80 @@
                                         <div class="views-row views-row-8 views-row-even views-row-last">
                                             </c:if>
                                             <span class="views-field views-field-created"> ${dateFormatter.format(even.createTime,"yyyy-MM-dd")}</span>
-                                            <span class="views-field views-field-title">        <a
-                                                    href="/portal/cn/news/0000002483">${even.newsTitle}</a>  </span>
+                                            <span class="views-field views-field-title">
+                                                <a href="<c:url value="/news/journalism/page/${even.newsId}"/>">${even.newsTitle}</a>  </span>
                                         </div>
                                         </c:forEach>
                                         </c:forEach>
                                     </div>
 
 
+                                    <%--                                        分页逻辑--%>
                                     <div class="text-center">
+                                        <c:set var="p" value="${page.total%page.page_size}"/>
+                                        <c:set value="<%=new NumberUtil()%>" var="numberUtil"/>
+                                        <c:set var="cur" value="${page.cur}"/>
+                                        <c:set value="<%=Constants.PAGING_NUM%>" var="page_num"/>
                                         <ul class="pagination">
-                                            <c:if test="${page.cur!=0}">
+                                            <c:if test="${cur!=1}">
                                                 <li class="pager-first"><a title="到第一页"
                                                                            href="<c:url value="/news/journalism/page?index=1"/>">«
                                                     第一页</a></li>
                                                 <li class="prev"><a title="返回上一个页面"
-                                                                    href="<c:url value="/news/journalism/page?index=${page.cur-1}"/>">‹
+                                                                    href="<c:url value="/news/journalism/page?index=${cur-1}"/>">‹
                                                     前一页</a></li>
-                                            </c:if>
-                                            <c:if test="${page.cur>7}">
-                                                <li class="pager-ellipsis disabled"><span>…</span></li>
+                                                <c:if test="${cur>page_num}">
+                                                    <li class="pager-ellipsis disabled"><span>…</span></li>
+                                                </c:if>
                                             </c:if>
 
+                                            <c:if test="${p==0}">
+                                                <c:set var="t" value="${page.total/page.page_size}"/>
+                                                <c:forEach var="num" varStatus="s" begin="${cur}"
+                                                           items="${numberUtil.range(t)}">
+                                                    <c:if test="${num==cur}">
+                                                        <li class="active">
+                                                            <span>${num}</span>
+                                                        </li>
+                                                    </c:if>
+                                                    <c:if test="${num!=cur}">
+                                                        <li><a title="到第 ${num} 页"
+                                                               href="<c:url value="/news/journalism/page?index=${num}"/>">${num}</a>
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
 
-                                            <li><a title="到第 1 页" href="/portal/cn/news/notices">1</a></li>
-                                            <li class="active"><span>2</span></li>
-                                            <li><a title="到第 3 页" href="/portal/cn/news/notices?page=2">3</a></li>
-                                            <li><a title="到第 4 页" href="/portal/cn/news/notices?page=3">4</a></li>
-                                            <li><a title="到第 5 页" href="/portal/cn/news/notices?page=4">5</a></li>
-                                            <li><a title="到第 6 页" href="/portal/cn/news/notices?page=5">6</a></li>
-                                            <li><a title="到第 7 页" href="/portal/cn/news/notices?page=6">7</a></li>
-                                            <c:if test="${(page.total%page.page_size+1)>7}">
-                                                <li class="pager-ellipsis disabled"><span>…</span></li>
+                                            <c:if test="${p!=0}">
+                                                <c:set var="t" value="${page.total/page.page_size}"/>
+                                                <c:if test="${cur<=page_num}">
+                                                    <c:set var="beginloop" value="1"/>
+                                                </c:if>
+                                                <c:if test="${cur>page_num}">
+                                                    <c:set var="beginloop" value="${cur%page_num}"/>
+                                                </c:if>
+                                                <c:forEach var="num" varStatus="s"
+                                                           begin="${beginloop}"
+                                                           items="${numberUtil.range(t+1)}">
+                                                    <c:if test="${num==cur}">
+                                                        <li class="active">
+                                                            <span>${num}</span>
+                                                        </li>
+                                                    </c:if>
+                                                    <c:if test="${num!=page.cur}">
+                                                        <li><a title="到第 ${num} 页"
+                                                               href="<c:url value="/news/journalism/page?index=${num}"/>">${num}</a>
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+
+                                            <c:if test="${cur<t}">
+                                                <c:if test="${cur>page_num}">
+                                                    <li class="pager-ellipsis disabled"><span>…</span></li>
+                                                </c:if>
                                                 <li class="next"><a title="去下一个页面"
-                                                                    href="<c:url value="/news/journalism/page?index=${page.cur+1}"/>">下一页
+                                                                    href="<c:url value="/news/journalism/page?index=${cur+1}"/>">下一页
                                                     ›</a></li>
                                                 <li class="pager-last"><a title="到最后一页"
                                                                           href="<c:url value="/news/journalism/page?index=${page.total}"/>">末页

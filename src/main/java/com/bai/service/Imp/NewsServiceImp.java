@@ -45,20 +45,22 @@ public class NewsServiceImp implements NewsService {
     }
 
     @Override
-    public NoticesVo showJournalismPage(Integer pageId, Integer pageSize) {
+    public NoticesVo showPageVo(Integer pageId, Integer pageSize, int type) {
+        int page = 1;
         if (pageSize == null) pageSize = Constants.PAGESIZE;
         if (pageId == null) pageId = 0;
-        else pageId = (pageId - 1) * pageSize;
-        List<NewsDataVo> pageWithGroupByDate = newsMapper.findPageWithGroupByDate(pageId, pageSize, Constants.News.NEWS.code);
-        int total = newsMapper.selectCnt(Constants.News.NEWS.code);
+        else {
+            page = pageId;
+            pageId = (pageId - 1) * pageSize;
+        }
+        List<NewsDataVo> pageWithGroupByDate = newsMapper.findPageWithGroupByDate(pageId, pageSize, type);
+        int total = newsMapper.selectCnt(type);
         NoticesVo noticesVo = new NoticesVo();
-        noticesVo.setCur(pageId);
+        noticesVo.setCur(page);
+        noticesVo.setType(type);
         noticesVo.setPage_size(pageSize);
         noticesVo.setTotal(total);
         noticesVo.setNoticesDataVos(pageWithGroupByDate);
-        System.out.println(noticesVo);
         return noticesVo;
     }
-
-
 }
