@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+		<!--记住mybatis-config的配置是有顺序的-->
+		<properties resource="db2.properties"/>
+		<settings>
+				<setting name="logImpl" value="LOG4J"/>
+				<!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
+				<setting name="useGeneratedKeys" value="true"/>
+				<!--<setting name="localCacheScope" value="SESSION"/>
+				<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>-->
+				<!-- 使用列别名替换列名 默认:true -->
+				<setting name="useColumnLabel" value="true"/>
+
+				<!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
+				<setting name="mapUnderscoreToCamelCase" value="true"/>
+				<setting name="cacheEnabled" value="true"/>
+		</settings>
+
+		<typeAliases>
+				<package name="pojo"/>
+				<package name="pojo.vo"/>
+		</typeAliases>
+
+		<environments default="dev">
+				<environment id="dev">
+						<transactionManager type="JDBC"/>
+						<dataSource type="POOLED">
+								<property name="driver" value="${jdbc.driver}"/>
+								<property name="url" value="${jdbc.url}"/>
+								<property name="username" value="${jdbc.username}"/>
+								<property name="password" value="${jdbc.password}"/>
+						</dataSource>
+				</environment>
+		</environments>
+
+		<mappers>
+				<mapper resource="mapper/NewsMapper.xml"/>
+		</mappers>
+
+</configuration>

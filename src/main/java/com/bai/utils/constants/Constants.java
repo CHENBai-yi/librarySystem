@@ -41,9 +41,23 @@ public class Constants {
         }
     }
 
+    public enum Role {
+        ADMIN("管理员", "admin"),
+        READER("借阅者", "reader");
+        public final String usernmae;
+        public final String role;
+
+        Role(String usernmae, String role) {
+            this.usernmae = usernmae;
+            this.role = role;
+        }
+    }
+
     public static class AccessPageUrl {
         public static final String NOTICE_URL = "/news/notice/page";
         public static final String JOURNALISM_URL = "/news/journalism/page";
         public static final String ACTIVITY_URL = "/news/activity/page";
+        public static final String READER_LOGIN_URL = "/reader/tologin";
+        public static final String READER_CHECK_LOGIN_URL = "/reader/checklogin";
     }
 }

@@ -1,7 +1,5 @@
-<%@ page import="cn.hutool.core.date.DateUtil" %>
-<%@ page import="cn.hutool.core.util.ObjectUtil" %>
-<%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; UTF-8" isELIgnored="false" pageEncoding="UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="zh-hans"
       prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
@@ -11,19 +9,17 @@
     <meta content="webkit|ie-comp|ie-stand" name="renderer">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
-    <link href="/portal/cn/news/0000002496" rel="canonical"/>
-    <link href="/portal/cn/node/6311" rel="shortlink"/>
     <link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
           type="image/vnd.microsoft.icon"/>
-    <title>${news.newsTitle}</title>
-    <link type="text/css" rel="stylesheet" href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css"
-          media="all"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css"
-          media="all"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/css_sifat1yrbnt1yexl-kgocar2lk9ihpzmzhha3b-_44s.css"
-          media="all"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css"
-          media="all"/>
+    <title>我的图书馆 | xxx图书馆</title>
+    <link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="/static/css/css_8orp6q91fonbds2ydw1jde0dvffl2uqdwazzyxea4zs.css" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
+          type="text/css"/>
     <style>
     </style>
     <!--[if IE 9]>
@@ -34,44 +30,45 @@
     <![endif]-->
     <!-- HTML5 element support for IE6-8 -->
     <!--[if lt IE 9]>
-    <script src=/static/js/html5shiv-printshiv.min.js"></script>
-    <script src=/static/js/respond.js"></script>
+    <script src="/static/js/html5shiv-printshiv.min.js"></script>
+    <script src="/static/js/respond.js"></script>
     <![endif]-->
 
     <!--[if (gt IE 9)|(gt IEMobile 7)|(!IE)]><!-->
 
     <!--<![endif]-->
-    <script src=/static/js/jquery.min.js"></script>
-    <script src=/static/js/jquery-extend-3.4.0.js"></script>
-    <script src=/static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
-    <script src=/static/js/jquery.once.js"></script>
-    <script src=/static/js/drupal.js"></script>
-    <script src=/static/js/admin_devel.js"></script>
-    <script src=/static/js/jquery-migrate-1.2.0.js"></script>
-    <script src=/static/js/jquery.lazyloader.js"></script>
-    <script src=/static/js/extlink.js"></script>
-    <script src=/static/js/_progress.js"></script>
-    <script src=/static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
-    <script src=/static/js/lightbox.js"></script>
-    <script src=/static/js/tb-megamenu-frontend.js"></script>
-    <script src=/static/js/tb-megamenu-touch.js"></script>
-    <script src=/static/js/quicktabs.js"></script>
-    <script src=/static/js/jquery.hoverintent.minified.js"></script>
-    <script src=/static/js/sftouchscreen.js"></script>
-    <script src=/static/js/sfsmallscreen.js"></script>
-    <script src=/static/js/jquery.bgiframe.min.js"></script>
-    <script src=/static/js/superfish.js"></script>
-    <script src=/static/js/supersubs.js"></script>
-    <script src=/static/js/superfish.js"></script>
-    <script src=/static/js/bootstrap.min.js"></script>
-    <script src=/static/js/jquery.qrcode.min.js"></script>
-    <script src=/static/js/custom.js"></script>
-    <script src=/static/js/custom-ge.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery-extend-3.4.0.js"></script>
+    <script src="/static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
+    <script src="/static/js/jquery.once.js"></script>
+    <script src="/static/js/drupal.js"></script>
+    <script src="/static/js/admin_devel.js"></script>
+    <script src="/static/js/jquery-migrate-1.2.0.js"></script>
+    <script src="/static/js/jquery.lazyloader.js"></script>
+    <script src="/static/js/extlink.js"></script>
+    <script src="/static/js/_progress.js"></script>
+    <script src="/static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
+    <script src="/static/js/lightbox.js"></script>
+    <script src="/static/js/tb-megamenu-frontend.js"></script>
+    <script src="/static/js/tb-megamenu-touch.js"></script>
+    <script src="/static/js/pkusso.js"></script>
+    <script src="/static/js/quicktabs.js"></script>
+    <script src="/static/js/jquery.hoverintent.minified.js"></script>
+    <script src="/static/js/sftouchscreen.js"></script>
+    <script src="/static/js/sfsmallscreen.js"></script>
+    <script src="/static/js/jquery.bgiframe.min.js"></script>
+    <script src="/static/js/superfish.js"></script>
+    <script src="/static/js/supersubs.js"></script>
+    <script src="/static/js/superfish.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.qrcode.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/custom-ge.js"></script>
     <script>jQuery.extend(Drupal.settings, {
         "basePath": "\/portal\/",
         "pathPrefix": "cn\/",
         "ajaxPageState": {
-            "theme": "pkulib2018", "theme_token": "BRqLt-1NHlfZhdjaOSw61xPZxp9C30D1WLOfSt5FDrE", "js": {
+            "theme": "pkulib2018", "theme_token": "sJX2v7A4eSR8nHmijhe6UXLe2EkJabgN65DLLEgyYCw", "js": {
                 "sites\/all\/themes\/bootstrap\/js\/bootstrap.js": 1,
                 "sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js": 1,
                 "misc\/jquery-extend-3.4.0.js": 1,
@@ -87,6 +84,7 @@
                 "sites\/all\/modules\/lightbox2\/js\/lightbox.js": 1,
                 "sites\/all\/modules\/tb_megamenu\/js\/tb-megamenu-frontend.js": 1,
                 "sites\/all\/modules\/tb_megamenu\/js\/tb-megamenu-touch.js": 1,
+                "sites\/all\/modules\/pkusso\/pkusso.js": 1,
                 "sites\/all\/modules\/quicktabs\/js\/quicktabs.js": 1,
                 "sites\/all\/libraries\/superfish\/jquery.hoverIntent.minified.js": 1,
                 "sites\/all\/libraries\/superfish\/sftouchscreen.js": 1,
@@ -117,6 +115,7 @@
                 "sites\/all\/modules\/tb_megamenu\/css\/base.css": 1,
                 "sites\/all\/modules\/tb_megamenu\/css\/default.css": 1,
                 "sites\/all\/modules\/tb_megamenu\/css\/compatibility.css": 1,
+                "sites\/all\/modules\/pkusso\/pkusso.css": 1,
                 "sites\/all\/modules\/quicktabs\/css\/quicktabs.css": 1,
                 "sites\/all\/modules\/quicktabs\/quicktabs_tabstyles\/tabstyles\/navlist\/navlist.css": 1,
                 "sites\/all\/libraries\/fontawesome\/css\/font-awesome.css": 1,
@@ -281,7 +280,7 @@
         }
     });</script>
 </head>
-<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-6311 node-type-article i18n-zh-hans section-news">
+<body class="html not-front not-logged-in no-sidebars page-mylib i18n-zh-hans section-mylib">
 <div id="skip-link">
     <a class="element-invisible element-focusable" href="#main-content">跳转到主要内容</a>
 </div>
@@ -291,99 +290,77 @@
 
     </header> <!-- /#page-header -->
 
-    <div>
-        <section>
+    <div class="row">
+
+
+        <section class="col-sm-12">
             <ol class="breadcrumb">
-                <c:set var="contextPath" value="${pageContext.servletContext.contextPath}"/>
-                <li><a href="${contextPath.equals("")?"/":contextPath}">首页</a></li>
-                <li><a href="<c:url value="/news/journalism/page"/>">最新消息</a></li>
-                <li class="active">${news.newsTitle}</li>
+                <li><a href="/portal/cn">首页</a></li>
+                <li class="active">我的图书馆</li>
             </ol>
             <a id="main-content"></a>
-
+            <h1 class="page-header">我的图书馆</h1>
             <div class="region region-content">
                 <section class="block block-system clearfix" id="block-system-main">
 
 
-                    <div about="/portal/cn/news/0000002496" class="node node-article row clearfix" id="node-6311"
-                         typeof="sioc:Item foaf:Document">
-
-                        <div class="col-sm-12">
-                            <h1 class="page-header">${news.newsTitle}</h1>
-
-                            <div class="meta">
-                                <c:set var="dateFormatter" value="<%=new DateUtil()%>"/>
-                                <span class="created">${dateFormatter.format(news.createTime,"yyyy-MM-dd")}</span><!-- |
-	<span class="news-type">
-	</span> |
-	<span class="statistics">
-	浏览 33 次	</span>--></div>
-
-                            <div class="content clearfix">
-                                <div class="field field-name-body field-type-text-with-summary field-label-hidden">
-                                    <div class="field-items">
-                                        <div class="field-item even" property="content:encoded">
-                                            <p>
-                                                ${news.newsContent}
-                                            </p>
-                                            <p>
-                                                 </p>
-                                            <p>
-                                                 </p>
-                                            <p>
-                                                 </p>
-                                            <p align="right">
-                                                撰稿：${news.newsAdmin}   NIU牛</p>
-                                            <c:if test="${news.imgsList!=null&&news.imgsList.size()>0}">
-                                                <p align="right">
-                                                       照片：NBX NIU牛</p>
-                                            </c:if>
-                                            <p>
-                                                 </p>
-                                        </div>
+                    <style>
+                        #borrowRuleA:hover {
+                            color: #337ab7;
+                            background-color: transparent;
+                        }
+                    </style>
+                    <div id="pkusso-login-block"
+                         style="background-image:url('/static/images/star.png');background-size: contain">
+                        <div class="container">
+                            <div>
+                                <div class="pkusso-login-form-header">
+                                    <h4 class="mylib-title">我的图书馆</h4>
+                                    <div class="mylib-mimashuoming">
+                                        <c:if test="${tip!=null}">
+                                            <p><font color="red">${tip.msg}</font></p>
+                                        </c:if>
                                     </div>
                                 </div>
+                                <form action="javascript:void(0);" id="pkusso-login" method="post" name="pkusso-login"
+                                      onsubmit="loginCheck()">
+                                    <div class="form-group uid-group has-feedback">
+                                        <input class="form-control" id="userid" name="userid"
+                                               placeholder="请输入校园卡号或图书证号"
+                                               type="text">
+                                    </div>
+                                    <div class="form-group passwd-group">
+                                        <input autocomplete="off" class="form-control" id="password" name="password"
+                                               placeholder="请输入证号密码" type="password">
+                                    </div>
+                                    <button class="btn btn-default mylib-login-submit" type="submit">
+                                        登录
+                                    </button>
+                                    <div style="display: none;">
+                                        <input id="verb" name="verb" type="hidden" value="login">
+                                        <!--input type="hidden" value="false" id="Iplogin" name="Iplogin"-->
+                                        <input id="Lid" name="Lid" type="hidden" value="portal">
+                                        <!--input type="hidden" value="kluwer" id="Lid" name="Lid"-->
+                                        <!--  <input id="goto" name="goto"
+                                                 type="hidden" value="https://www.lib.pku.edu.cn/portal/cn/mylib?">-->
+                                        <input id="goto" name="goto"
+                                               type="hidden" value="#">
+                                        <!--<input type="hidden" value="" id="goto" name="goto">-->
+                                        <!--<input type="hidden" value="" id="goto" name="goto">-->
+                                        <!--input type="hidden" value="http://162.105.138.184:8090/idp/pku?goto=http%3A%2F%2Fuas.bj.calis.edu.cn%3A8090%2Famconsole%2FAuthServices%2F211010%3Fverb%3Dsplogin%26goto%3Dhttp%3A%2F%2F162.105.140.125%2Fdrupal6%2Fpkusso%2Flogin%253Fidp%253D211010" id="goto" name="goto"-->
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
                     </div>
-
-
                 </section>
             </div>
         </section>
 
+
     </div>
 </div>
-<div class="region region-footer">
-    <section id="block-block-59" class="block block-block clearfix">
-
-
-        <!-- 自定义区块开始：全页面屏底社交网络工具，窗口底边固定 -->
-        <div class="custom-global-bottom-sticker">
-            <div class="container">
-                <div id="custom-global-bottom-edge-label-ask">
-                    <a href="/portal/cn/zxt/dianhua">
-                        <img src="/static/picture/custom-global-bottom-edge-ask.png" style="cursor: help;"/>
-                    </a>
-                </div>
-                <div id="custom-global-bottom-edge-navbar">
-                    <ul>
-                        <li id="custom-global-bottom-edge-backtotop">
-                            <a onclick="javascript:back2Top(); return false;">
-                                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>回到顶部
-                            </a> |
-                        <li>
-                            <a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- 自定义区块结束 -->
-    </section>
-</div>
-<script src=/static/js/bootstrap.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 <div style="display:none;">
     <script src="/static/js/h.js" type="text/javascript"></script>
 </div>

@@ -318,8 +318,8 @@
                                     <c:set value="<%=Constants.News.NOTICE.code%>" var="notice_type"/>
                                     <c:choose>
                                         <c:when test="${page.type==news_type}">
-                                            <li>
-                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <%-- <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>--%>
                                             <li>
                                                 <a href="<c:url value="/news/journalism/page"/>" class="active active">新闻</a>
                                             </li>
@@ -329,8 +329,8 @@
                                                 <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>">活动</a></li>
                                         </c:when>
                                         <c:when test="${page.type==notice_type}">
-                                            <li>
-                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <%-- <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>--%>
                                             <li>
                                                 <a href="<c:url value="/news/journalism/page"/>">新闻</a></li>
                                             <li>
@@ -340,8 +340,8 @@
                                                 <a href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>">活动</a></li>
                                         </c:when>
                                         <c:when test="${page.type==activity_type}">
-                                            <li>
-                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <%-- <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>--%>
                                             <li>
                                                 <a href="<c:url value="/news/journalism/page"/>">新闻</a></li>
                                             <li>
@@ -351,8 +351,8 @@
                                                    class="active active">活动</a></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li>
-                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>
+                                            <%-- <li>
+                                                <a href="/portal/cn/news/headline">焦点新闻</a></li>--%>
                                             <li>
                                                 <a href="<c:url value="/news/journalism/page"/>" class="active active">新闻</a>
                                             </li>
@@ -479,7 +479,34 @@
 
     </div>
 </div>
+<div class="region region-footer">
+    <section id="block-block-59" class="block block-block clearfix">
 
+
+        <!-- 自定义区块开始：全页面屏底社交网络工具，窗口底边固定 -->
+        <div class="custom-global-bottom-sticker">
+            <div class="container">
+                <div id="custom-global-bottom-edge-label-ask">
+                    <a href="/portal/cn/zxt/dianhua">
+                        <img src="/static/picture/custom-global-bottom-edge-ask.png" style="cursor: help;"/>
+                    </a>
+                </div>
+                <div id="custom-global-bottom-edge-navbar">
+                    <ul>
+                        <li id="custom-global-bottom-edge-backtotop">
+                            <a onclick="javascript:back2Top(); return false;">
+                                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>回到顶部
+                            </a> |
+                        <li>
+                            <a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 自定义区块结束 -->
+    </section>
+</div>
 <script src="/static/js/bootstrap.js"></script>
 <div style="display:none;">
     <script src="/static/js/h.js" type="text/javascript"></script>

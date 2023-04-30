@@ -542,7 +542,8 @@
                                  -->
 
                                     <div id="custom-front-service-4students">
-                                        <h3>学生</h3>
+                                        <h3><%=Constants.Role.READER.usernmae%>
+                                        </h3>
                                         <div id="custom-front-service-service-list">
                                             <ul class="for-students">
                                                 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -555,7 +556,22 @@
                                                         </li>
                                                     </ul>
                                                 </li>
+
                                                 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                    图书借阅
+                                                    <ul>
+                                                        <li>
+                                                            <p>
+                                                                <a href="<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
+                                                                   target="_blank"
+                                                                   title="">个人借阅状态查询</a>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+
+                                                <%--<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
                                                     图书借阅
                                                     <ul>
                                                         <li>
@@ -579,128 +595,128 @@
                                                                    title="">借阅分馆FAQ</a></p>
                                                         </li>
                                                     </ul>
-                                                </li>
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    馆际互借
-                                                    <ul>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/gjhj/tijiaoshenqing"
-                                                                   target="_blank" title="">提交申请</a></p>
-                                                        </li>
-                                                        <!--这个链接没有找到 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/gjhj/changyongshumu"
-                                                                   target="_blank" title="">校外书目查询系统</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    阅读推广
-                                                    <ul>
-                                                        <li>
-                                                            <p>
-                                                                <a href="http://newbooks.lib.pku.edu.cn/"
-                                                                   target="_blank" title="">新书通报</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/ydtj/jiaoshoutuijian"
-                                                                   target="_blank" title="">教授推荐阅读</a></p>
-                                                        </li>
-                                                        <!--这个链接画了删除线 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/ydtj/xuezituijian"
-                                                                   target="_blank" title="">学子推荐阅读</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    设备设施
-                                                    <ul>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/tycx?qt-content_page_innovation=2#qt-content_page_innovation"
-                                                                   target="_blank" title="">3D打印服务</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
-                                                                   target="_blank" title="">自助服务</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    提升信息素养
-                                                    <ul>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
-                                                                   title="">一小时讲座</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
-                                                                   target="_blank" title="">信息素养课</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
-                                                                   target="_blank"
-                                                                   title="">《数字图书馆资源检索与利用》视频课</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="http://il.lib.pku.edu.cn/" target="_blank"
-                                                                   title="">信息素养能力评测</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyangyouxi"
-                                                                   target="_blank" title="">信息素养手机游戏</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>&nbsp;
-                                                            </p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    常用软件与培训
-                                                    <ul>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
-                                                                   target="_blank" title="">联创自助打印系统驱动</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/zy/software" target="_blank"
-                                                                   title="">SPSS</a></p>
-                                                        </li>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/zy/software?qt-content_page_software=3#qt-content_page_software"
-                                                                   target="_blank" title="">NoteExpress</a></p>
-                                                        </li>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
-                                                                   target="_blank" title="">EndNote</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=4#qt-content_page_onehour"
-                                                                   target="_blank" title="">一小时讲座之软件达人</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                                </li>--%>
+                                                <%--   <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                       馆际互借
+                                                       <ul>
+                                                           <li>
+                                                               <p>
+                                                                   <a href="/portal/cn/fw/gjhj/tijiaoshenqing"
+                                                                      target="_blank" title="">提交申请</a></p>
+                                                           </li>
+                                                           <!--这个链接没有找到 -->
+                                                           <li>
+                                                               <p>
+                                                                   <a href="/portal/cn/fw/gjhj/changyongshumu"
+                                                                      target="_blank" title="">校外书目查询系统</a></p>
+                                                           </li>
+                                                       </ul>
+                                                   </li>--%>
+                                                <%--     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                         阅读推广
+                                                         <ul>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="http://newbooks.lib.pku.edu.cn/"
+                                                                        target="_blank" title="">新书通报</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/ydtj/jiaoshoutuijian"
+                                                                        target="_blank" title="">教授推荐阅读</a></p>
+                                                             </li>
+                                                             <!--这个链接画了删除线 -->
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/ydtj/xuezituijian"
+                                                                        target="_blank" title="">学子推荐阅读</a></p>
+                                                             </li>
+                                                         </ul>
+                                                     </li>
+                                                    <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                         设备设施
+                                                         <ul>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/xxzc/tycx?qt-content_page_innovation=2#qt-content_page_innovation"
+                                                                        target="_blank" title="">3D打印服务</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
+                                                                        target="_blank" title="">自助服务</a></p>
+                                                             </li>
+                                                         </ul>
+                                                     </li>
+                                                     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                         提升信息素养
+                                                         <ul>
+                                                             <!--无链接 -->
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
+                                                                        title="">一小时讲座</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
+                                                                        target="_blank" title="">信息素养课</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
+                                                                        target="_blank"
+                                                                        title="">《数字图书馆资源检索与利用》视频课</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="http://il.lib.pku.edu.cn/" target="_blank"
+                                                                        title="">信息素养能力评测</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyangyouxi"
+                                                                        target="_blank" title="">信息素养手机游戏</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>&nbsp;
+                                                                 </p>
+                                                             </li>
+                                                         </ul>
+                                                     </li>
+                                                     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                         常用软件与培训
+                                                         <ul>
+                                                             <!--无链接 -->
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
+                                                                        target="_blank" title="">联创自助打印系统驱动</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/zy/software" target="_blank"
+                                                                        title="">SPSS</a></p>
+                                                             </li>
+                                                             <!--无链接 -->
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/zy/software?qt-content_page_software=3#qt-content_page_software"
+                                                                        target="_blank" title="">NoteExpress</a></p>
+                                                             </li>
+                                                             <!--无链接 -->
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
+                                                                        target="_blank" title="">EndNote</a></p>
+                                                             </li>
+                                                             <li>
+                                                                 <p>
+                                                                     <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=4#qt-content_page_onehour"
+                                                                        target="_blank" title="">一小时讲座之软件达人</a></p>
+                                                             </li>
+                                                         </ul>
+                                                     </li>--%>
                                             </ul>
                                         </div>
                                     </div>
@@ -718,106 +734,118 @@
                                      @Author wanghx
                                  -->
                                     <div id="custom-front-service-4researchers">
-                                        <h3>研究生+教师</h3>
+                                        <%--<h3>研究生+教师</h3>--%>
+                                        <h3><%=Constants.Role.ADMIN.usernmae%>
+                                        </h3>
                                         <div id="custom-front-service-service-list">
                                             <ul class="for-teachers">
                                                 <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                                                    学科分析报告
+                                                    后台管理
                                                     <ul>
                                                         <li>
                                                             <p>
-                                                                <a href="/portal/cn/fw/kyzc/jingzhengqingbao"
-                                                                   target="_blank" title="">学科竞争力分析报告</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/kyzc/zhishichanquan"
-                                                                   target="_blank" title="">学科前沿报告</a></p>
+                                                                <a href="${pageContext.servletContext.contextPath}/tologin"
+                                                                   target="_blank" title="">登录</a></p>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                                                    专利申请
-                                                    <ul>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/zlxx/zhuanlizixun"
-                                                                   target="_blank" title="">专利咨询</a></p>
+                                                <%--        <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                                                            学科分析报告
+                                                            <ul>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/kyzc/jingzhengqingbao"
+                                                                           target="_blank" title="">学科竞争力分析报告</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/kyzc/zhishichanquan"
+                                                                           target="_blank" title="">学科前沿报告</a></p>
+                                                                </li>
+                                                            </ul>
                                                         </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/zlxx/zhuanlipeixun"
-                                                                   target="_blank" title="">相关培训</a></p>
+                                                        <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                                                            专利申请
+                                                            <ul>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/zlxx/zhuanlizixun"
+                                                                           target="_blank" title="">专利咨询</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/zlxx/zhuanlipeixun"
+                                                                           target="_blank" title="">相关培训</a></p>
+                                                                </li>
+                                                                <!--是否为专利资源导航 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/zlxx/zhuanliziyuan"
+                                                                           target="_blank" title="">专利数据库</a></p>
+                                                                </li>
+                                                            </ul>
                                                         </li>
-                                                        <!--是否为专利资源导航 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/zlxx/zhuanliziyuan"
-                                                                   target="_blank" title="">专利数据库</a></p>
+                                                        <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                                                            教学与培训
+                                                            <ul>
+                                                                <!--无链接 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
+                                                                           title="">一小时讲座</a></p>
+                                                                </li>
+                                                                <!--无链接 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/yixiaoshijiangzuo/zhuanchangjiangzuo"
+                                                                           target="_blank" title="">定制讲座</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
+                                                                           target="_blank" title="">信息素养课</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="http://il.lib.pku.edu.cn/" target="_blank"
+                                                                           title="">信息素养能力评测</a></p>
+                                                                </li>
+                                                            </ul>
                                                         </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                                                    教学与培训
-                                                    <ul>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
-                                                                   title="">一小时讲座</a></p>
-                                                        </li>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/yixiaoshijiangzuo/zhuanchangjiangzuo"
-                                                                   target="_blank" title="">定制讲座</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
-                                                                   target="_blank" title="">信息素养课</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="http://il.lib.pku.edu.cn/" target="_blank"
-                                                                   title="">信息素养能力评测</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
 
-                                                <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                                                    写作支持
-                                                    <ul>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
-                                                                   target="_blank" title="">如何洞悉学科热点</a></p>
-                                                        </li>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
-                                                                   target="_blank" title="">如何进行文献调研</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
-                                                                   target="_blank" title="">学术规范与论文写作</a></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
-                                                                   target="_blank" title="">论文投稿指南</a></p>
-                                                        </li>
-                                                        <!--无链接 -->
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
-                                                                   target="_blank" title="">文献管理软件</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                                        <li class="type-title col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                                                            写作支持
+                                                            <ul>
+                                                                <!--无链接 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
+                                                                           target="_blank" title="">如何洞悉学科热点</a></p>
+                                                                </li>
+                                                                <!--无链接 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
+                                                                           target="_blank" title="">如何进行文献调研</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
+                                                                           target="_blank" title="">学术规范与论文写作</a></p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=3"
+                                                                           target="_blank" title="">论文投稿指南</a></p>
+                                                                </li>
+                                                                <!--无链接 -->
+                                                                <li>
+                                                                    <p>
+                                                                        <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
+                                                                           target="_blank" title="">文献管理软件</a></p>
+                                                                </li>
+                                                            </ul>
+                                                        </li>--%>
                                             </ul>
                                         </div>
                                     </div>
@@ -1783,6 +1811,34 @@
 <script src="./static/js/bootstrap.js"></script>
 <div style="display:none;">
     <script src=" ./static/js/h.js" type="text/javascript"></script>
+</div>
+<div class="region region-footer">
+    <section id="block-block-59" class="block block-block clearfix">
+
+
+        <!-- 自定义区块开始：全页面屏底社交网络工具，窗口底边固定 -->
+        <div class="custom-global-bottom-sticker">
+            <div class="container">
+                <div id="custom-global-bottom-edge-label-ask">
+                    <a href="/portal/cn/zxt/dianhua">
+                        <img src="/static/picture/custom-global-bottom-edge-ask.png" style="cursor: help;"/>
+                    </a>
+                </div>
+                <div id="custom-global-bottom-edge-navbar">
+                    <ul>
+                        <li id="custom-global-bottom-edge-backtotop">
+                            <a onclick="javascript:back2Top(); return false;">
+                                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>回到顶部
+                            </a> |
+                        <li>
+                            <a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 自定义区块结束 -->
+    </section>
 </div>
 </body>
 </html>
