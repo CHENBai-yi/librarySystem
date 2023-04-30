@@ -311,7 +311,7 @@
                         }
                     </style>
                     <div id="pkusso-login-block"
-                         style="background-image:url('/static/images/star.png');background-size: contain">
+                         style="background-image:url('/static/images/star.png');height: 99.5vh">
                         <div class="container">
                             <div>
                                 <div class="pkusso-login-form-header">
