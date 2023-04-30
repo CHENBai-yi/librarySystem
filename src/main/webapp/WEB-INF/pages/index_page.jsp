@@ -434,7 +434,7 @@
                             <div class="panel-pane pane-views pane-news-list">
 
                                 <h2 class="pane-title">
-                                    <a href="/portal/cn/news/notices">最新消息</a></h2>
+                                    <a href="<%=Constants.AccessPageUrl.JOURNALISM_URL%>">最新消息</a></h2>
 
 
                                 <div class="pane-content">
@@ -457,12 +457,12 @@
                                                               class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
                                                                     <span class="news-list-link">
                                                           <a class="links-type-class-anounce"
-                                                             href="/portal/cn/news/announcement"
+                                                             href="<%=Constants.AccessPageUrl.NOTICE_URL%>"
                                                              target="_blank"><%=Constants.News.NOTICE.type%></a>
                                                         </span>
                                                                     <span class="news-list-title"><span
                                                                             class="field-content"><a
-                                                                            href="/portal/cn/news/0000002492"
+                                                                            href="<%=Constants.AccessPageUrl.JOURNALISM_URL%>/${news.newsId}"
                                                                             target="_blank"><span
                                                                             title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
                                                                 </div>
@@ -474,7 +474,7 @@
                                                                         class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
                                                                     <span class="news-list-link">
 
-<a class="links-type-class-news" href="/portal/cn/news/notices"
+<a class="links-type-class-news" href="<%=Constants.AccessPageUrl.JOURNALISM_URL%>"
    target="_blank"><%=Constants.News.NEWS.type%></a>
 </span>
                                                                     <span class="news-list-title"><span
@@ -492,12 +492,12 @@
                                                                         class="field-content">${dateFormatter.format(news.createTime,"MM/dd")}</span></span>
                                                                     <span class="news-list-link">
 
-<a class="links-type-class-event" href="/portal/cn/events"
+<a class="links-type-class-event" href="<%=Constants.AccessPageUrl.ACTIVITY_URL%>"
    target="_blank"><%=Constants.News.ACTIVITY.type%></a>
 </span>
                                                                     <span class="news-list-title"><span
                                                                             class="field-content"><a
-                                                                            href="/portal/cn/news/events/%E5%B1%95%E8%A7%88/6302"
+                                                                            href="<%=Constants.AccessPageUrl.JOURNALISM_URL%>/${news.newsId}"
                                                                             target="_blank"><span
                                                                             title="${news.newsTitle}">${news.newsTitle}</span></a></span></span>
                                                                 </div>

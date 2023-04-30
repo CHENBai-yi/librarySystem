@@ -365,8 +365,10 @@
                                 </ul>
                             </div>
                         </div>
+                        <%--                        page参数判空，程序稳健性判断--%>
+                        <c:if test="${page!=null}">
                         <div class="view-content">
-                            <c:set var="dateFormatter" value="<%=new DateUtil()%>"/>
+                                <c:set var="dateFormatter" value="<%=new DateUtil()%>"/>
                             <c:forEach var="news" items="${page.noticesDataVos}">
                             <h3>${news.dateTime}</h3>
                             <c:forEach var="even" varStatus="status" items="${news.data}">
@@ -392,7 +394,7 @@
                                     </div>
 
 
-                                    <%--                                        分页逻辑--%>
+                                        <%--                                        分页逻辑--%>
                                     <div class="text-center">
                                         <c:set var="p" value="${page.total%page.page_size}"/>
                                         <c:set value="<%=new NumberUtil()%>" var="numberUtil"/>
@@ -468,6 +470,10 @@
                                 </div>
                 </section>
             </div>
+            </c:if>
+            <c:if test="${page==null}">
+                <div class="view-content">出了点问题哦</div>
+            </c:if>
         </section>
 
 

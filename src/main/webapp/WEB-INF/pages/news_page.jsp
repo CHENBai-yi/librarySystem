@@ -1,4 +1,5 @@
 <%@ page import="cn.hutool.core.date.DateUtil" %>
+<%@ page import="cn.hutool.core.util.ObjectUtil" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -293,7 +294,8 @@
     <div>
         <section>
             <ol class="breadcrumb">
-                <li><a href="${pageContext.servletContext.contextPath}">首页</a></li>
+                <c:set var="contextPath" value="${pageContext.servletContext.contextPath}"/>
+                <li><a href="${contextPath.equals("")?"/":contextPath}">首页</a></li>
                 <li><a href="<c:url value="/news/journalism/page"/>">最新消息</a></li>
                 <li class="active">${news.newsTitle}</li>
             </ol>
@@ -331,9 +333,11 @@
                                             <p>
                                                  </p>
                                             <p align="right">
-                                                撰稿：NBX   NIU牛</p>
-                                            <p align="right">
-                                                   照片：NBX NIU牛</p>
+                                                撰稿：${news.newsAdmin}   NIU牛</p>
+                                            <c:if test="${news.imgsList!=null&&news.imgsList.size()>0}">
+                                                <p align="right">
+                                                       照片：NBX NIU牛</p>
+                                            </c:if>
                                             <p>
                                                  </p>
                                         </div>

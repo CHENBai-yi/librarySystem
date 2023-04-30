@@ -36,17 +36,27 @@ public class NewsController {
     }
 
     @GetMapping(Constants.AccessPageUrl.NOTICE_URL + "/{id}")
-    public String noticesPage(@PathVariable(name = "id", required = false) Integer pageId, Model model) {
+    public String noticesPageRestful(@PathVariable(name = "id", required = false) @RequestParam(name = "id", required = false) Integer pageId, Model model) {
         NoticesVo journalisms = newsService.showPageVo(pageId, null, Constants.News.NOTICE.code);
         model.addAttribute("page", journalisms);
         return "more_notices_page";
     }
 
+    @GetMapping(Constants.AccessPageUrl.NOTICE_URL)
+    public String noticesPage(@RequestParam(name = "id", required = false) Integer pageId, Model model) {
+        return this.noticesPageRestful(pageId, model);
+    }
+
     @GetMapping(Constants.AccessPageUrl.ACTIVITY_URL + "/{id}")
-    public String activityPage(@PathVariable(name = "id", required = false) Integer pageId, Model model) {
+    public String activityPageRestful(@PathVariable(name = "id", required = false) Integer pageId, Model model) {
         NoticesVo journalisms = newsService.showPageVo(pageId, null, Constants.News.ACTIVITY.code);
         model.addAttribute("page", journalisms);
         return "more_notices_page";
+    }
+
+    @GetMapping(Constants.AccessPageUrl.ACTIVITY_URL)
+    public String activityPage(@RequestParam(name = "id", required = false) Integer pageId, Model model) {
+        return this.activityPageRestful(pageId, model);
     }
 
 }

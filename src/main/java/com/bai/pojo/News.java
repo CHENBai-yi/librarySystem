@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +20,5 @@ public class News implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
     private int newsType;
+    private List<String> imgsList;
 }

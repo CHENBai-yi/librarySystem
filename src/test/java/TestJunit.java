@@ -1,3 +1,4 @@
+import com.bai.pojo.News;
 import com.bai.service.NewsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,8 @@ public class TestJunit {
     NewsService newsService;
 
     public static void main(String[] args) {
+        News news = new News();
+
 
     }
 
