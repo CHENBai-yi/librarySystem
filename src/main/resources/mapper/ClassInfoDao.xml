@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.ClassInfoDao">
+		<resultMap id="BaseResultMap" type="com.bai.pojo.ClassInfo">
+				<id column="class_info_class_id" jdbcType="INTEGER" property="classId"/>
+				<result column="class_info_class_name" jdbcType="VARCHAR" property="className"/>
+		</resultMap>
+		<sql id="Base_Column_List">
+				class_info.class_id as class_info_class_id, class_info.class_name as class_info_class_name
+		</sql>
+		<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+				select
+				<include refid="Base_Column_List"/>
+				from class_info class_info
+				where class_info.class_id = #{classId,jdbcType=INTEGER}
+		</select>
+		<sql id="selectAll">
+				select *
+				from library.class_info
+		</sql>
+		<select id="selectAll" resultType="com.bai.pojo.ClassInfo">
+				<choose>
+						<when test="classInfoList!=null">
+								<include refid="selectAll"/>
+								limit #{classInfoList}
+						</when>
+						<otherwise>
+								<include refid="selectAll"/>
+						</otherwise>
+				</choose>
+		</select>
+		<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+				delete
+				from class_info
+				where class_id = #{classId,jdbcType=INTEGER}
+		</delete>
+		<insert id="insert" keyColumn="class_id" keyProperty="classId" parameterType="com.bai.pojo.ClassInfo"
+		        useGeneratedKeys="true">
+				insert into class_info (class_name)
+				values (#{className,jdbcType=VARCHAR})
+		</insert>
+		<insert id="insertSelective" keyColumn="class_id" keyProperty="classId" parameterType="com.bai.pojo.ClassInfo"
+		        useGeneratedKeys="true">
+				insert into class_info
+				<trim prefix="(" suffix=")" suffixOverrides=",">
+						<if test="className != null">
+								class_name,
+						</if>
+				</trim>
+				<trim prefix="values (" suffix=")" suffixOverrides=",">
+						<if test="className != null">
+								#{className,jdbcType=VARCHAR},
+						</if>
+				</trim>
+		</insert>
+		<update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.ClassInfo">
+				update class_info
+				<set>
+						<if test="className != null">
+								class_name = #{className,jdbcType=VARCHAR},
+						</if>
+				</set>
+				where class_id = #{classId,jdbcType=INTEGER}
+		</update>
+		<update id="updateByPrimaryKey" parameterType="com.bai.pojo.ClassInfo">
+				update class_info
+				set class_name = #{className,jdbcType=VARCHAR}
+				where class_id = #{classId,jdbcType=INTEGER}
+		</update>
+</mapper>

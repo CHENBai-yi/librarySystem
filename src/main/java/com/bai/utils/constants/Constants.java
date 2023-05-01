@@ -12,6 +12,7 @@ public class Constants {
     public static final int PAGESIZE = 2;
     public static final int HOME_PAGE_MSG_SIZE = 10;
     public static final int PAGING_NUM = 7;
+    public static final int CLASS_INFO_LIST = 10;
 
     public enum News {
         NOTICE("公告", 0),

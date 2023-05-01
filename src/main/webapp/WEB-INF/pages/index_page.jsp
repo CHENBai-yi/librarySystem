@@ -546,16 +546,16 @@
                                         </h3>
                                         <div id="custom-front-service-service-list">
                                             <ul class="for-students">
-                                                <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                                    空间布局
-                                                    <ul>
-                                                        <li>
-                                                            <p>
-                                                                <a href="/portal/cn/fw/rgzn/guancangfenbu"
-                                                                   target="_blank" title="">馆藏分布</a></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                                <%-- <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                     空间布局
+                                                     <ul>
+                                                         <li>
+                                                             <p>
+                                                                 <a href="/portal/cn/fw/rgzn/guancangfenbu"
+                                                                    target="_blank" title="">馆藏分布</a></p>
+                                                         </li>
+                                                     </ul>
+                                                 </li>--%>
 
                                                 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
                                                     图书借阅
@@ -566,6 +566,22 @@
                                                                    target="_blank"
                                                                    title="">个人借阅状态查询</a>
                                                             </p>
+                                                        </li>
+                                                        <%--todo 以下是待开发功能项--%>
+                                                        <li>
+                                                            <p>
+                                                                <a href="/portal/cn/jyfw/jybl/cjygh" target="_blank"
+                                                                   title="">出借与归还</a></p>
+                                                        </li>
+                                                        <li>
+                                                            <p>
+                                                                <a href="/portal/cn/jyfw/jybl/xjyyj" target="_blank"
+                                                                   title="">续借与预约</a></p>
+                                                        </li>
+                                                        <li>
+                                                            <p>
+                                                                <a href="/portal/cn/fg/jieyueshuoming" target="_blank"
+                                                                   title="">借阅分馆FAQ</a></p>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -870,67 +886,82 @@
                                      @Author wanghx
                                  -->
                                     <ul id="custom-front-resource-left">
-                                        <!--图书和电子图书不是一个url-->
-                                        <li>
-                                            <p>
-                                                <a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
-                                                   target="_blank" title="">图书/期刊</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&titleType=BOOKS"
-                                                   target="_blank" title="">电子图书</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&amp;titleType=JOURNALS"
-                                                   target="_blank" title="">电子期刊</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://dbnav.lib.pku.edu.cn/" target="_blank"
-                                                   title="">数据库</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=35"
-                                                   target="_blank" title="">学位论文</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="zy/zzzy/guji" target="_blank" title="">古籍</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://media.lib.pku.edu.cn/" target="_blank"
-                                                   title="">视频/音频</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://appendcd.lib.pku.edu.cn/" target="_blank">随书光盘</a>
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=34"
-                                                   target="_blank" title="">报纸</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=38"
-                                                   target="_blank" title="">统计数据/研究数据</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=37"
-                                                   target="_blank" title="">档案</a></p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <a href="/portal/cn/zy/software" target="_blank" title="">工具与软件</a>
-                                            </p>
-                                        </li>
+                                        <c:if test="${classInfoList==null}">
+                                            <!--图书和电子图书不是一个url-->
+                                            <li>
+                                                <p>
+                                                    <a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
+                                                       target="_blank" title="">图书/期刊</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&titleType=BOOKS"
+                                                       target="_blank" title="">电子图书</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&amp;titleType=JOURNALS"
+                                                       target="_blank" title="">电子期刊</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://dbnav.lib.pku.edu.cn/" target="_blank"
+                                                       title="">数据库</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=35"
+                                                       target="_blank" title="">学位论文</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="zy/zzzy/guji" target="_blank" title="">古籍</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://media.lib.pku.edu.cn/" target="_blank"
+                                                       title="">视频/音频</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://appendcd.lib.pku.edu.cn/"
+                                                       target="_blank">随书光盘</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=34"
+                                                       target="_blank" title="">报纸</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=38"
+                                                       target="_blank" title="">统计数据/研究数据</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=37"
+                                                       target="_blank" title="">档案</a></p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <a href="/portal/cn/zy/software" target="_blank"
+                                                       title="">工具与软件</a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${classInfoList!=null}">
+                                            <c:forEach items="${classInfoList}" var="classs">
+                                                <li>
+                                                    <p>
+                                                            <%--todo 这里需要返回的是classVo--%>
+                                                        <a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
+                                                           target="_blank" title="">${classs.className}</a></p>
+                                                </li>
+                                            </c:forEach>
+                                        </c:if>
                                     </ul>
+
                                     <!-- 自定义区块结束 -->  </div>
 
 
