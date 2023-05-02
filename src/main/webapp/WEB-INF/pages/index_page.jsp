@@ -16,69 +16,69 @@
     <link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
           type="image/vnd.microsoft.icon"/>
     <title>xxx大学图书馆</title>
-    <link href="./static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
+    <link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
           type="text/css"/>
-    <link href="./static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
+    <link href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
           type="text/css"/>
-    <link href="./static/css/css_hsxeqhqwjwmv0a3u9ojsimyveokrqajsuqqisjackcs.css" media="all" rel="stylesheet"
+    <link href="/static/css/css_hsxeqhqwjwmv0a3u9ojsimyveokrqajsuqqisjackcs.css" media="all" rel="stylesheet"
           type="text/css"/>
-    <link href="./static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
+    <link href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
           type="text/css"/>
     <style>
     </style>
     <!--[if IE 9]>
-    <link type="text/css" rel="stylesheet" media="all" href="./static/css/ie9.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="/static/css/ie9.css"/>
     <![endif]-->
     <!--[if lt IE 9]>
-    <link type="text/css" rel="stylesheet" media="all" href="./static/css/ie8.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="/static/css/ie8.css"/>
     <![endif]-->
     <!-- HTML5 element support for IE6-8 -->
     <!--[if lte IE 9]>
     <script>window.location = "/portal/compatibility/index.html";</script>
-    <script src="./static/js/html5shiv-printshiv.min.js"></script>
-    <script src="./static/js/respond.js"></script>
+    <script src="/static/js/html5shiv-printshiv.min.js"></script>
+    <script src="/static/js/respond.js"></script>
     <![endif]-->
 
     <!--[if (gt IE 9)|(gt IEMobile 7)|(!IE)]><!-->
 
     <!--<![endif]-->
-    <script src="./static/js/jquery.min.js"></script>
-    <script src="./static/js/jquery-extend-3.4.0.js"></script>
-    <script src="./static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
-    <script src="./static/js/jquery.once.js"></script>
-    <script src="./static/js/drupal.js"></script>
-    <script src="./static/js/jquery.cookie.js"></script>
-    <script src="./static/js/jquery.form.min.js"></script>
-    <script src="./static/js/ajax.js"></script>
-    <script src="./static/js/jquery_update.js"></script>
-    <script src="./static/js/admin_devel.js"></script>
-    <script src="./static/js/jquery-migrate-1.2.0.js"></script>
-    <script src="./static/js/jquery.lazyloader.js"></script>
-    <script src="./static/js/extlink.js"></script>
-    <script src="./static/js/_progress.js"></script>
-    <script src="./static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
-    <script src="./static/js/lightbox.js"></script>
-    <script src="./static/js/tb-megamenu-frontend.js"></script>
-    <script src="./static/js/tb-megamenu-touch.js"></script>
-    <script src="./static/js/summon.js"></script>
-    <script src="./static/js/swiper-4.1.6.min.js"></script>
-    <script src="./static/js/base.js"></script>
-    <script src="./static/js/quicktabs.js"></script>
-    <script src="./static/js/ajax_view.js"></script>
-    <script src="./static/js/mycalendar.js"></script>
-    <script src="./static/js/jquery.hoverintent.minified.js"></script>
-    <script src="./static/js/sftouchscreen.js"></script>
-    <script src="./static/js/sfsmallscreen.js"></script>
-    <script src="./static/js/jquery.bgiframe.min.js"></script>
-    <script src="./static/js/superfish.js"></script>
-    <script src="./static/js/supersubs.js"></script>
-    <script src="./static/js/superfish.js"></script>
-    <script src="./static/js/bootstrap.min.js"></script>
-    <script src="./static/js/jquery.qrcode.min.js"></script>
-    <script src="./static/js/custom.js"></script>
-    <script src="./static/js/custom-ge.js"></script>
-    <script src="./static/js/ajax_view.js"></script>
-    <script src="./static/js/ajax.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery-extend-3.4.0.js"></script>
+    <script src="/static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
+    <script src="/static/js/jquery.once.js"></script>
+    <script src="/static/js/drupal.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/js/ajax.js"></script>
+    <script src="/static/js/jquery_update.js"></script>
+    <script src="/static/js/admin_devel.js"></script>
+    <script src="/static/js/jquery-migrate-1.2.0.js"></script>
+    <script src="/static/js/jquery.lazyloader.js"></script>
+    <script src="/static/js/extlink.js"></script>
+    <script src="/static/js/_progress.js"></script>
+    <script src="/static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
+    <script src="/static/js/lightbox.js"></script>
+    <script src="/static/js/tb-megamenu-frontend.js"></script>
+    <script src="/static/js/tb-megamenu-touch.js"></script>
+    <script src="/static/js/summon.js"></script>
+    <script src="/static/js/swiper-4.1.6.min.js"></script>
+    <script src="/static/js/base.js"></script>
+    <script src="/static/js/quicktabs.js"></script>
+    <script src="/static/js/ajax_view.js"></script>
+    <script src="/static/js/mycalendar.js"></script>
+    <script src="/static/js/jquery.hoverintent.minified.js"></script>
+    <script src="/static/js/sftouchscreen.js"></script>
+    <script src="/static/js/sfsmallscreen.js"></script>
+    <script src="/static/js/jquery.bgiframe.min.js"></script>
+    <script src="/static/js/superfish.js"></script>
+    <script src="/static/js/supersubs.js"></script>
+    <script src="/static/js/superfish.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.qrcode.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/custom-ge.js"></script>
+    <script src="/static/js/ajax_view.js"></script>
+    <script src="/static/js/ajax.js"></script>
     <script>jQuery.extend(Drupal.settings, {
         "basePath": "\/portal\/",
         "pathPrefix": "cn\/",
@@ -761,7 +761,7 @@
                                                         <li>
                                                             <p>
                                                                 <a href="${pageContext.servletContext.contextPath}/tologin"
-                                                                   target="_blank" title="">登录</a></p>
+                                                                   target="_blank" title="">管理员登录</a></p>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -983,7 +983,7 @@
                                                 <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
                                                    target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-1.jpg"/>
+                                                                                src="/static/picture/custom-front-resource-right-1.jpg"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
@@ -997,7 +997,7 @@
                                                 <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
                                                    target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-2.jpg"/>
+                                                                                src="/static/picture/custom-front-resource-right-2.jpg"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
@@ -1010,7 +1010,7 @@
                                                 <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
                                                    target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-3.jpg"/>
+                                                                                src="/static/picture/custom-front-resource-right-3.jpg"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
@@ -1023,7 +1023,7 @@
                                                 <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
                                                    target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-4.jpg"/>
+                                                                                src="/static/picture/custom-front-resource-right-4.jpg"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
@@ -1037,7 +1037,7 @@
                                                 <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
                                                    target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-5.jpg"/>
+                                                                                src="/static/picture/custom-front-resource-right-5.jpg"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
@@ -1050,7 +1050,7 @@
                                             <li class="col-lg-4 col-md-4 col-sm-6 col-xs-6 resource-readmore">
                                                 <a href="zy/huojiangtushu" target="_blank" title="">
                                                     <div class="prize-img"><img alt=""
-                                                                                src="./static/picture/custom-front-resource-right-5.png"/>
+                                                                                src="/static/picture/custom-front-resource-right-5.png"/>
                                                     </div>
                                                     <div class="prize-info"><p class="prize-title">
                                                         <a href="zy/huojiangtushu" target="_blank"
@@ -1087,8 +1087,8 @@
                                     <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <a href="http://rbdl.calis.edu.cn/aopac/indexold.jsp" target="_blank" title="">
                                             <div class="special-img"><img alt="古文献资源库"
-                                                                          data-src="./static/picture/custom-front-special-1.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          data-src="/static/picture/custom-front-special-1.png"
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 古文献资源库
@@ -1099,8 +1099,8 @@
                                         <a href="http://162.105.138.115/index.php?m=content&c=index&a=lists&catid=33&sserial=3713"
                                            target="_blank" title="">
                                             <div class="special-img"><img alt="北大讲座"
-                                                                          data-src="./static/picture/custom-front-special-2.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          data-src="/static/picture/custom-front-special-2.png"
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 北大讲座
@@ -1110,8 +1110,8 @@
                                     <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <a href="/portal/cn/zy/tszy/minguowenxian" target="_blank" title="">
                                             <div class="special-img"><img alt="晚清民国文献"
-                                                                          data-src="./static/picture/custom-front-special-3.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          data-src="/static/picture/custom-front-special-3.png"
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 晚清民国文献
@@ -1121,8 +1121,8 @@
                                     <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <a href="/portal/cn/zy/tszy/xiwentecang" target="_blank" title="">
                                             <div class="special-img"><img alt="西文特藏"
-                                                                          data-src="./static/picture/custom-front-special-4.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          data-src="/static/picture/custom-front-special-4.png"
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 西文特藏
@@ -1133,7 +1133,7 @@
                                         <a href="/portal/cn/zy/tszy/yandalunwen" target="_blank" title="">
                                             <div class="special-img"><img alt="燕大学位论文"
                                                                           data-src="/portal/sites/default/files/siteimages/custom-front-special-5.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 燕大学位论文
@@ -1144,7 +1144,7 @@
                                         <a href="/portal/cn/zy/tszy/beidawenku" target="_blank" title="">
                                             <div class="special-img"><img alt="北大文库"
                                                                           data-src="/portal/sites/default/files/siteimages/custom-front-special-6.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 北大文库
@@ -1155,7 +1155,7 @@
                                         <a href="/portal/cn/zy/tszy/mingrencangshu" target="_blank" title="">
                                             <div class="special-img"><img alt="名人藏书"
                                                                           data-src="/portal/sites/default/files/siteimages/custom-front-special-7.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 名人藏书
@@ -1166,7 +1166,7 @@
                                         <a href="/portal/cn/zy/tszy/shuzitecang" target="_blank" title="">
                                             <div class="special-img"><img alt="数字特藏"
                                                                           data-src="/portal/sites/default/files/siteimages/custom-front-special-8.png"
-                                                                          src="./static/picture/image_placeholder.gif"/>
+                                                                          src="/static/picture/image_placeholder.gif"/>
                                             </div>
                                             <div class="special-title">
                                                 数字特藏
@@ -1221,7 +1221,7 @@
                                                                    target="_blank"
                                                                    title="两汉魏晋南北朝宰相制度研究"><img alt=""
                                                                                                            class="custom-front-recomm-reading-cover"
-                                                                                                           src="./static/picture/custom-front-recomm-reading-cover01.png"/></a>
+                                                                                                           src="/static/picture/custom-front-recomm-reading-cover01.png"/></a>
                                                                 <div class="custom-front-recomm-reading-detail">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
                                                                        target="_blank"
@@ -1264,7 +1264,7 @@
                                                                    target="_blank"
                                                                    title="The waning of the Renaissance"><img alt=""
                                                                                                               class="custom-front-recomm-reading-cover"
-                                                                                                              src="./static/picture/custom-front-recomm-reading-cover02.png"/></a>
+                                                                                                              src="/static/picture/custom-front-recomm-reading-cover02.png"/></a>
                                                                 <div class="custom-front-recomm-reading-detail">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
                                                                        target="_blank"
@@ -1306,7 +1306,7 @@
                                                                 <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
                                                                    target="_blank" title="帛书老子校注"><img alt=""
                                                                                                              class="custom-front-recomm-reading-cover"
-                                                                                                             src="./static/picture/custom-front-recomm-reading-cover03.png"/></a>
+                                                                                                             src="/static/picture/custom-front-recomm-reading-cover03.png"/></a>
                                                                 <div class="custom-front-recomm-reading-detail">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
                                                                        target="_blank" title="帛书老子校注">先秦诸子，自成一家学术，堪称子学中的经学。其中，道家和儒家形成最早，影响最深。次数集“黄老之术”·“老庄之学”·“仙风道骨”为一身，是道家道教的核心经典。</a>
@@ -1343,7 +1343,7 @@
                                                         <div class="custom-front-recomm-reading-rest">
                                                             <a href="/portal/cn/fw/ydtj/jiaoshoutuijian" target="_blank"
                                                                title=""><img alt=""
-                                                                             src="./static/picture/custom-front-recomm-reading-rest.png"/><span>阅读完整推荐书单&gt;</span></a>
+                                                                             src="/static/picture/custom-front-recomm-reading-rest.png"/><span>阅读完整推荐书单&gt;</span></a>
                                                         </div>
                                                     </div>
                                                     <!-- 自定义区块结束 -->
@@ -1356,234 +1356,298 @@
 
                                                     <div class="newbooks-swiper-container">
                                                         <div class="swiper-wrapper">
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787115600349&newbookid=423101"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5934385-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5934385-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">深入浅出密码学 / (美) 戴维·王著
-                                                                    = Real-wor…
-                                                                </div>
-                                                                <div class="callnum">索书号：TN918.1/135</div>
-                                                                <div class="book-author">(美) 戴维·王著 ; David Wong ;
-                                                                    韩露露, 谢文丽, 杨雅希译
-                                                                </div>
-                                                                <div class="publish-year">北京 人民邮电出版社 2023</div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787566021250&newbookid=429395"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5960726-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5960726-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">普赖斯的知觉理论批判 :
-                                                                    经验论的知觉图式探源 / 邓明艳著
-                                                                </div>
-                                                                <div class="callnum">索书号：B561.59/43</div>
-                                                                <div class="book-author">邓明艳著</div>
-                                                                <div class="publish-year">北京 中央民族大学出版社 2023
-                                                                </div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787302611165&newbookid=411346"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5909977-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5909977-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">数字治理 / 主编张鸿</div>
-                                                                <div class="callnum">索书号：D035-0/73</div>
-                                                                <div class="book-author">主编张鸿</div>
-                                                                <div class="publish-year">北京 清华大学出版社 2023</div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787522813035&newbookid=428901"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5996367-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5996367-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">近代中国铁路制度与功能的演进
-                                                                    : 基于中央与地方的关系 / …
-                                                                </div>
-                                                                <div class="callnum">索书号：F532.9/18a</div>
-                                                                <div class="book-author">马陵合著</div>
-                                                                <div class="publish-year">北京 社会科学文献出版社 2023
-                                                                </div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=&newbookid=429566"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/xstjkb.jpg"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/xstjkb.jpg"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">向里面飞 / 沙克著</div>
-                                                                <div class="callnum">索书号：I227.1/285a</div>
-                                                                <div class="book-author">沙克著</div>
-                                                                <div class="publish-year">南京 江苏凤凰文艺出版社 2023
-                                                                </div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787122413321&newbookid=416730"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5915952-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5915952-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">现代液压气动系统 :
-                                                                    结构原理·使用维护·故障诊断 / 张利…
-                                                                </div>
-                                                                <div class="callnum">索书号：TH137/29</div>
-                                                                <div class="book-author">张利平编著</div>
-                                                                <div class="publish-year">北京 化学工业出版社 2023</div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787203125303&newbookid=427581"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/xstjkb.jpg"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/xstjkb.jpg"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">狷庐散笔 / 邓文宽著</div>
-                                                                <div class="callnum">索书号：I267/6227</div>
-                                                                <div class="book-author">邓文宽著</div>
-                                                                <div class="publish-year">太原 山西人民出版社 2023</div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787513177337&newbookid=428349"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5967212-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5967212-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">教育要配合实践 : 车向忱教育文选
-                                                                    / 车向忱著 ; 车红选…
-                                                                </div>
-                                                                <div class="callnum">索书号：G4-53/151</div>
-                                                                <div class="book-author">车向忱著 ; 车红选编</div>
-                                                                <div class="publish-year">北京 开明出版社 2023</div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787559467829&newbookid=414582"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/5919357-fm.jpg!cckb_b"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/5919357-fm.jpg!cckb_b"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">河图 / 常芳著</div>
-                                                                <div class="callnum">索书号：I247.57/1408a</div>
-                                                                <div class="book-author">常芳著</div>
-                                                                <div class="publish-year">南京 江苏凤凰文艺出版社 2023
-                                                                </div>
-                                                            </a></div>
-                                                            <div class="swiper-slide"><a
-                                                                    href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787100216722&newbookid=415283"
-                                                                    target="_blank">
-                                                                <div class="cover"><img alt="book cover image"
-                                                                                        class="img-responsive"
-                                                                                        data-src="./static/picture/xstjkb.jpg"
-                                                                                        height="auto"
-                                                                                        src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
-                                                                                        typeof="foaf:Image"
-                                                                                        width="100%"/>
-                                                                    <noscript><img alt="book cover image"
-                                                                                   class="img-responsive" height="auto"
-                                                                                   src="./static/picture/xstjkb.jpg"
-                                                                                   typeof="foaf:Image" width="100%"/>
-                                                                    </noscript>
-                                                                </div>
-                                                                <div class="newbook-title">明清以來閩方言文獻集成. 第二輯.
-                                                                    卷七 / 馬重奇主編
-                                                                </div>
-                                                                <div class="callnum">索书号：H177/8b:2:7</div>
-                                                                <div class="book-author">馬重奇主編</div>
-                                                                <div class="publish-year">北京 商务印书馆 2023</div>
-                                                            </a></div>
+                                                            <c:if test="${recommendedBooksVos!=null}">
+                                                                <c:forEach items="${recommendedBooksVos}" var="book">
+                                                                    <div class="swiper-slide"><a
+                                                                            href="<c:url value="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.newBookId}"/>"
+                                                                            target="_blank">
+                                                                        <div class="cover"><img alt="book cover image"
+                                                                                                class="img-responsive"
+                                                                                                data-src="${book.coverImg!=null && !"".equals(book.coverImg)?book.coverImg:"/static/img/showFailed.jpg"}"
+                                                                                                height="auto"
+                                                                                                src="<c:url value="/static/img/showFailed.jpg"/>"
+                                                                                                typeof="foaf:Image"
+                                                                                                width="100%"/>
+                                                                            <noscript><img alt="book cover image"
+                                                                                           class="img-responsive"
+                                                                                           height="auto"
+                                                                                           src="${book.coverImg}"
+                                                                                           typeof="foaf:Image"
+                                                                                           width="100%"/>
+                                                                            </noscript>
+                                                                        </div>
+                                                                        <div class="newbook-title">
+                                                                                ${book.newBookTitle}
+                                                                        </div>
+                                                                        <div class="callnum">索书号：${book.isbn}</div>
+                                                                        <div class="book-author">
+                                                                                ${book.bookAuthor}
+                                                                        </div>
+                                                                        <div class="publish-year">${book.publishYear}</div>
+                                                                    </a></div>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                            <c:if test="${recommendedBooksVos==null}">
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787115600349&newbookid=423101"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5934385-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5934385-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">深入浅出密码学 / (美)
+                                                                        戴维·王著
+                                                                        = Real-wor…
+                                                                    </div>
+                                                                    <div class="callnum">索书号：TN918.1/135</div>
+                                                                    <div class="book-author">(美) 戴维·王著 ; David Wong
+                                                                        ;
+                                                                        韩露露, 谢文丽, 杨雅希译
+                                                                    </div>
+                                                                    <div class="publish-year">北京 人民邮电出版社 2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787566021250&newbookid=429395"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5960726-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5960726-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">普赖斯的知觉理论批判 :
+                                                                        经验论的知觉图式探源 / 邓明艳著
+                                                                    </div>
+                                                                    <div class="callnum">索书号：B561.59/43</div>
+                                                                    <div class="book-author">邓明艳著</div>
+                                                                    <div class="publish-year">北京 中央民族大学出版社
+                                                                        2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787302611165&newbookid=411346"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5909977-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5909977-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">数字治理 / 主编张鸿</div>
+                                                                    <div class="callnum">索书号：D035-0/73</div>
+                                                                    <div class="book-author">主编张鸿</div>
+                                                                    <div class="publish-year">北京 清华大学出版社 2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787522813035&newbookid=428901"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5996367-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5996367-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">近代中国铁路制度与功能的演进
+                                                                        : 基于中央与地方的关系 / …
+                                                                    </div>
+                                                                    <div class="callnum">索书号：F532.9/18a</div>
+                                                                    <div class="book-author">马陵合著</div>
+                                                                    <div class="publish-year">北京 社会科学文献出版社
+                                                                        2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=&newbookid=429566"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/xstjkb.jpg"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/xstjkb.jpg"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">向里面飞 / 沙克著</div>
+                                                                    <div class="callnum">索书号：I227.1/285a</div>
+                                                                    <div class="book-author">沙克著</div>
+                                                                    <div class="publish-year">南京 江苏凤凰文艺出版社
+                                                                        2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787122413321&newbookid=416730"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5915952-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5915952-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">现代液压气动系统 :
+                                                                        结构原理·使用维护·故障诊断 / 张利…
+                                                                    </div>
+                                                                    <div class="callnum">索书号：TH137/29</div>
+                                                                    <div class="book-author">张利平编著</div>
+                                                                    <div class="publish-year">北京 化学工业出版社 2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787203125303&newbookid=427581"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/xstjkb.jpg"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/xstjkb.jpg"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">狷庐散笔 / 邓文宽著</div>
+                                                                    <div class="callnum">索书号：I267/6227</div>
+                                                                    <div class="book-author">邓文宽著</div>
+                                                                    <div class="publish-year">太原 山西人民出版社 2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787513177337&newbookid=428349"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5967212-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5967212-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">教育要配合实践 : 车向忱教育文选
+                                                                        / 车向忱著 ; 车红选…
+                                                                    </div>
+                                                                    <div class="callnum">索书号：G4-53/151</div>
+                                                                    <div class="book-author">车向忱著 ; 车红选编</div>
+                                                                    <div class="publish-year">北京 开明出版社 2023</div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787559467829&newbookid=414582"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/5919357-fm.jpg!cckb_b"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/5919357-fm.jpg!cckb_b"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">河图 / 常芳著</div>
+                                                                    <div class="callnum">索书号：I247.57/1408a</div>
+                                                                    <div class="book-author">常芳著</div>
+                                                                    <div class="publish-year">南京 江苏凤凰文艺出版社
+                                                                        2023
+                                                                    </div>
+                                                                </a></div>
+                                                                <div class="swiper-slide"><a
+                                                                        href="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=4&isbn=9787100216722&newbookid=415283"
+                                                                        target="_blank">
+                                                                    <div class="cover"><img alt="book cover image"
+                                                                                            class="img-responsive"
+                                                                                            data-src="/static/picture/xstjkb.jpg"
+                                                                                            height="auto"
+                                                                                            src="https://www.lib.pku.edu.cn/portal/sites/all/modules/lazyloader/image_placeholder.gif"
+                                                                                            typeof="foaf:Image"
+                                                                                            width="100%"/>
+                                                                        <noscript><img alt="book cover image"
+                                                                                       class="img-responsive"
+                                                                                       height="auto"
+                                                                                       src="/static/picture/xstjkb.jpg"
+                                                                                       typeof="foaf:Image"
+                                                                                       width="100%"/>
+                                                                        </noscript>
+                                                                    </div>
+                                                                    <div class="newbook-title">明清以來閩方言文獻集成.
+                                                                        第二輯.
+                                                                        卷七 / 馬重奇主編
+                                                                    </div>
+                                                                    <div class="callnum">索书号：H177/8b:2:7</div>
+                                                                    <div class="book-author">馬重奇主編</div>
+                                                                    <div class="publish-year">北京 商务印书馆 2023</div>
+                                                                </a></div>
+                                                            </c:if>
                                                         </div>
                                                         <!-- Add Pagination -->
                                                         <div class="swiper-button-next"></div>
@@ -1658,11 +1722,11 @@
                     </div>
                 </div>
             </div>
-            <script src="./static/js/scrollmagic.js" type="text/javascript">
+            <script src="/static/js/scrollmagic.js" type="text/javascript">
             </script>
-            <script src="./static/js/tweenmax.min.js" type="text/javascript">
+            <script src="/static/js/tweenmax.min.js" type="text/javascript">
             </script>
-            <script src="./static/js/scrolltoplugin.min.js" type="text/javascript">
+            <script src="/static/js/scrolltoplugin.min.js" type="text/javascript">
             </script>
             <script type="text/javascript">
                 // Init controller
@@ -1834,14 +1898,14 @@
         attach: function (context, settings) {
             $("img[data-src]").lazyloader({
                 distance: 0,
-                icon: "/portal/sites/all/modules/lazyloader/loader/loader-1.gif"
+                icon: "/static/images/loader-1.gif"
             });
         }
     };
 }(jQuery));</script>
-<script src="./static/js/bootstrap.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 <div style="display:none;">
-    <script src=" ./static/js/h.js" type="text/javascript"></script>
+    <script src=" /static/js/h.js" type="text/javascript"></script>
 </div>
 <div class="region region-footer">
     <section id="block-block-59" class="block block-block clearfix">

@@ -1,6 +1,7 @@
 package com.bai.service;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.vo.RecommendedBooksVo;
 
 import java.util.Date;
 import java.util.List;
@@ -25,4 +26,5 @@ public interface BookService {
     //模糊查询书本信息
     List<Book> queryByName(String bookName);
 
+    List<RecommendedBooksVo> queryAllBooksVo();
 }

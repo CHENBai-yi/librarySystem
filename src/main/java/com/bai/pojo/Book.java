@@ -1,8 +1,6 @@
 package com.bai.pojo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -26,4 +24,6 @@ public class Book implements Serializable {
     private Date pubDate;
     private int classId;
     private int number;
+    private String coverImg;
+    private long score;
 }

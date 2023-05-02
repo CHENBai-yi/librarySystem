@@ -1,4 +1,5 @@
 import com.bai.pojo.News;
+import com.bai.service.BookService;
 import com.bai.service.NewsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,11 +22,17 @@ public class TestJunit {
 
     @Autowired
     NewsService newsService;
+    @Autowired
+    BookService bookService;
 
     public static void main(String[] args) {
         News news = new News();
 
+    }
 
+    @Test
+    public void testBookMapStruct() {
+        System.out.println(bookService.queryAllBooksVo());
     }
 
     @Test

@@ -1,31 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.dao.BookMapper">
-    <select id="queryAllBook" resultType="Book">
-        select *from library.book_info;
-    </select>
+		<sql id="select">
+				select *
+				from library.book_info
+		</sql>
+		<select id="queryAllBook" resultType="Book">
+				<include refid="select"/>
+		</select>
 
-    <insert id="addBook" parameterType="Book">
-       insert into book_info (`name`,author,publish,ISBN,introduction,`language`,`price`,pub_date,class_id,`number`)
-       values (#{name},#{author},#{publish},#{ISBN},#{introduction},#{language},#{price},#{pub_date},#{class_id},#{number})
-    </insert>
+		<insert id="addBook" parameterType="Book">
+				insert into book_info (`name`, author, publish, ISBN, introduction, `language`, `price`, pub_date, class_id,
+				                       `number`, `cover_img`, `score`)
+				values (#{name}, #{author}, #{publish}, #{ISBN}, #{introduction}, #{language}, #{price}, #{pub_date},
+				        #{class_id}, #{number}, #{coverImg}, #{score})
+		</insert>
 
-    <select id="getBookDetailById" parameterType="long" resultType="Book">
-        select * from library.book_info where book_id=#{bookId};
-    </select>
+		<select id="getBookDetailById" parameterType="long" resultType="Book">
+				select *
+				from library.book_info
+				where book_id = #{bookId};
+		</select>
 
-    <update id="updateBook" parameterType="Book">
-        update library.book_info set `name`=#{name},author=#{author},publish=#{publish},ISBN=#{ISBN},introduction=#{introduction},`language`=#{language},`price`=#{price},pub_date=#{pubDate},class_id=#{classId},`number`=#{number}
-        where book_id=#{bookId}
-    </update>
+		<update id="updateBook" parameterType="Book">
+				update library.book_info
+				set `name`=#{name},
+				    author=#{author},
+				    publish=#{publish},
+				    ISBN=#{ISBN},
+				    introduction=#{introduction},
+				    `language`=#{language},
+				    `price`=#{price},
+				    pub_date=#{pubDate},
+				    class_id=#{classId},
+				    `number`=#{number}
+				where book_id = #{bookId}
+		</update>
 
-    <delete id="delBook" parameterType="long">
-        delete  from library.book_info where book_id=#{bookId}
-    </delete>
+		<delete id="delBook" parameterType="long">
+				delete
+				from library.book_info
+				where book_id = #{bookId}
+		</delete>
 
-    <select id="queryByName" parameterType="string" resultType="Book">
-        select * from library.book_info where name like #{bookName};
-    </select>
+		<select id="queryByName" parameterType="string" resultType="Book">
+				select *
+				from library.book_info
+				where name like #{bookName};
+		</select>
+		<select id="selectHeightScoreBook" resultType="com.bai.pojo.Book" parameterType="int">
+				<include refid="select"/>
+				order by score limit #{recommendedBookSize}
+		</select>
 
 
 </mapper>

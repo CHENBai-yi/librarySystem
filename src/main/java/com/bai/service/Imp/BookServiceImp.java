@@ -2,12 +2,16 @@ package com.bai.service.Imp;
 
 import com.bai.dao.BookMapper;
 import com.bai.pojo.Book;
+import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
+import com.bai.utils.constants.Constants;
+import com.bai.utils.mapStruct.BookMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+
 @Service
 public class BookServiceImp implements BookService {
     @Autowired
@@ -41,6 +45,12 @@ public class BookServiceImp implements BookService {
 
     @Override
     public List<Book> queryByName(String bookName) {
-        return bookMapper.queryByName('%'+bookName+'%');
+        return bookMapper.queryByName('%' + bookName + '%');
+    }
+
+    @Override
+    public List<RecommendedBooksVo> queryAllBooksVo() {
+        List<Book> bookList = bookMapper.selectHeightScoreBook(Constants.RECOMMENDED_BOOK_SIZE);
+        return BookMap.BOOK_MAP.getRecommendedBooksVo(bookList);
     }
 }
