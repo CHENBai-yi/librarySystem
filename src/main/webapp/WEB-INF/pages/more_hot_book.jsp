@@ -5342,6 +5342,22 @@
         <!-- 自定义区块结束 -->
     </section>
 </div>
+<script type="text/javascript">
+    function showHideAnchorNav() {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop > document.documentElement.clientHeight / 3) {
+            jQuery("#custom-global-bottom-edge-label-ask").css("visibility", "visible");
+            jQuery("#custom-global-bottom-edge-navbar").css("visibility", "visible");
+        } else {
+            jQuery("#custom-global-bottom-edge-label-ask").css("visibility", "hidden");
+            jQuery("#custom-global-bottom-edge-navbar").css("visibility", "hidden");
+        }
+    }
+
+    showHideAnchorNav();
+    jQuery(window).on("scroll", showHideAnchorNav);
+
+</script>
 <script src="static/js/bootstrap.js"></script>
 <div style="display:none;">
     <script src=" static/js/h.js" type="text/javascript"></script>
