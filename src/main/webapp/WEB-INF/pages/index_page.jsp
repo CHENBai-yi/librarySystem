@@ -1,4 +1,3 @@
-<%@ page import="com.bai.utils.DateUtils" %>
 <%@ page import="cn.hutool.core.date.DateUtil" %>
 <%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
@@ -15,7 +14,7 @@
     <meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
     <link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
           type="image/vnd.microsoft.icon"/>
-    <title>xxx大学图书馆</title>
+    <title>${initParam.title}</title>
     <link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
           type="text/css"/>
     <link href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
@@ -1198,7 +1197,7 @@
                                             <li>
                                                 <a class="quicktabs-tab quicktabs-tab-block quicktabs-tab-block-block-delta-53 active"
                                                    href="/portal/cn/front-pc?qt-front_pc_ydtj=0#qt-front_pc_ydtj"
-                                                   id="quicktabs-tab-front_pc_ydtj-0">教授推荐</a></li>
+                                                   id="quicktabs-tab-front_pc_ydtj-0">热门图书</a></li>
                                             <li class="active"><a
                                                     class="quicktabs-tab quicktabs-tab-block quicktabs-tab-block-pkulib-newbooks-delta-pkulib-newbooks active"
                                                     href="/portal/cn/front-pc?qt-front_pc_ydtj=1#qt-front_pc_ydtj"
@@ -1216,134 +1215,187 @@
                                                        第一行 用于浏览器测试，后期删掉即可-->
                                                     <div id="custom-front-recomm-reading">
                                                         <ul>
-                                                            <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                                                <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                   target="_blank"
-                                                                   title="两汉魏晋南北朝宰相制度研究"><img alt=""
-                                                                                                           class="custom-front-recomm-reading-cover"
-                                                                                                           src="/static/picture/custom-front-recomm-reading-cover01.png"/></a>
-                                                                <div class="custom-front-recomm-reading-detail">
+                                                            <c:if test="${hotBooks!=null&&hotBooks.size()!=0}">
+                                                                <c:forEach items="${hotBooks}" var="hot">
+                                                                    <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                                        <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                           target="_blank"
+                                                                           title="${hot.newBookTitle}"><img
+                                                                                alt=""
+                                                                                class="custom-front-recomm-reading-cover"
+                                                                                style="width: 158px;height: 235px"
+                                                                                src="<c:url value="${hot.coverImg}"/>"></a>
+                                                                        <div class="custom-front-recomm-reading-detail">
+                                                                            <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                               target="_blank"
+                                                                               title="${hot.newBookTitle}">${hot.introduction}</a>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                       target="_blank"
+                                                                                       title="${hot.newBookTitle}">${hot.bookAuthor}</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                       target="_blank"
+                                                                                       title="${hot.newBookTitle}">馆藏址：保存本阅览室</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                       target="_blank"
+                                                                                       title="${hot.newBookTitle}">${hot.publish}</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                       target="_blank"
+                                                                                       title="${hot.newBookTitle}">${hot.pubDate}</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="custom-front-recomm-reading-author">
+                                                                            <p class="author-name">
+                                                                                <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                   target="_blank">${hot.bookAuthor}</a>
+                                                                            </p>
+                                                                            <p class="author-affiliation">
+                                                                                <a href="<c:url value="/xxtbcountclick?jmptype=${hot.classId}&isbn=${hot.isbn}&newbookid=${hot.newBookId}"/>"
+                                                                                   target="_blank">图书名：${hot.newBookTitle}</a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </li>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                            <c:if test="${hotBooks==null||hotBooks.size()==0}">
+                                                                <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
                                                                        target="_blank"
-                                                                       title="两汉魏晋南北朝宰相制度研究">宰相及其机构是中国古代国家机器的核心与枢纽。本书以皇权相权的相互关系为线索，在缜密考订史实的基础上，对800年间的帝国中枢政权尽心了上下贯通的深入分析。</a>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                               target="_blank"
-                                                                               title="两汉魏晋南北朝宰相制度研究">祝总斌</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                               target="_blank"
-                                                                               title="两汉魏晋南北朝宰相制度研究">馆藏址：保存本阅览室</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                               target="_blank"
-                                                                               title="两汉魏晋南北朝宰相制度研究">北京大学出版社</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                               target="_blank"
-                                                                               title="两汉魏晋南北朝宰相制度研究">2017年</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="custom-front-recomm-reading-author">
-                                                                    <p class="author-name">
+                                                                       title="两汉魏晋南北朝宰相制度研究"><img alt=""
+                                                                                                               class="custom-front-recomm-reading-cover"
+                                                                                                               src="/static/picture/custom-front-recomm-reading-cover01.png"/></a>
+                                                                    <div class="custom-front-recomm-reading-detail">
                                                                         <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                           target="_blank">邓小南</a></p>
-                                                                    <p class="author-affiliation">
-                                                                        <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
-                                                                           target="_blank">课程：中国古代政治与文化</a>
-                                                                    </p>
-                                                                </div>
-                                                            </li>
-                                                            <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                                                <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                   target="_blank"
-                                                                   title="The waning of the Renaissance"><img alt=""
-                                                                                                              class="custom-front-recomm-reading-cover"
-                                                                                                              src="/static/picture/custom-front-recomm-reading-cover02.png"/></a>
-                                                                <div class="custom-front-recomm-reading-detail">
+                                                                           target="_blank"
+                                                                           title="两汉魏晋南北朝宰相制度研究">宰相及其机构是中国古代国家机器的核心与枢纽。本书以皇权相权的相互关系为线索，在缜密考订史实的基础上，对800年间的帝国中枢政权尽心了上下贯通的深入分析。</a>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                                   target="_blank"
+                                                                                   title="两汉魏晋南北朝宰相制度研究">祝总斌</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                                   target="_blank"
+                                                                                   title="两汉魏晋南北朝宰相制度研究">馆藏址：保存本阅览室</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                                   target="_blank"
+                                                                                   title="两汉魏晋南北朝宰相制度研究">北京大学出版社</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                                   target="_blank"
+                                                                                   title="两汉魏晋南北朝宰相制度研究">2017年</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="custom-front-recomm-reading-author">
+                                                                        <p class="author-name">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                               target="_blank">邓小南</a></p>
+                                                                        <p class="author-affiliation">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/9787301279601"
+                                                                               target="_blank">课程：中国古代政治与文化</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
                                                                        target="_blank"
-                                                                       title="The waning of the Renaissance">美国历史学会前任主席鲍斯曼的集大成之作，文艺复兴是一场综合性运动，读者在本书能看到历史的复杂性和缓慢性。文艺复兴并不全是光明，中世纪也并不全是黑暗。 </a>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                               target="_blank"
-                                                                               title="The waning of the Renaissance">William
-                                                                                J. Bouwsma</a></li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                               target="_blank"
-                                                                               title="The waning of the Renaissance">馆藏址：季羡林工作室</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                               target="_blank"
-                                                                               title="The waning of the Renaissance">Yale
-                                                                                University Press</a></li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                               target="_blank"
-                                                                               title="The waning of the Renaissance">2000年</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="custom-front-recomm-reading-author">
-                                                                    <p class="author-name">
+                                                                       title="The waning of the Renaissance"><img alt=""
+                                                                                                                  class="custom-front-recomm-reading-cover"
+                                                                                                                  src="/static/picture/custom-front-recomm-reading-cover02.png"/></a>
+                                                                    <div class="custom-front-recomm-reading-detail">
                                                                         <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                           target="_blank">朱孝远</a></p>
-                                                                    <p class="author-affiliation">
-                                                                        <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
-                                                                           target="_blank">课程：文艺复兴经典名著选读</a>
-                                                                    </p>
-                                                                </div>
-                                                            </li>
-                                                            <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                                                <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                   target="_blank" title="帛书老子校注"><img alt=""
-                                                                                                             class="custom-front-recomm-reading-cover"
-                                                                                                             src="/static/picture/custom-front-recomm-reading-cover03.png"/></a>
-                                                                <div class="custom-front-recomm-reading-detail">
+                                                                           target="_blank"
+                                                                           title="The waning of the Renaissance">美国历史学会前任主席鲍斯曼的集大成之作，文艺复兴是一场综合性运动，读者在本书能看到历史的复杂性和缓慢性。文艺复兴并不全是光明，中世纪也并不全是黑暗。 </a>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                                   target="_blank"
+                                                                                   title="The waning of the Renaissance">William
+                                                                                    J. Bouwsma</a></li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                                   target="_blank"
+                                                                                   title="The waning of the Renaissance">馆藏址：季羡林工作室</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                                   target="_blank"
+                                                                                   title="The waning of the Renaissance">Yale
+                                                                                    University Press</a></li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                                   target="_blank"
+                                                                                   title="The waning of the Renaissance">2000年</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="custom-front-recomm-reading-author">
+                                                                        <p class="author-name">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                               target="_blank">朱孝远</a></p>
+                                                                        <p class="author-affiliation">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/0300085370"
+                                                                               target="_blank">课程：文艺复兴经典名著选读</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="booklist col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                                                     <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                       target="_blank" title="帛书老子校注">先秦诸子，自成一家学术，堪称子学中的经学。其中，道家和儒家形成最早，影响最深。次数集“黄老之术”·“老庄之学”·“仙风道骨”为一身，是道家道教的核心经典。</a>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                               target="_blank" title="帛书老子校注">高明
-                                                                                撰</a></li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                               target="_blank"
-                                                                               title="帛书老子校注">馆藏位置：北大中心馆</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                               target="_blank"
-                                                                               title="帛书老子校注">中华书局</a></li>
-                                                                        <li>
-                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                               target="_blank" title="帛书老子校注">1996年</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="custom-front-recomm-reading-author">
-                                                                    <p class="author-name">
+                                                                       target="_blank" title="帛书老子校注"><img alt=""
+                                                                                                                 class="custom-front-recomm-reading-cover"
+                                                                                                                 src="/static/picture/custom-front-recomm-reading-cover03.png"/></a>
+                                                                    <div class="custom-front-recomm-reading-detail">
                                                                         <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                           target="_blank">吴国武</a></p>
-                                                                    <p class="author-affiliation">
-                                                                        <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
-                                                                           target="_blank">课程：国学经典讲论</a></p>
-                                                                </div>
-                                                            </li>
+                                                                           target="_blank" title="帛书老子校注">先秦诸子，自成一家学术，堪称子学中的经学。其中，道家和儒家形成最早，影响最深。次数集“黄老之术”·“老庄之学”·“仙风道骨”为一身，是道家道教的核心经典。</a>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                                   target="_blank" title="帛书老子校注">高明
+                                                                                    撰</a></li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                                   target="_blank"
+                                                                                   title="帛书老子校注">馆藏位置：北大中心馆</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                                   target="_blank"
+                                                                                   title="帛书老子校注">中华书局</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                                   target="_blank" title="帛书老子校注">1996年</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="custom-front-recomm-reading-author">
+                                                                        <p class="author-name">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                               target="_blank">吴国武</a></p>
+                                                                        <p class="author-affiliation">
+                                                                            <a href="http://162.105.138.200/uhtbin/isbn/7101013430"
+                                                                               target="_blank">课程：国学经典讲论</a></p>
+                                                                    </div>
+                                                                </li>
+                                                            </c:if>
                                                         </ul>
                                                         <div class="custom-front-recomm-reading-rest">
-                                                            <a href="/portal/cn/fw/ydtj/jiaoshoutuijian" target="_blank"
+                                                            <a href="<c:url value="/fw/hottertuijian"/>" target="_blank"
                                                                title=""><img alt=""
-                                                                             src="/static/picture/custom-front-recomm-reading-rest.png"/><span>阅读完整推荐书单&gt;</span></a>
+                                                                             src="/static/picture/custom-front-recomm-reading-rest.png"/><span>阅读完整热门推荐书单&gt;</span></a>
                                                         </div>
                                                     </div>
                                                     <!-- 自定义区块结束 -->
@@ -1359,7 +1411,7 @@
                                                             <c:if test="${recommendedBooksVos!=null}">
                                                                 <c:forEach items="${recommendedBooksVos}" var="book">
                                                                     <div class="swiper-slide"><a
-                                                                            href="<c:url value="http://newbooks.lib.pku.edu.cn/xxtbcountclick.jsp?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.newBookId}"/>"
+                                                                            href="<c:url value="/xxtbcountclick?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.newBookId}"/>"
                                                                             target="_blank">
                                                                         <div class="cover"><img alt="book cover image"
                                                                                                 class="img-responsive"
@@ -1653,10 +1705,12 @@
                                                         <div class="swiper-button-next"></div>
                                                         <div class="swiper-button-prev"></div>
                                                     </div>
-                                                    <div class="view-more-newbooks"><a
-                                                            href="http://newbooks.lib.pku.edu.cn" target="_blank">浏览更多新书<span
-                                                            class="glyphicon glyphicon-circle-arrow-right"><span></a>
-                                                    </div>
+                                                    <c:if test="${recommendedBooksVos.size()>=7}">
+                                                        <div class="view-more-newbooks"><a
+                                                                href="http://newbooks.lib.pku.edu.cn" target="_blank">浏览更多新书<span
+                                                                class="glyphicon glyphicon-circle-arrow-right"><span></a>
+                                                        </div>
+                                                    </c:if>
                                                     <script>
                                                         var newbooksSwiper = new Swiper('.newbooks-swiper-container', {
                                                             slidesPerView: 6,
@@ -1836,10 +1890,15 @@
 
                 // 首页右侧翻页器在第一屏不显示 xuqb 2018-04-03
                 function showHideAnchorNav() {
-                    if (jQuery("nav.anchor-nav").offset().top > jQuery("#front-news").offset().top)
+                    if (jQuery("nav.anchor-nav").offset().top > jQuery("#front-service").offset().top) {
                         jQuery("nav.anchor-nav").css("visibility", "visible");
-                    else
+                        jQuery("#custom-global-bottom-edge-label-ask").css("visibility", "visible");
+                        jQuery("#custom-global-bottom-edge-navbar").css("visibility", "visible");
+                    } else {
                         jQuery("nav.anchor-nav").css("visibility", "hidden");
+                        jQuery("#custom-global-bottom-edge-label-ask").css("visibility", "hidden");
+                        jQuery("#custom-global-bottom-edge-navbar").css("visibility", "hidden");
+                    }
                 }
 
                 showHideAnchorNav();

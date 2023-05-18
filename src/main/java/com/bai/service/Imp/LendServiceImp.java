@@ -14,12 +14,11 @@ public class LendServiceImp implements LendService {
     @Autowired
     private LendMapper lendMapper;
 
-        @Override
-        public void addLend(Lend lend,String bookId) {
-            lendMapper.decBookNum(Long.parseLong(bookId));
-            lendMapper.addLend(lend);
-        }
-
+    @Override
+    public int addLend(Lend lend, String bookId) {
+        lendMapper.decBookNum(Long.parseLong(bookId));
+        return lendMapper.addLend(lend);
+    }
 
     @Override
     public List<Lend> queryMyLend(long readerId) {
@@ -27,8 +26,8 @@ public class LendServiceImp implements LendService {
     }
 
     @Override
-    public void backBook(long bookId) {
-        lendMapper.backBook(bookId);
+    public int backBook(long bookId) {
         lendMapper.incBookNum(bookId);
+        return lendMapper.backBook(bookId);
     }
 }

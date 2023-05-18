@@ -27,10 +27,12 @@ public class IndexController {
     public String indexPage(Model model) {
         List<News> newsList = newsService.queryAllNews();
         List<ClassInfo> classInfoList = classInfoService.selectClassInfoList();
-        List<RecommendedBooksVo> recommendedBooksVos = bookService.queryAllBooksVo();
+        List<RecommendedBooksVo> recommendedBooksVos = bookService.queryNewAllBooksVo();
+        List<RecommendedBooksVo> hotBooks = bookService.queryAllBooksVo();
         model.addAttribute("newsList", newsList);
         model.addAttribute("classInfoList", classInfoList);
         model.addAttribute("recommendedBooksVos", recommendedBooksVos);
+        model.addAttribute("hotBooks", hotBooks);
         return "index_page";
     }
 }

@@ -1,7 +1,12 @@
 package com.bai.service.Imp;
 
 import com.bai.dao.BookMapper;
+import com.bai.dao.LendMapper;
+import com.bai.pojo.Admin;
 import com.bai.pojo.Book;
+import com.bai.pojo.Lend;
+import com.bai.pojo.Reader;
+import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
 import com.bai.utils.constants.Constants;
@@ -9,13 +14,17 @@ import com.bai.utils.mapStruct.BookMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class BookServiceImp implements BookService {
     @Autowired
+    LendMapper lendMapper;
+    @Autowired
     private BookMapper bookMapper;
+
     @Override
     public List<Book> queryAllBook() {
         return bookMapper.queryAllBook();
@@ -50,7 +59,45 @@ public class BookServiceImp implements BookService {
 
     @Override
     public List<RecommendedBooksVo> queryAllBooksVo() {
-        List<Book> bookList = bookMapper.selectHeightScoreBook(Constants.RECOMMENDED_BOOK_SIZE);
+        List<Book> bookList = bookMapper.selectHeightScoreBook(Constants.RECOMMENDED_NEW_BOOK_SIZE);
         return BookMap.BOOK_MAP.getRecommendedBooksVo(bookList);
+    }
+
+    @Override
+    public List<RecommendedBooksVo> queryNewAllBooksVo() {
+        List<Book> bookList = bookMapper.selectNewBooks(Constants.RECOMMENDED_BOOK_SIZE);
+        return BookMap.BOOK_MAP.getRecommendedBooksVo(bookList);
+    }
+
+    @Override
+    public NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session) {
+        NewBookDetailVo newBookDetailVo = bookMapper.selectNewBooksDetail(type, isbn, bookId, Constants.RECOMMENDED_NEW_BOOK_RELATION_SIZE);
+        Object readercard = session.getAttribute("readercard");
+        Object admin = session.getAttribute("admin");
+        if (admin != null) {
+            Admin admin1 = (Admin) admin;
+            long adminId = admin1.getAdminId();
+            Lend returnBook = lendMapper.findReturnBook(adminId, bookId);
+            if (returnBook == null) {
+                newBookDetailVo.setReturnBook(0);
+            } else {
+                newBookDetailVo.setReturnBook(1);
+                Date lendDate = returnBook.getLendDate();
+                newBookDetailVo.setLendDate(lendDate);
+            }
+
+        } else if (readercard != null) {
+            Reader reader = (Reader) readercard;
+            long readerId = reader.getReaderId();
+            Lend returnBook = lendMapper.findReturnBook(readerId, bookId);
+            if (returnBook == null) {
+                newBookDetailVo.setReturnBook(0);
+            } else {
+                newBookDetailVo.setReturnBook(1);
+                Date lendDate = returnBook.getLendDate();
+                newBookDetailVo.setLendDate(lendDate);
+            }
+        }
+        return newBookDetailVo;
     }
 }

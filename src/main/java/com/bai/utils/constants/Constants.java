@@ -14,6 +14,9 @@ public class Constants {
     public static final int PAGING_NUM = 7;
     public static final int CLASS_INFO_LIST = 10;
     public static final int RECOMMENDED_BOOK_SIZE = 10;
+    public static final int RECOMMENDED_NEW_BOOK_SIZE = 3;
+    public static final int RECOMMENDED_NEW_BOOK_RELATION_SIZE = 5;
+    public static final String READER_REFERER = "reader_referer";
 
     public enum News {
         NOTICE("公告", 0),
@@ -61,5 +64,10 @@ public class Constants {
         public static final String ACTIVITY_URL = "/news/activity/page";
         public static final String READER_LOGIN_URL = "/reader/tologin";
         public static final String READER_CHECK_LOGIN_URL = "/reader/checklogin";
+        public static final String RETURNBOOK = "/returnbook.html";
+        public static final String LENDBOOK = "/lendbook.html";
+        public static final String XXTBCOUNTCLICK = "/xxtbcountclick";
+        public static final String HOTTERTUIJIAN = "/fw/hottertuijian";
+
     }
 }

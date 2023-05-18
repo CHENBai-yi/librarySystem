@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.dao.NewsMapper">
+		<cache readOnly="true" eviction="FIFO" flushInterval="60000" size="512"/>
 		<resultMap id="newsDataVo" type="NewsDataVo">
 				<result property="dateTime" column="date_category" jdbcType="VARCHAR"/>
 				<collection property="data" javaType="java.util.List" ofType="news"

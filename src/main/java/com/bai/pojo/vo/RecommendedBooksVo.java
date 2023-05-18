@@ -13,9 +13,12 @@ import java.io.Serializable;
 public class RecommendedBooksVo implements Serializable {
     private long newBookId;
     private String newBookTitle;
+    private String pubDate;
     private String bookAuthor;
     private String publishYear;
+    private String publish;
     private String isbn;
     private String coverImg;
     private int classId;
+    private String introduction;
 }

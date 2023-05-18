@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.dao.AppointMapper">
-
+    <cache readOnly="true" eviction="FIFO" flushInterval="60000" size="512"/>
     <update id="updateAppointInfo" parameterType="AppointInfo">
         update library.appoint_info
          set appoint_time=#{appointTime},appoint_text=#{appointText},

@@ -1,11 +1,11 @@
-import dao.NewsMapper;
+import com.bai.dao.NewsMapper;
+import com.bai.pojo.News;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Test;
-import pojo.News;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.dao.ReaderMapper">
+    <cache readOnly="true" eviction="FIFO" flushInterval="60000" size="512"/>
   <select id="queryById" parameterType="Reader" resultType="Reader">
       select *from library.reader_card where reader_id=#{readerId} and password=#{password}
   </select>

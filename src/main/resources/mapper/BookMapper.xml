@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.dao.BookMapper">
-		<sql id="select">
-				select *
-				from library.book_info
-		</sql>
-		<select id="queryAllBook" resultType="Book">
-				<include refid="select"/>
-		</select>
-
-		<insert id="addBook" parameterType="Book">
+	<cache readOnly="true" eviction="FIFO" flushInterval="60000" size="512"/>
+	
+	<sql id="select">
+		select *
+		from library.book_info
+	</sql>
+	<select id="queryAllBook" resultType="com.bai.pojo.Book">
+		<include refid="select"/>
+	</select>
+	
+	<insert id="addBook" parameterType="Book">
 				insert into book_info (`name`, author, publish, ISBN, introduction, `language`, `price`, pub_date, class_id,
 				                       `number`, `cover_img`, `score`)
 				values (#{name}, #{author}, #{publish}, #{ISBN}, #{introduction}, #{language}, #{price}, #{pub_date},
 				        #{class_id}, #{number}, #{coverImg}, #{score})
 		</insert>
-
-		<select id="getBookDetailById" parameterType="long" resultType="Book">
-				select *
-				from library.book_info
-				where book_id = #{bookId};
-		</select>
+	
+	<select id="getBookDetailById" parameterType="long" resultType="com.bai.pojo.Book">
+		select *
+		from library.book_info
+		where book_id = #{bookId};
+	</select>
 
 		<update id="updateBook" parameterType="Book">
 				update library.book_info
@@ -42,16 +44,79 @@
 				from library.book_info
 				where book_id = #{bookId}
 		</delete>
-
-		<select id="queryByName" parameterType="string" resultType="Book">
-				select *
-				from library.book_info
-				where name like #{bookName};
-		</select>
-		<select id="selectHeightScoreBook" resultType="com.bai.pojo.Book" parameterType="int">
-				<include refid="select"/>
-				order by score limit #{recommendedBookSize}
-		</select>
+	
+	<select id="queryByName" parameterType="string" resultType="com.bai.pojo.Book">
+		select *
+		from library.book_info
+		where name like #{bookName};
+	</select>
+	<select id="selectHeightScoreBook" resultType="com.bai.pojo.Book" parameterType="int">
+		<include refid="select"/>
+		order by score limit #{recommendedBookSize}
+	</select>
+	<select id="selectNewBooks" resultType="com.bai.pojo.Book">
+		<include refid="select"/>
+		WHERE ABS(DATEDIFF(NOW(),book_info.pub_date)) &lt; 180 ORDER BY library.book_info.score DESC LIMIT
+		#{recommendedBookSize};
+	</select>
+	
+	
+	<resultMap id="newBookDetailMap" type="com.bai.pojo.vo.NewBookDetailVo">
+		<id property="newBookId" column="book_id" jdbcType="BIGINT"/>
+		<result property="title" column="name" jdbcType="VARCHAR"/>
+		<result property="author" column="author" jdbcType="VARCHAR"/>
+		<result property="publishYear" column="publishYear" jdbcType="VARCHAR"/>
+		<result property="catalog" column="class_id" jdbcType="INTEGER"/>
+		<association property="bookType" javaType="string" column="class_id" select="findBookType"/>
+		<collection property="relatedBooks"
+		            javaType="list"
+		            ofType="com.bai.pojo.vo.NewBookDetailVo$RelatedBooks"
+		            column="{classId=class_id,bookId=book_id}"
+		            select="selectRelatedBooks"/>
+	
+	</resultMap>
+	<resultMap id="relationBooksMap" type="com.bai.pojo.vo.NewBookDetailVo$RelatedBooks">
+		<id property="newBookId" column="book_id" jdbcType="BIGINT"/>
+		<result property="publishYear" column="publishYear" jdbcType="VARCHAR"/>
+		<result property="author" column="author" jdbcType="VARCHAR"/>
+		<result property="title" column="name" jdbcType="VARCHAR"/>
+		<result property="isbn" column="ISBN" jdbcType="VARCHAR"/>
+		<result property="coverImg" column="cover_img" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="selectRelatedBooks" resultMap="relationBooksMap">
+		select book_id,
+		       CONCAT(publish, " ", YEAR(pub_date), "年") as publishYear,
+		       author,
+		       ISBN,
+		       `name`,
+		       cover_img,
+		       class_id
+		from library.book_info
+		where class_id = #{classId}
+		  and book_id != #{bookId}
+		limit 5;
+	</select>
+	<select id="findBookType" resultType="string">
+		select class_name
+		from library.class_info
+		where class_id = #{class_id}
+	</select>
+	
+	<select id="selectNewBooksDetail" resultMap="newBookDetailMap">
+		select *,concat(library.book_info.publish," ",YEAR(library.book_info.pub_date)) as publishYear
+		from library.book_info
+		<where>
+			<if test="param2!=null">
+				and library.book_info.ISBN = #{param2}
+			</if>
+			<if test="param1!=null">
+				and library.book_info.class_id = #{param1}
+			</if>
+			<if test="param3!=null">
+				and library.book_info.book_id = #{param3}
+			</if>
+		</where>
+	</select>
 
 
 </mapper>

@@ -7,6 +7,7 @@
     <!--记住mybatis-config的配置是有顺序的-->
 
     <settings>
+        <setting name="cacheEnabled" value="true"/>
         <setting name="logImpl" value="LOG4J"/>
         <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
         <setting name="useGeneratedKeys" value="true" />
@@ -17,10 +18,4 @@
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
-
-    <typeAliases>
-        <package name="com.bai.pojo"/>
-        <package name="com.bai.pojo.vo"/>
-    </typeAliases>
-
 </configuration>

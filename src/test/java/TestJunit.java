@@ -1,4 +1,7 @@
 import com.bai.pojo.News;
+import com.bai.pojo.vo.BookRecommendationVo;
+import com.bai.pojo.vo.NewBookDetailVo;
+import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
 import com.bai.service.NewsService;
 import org.junit.Test;
@@ -6,8 +9,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -17,6 +22,7 @@ import java.util.Set;
  * Date:2023/4/27 20:11
  */
 @SpringJUnitConfig(locations = {"classpath*:applicationContext.xml"})
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestJunit {
 
@@ -24,6 +30,8 @@ public class TestJunit {
     NewsService newsService;
     @Autowired
     BookService bookService;
+    @Autowired
+    BookRecommendationService bookRecommendationService;
 
     public static void main(String[] args) {
         News news = new News();
@@ -33,6 +41,20 @@ public class TestJunit {
     @Test
     public void testBookMapStruct() {
         System.out.println(bookService.queryAllBooksVo());
+    }
+
+    @Test
+    public void testBookeDetail() {
+        NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(0, " 9787113170202", 19, null);
+        System.out.println(newBookDetailVos);
+    }
+
+    @Test
+    public void testbookRecommendationHotVos() {
+        List<BookRecommendationVo> recentlyHotBook = bookRecommendationService.findRecentlyHotBook();
+        for (BookRecommendationVo bookRecommendationVo : recentlyHotBook) {
+            System.out.println(bookRecommendationVo);
+        }
     }
 
     @Test

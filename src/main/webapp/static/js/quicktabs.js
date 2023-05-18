@@ -1,7 +1,7 @@
 (function ($) {
 Drupal.settings.views = Drupal.settings.views || {'ajax_path': '/views/ajax'};
 
-    Drupal.quicktabs = Drupal.quicktabs || {};
+Drupal.quicktabs = Drupal.quicktabs || {};
 
     Drupal.quicktabs.getQTName = function (el) {
         return el.id.substring(el.id.indexOf('-') + 1);

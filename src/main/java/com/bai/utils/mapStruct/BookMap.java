@@ -22,8 +22,10 @@ public interface BookMap {
             @Mapping(target = "newBookId", source = "bookId"),
             @Mapping(target = "newBookTitle", source = "name"),
             @Mapping(target = "bookAuthor", source = "author"),
+            @Mapping(target = "publish", source = "publish"),
             @Mapping(target = "isbn", source = "ISBN"),
-            @Mapping(target = "publishYear", expression = "java(book.getPublish() +\"  \"+(cn.hutool.core.date.DateUtil.format(book.getPubDate(), \"yyyy\")))")
+            @Mapping(target = "publishYear", expression = "java(book.getPublish() +\"  \"+(cn.hutool.core.date.DateUtil.format(book.getPubDate(), \"yyyy\")))"),
+            @Mapping(target = "pubDate", expression = "java(cn.hutool.core.date.DateUtil.format(book.getPubDate(), \"yyyy\")+\"年\")")
     })
     RecommendedBooksVo getRecommendedBookVo(Book book);
 
