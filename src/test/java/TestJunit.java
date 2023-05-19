@@ -1,3 +1,4 @@
+import com.bai.dao.BookMapper;
 import com.bai.pojo.News;
 import com.bai.pojo.vo.BookRecommendationVo;
 import com.bai.pojo.vo.NewBookDetailVo;
@@ -32,6 +33,8 @@ public class TestJunit {
     BookService bookService;
     @Autowired
     BookRecommendationService bookRecommendationService;
+    @Autowired
+    BookMapper bookMapper;
 
     public static void main(String[] args) {
         News news = new News();
@@ -59,7 +62,9 @@ public class TestJunit {
 
     @Test
     public void test() {
-        newsService.showPageVo(0, null, 1);
+        // newsService.showPageVo(0, null, 1);
+        // System.out.println(bookMapper.moreNewBookPage());
+        System.out.println(bookMapper.moreNewBookPage());
     }
 
     public enum Qiu {

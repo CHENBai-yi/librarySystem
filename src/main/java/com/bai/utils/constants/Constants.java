@@ -19,9 +19,7 @@ public class Constants {
     public static final String READER_REFERER = "reader_referer";
 
     public enum News {
-        NOTICE("公告", 0),
-        ACTIVITY("活动", 2),
-        NEWS("新闻", 1);
+        NOTICE("公告", 0), ACTIVITY("活动", 2), NEWS("新闻", 1);
         public final String type;
         public final int code;
 
@@ -47,8 +45,7 @@ public class Constants {
     }
 
     public enum Role {
-        ADMIN("管理员", "admin"),
-        READER("借阅者", "reader");
+        ADMIN("管理员", "admin"), READER("借阅者", "reader");
         public final String usernmae;
         public final String role;
 
@@ -68,6 +65,7 @@ public class Constants {
         public static final String LENDBOOK = "/lendbook.html";
         public static final String XXTBCOUNTCLICK = "/xxtbcountclick";
         public static final String HOTTERTUIJIAN = "/fw/hottertuijian";
+        public static final String MORE_NEW_BOOK = "/fw/morenewbook";
 
     }
 }

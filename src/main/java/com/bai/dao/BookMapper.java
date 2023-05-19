@@ -1,6 +1,7 @@
 package com.bai.dao;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,6 +24,7 @@ public interface BookMapper {
 
     List<Book> selectNewBooks(@Param("recommendedBookSize") int recommendedNewBookSize);
 
-    NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, int size);
+    NewBookDetailVo selectNewBooksDetail(@Param("type") Long type, @Param("isbn") String isbn, @Param("bookId") Long bookId, @Param("size") Integer size);
 
+    MoreNewBookIndexVo moreNewBookPage();
 }

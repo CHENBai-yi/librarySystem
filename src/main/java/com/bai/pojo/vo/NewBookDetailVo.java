@@ -41,6 +41,6 @@ public class NewBookDetailVo {
         private String isbn;
         private String title;
         private String coverImg;
-        private int class_id;
+        private int classId;
     }
 }

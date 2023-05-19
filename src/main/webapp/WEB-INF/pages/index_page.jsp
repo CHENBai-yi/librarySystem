@@ -1707,7 +1707,7 @@
                                                     </div>
                                                     <c:if test="${recommendedBooksVos.size()>=7}">
                                                         <div class="view-more-newbooks"><a
-                                                                href="http://newbooks.lib.pku.edu.cn" target="_blank">浏览更多新书<span
+                                                                href="<c:url value="/fw/morenewbook"/>" target="_blank">浏览更多新书<span
                                                                 class="glyphicon glyphicon-circle-arrow-right"><span></a>
                                                         </div>
                                                     </c:if>

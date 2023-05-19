@@ -246,12 +246,12 @@
                         <c:forEach items="${relatedBooks}" var="relatedBook">
                             <li>
                                 <div class="hot-book-image">
-                                    <a href="<c:url  value="/xxtbcountclick?jmptype=${relatedBook.class_id}&newbookid=${relatedBook.newBookId}"/>"><img
+                                    <a href="<c:url  value="/xxtbcountclick?jmptype=${relatedBook.classId}&newbookid=${relatedBook.newBookId}"/>"><img
                                             src="<c:url value="${relatedBook.coverImg}"/>" title="${relatedBook.title}"
                                             alt="${relatedBook.title}"></a>
                                     <div class="book-intro">
                                         <div class="book-title"><a
-                                                href="<c:url  value="/xxtbcountclick?jmptype=${relatedBook.class_id}&newbookid=${relatedBook.newBookId}"/>">${relatedBook.title}</a>
+                                                href="<c:url  value="/xxtbcountclick?jmptype=${relatedBook.classId}&newbookid=${relatedBook.newBookId}"/>">${relatedBook.title}</a>
                                         </div>
                                         <div class="book-author">${relatedBook.author} 主编</div>
                                         <div class="book-publisher">${relatedBook.publishYear}</div>

@@ -92,4 +92,11 @@ public class BookController {
         model.addAttribute("bookRecommendationList", bookRecommendationVoList);
         return "more_hot_book";
     }
+
+    @RequestMapping(value = Constants.AccessPageUrl.MORE_NEW_BOOK, method = {RequestMethod.GET})
+    public String morenewbook(Model model) {
+        List<BookRecommendationVo> bookRecommendationVoList = bookRecommendationService.findRecentlyHotBook();
+        model.addAttribute("bookRecommendationList", bookRecommendationVoList);
+        return "more_new_book";
+    }
 }
