@@ -537,8 +537,8 @@
 
                                 <div class="pane-content">
                                     <!-- 自定义区块开始：热门服务列表：学生
-                                     @Author wanghx
-                                 -->
+                                    @Author wanghx
+                                    -->
 
                                     <div id="custom-front-service-4students">
                                         <h3><%=Constants.Role.READER.usernmae%>
@@ -561,7 +561,7 @@
                                                     <ul>
                                                         <li>
                                                             <p>
-                                                                <a href="<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
+                                                                <a href="<c:url value="/reader_main.html"/>"
                                                                    target="_blank"
                                                                    title="">个人借阅状态查询</a>
                                                             </p>
@@ -735,7 +735,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!-- 自定义区块结束 -->  </div>
+                                    <!-- 自定义区块结束 --> </div>
 
 
                             </div>
@@ -746,8 +746,8 @@
 
                                 <div class="pane-content">
                                     <!-- 自定义区块开始：热门服务列表：研究生+教师
-                                     @Author wanghx
-                                 -->
+                                    @Author wanghx
+                                    -->
                                     <div id="custom-front-service-4researchers">
                                         <%--<h3>研究生+教师</h3>--%>
                                         <h3><%=Constants.Role.ADMIN.usernmae%>
@@ -882,8 +882,8 @@
 
                                 <div class="pane-content">
                                     <!-- 自定义区块开始：资源左侧介绍页列表
-                                     @Author wanghx
-                                 -->
+                                    @Author wanghx
+                                    -->
                                     <ul id="custom-front-resource-left">
                                         <c:if test="${classInfoList==null}">
                                             <!--图书和电子图书不是一个url-->
@@ -961,7 +961,7 @@
                                         </c:if>
                                     </ul>
 
-                                    <!-- 自定义区块结束 -->  </div>
+                                    <!-- 自定义区块结束 --> </div>
 
 
                             </div>
@@ -972,8 +972,8 @@
 
                                 <div class="pane-content">
                                     <!-- 自定义区块开始：资源右侧含图片资源链接
-                                     @Author wanghx
-                                 -->
+                                    @Author wanghx
+                                    -->
                                     <div id="custom-front-resource-right">
                                         <h3>
                                             文学图书奖系列</h3>
@@ -1080,7 +1080,7 @@
                         <div class="pane-content">
                             <div id="custom-front-special">
                                 <div class="special-readmore">
-        <span><a href="/portal/cn/zy/tszy">浏览更多></a>
+    <span><a href="/portal/cn/zy/tszy">浏览更多></a>
                                 </div>
                                 <ul class="row">
                                     <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -1211,8 +1211,8 @@
 
 
                                                     <!-- 自定义区块开始：阅读推荐区块
-                                                       @Author wanghx
-                                                       第一行 用于浏览器测试，后期删掉即可-->
+                                                    @Author wanghx
+                                                    第一行 用于浏览器测试，后期删掉即可-->
                                                     <div id="custom-front-recomm-reading">
                                                         <ul>
                                                             <c:if test="${hotBooks!=null&&hotBooks.size()!=0}">
@@ -1798,9 +1798,9 @@
                 the class '.anchor-nav'
 
                 scene_object = {
-                  '[scene-name]' : {
-                    '[target-scene-id]' : '[anchor-href-value]'
-                  }
+                '[scene-name]' : {
+                '[target-scene-id]' : '[anchor-href-value]'
+                }
                 }
                 */
                 var scenes = {
@@ -1868,7 +1868,7 @@
                 });
 
 
-                //  Bind scroll to anchor links using Vanilla JavaScript
+                // Bind scroll to anchor links using Vanilla JavaScript
                 var anchor_nav = document.querySelector('.anchor-nav');
 
                 anchor_nav.addEventListener('click', function (e) {
@@ -1880,9 +1880,9 @@
                             e.preventDefault();
                             controller.scrollTo(id);
                             /*
-                                            if (window.history && window.history.pushState) {
-                                                history.pushState("", document.title, id);
-                                            }*/
+                            if (window.history && window.history.pushState) {
+                            history.pushState("", document.title, id);
+                            }*/
                         }
                     }
                 });
@@ -1909,7 +1909,7 @@
                 function showHideAnchorNavItem() {
                     var anchorTip = jQuery(this).children(".anchor-tip");
                     if (anchorTip.css("display") == "none")
-                        anchorTip.fadeIn("normal");  // 淡入
+                        anchorTip.fadeIn("normal"); // 淡入
                     else
                         anchorTip.fadeOut("normal"); // 淡出
                 }
@@ -1918,22 +1918,22 @@
                 jQuery("nav.anchor-nav a").on("mouseleave", showHideAnchorNavItem); // 不用 mouseout
 
                 /*
-                 * Bind scroll to anchor links using jQuery
+                * Bind scroll to anchor links using jQuery
 
                 $(document).on("click", "a[href^=#]", function(e) {
-                  var id = $(this).attr("href");
+                var id = $(this).attr("href");
 
-                  if($(id).length > 0) {
-                    e.preventDefault();
+                if($(id).length > 0) {
+                e.preventDefault();
 
-                    // trigger scroll
-                    controller.scrollTo(id);
+                // trigger scroll
+                controller.scrollTo(id);
 
-                    // If supported by the browser we can also update the URL
-                    if (window.history && window.history.pushState) {
-                      history.pushState("", document.title, id);
-                    }
-                  }
+                // If supported by the browser we can also update the URL
+                if (window.history && window.history.pushState) {
+                history.pushState("", document.title, id);
+                }
+                }
 
                 });
 
@@ -1952,7 +1952,7 @@
         </style>
     </noscript>
 </div>
-<script>      (function ($) {
+<script> (function ($) {
     Drupal.behaviors.lazyloader = {
         attach: function (context, settings) {
             $("img[data-src]").lazyloader({

@@ -91,7 +91,8 @@ public class LoginController {
                     if (requestAttributes != null) {
                         String s = ReaderController.getString(requestAttributes);
                         if (s != null) return s;
-                    } else if (i == 2) return "redirect:/reader_admin";
+                    }
+                    if (i == 2) return "redirect:/reader_admin";
                     else return "redirect:/admin_main.html";
                 }
             }
