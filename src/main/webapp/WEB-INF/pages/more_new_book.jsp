@@ -8,13 +8,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- InstanceBegin template="/Templates/ejymfw.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
-    <title>新书通报</title>
-    <base href="http://localhost:8080/">
-    <link href="static/css/xxtb.css" rel="stylesheet" type="text/css"/>
-    <link href="static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
-    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="static/js/jquery.js" type="text/javascript"></script>
-    <script src="static/js/jquery.superslide2.js" type="text/javascript"></script>
+	<title>新书通报</title>
+	<base href="http://localhost:8080/">
+	<link href="static/css/xxtb.css" rel="stylesheet" type="text/css"/>
+	<link href="static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
+	<link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+	<script src="static/js/jquery.js" type="text/javascript"></script>
+	<script src="static/js/jquery.superslide2.js" type="text/javascript"></script>
 
 </head>
 
@@ -22,39 +22,39 @@
 <body>
 <!---------头部：LOGO、导航栏菜单------------>
 <div id="xxtb-banner">
-    <div class="content-wrapper">
-        <!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="static/picture/banner-logo.png"></a></div>-->
-        <div id="xxtb-banner-menu">
-            <a href="http://newbooks.lib.pku.edu.cn/"><span class="menu-selected">新书通报</span></a>
-            <a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
-            <a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
+	<div class="content-wrapper">
+		<!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="static/picture/banner-logo.png"></a></div>-->
+		<div id="xxtb-banner-menu">
+			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu-selected">新书通报</span></a>
+			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
+			<a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
 
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 <!---------上半部：搜索框、新书驾到------------>
 <div id="xxtb-top">
-    <div class="content-wrapper">
-        <div id="xxtb-xinshujiadao-title"><img src="static/picture/newinlib.png"></div>
-        <div id="xxtb-search-form">
-            <form action="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>" id="form3" method="post" name="form3">
-                <label for="textfield"></label>
-                <input id="searchtxt" name="searchtxt" size="60" type="text" value="${bookQuery.searchtxt}"/>
-                <label for="select"></label>
-                <select id="searchfield" name="searchfield" size="1">
-                    <option value="1" <c:if test="${bookQuery.searchfield eq '1'}">selected="selected"</c:if>>书名
-                    </option>
-                    <option value="2" <c:if test="${bookQuery.searchfield eq '2'}">selected="selected"</c:if>>著者
-                    </option>
-                    <option value="3" <c:if test="${bookQuery.searchfield eq '3'}">selected="selected"</c:if>>ISBN
-                    </option>
-                    <option value="4" <c:if test="${bookQuery.searchfield eq '4'}">selected="selected"</c:if>>出版社
-                    </option>
-                </select>
-                <input id="button" name="button" type="submit" value="&nbsp"/>
-            </form>
-        </div>
-        <!--
+	<div class="content-wrapper">
+		<div id="xxtb-xinshujiadao-title"><img src="static/picture/newinlib.png"></div>
+		<div id="xxtb-search-form">
+			<form action="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>" id="form3" method="post" name="form3">
+				<label for="textfield"></label>
+				<input id="searchtxt" name="searchtxt" size="60" type="text" value="${bookQuery.searchtxt}"/>
+				<label for="select"></label>
+				<select id="searchfield" name="searchfield" size="1">
+					<option value="1" <c:if test="${bookQuery.searchfield eq '1'}">selected="selected"</c:if>>书名
+					</option>
+					<option value="2" <c:if test="${bookQuery.searchfield eq '2'}">selected="selected"</c:if>>著者
+					</option>
+					<option value="3" <c:if test="${bookQuery.searchfield eq '3'}">selected="selected"</c:if>>ISBN
+					</option>
+					<option value="4" <c:if test="${bookQuery.searchfield eq '4'}">selected="selected"</c:if>>出版社
+					</option>
+				</select>
+				<input id="button" name="button" type="submit" value="&nbsp"/>
+			</form>
+		</div>
+		<!--
                 <div id="xxtb-xinshujiadao">
                            <div class="mr_frbox">
                         <img class="mr_frBtnL prev" src="static/picture/arrow_l.png" width="28" height="46" />
@@ -180,208 +180,247 @@
         </script>
         -->
 
-    </div>
+	</div>
 </div>
 <!---------内容：分类浏览、热门浏览排行榜------------>
 <div id="xxtb-content">
-    <div class="content-wrapper">
-        <c:if test="${moreNewBookIndexVo==null}">
-            <a name="config"></a>
-            <div class="browse-book-title">暂无分类信息</div>
-        </c:if>
-        <c:if test="${moreNewBookIndexVo!=null}">
-            <!-------------分类浏览---------------->
-            <a name="config"></a>
-            <div class="browse-book-title">分类浏览</div>
-            <c:if test="${moreNewBookIndexVo.date!=null&&moreNewBookIndexVo.date.size()>0}">
-                <div id="browse-by-month">
-                    <div class="select-label">按月浏览</div>
-                    <c:forEach items="${moreNewBookIndexVo.date}" varStatus="s" var="categoryByDate">
-                        <c:set var="date" value="${categoryByDate.y}"/>
-                        <c:set var="monthList" value="${categoryByDate.month}"/>
-                        <ul>
-                            <c:if test="${s.first}">
-                                <li class=" focus ">
-                                    <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
+	<div class="content-wrapper">
+		<c:if test="${moreNewBookIndexVo==null}">
+			<a name="config"></a>
+			<div class="browse-book-title">暂无分类信息</div>
+		</c:if>
+		<c:if test="${moreNewBookIndexVo!=null}">
+			<!-------------分类浏览---------------->
+			<a name="config"></a>
+			<div class="browse-book-title">分类浏览</div>
+			<c:if test="${moreNewBookIndexVo.date!=null&&moreNewBookIndexVo.date.size()>0}">
+				<div id="browse-by-month">
+					<div class="select-label">按月浏览</div>
+					<c:forEach items="${moreNewBookIndexVo.date}" varStatus="s" var="categoryByDate">
+						<c:set var="date" value="${categoryByDate.y}"/>
+						<c:set var="monthList" value="${categoryByDate.month}"/>
+						<ul>
+							<c:if test="${s.first}">
+								<li class=" focus ">
+									<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
                                     searchlibrary=${bookQuery.searchlibrary}&collectyear=&collectmonth=&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有</a>
-                                </li>
-                            </c:if>
-                            <c:if test="${!s.first}">
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                            </c:if>
-                            <li>${date}</li>
-                            <c:forEach items="${monthList}" var="month">
-                                <li
-                                        <c:if test="${date eq bookQuery.collectyear && month eq bookQuery.collectmonth}">class=" focus " </c:if>>
-                                    <fmt:parseNumber value="${month}" type="number" var="month_num"/>
-                                    <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?selectlocation=&collectyear=${date}&collectmonth=${month}&language=${bookQuery.language}&listflag=${bookQuery.listflag}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&alllocflag=${bookQuery.alllocflag}#config">
-                                            ${month_num+="月"}
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </c:forEach>
-                </div>
-            </c:if>
-            <div id="browse-by-location">
-                <!--	<div class="select-label">按图书馆浏览</div>
+								</li>
+							</c:if>
+							<c:if test="${!s.first}">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+							</c:if>
+							<li>${date}</li>
+							<c:forEach items="${monthList}" var="month">
+								<li
+												<c:if test="${date eq bookQuery.collectyear && month eq bookQuery.collectmonth}">class=" focus " </c:if>>
+									<fmt:parseNumber value="${month}" type="number" var="month_num"/>
+									<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?selectlocation=&collectyear=${date}&collectmonth=${month}&language=${bookQuery.language}&listflag=${bookQuery.listflag}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&alllocflag=${bookQuery.alllocflag}#config">
+											${month_num+="月"}
+									</a>
+								</li>
+							</c:forEach>
+						</ul>
+					</c:forEach>
+				</div>
+			</c:if>
+			<div id="browse-by-location">
+				<!--	<div class="select-label">按图书馆浏览</div>
 
-                            <ul>
-                            <li  style="float:none;"><a href="index.jsp?collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1&alllocflag=1#config">所有</a></li>
+							<ul>
+							<li  style="float:none;"><a href="index.jsp?collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1&alllocflag=1#config">所有</a></li>
 
-                              <li  class="focus" ><a href="index.jsp?searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">北大中心馆</a></li>
+							  <li  class="focus" ><a href="index.jsp?searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">北大中心馆</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=沙特分馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">沙特分馆</a></li>
+							  <li ><a href="index.jsp?searchlibrary=沙特分馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">沙特分馆</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=中古史中心&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">中古史中心</a></li>
+							  <li ><a href="index.jsp?searchlibrary=中古史中心&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">中古史中心</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=中文系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">中文系</a></li>
+							  <li ><a href="index.jsp?searchlibrary=中文系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">中文系</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=历史学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">历史学系</a></li>
+							  <li ><a href="index.jsp?searchlibrary=历史学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">历史学系</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=哲学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">哲学系</a></li>
+							  <li ><a href="index.jsp?searchlibrary=哲学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">哲学系</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=外哲所&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">外哲所</a></li>
+							  <li ><a href="index.jsp?searchlibrary=外哲所&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">外哲所</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=新闻传播学院&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">新闻传播学院</a></li>
+							  <li ><a href="index.jsp?searchlibrary=新闻传播学院&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">新闻传播学院</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=社会学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">社会学系</a></li>
+							  <li ><a href="index.jsp?searchlibrary=社会学系&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">社会学系</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=考古文博学院&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">考古文博学院</a></li>
+							  <li ><a href="index.jsp?searchlibrary=考古文博学院&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">考古文博学院</a></li>
 
-                              <li ><a href="index.jsp?searchlibrary=汉学图书馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">汉学图书馆</a></li>
-
-
-                            </ul>-->
+							  <li ><a href="index.jsp?searchlibrary=汉学图书馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1#config">汉学图书馆</a></li>
 
 
-                <div class="clear"></div>
-            </div>
-            <c:if test="${moreNewBookIndexVo.subjects!=null&&moreNewBookIndexVo.subjects.size()>0}">
-                <div id="browse-by-subject">
-                    <div class="select-label">按学科浏览</div>
-                    <ul>
-                        <c:set value="${moreNewBookIndexVo.subjects}" var="subjects"/>
-                        <li class="focus"><a
-                                href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有</a>
-                        </li>
-                        <c:forEach items="${subjects}" var="subject">
+							</ul>-->
 
-                            <li <c:if test="${subject.id eq bookQuery.multiclassno}">class="focus"</c:if>>
-                                <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${subject.id}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">${subject.subject}</a>
-                            </li>
 
-                        </c:forEach>
-                    </ul>
-                </div>
-            </c:if>
-            <c:if test="${moreNewBookIndexVo.callNumber!=null&&moreNewBookIndexVo.callNumber.size()>0}">
+				<div class="clear"></div>
+			</div>
+			<c:if test="${moreNewBookIndexVo.subjects!=null&&moreNewBookIndexVo.subjects.size()>0}">
+				<div id="browse-by-subject">
+					<div class="select-label">按学科浏览</div>
+					<ul>
+						<c:set value="${moreNewBookIndexVo.subjects}" var="subjects"/>
+						<li class="focus"><a
+										href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有</a>
+						</li>
+						<c:forEach items="${subjects}" var="subject">
 
-                <div id="browse-by-callno">
-                    <div class="select-label">按索书号浏览</div>
-                    <c:set value="<%=new CharUtils()%>" var="charUtils"/>
-                    <ul>
-                        <li class="focus" style="float:none;">
-                            <a
-                                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有
-                            </a>
-                        </li>
-                        <c:set value="${moreNewBookIndexVo.callNumber}" var="callNumberList"/>
-                        <c:forEach items="${callNumberList}" varStatus="s" var="callNumber">
-                            <c:set var="classNo" value="${charUtils.toCharacter(callNumber.id)}"/>
+							<li <c:if test="${subject.id eq bookQuery.multiclassno}">class="focus"</c:if>>
+								<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${subject.id}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">${subject.subject}</a>
+							</li>
 
-                            <li <c:if test="${classNo eq bookQuery.classno}">class="focus" </c:if>>
-                                <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${classNo}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config"
-                                   title="${callNumber.name}">${classNo+=" ".concat(callNumber.name)}</a>
-                            </li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
+			<c:if test="${moreNewBookIndexVo.callNumber!=null&&moreNewBookIndexVo.callNumber.size()>0}">
 
-                        </c:forEach>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-            </c:if>
-            <c:if test="${moreNewBookIndexVo.language!=null&&moreNewBookIndexVo.language.size()>0}">
-                <div id="browse-by-language">
-                    <div class="select-label">按语种浏览</div>
-                    <ul>
-                        <li class="focus"><a
-                                href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有</a>
-                        </li>
-                        <c:forEach items="${moreNewBookIndexVo.language}" var="language">
+				<div id="browse-by-callno">
+					<div class="select-label">按索书号浏览</div>
+					<c:set value="<%=new CharUtils()%>" var="charUtils"/>
+					<ul>
+						<li class="focus" style="float:none;">
+							<a
+											href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有
+							</a>
+						</li>
+						<c:set value="${moreNewBookIndexVo.callNumber}" var="callNumberList"/>
+						<c:forEach items="${callNumberList}" varStatus="s" var="callNumber">
+							<c:set var="classNo" value="${charUtils.toCharacter(callNumber.id)}"/>
 
-                            <li <c:if test="${language eq bookQuery.language}">class="focus" </c:if>>
-                                <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">${language}</a>
-                            </li>
+							<li <c:if test="${classNo eq bookQuery.classno}">class="focus" </c:if>>
+								<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${classNo}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config"
+								   title="${callNumber.name}">${classNo+=" ".concat(callNumber.name)}</a>
+							</li>
 
-                        </c:forEach>
-                    </ul>
-                </div>
-            </c:if>
+						</c:forEach>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</c:if>
+			<c:if test="${moreNewBookIndexVo.language!=null&&moreNewBookIndexVo.language.size()>0}">
+				<div id="browse-by-language">
+					<div class="select-label">按语种浏览</div>
+					<ul>
+						<li class="focus"><a
+										href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">所有</a>
+						</li>
+						<c:forEach items="${moreNewBookIndexVo.language}" var="language">
 
-            <div id="browse-type">
+							<li <c:if test="${language eq bookQuery.language}">class="focus" </c:if>>
+								<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#config">${language}</a>
+							</li>
+
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
+
+			<div id="browse-type">
             <span class="focus"><a
-                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=1&alllocflag=${bookQuery.alllocflag}#config">图文式</a></span>&nbsp;/&nbsp;
-                <span><a
-                        href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=2&alllocflag=${bookQuery.alllocflag}#config">列表式</a></span>
-            </div>
-            <a name="brow"></a>
-            <div id="browse-order">
-                排序方式：<span class="order-option"><font style="color:#e26b2f;font-weight:bold;">上架时间</font>
-				</span> | <span class="order-option"><a
-                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=2&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}&callnorderid=${bookQuery.callnorderid}#brow">索书号<span
-                    class="icon icon_n" name="sort-callno"></span></a>
+				            href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=1&alllocflag=${bookQuery.alllocflag}#config">图文式</a></span>&nbsp;/&nbsp;
+				<span><a
+								href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&classno=${bookQuery.classno}&multiclassno=${bookQuery.multiclassno}&listflag=2&alllocflag=${bookQuery.alllocflag}#config">列表式</a></span>
+			</div>
+			<a name="brow"></a>
+			<div id="browse-order">
+				排序方式：
+				<span class="order-option">
+                    <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=1&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#brow">
+                            <font <c:if
+				                            test="${bookQuery.orderid==null||bookQuery.orderid eq 1 }"> style="color:#e26b2f;font-weight:bold;"</c:if>>
+                            上架时间
+                            </font>
+
+                    </a>
+				</span> |
+				<span class="order-option">
+                    <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=2&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}&callnorderid=0#brow">
+                         <font <c:if
+				                         test="${bookQuery.orderid eq 2 }"> style="color:#e26b2f;font-weight:bold;"</c:if>>索书号</font>
+	                        <span name="sort-callno"
+					                        <c:choose>
+						                        <c:when test="${bookQuery.orderid eq 2 && bookQuery.callnorderid eq 0}">
+							                        class="icon icon_n icon_t active"
+						                        </c:when>
+						                        <c:when test="${bookQuery.orderid eq 2 && bookQuery.callnorderid eq 1}">
+							                        class="icon icon_n icon_b active"
+						                        </c:when>
+						                        <c:otherwise>
+							                        class="icon icon_n"
+						                        </c:otherwise>
+					                        </c:choose>>
+	                        </span>
+                    </a>
+					<span style="display: inline-block;width: 0">
+						 <a style="position: relative;left: -12px;top: 30px;opacity: 0;"
+						    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=2&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}&callnorderid=0#brow"> 0</a>
+		                        <a style="position: relative;left: -12px;top: 8px;opacity: 0"
+		                           href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=2&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}&callnorderid=1#brow"> 1</a>
+					</span>
 
 				</span> | <span class="order-option"><a
-                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=3&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1&alllocflag=0#brow"><font>题名</font></a>
+							href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=3&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#brow">
+                <font
+				                <c:if
+								                test="${bookQuery.orderid eq 3 }"> style="color:#e26b2f;font-weight:bold;"</c:if>
+                >题名</font>
+            </a>
 				</span> | <span class="order-option"><a
-                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=4&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1&alllocflag=0#brow"><font>作者</font></a>
+							href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=4&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#brow"><font
+							<c:if
+											test="${bookQuery.orderid eq 4 }"> style="color:#e26b2f;font-weight:bold;"</c:if>>作者</font></a>
 				</span> | <span class="order-option"><a
-                    href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=5&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&multiclassno=0&listflag=1&alllocflag=0#brow"><font>浏览次数</font></a>
+							href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?orderid=5&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&multiclassno=${bookQuery.multiclassno}&listflag=${bookQuery.listflag}&alllocflag=${bookQuery.alllocflag}#brow"><font
+							<c:if
+											test="${bookQuery.orderid eq 5 }"> style="color:#e26b2f;font-weight:bold;"</c:if>>浏览次数</font></a>
 				</span>
-            </div>
+			</div>
 
 
-            <div id="browse-books">
+			<div id="browse-books">
 
-                <ul>
-                    <c:if test="${moreNewBookIndexVo.bookVos==null||moreNewBookIndexVo.bookVos.size()==0}">
-                        <h1>暂无图书......</h1>
-                    </c:if>
-                    <c:if test="${moreNewBookIndexVo.bookVos!=null&&moreNewBookIndexVo.bookVos.size()>0}">
-                        <c:forEach items="${moreNewBookIndexVo.bookVos}" var="book">
-                            <li>
-                                <div class="book-full">
-                                    <div class="book-image">
-                                        <a href="<c:url value="/xxtbcountclick?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.bookId}"/>"><img
-                                                alt="${book.bookName}"
-                                                onerror="this.src='${book.coverImg}';this.onerror=null"
-                                                src="${book.coverImg}"
-                                                title="${book.bookName}"></a>
-                                    </div>
-                                    <div class="book-intro">
-                                        <ul>
-                                            <li class="book-title"><a
-                                                    href="<c:url value="/xxtbcountclick?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.bookId}"/>"
-                                                    title="${book.bookName}">${book.bookName}</a>
-                                            </li>
-                                            <li>${"作者：".concat(book.bookAuthor)}</li>
-                                            <li>${"索书号：".concat(book.isbn)}</li>
-                                            <li>${book.publishYear}</li>
-                                            <li>${"浏览次数：4"}</li>
-                                        </ul>
+				<ul>
+					<c:if test="${moreNewBookIndexVo.bookVos==null||moreNewBookIndexVo.bookVos.size()==0}">
+						<h1>暂无图书......</h1>
+					</c:if>
+					<c:if test="${moreNewBookIndexVo.bookVos!=null&&moreNewBookIndexVo.bookVos.size()>0}">
+						<c:forEach items="${moreNewBookIndexVo.bookVos}" var="book">
+							<li>
+								<div class="book-full">
+									<div class="book-image">
+										<a href="<c:url value="/xxtbcountclick?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.bookId}"/>"><img
+														alt="${book.bookName}"
+														onerror="this.src='${book.coverImg}';this.onerror=null"
+														src="${book.coverImg}"
+														title="${book.bookName}"></a>
+									</div>
+									<div class="book-intro">
+										<ul>
+											<li class="book-title"><a
+															href="<c:url value="/xxtbcountclick?jmptype=${book.classId}&isbn=${book.isbn}&newbookid=${book.bookId}"/>"
+															title="${book.bookName}">${book.bookName}</a>
+											</li>
+											<li>${"作者：".concat(book.bookAuthor)}</li>
+											<li>${"索书号：".concat(book.isbn)}</li>
+											<li>${book.publishYear}</li>
+											<li>${"浏览次数：4"}</li>
+										</ul>
 
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </li>
-                        </c:forEach>
-                    </c:if>
-                        <%--  <!-------每页显示21本书，以下重复20遍------->--%>
-                </ul>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</li>
+						</c:forEach>
+					</c:if>
+						<%--  <!-------每页显示21本书，以下重复20遍------->--%>
+				</ul>
 
-            </div>
+			</div>
 
-            <div id="pagging">
+			<div id="pagging">
 
             <span>1
                 <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=2&orderid=0&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&listflag=1&multiclassno=0&callnorderid=0&alllocflag=0#brow">2</a>
@@ -395,16 +434,16 @@
                 <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=10&orderid=0&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&listflag=1&multiclassno=0&callnorderid=0&alllocflag=0#brow">10</a>
                 <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=11&orderid=0&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&listflag=1&multiclassno=0&callnorderid=0&alllocflag=0#brow">11</a>
             </span>
-                <span>
+				<span>
                     <a href='<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=2&orderid=0&classno=&searchtxt=&searchfield=0&searchlibrary=北大中心馆&collectyear=2023&collectmonth=05&language=0&classno=&listflag=1&multiclassno=0&callnorderid=0&alllocflag=0#brow'>下一页</a>
                 </span>
 
-            </div>
+			</div>
 
 
-            <div class="clear"></div>
-        </c:if>
-    </div>
+			<div class="clear"></div>
+		</c:if>
+	</div>
 </div>
 <!---------底部：LOGO、分享、导航栏展开------------>
 <!--<div id="xxtb-bottom">-->

@@ -179,6 +179,31 @@
 				</choose>
 			</if>
 		</where>
+		<if test="bookQueryBo.orderid!=null">
+			order by
+			<choose>
+				<when test="bookQueryBo.orderid eq 2">
+					book_info.ISBN
+					<choose>
+						<when test="bookQueryBo.callnorderid eq 0">asc</when>
+						<when test="bookQueryBo.callnorderid eq 1">desc</when>
+						<otherwise>desc</otherwise>
+					</choose>
+				</when>
+				<when test="bookQueryBo.orderid eq 3">
+					book_info.name asc
+				</when>
+				<when test="bookQueryBo.orderid eq 4">
+					book_info.author asc
+				</when>
+				<when test="bookQueryBo.orderid eq 5">
+					book_info.price desc
+				</when>
+				<otherwise>
+					book_info.pub_date desc
+				</otherwise>
+			</choose>
+		</if>
 	</select>
 	<resultMap id="moreNewBookIndexVoMap" type="MoreNewBookIndexVo">
 		<collection property="date" column="pub_date" javaType="list" ofType="map" select="findDate"/>

@@ -30,7 +30,7 @@ public class BookQueryBo {
     private Integer alllocflag;
     private Character classno;
     private Long multiclassno;
-    private Long callnorderid;
+    private Integer callnorderid;
     private Integer orderid;
     private String searchtxt;
     private Integer searchfield;
