@@ -1,10 +1,13 @@
 import com.bai.dao.BookMapper;
 import com.bai.pojo.News;
+import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.BookRecommendationVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
 import com.bai.service.NewsService;
+import com.bai.utils.QueryStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +63,22 @@ public class TestJunit {
         }
     }
 
+
     @Test
     public void test() {
+        BookQueryBo bookQueryBo = new BookQueryBo();
+        System.out.println(ToStringBuilder.reflectionToString(bookQueryBo, new QueryStringStyle()));
         // newsService.showPageVo(0, null, 1);
         // System.out.println(bookMapper.moreNewBookPage());
-        System.out.println(bookMapper.moreNewBookPage());
+        // System.out.println("----");
+        // System.out.println(bookService.moreNewBookPage(null));
+        // List<Map<String, Integer>> callNumber = bookMapper.moreNewBookPage().getCallNumber();
+        // for (Map<String, Integer> longStringMap : callNumber) {
+        //     char id = CharUtils.toCharacter(longStringMap.get("id"));
+        //     System.out.println(id);
+        //     System.out.println(CharUtils.toNumber(id));
+        // }
+        // System.out.println();
     }
 
     public enum Qiu {

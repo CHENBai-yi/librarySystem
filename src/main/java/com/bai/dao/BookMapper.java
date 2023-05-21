@@ -1,6 +1,7 @@
 package com.bai.dao;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import org.apache.ibatis.annotations.Param;
@@ -27,4 +28,6 @@ public interface BookMapper {
     NewBookDetailVo selectNewBooksDetail(@Param("type") Long type, @Param("isbn") String isbn, @Param("bookId") Long bookId, @Param("size") Integer size);
 
     MoreNewBookIndexVo moreNewBookPage();
+
+    List<MoreNewBookIndexVo.DataVo> queryMoreNewBookIndexBookVo(@Param("bookQueryBo") BookQueryBo bookQueryBo);
 }

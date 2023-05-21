@@ -6,6 +6,8 @@ import com.bai.pojo.Admin;
 import com.bai.pojo.Book;
 import com.bai.pojo.Lend;
 import com.bai.pojo.Reader;
+import com.bai.pojo.bo.BookQueryBo;
+import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
@@ -99,5 +101,13 @@ public class BookServiceImp implements BookService {
             }
         }
         return newBookDetailVo;
+    }
+
+    @Override
+    public MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo) {
+        MoreNewBookIndexVo moreNewBookIndexVo = bookMapper.moreNewBookPage();
+        List<MoreNewBookIndexVo.DataVo> dataVo = bookMapper.queryMoreNewBookIndexBookVo(bookQueryBo);
+        moreNewBookIndexVo.setBookVos(dataVo);
+        return moreNewBookIndexVo;
     }
 }

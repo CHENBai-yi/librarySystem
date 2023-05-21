@@ -1,7 +1,9 @@
 package com.bai.controller;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.BookRecommendationVo;
+import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
@@ -93,10 +95,12 @@ public class BookController {
         return "more_hot_book";
     }
 
-    @RequestMapping(value = Constants.AccessPageUrl.MORE_NEW_BOOK, method = {RequestMethod.GET})
-    public String morenewbook(Model model) {
-        List<BookRecommendationVo> bookRecommendationVoList = bookRecommendationService.findRecentlyHotBook();
-        model.addAttribute("bookRecommendationList", bookRecommendationVoList);
+    @RequestMapping(value = Constants.AccessPageUrl.MORE_NEW_BOOK, method = {RequestMethod.GET, RequestMethod.POST})
+    public String morenewbook(BookQueryBo bookQueryBo, Model model) {
+        MoreNewBookIndexVo moreNewBookIndexVo = bookService.moreNewBookPage(bookQueryBo);
+        model.addAttribute("moreNewBookIndexVo", moreNewBookIndexVo);
+        if (bookQueryBo == null) model.addAttribute("bookQuery", new BookQueryBo());
+        else model.addAttribute("bookQuery", bookQueryBo);
         return "more_new_book";
     }
 }

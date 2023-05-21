@@ -1,6 +1,8 @@
 package com.bai.service;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.bo.BookQueryBo;
+import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
 
@@ -33,4 +35,6 @@ public interface BookService {
     List<RecommendedBooksVo> queryNewAllBooksVo();
 
     NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session);
+
+    MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo);
 }
