@@ -29,5 +29,7 @@ public interface BookMapper {
 
     MoreNewBookIndexVo moreNewBookPage();
 
-    List<MoreNewBookIndexVo.DataVo> queryMoreNewBookIndexBookVo(@Param("bookQueryBo") BookQueryBo bookQueryBo);
+    List<MoreNewBookIndexVo.PageDetail.DataVo> queryMoreNewBookIndexBookVo(@Param("bookQueryBo") BookQueryBo bookQueryBo);
+
+    MoreNewBookIndexVo.PageDetail queryPageDetail(@Param("bookQueryBo") BookQueryBo bookQueryBo);
 }

@@ -103,4 +103,5 @@ public class BookController {
         else model.addAttribute("bookQuery", bookQueryBo);
         return "more_new_book";
     }
+
 }

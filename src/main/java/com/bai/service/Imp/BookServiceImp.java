@@ -106,8 +106,12 @@ public class BookServiceImp implements BookService {
     @Override
     public MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo) {
         MoreNewBookIndexVo moreNewBookIndexVo = bookMapper.moreNewBookPage();
-        List<MoreNewBookIndexVo.DataVo> dataVo = bookMapper.queryMoreNewBookIndexBookVo(bookQueryBo);
-        moreNewBookIndexVo.setBookVos(dataVo);
+        MoreNewBookIndexVo.PageDetail pageDetail = bookMapper.queryPageDetail(bookQueryBo);
+        // if (pageDetail != null && pageDetail.getTotal() > 0) {
+        List<MoreNewBookIndexVo.PageDetail.DataVo> dataVos = bookMapper.queryMoreNewBookIndexBookVo(bookQueryBo);
+        pageDetail.setBookVos(dataVos);
+        moreNewBookIndexVo.setPageDetail(pageDetail);
+        // }
         return moreNewBookIndexVo;
     }
 }

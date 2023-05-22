@@ -18,6 +18,8 @@ public class Constants {
     public static final int RECOMMENDED_NEW_BOOK_RELATION_SIZE = 5;
     public static final String READER_REFERER = "reader_referer";
     public static final int _NEW_BOOK_Date_INTERVAL_ = 2;
+    public static final int _NEW_BOOK_PAGE_SIZE_ = 5;
+    public static final int _NEW_BOOK_PAGE_SIZE_FOOTER_ = 11;
 
     public enum News {
         NOTICE("公告", 0), ACTIVITY("活动", 2), NEWS("新闻", 1);

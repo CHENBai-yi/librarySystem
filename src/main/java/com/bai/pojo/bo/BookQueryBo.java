@@ -1,5 +1,6 @@
 package com.bai.pojo.bo;
 
+import com.bai.utils.constants.Constants;
 import lombok.Data;
 
 /**
@@ -26,7 +27,7 @@ public class BookQueryBo {
     alllocflag=0#brow
     * */
 
-    private Integer mypage = 1;
+    private Integer mypage;
     private Integer alllocflag;
     private Character classno;
     private Long multiclassno;
@@ -39,5 +40,6 @@ public class BookQueryBo {
     private String collectmonth;
     private String language;
     private Integer listflag = 1;
+    private Integer pageSize = Constants._NEW_BOOK_PAGE_SIZE_;
 
 }

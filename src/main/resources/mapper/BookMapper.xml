@@ -125,7 +125,7 @@
 			</constructor>
 		</collection>
 	</resultMap>
-	<resultMap id="MoreNewBookIndexVoDataVoMap" type="com.bai.pojo.vo.MoreNewBookIndexVo$DataVo">
+	<resultMap id="MoreNewBookIndexVoDataVoMap" type="com.bai.pojo.vo.MoreNewBookIndexVo$PageDetail$DataVo">
 		<id property="bookId" column="book_id" jdbcType="BIGINT"/>
 		<result property="classId" column="class_id" jdbcType="BIGINT"/>
 		<result property="isbn" column="ISBN" jdbcType="VARCHAR"/>
@@ -133,15 +133,9 @@
 		<result property="bookAuthor" column="author" jdbcType="VARCHAR"/>
 		<result property="coverImg" column="cover_img" jdbcType="VARCHAR"/>
 		<result property="publishYear" column="publishYear" jdbcType="VARCHAR"/>
+		<result property="total" column="total" jdbcType="INTEGER"/>
 	</resultMap>
-	<select id="queryMoreNewBookIndexBookVo" resultMap="MoreNewBookIndexVoDataVoMap" parameterType="bookQueryBo">
-		select book_id,
-		class_id,
-		ISBN,
-		cover_img,
-		CONCAT(name, " / ", author, "编著") as name,
-		CONCAT(author, " 著 ") as author,
-		concat(publish, " ", YEAR(pub_date)) as publishYear
+	<sql id="ws">
 		from library.book_info
 		<where>
 			<if test="bookQueryBo.classno!=null">
@@ -204,6 +198,25 @@
 				</otherwise>
 			</choose>
 		</if>
+	</sql>
+	<select id="queryMoreNewBookIndexBookVo" resultMap="MoreNewBookIndexVoDataVoMap" parameterType="bookQueryBo">
+		select book_id,
+		class_id,
+		ISBN,
+		cover_img,
+		CONCAT(name, " / ", author, "编著") as name,
+		CONCAT(author, " 著 ") as author,
+		concat(publish, " ", YEAR(pub_date)) as publishYear
+		<include refid="ws"/>
+		<choose>
+			<when test="bookQueryBo.mypage!=null and bookQueryBo.mypage neq 0">
+				<bind name="start" value="(bookQueryBo.mypage-1)*bookQueryBo.pageSize"/>
+				limit #{start},#{bookQueryBo.pageSize}
+			</when>
+			<otherwise>
+				limit 0,#{bookQueryBo.pageSize}
+			</otherwise>
+		</choose>
 	</select>
 	<resultMap id="moreNewBookIndexVoMap" type="MoreNewBookIndexVo">
 		<collection property="date" column="pub_date" javaType="list" ofType="map" select="findDate"/>
@@ -238,6 +251,23 @@
 		select distinct YEAR(pub_date) as pub_date
 		from library.book_info
 		limit 1;
+	</select>
+	
+	<resultMap id="pageDetailMap" type="com.bai.pojo.vo.MoreNewBookIndexVo$PageDetail">
+		<result property="total" column="total" jdbcType="INTEGER"/>
+		<result property="cur" column="cur" jdbcType="INTEGER"/>
+		<result property="size" column="size" jdbcType="INTEGER"/>
+	</resultMap>
+	<select id="queryPageDetail" resultMap="pageDetailMap">
+		select count(*) as total,
+		<if test="bookQueryBo.mypage!=null">
+			#{bookQueryBo.mypage} as cur
+		</if>
+		<if test="bookQueryBo.mypage==null">
+			1 as cur
+		</if>
+		,#{bookQueryBo.pageSize} as size
+		<include refid="ws"/>
 	</select>
 
 

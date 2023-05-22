@@ -1,7 +1,8 @@
+import cn.hutool.json.JSONUtil;
 import com.bai.dao.BookMapper;
 import com.bai.pojo.News;
 import com.bai.pojo.bo.BookQueryBo;
-import com.bai.pojo.vo.BookRecommendationVo;
+import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
@@ -16,7 +17,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -57,12 +57,9 @@ public class TestJunit {
 
     @Test
     public void testbookRecommendationHotVos() {
-        List<BookRecommendationVo> recentlyHotBook = bookRecommendationService.findRecentlyHotBook();
-        for (BookRecommendationVo bookRecommendationVo : recentlyHotBook) {
-            System.out.println(bookRecommendationVo);
-        }
+        MoreNewBookIndexVo x = bookService.moreNewBookPage(new BookQueryBo());
+        System.out.println(JSONUtil.toJsonStr(x));
     }
-
 
     @Test
     public void test() {
