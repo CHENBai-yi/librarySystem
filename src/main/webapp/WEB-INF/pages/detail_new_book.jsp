@@ -10,28 +10,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- InstanceBegin template="/Templates/ejymfw.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>新书通报--图书详细信息</title>
-    <link href="static/css/ejym.css" rel="stylesheet" type="text/css"/>
-    <link href="static/css/xxtb.css" rel="stylesheet" type="text/css"/>
-    <link href="static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>新书通报--图书详细信息</title>
+	<link href="/static/css/ejym.css" rel="stylesheet" type="text/css"/>
+	<link href="/static/css/xxtb.css" rel="stylesheet" type="text/css"/>
+	<link href="/static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
 <!---------头部：LOGO、导航栏菜单------------>
 <div id="xxtb-banner">
-    <div class="content-wrapper">
-        <!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="static/picture/banner-logo.png"></a></div>-->
-        <div id="xxtb-banner-menu">
-            <a href="http://newbooks.lib.pku.edu.cn/"><span class="menu">新书通报</span></a>
-            <a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
-            <a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
-        </div>
-    </div>
+	<div class="content-wrapper">
+		<!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="/static/picture/banner-logo.png"></a></div>-->
+		<div id="xxtb-banner-menu">
+			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu">新书通报</span></a>
+			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
+			<a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
+		</div>
+	</div>
 </div>
 <!---------内容：图书详细信息、相关图书（可根据690分类号字段获取，取最新上架的5本书）------------>
 <div id="xxtb-content">
-    <div class="content-wrapper">
+	<div class="content-wrapper">
         <c:set value="<%=new DateUtil()%>" var="dateUtil"/>
         <!-------------图书详细信息---------------->
         <div id="xxtb-content-left">
@@ -165,20 +165,20 @@
 
 
             <c:if test="${detailList==null}">
-                <div class="article">
-                    <h1>经济与法探究--从部门法到法治一般(精)/法律与社会书系/光明社科文库(0)</h1>
-                    <div id="book-basic-info">
-                        <div class="basic-image"><img src="static/picture/6018151-fm.jpg!cckb_b"
-                                                      title="经济与法探究 : 从部门法到法治一般 / 史际春著"
-                                                      alt="经济与法探究 : 从部门法到法治一般 / 史际春著"></div>
-                        <div class="basic-content">
-                            <ul>
-                                <li>副标题：从部门法到法治一般</li>
-                                <li>丛书名：法律与社会书系</li>
-
-                                <li>作者：史际春著</li>
-                                <li>出版社：北京 光明日报出版社 2022</li>
-                                <li>页数：602</li>
+	            <div class="article">
+		            <h1>经济与法探究--从部门法到法治一般(精)/法律与社会书系/光明社科文库(0)</h1>
+		            <div id="book-basic-info">
+			            <div class="basic-image"><img src="/static/picture/6018151-fm.jpg!cckb_b"
+			                                          title="经济与法探究 : 从部门法到法治一般 / 史际春著"
+			                                          alt="经济与法探究 : 从部门法到法治一般 / 史际春著"></div>
+			            <div class="basic-content">
+				            <ul>
+					            <li>副标题：从部门法到法治一般</li>
+					            <li>丛书名：法律与社会书系</li>
+					
+					            <li>作者：史际春著</li>
+					            <li>出版社：北京 光明日报出版社 2022</li>
+					            <li>页数：602</li>
                                 <li>索书号：D922.2904/162b</li>
                                 <!--<li>馆藏地址：东楼三层;库本阅览室</li>-->
                                 <li>ISBN：9787519466800</li>
@@ -265,73 +265,73 @@
             </div>
         </c:if>
         <c:if test="${relatedBooks==null||relatedBooks.size()==0}">
-            <div id="xxtb-content-right">
-                <div class="browse-book-title">相关图书</div>
-                <div id="hot-books">
-                    <ul>
-
-                        <li>
-                            <div class="hot-book-image">
-                                <a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532"><img
-                                        src="static/picture/4333851-fm.jpg!cckb_b" title="经济法基础 刘泽海主编"
-                                        alt="经济法基础 刘泽海主编"></a>
-                                <div class="book-intro">
-                                    <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532">经济法基础
-                                        刘泽海主编</a></div>
-                                    <div class="book-author">刘泽海 主编</div>
-                                    <div class="book-publisher">北京 清华大学出版社 2018</div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="hot-book-image">
-                                <a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907"><img
-                                        src="static/picture/4575702-fm.jpg" title="中国早期经济法文献辑注与研究 "
-                                        alt="中国早期经济法文献辑注与研究 "></a>
-                                <div class="book-intro">
-                                    <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907">中国早期经济法文献辑注与研究 </a>
-                                    </div>
-                                    <div class="book-author">张世明 编著 王济东 编著</div>
-                                    <div class="book-publisher">北京 社会科学文献出版社 2019</div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="hot-book-image">
-                                <a href="xxtbcountclick.jsp?jmptype=4&newbookid=198985"><img
-                                        src="static/picture/4844277-fm.jpg" title="电子商务法律法规 "
-                                        alt="电子商务法律法规 "></a>
-                                <div class="book-intro">
-                                    <div class="book-title"><a
-                                            href="xxtbcountclick.jsp?jmptype=4&newbookid=198985">电子商务法律法规 </a>
-                                    </div>
-                                    <div class="book-author">罗佩华 主编 魏彦珩 主编</div>
-                                    <div class="book-publisher">北京 清华大学出版社 2019</div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="hot-book-image">
-                                <a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392"><img
-                                        src="static/picture/4594434-fm.jpg" title="强制性产品认证的经济法规制 "
-                                        alt="强制性产品认证的经济法规制 "></a>
-                                <div class="book-intro">
-                                    <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392">强制性产品认证的经济法规制 </a>
-                                    </div>
-                                    <div class="book-author">高国钧 著</div>
-                                    <div class="book-publisher">北京 法律出版社 2019</div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
+	        <div id="xxtb-content-right">
+		        <div class="browse-book-title">相关图书</div>
+		        <div id="hot-books">
+			        <ul>
+				
+				        <li>
+					        <div class="hot-book-image">
+						        <a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532"><img
+								        src="/static/picture/4333851-fm.jpg!cckb_b" title="经济法基础 刘泽海主编"
+								        alt="经济法基础 刘泽海主编"></a>
+						        <div class="book-intro">
+							        <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532">经济法基础
+								        刘泽海主编</a></div>
+							        <div class="book-author">刘泽海 主编</div>
+							        <div class="book-publisher">北京 清华大学出版社 2018</div>
+						        </div>
+					        </div>
+				        </li>
+				
+				        <li>
+					        <div class="hot-book-image">
+						        <a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907"><img
+								        src="/static/picture/4575702-fm.jpg" title="中国早期经济法文献辑注与研究 "
+								        alt="中国早期经济法文献辑注与研究 "></a>
+						        <div class="book-intro">
+							        <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907">中国早期经济法文献辑注与研究 </a>
+							        </div>
+							        <div class="book-author">张世明 编著 王济东 编著</div>
+							        <div class="book-publisher">北京 社会科学文献出版社 2019</div>
+						        </div>
+					        </div>
+				        </li>
+				
+				        <li>
+					        <div class="hot-book-image">
+						        <a href="xxtbcountclick.jsp?jmptype=4&newbookid=198985"><img
+								        src="/static/picture/4844277-fm.jpg" title="电子商务法律法规 "
+								        alt="电子商务法律法规 "></a>
+						        <div class="book-intro">
+							        <div class="book-title"><a
+									        href="xxtbcountclick.jsp?jmptype=4&newbookid=198985">电子商务法律法规 </a>
+							        </div>
+							        <div class="book-author">罗佩华 主编 魏彦珩 主编</div>
+							        <div class="book-publisher">北京 清华大学出版社 2019</div>
+						        </div>
+					        </div>
+				        </li>
+				
+				        <li>
+					        <div class="hot-book-image">
+						        <a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392"><img
+								        src="/static/picture/4594434-fm.jpg" title="强制性产品认证的经济法规制 "
+								        alt="强制性产品认证的经济法规制 "></a>
+						        <div class="book-intro">
+							        <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392">强制性产品认证的经济法规制 </a>
+							        </div>
+							        <div class="book-author">高国钧 著</div>
+							        <div class="book-publisher">北京 法律出版社 2019</div>
+						        </div>
+					        </div>
+				        </li>
+				
+				        <li>
                             <div class="hot-book-image">
                                 <a href="xxtbcountclick.jsp?jmptype=4&newbookid=180954"><img
-                                        src="static/picture/xstjkb.jpg"
-                                        title="2019年注册会计师考试应试指导及全真模拟测试经济法 郭守杰编著"
+		                                src="/static/picture/xstjkb.jpg"
+		                                title="2019年注册会计师考试应试指导及全真模拟测试经济法 郭守杰编著"
                                         alt="2019年注册会计师考试应试指导及全真模拟测试经济法 郭守杰编著"></a>
                                 <div class="book-intro">
                                     <div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=180954">2019年注册会计师考试应试指导及全真模拟测试经济法
@@ -347,14 +347,14 @@
                 </div>
             </div>
         </c:if>
-        <div class="clear"></div>
-    </div>
+		<div class="clear"></div>
+	</div>
 </div>
 <!---------底部：LOGO、分享、导航栏展开------------>
 <!--<div id="xxtb-bottom">
 	<div class="content-wrapper">
 		<div id="xxtb-bottom-top">
-			<div id="xxtb-bottom-logo"><a href="http://newbooks.lib.pku.edu.cn"  ><img src="static/picture/banner-logo.png"></a></div>
+			<div id="xxtb-bottom-logo"><a href="http://newbooks.lib.pku.edu.cn"  ><img src="/static/picture/banner-logo.png"></a></div>
 			版权所有   北京大学图书馆©2017-2019
 		</div>
 		

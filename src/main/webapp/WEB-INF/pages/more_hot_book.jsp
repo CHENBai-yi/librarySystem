@@ -7,69 +7,68 @@
 <html dir="ltr" lang="zh-hans"
       prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
 <head>
-    <base href="http://localhost:8080/">
-    <link href="http://www.w3.org/1999/xhtml/vocab" rel="profile"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="webkit|ie-comp|ie-stand" name="renderer">
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-    <meta content="Drupal 7 (http://drupal.org)" name="Generator"/>
-    <link href="/portal/cn/fw/ydtj/jiaoshoutuijian" rel="canonical"/>
-    <link href="/portal/cn/node/979" rel="shortlink"/>
-    <link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
-          type="image/vnd.microsoft.icon"/>
-    <title>热门推荐阅读——对我最有影响的几本书</title>
-    <link href="static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
-          type="text/css"/>
-    <link href="static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
-          type="text/css"/>
-    <link href="static/css/css_sifat1yrbnt1yexl-kgocar2lk9ihpzmzhha3b-_44s.css" media="all" rel="stylesheet"
-          type="text/css"/>
-    <link href="static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
-          type="text/css"/>
-    <style>
-    </style>
-    <!--[if IE 9]>
-    <link type="text/css" rel="stylesheet" media="all" href="static/css/ie9.css"/>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    <link type="text/css" rel="stylesheet" media="all" href="static/css/ie8.css"/>
-    <![endif]-->
-    <!-- HTML5 element support for IE6-8 -->
-    <!--[if lt IE 9]>
-    <script src="static/js/html5shiv-printshiv.min.js"></script>
-    <script src="static/js/respond.js"></script>
-    <![endif]-->
-
-    <!--[if (gt IE 9)|(gt IEMobile 7)|(!IE)]><!-->
-
-    <!--<![endif]-->
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/jquery-extend-3.4.0.js"></script>
-    <script src="static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
-    <script src="static/js/jquery.once.js"></script>
-    <script src="static/js/drupal.js"></script>
-    <script src="static/js/admin_devel.js"></script>
-    <script src="static/js/jquery-migrate-1.2.0.js"></script>
-    <script src="static/js/jquery.lazyloader.js"></script>
-    <script src="static/js/extlink.js"></script>
-    <script src="static/js/_progress.js"></script>
-    <script src="static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
-    <script src="static/js/lightbox.js"></script>
-    <script src="static/js/tb-megamenu-frontend.js"></script>
-    <script src="static/js/tb-megamenu-touch.js"></script>
-    <script src="static/js/quicktabs.js"></script>
-    <script src="static/js/jquery.hoverintent.minified.js"></script>
-    <script src="static/js/sftouchscreen.js"></script>
-    <script src="static/js/sfsmallscreen.js"></script>
-    <script src="static/js/jquery.bgiframe.min.js"></script>
-    <script src="static/js/superfish.js"></script>
-    <script src="static/js/supersubs.js"></script>
-    <script src="static/js/superfish.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/jquery.qrcode.min.js"></script>
-    <script src="static/js/custom.js"></script>
-    <script src="static/js/custom-ge.js"></script>
-    <script>jQuery.extend(Drupal.settings, {
+	<link href="http://www.w3.org/1999/xhtml/vocab" rel="profile"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="webkit|ie-comp|ie-stand" name="renderer">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<meta content="Drupal 7 (http://drupal.org)" name="Generator"/>
+	<link href="/portal/cn/fw/ydtj/jiaoshoutuijian" rel="canonical"/>
+	<link href="/portal/cn/node/979" rel="shortlink"/>
+	<link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
+	<title>热门推荐阅读——对我最有影响的几本书</title>
+	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
+	      type="text/css"/>
+	<link href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
+	      type="text/css"/>
+	<link href="/static/css/css_sifat1yrbnt1yexl-kgocar2lk9ihpzmzhha3b-_44s.css" media="all" rel="stylesheet"
+	      type="text/css"/>
+	<link href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
+	      type="text/css"/>
+	<style>
+	</style>
+	<!--[if IE 9]>
+	<link type="text/css" rel="stylesheet" media="all" href="/static/css/ie9.css"/>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" media="all" href="/static/css/ie8.css"/>
+	<![endif]-->
+	<!-- HTML5 element support for IE6-8 -->
+	<!--[if lt IE 9]>
+	<script src="/static/js/html5shiv-printshiv.min.js"></script>
+	<script src="/static/js/respond.js"></script>
+	<![endif]-->
+	
+	<!--[if (gt IE 9)|(gt IEMobile 7)|(!IE)]><!-->
+	
+	<!--<![endif]-->
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/jquery-extend-3.4.0.js"></script>
+	<script src="/static/js/jquery-html-prefilter-3.5.0-backport.js"></script>
+	<script src="/static/js/jquery.once.js"></script>
+	<script src="/static/js/drupal.js"></script>
+	<script src="/static/js/admin_devel.js"></script>
+	<script src="/static/js/jquery-migrate-1.2.0.js"></script>
+	<script src="/static/js/jquery.lazyloader.js"></script>
+	<script src="/static/js/extlink.js"></script>
+	<script src="/static/js/_progress.js"></script>
+	<script src="/static/js/zh-hans_9-aoirakfv3_r5hhnl3qaotbxqnqba9zow2xp9jlebq.js"></script>
+	<script src="/static/js/lightbox.js"></script>
+	<script src="/static/js/tb-megamenu-frontend.js"></script>
+	<script src="/static/js/tb-megamenu-touch.js"></script>
+	<script src="/static/js/quicktabs.js"></script>
+	<script src="/static/js/jquery.hoverintent.minified.js"></script>
+	<script src="/static/js/sftouchscreen.js"></script>
+	<script src="/static/js/sfsmallscreen.js"></script>
+	<script src="/static/js/jquery.bgiframe.min.js"></script>
+	<script src="/static/js/superfish.js"></script>
+	<script src="/static/js/supersubs.js"></script>
+	<script src="/static/js/superfish.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/jquery.qrcode.min.js"></script>
+	<script src="/static/js/custom.js"></script>
+	<script src="/static/js/custom-ge.js"></script>
+	<script>jQuery.extend(Drupal.settings, {
         "basePath": "\/portal\/",
         "pathPrefix": "cn\/",
         "ajaxPageState": {
@@ -414,7 +413,7 @@
 <!--    <div class="container">-->
 <!--        <div class="navbar-header">-->
 <!--            <a class="logo navbar-btn" href="/portal/cn" title="首页">-->
-<!--                <img src="static/picture/logo_0.png" alt="首页"/>-->
+<!--                <img src="/static/picture/logo_0.png" alt="首页"/>-->
 <!--            </a>-->
 
 <!--        </div>-->
@@ -4032,10 +4031,10 @@
 
 
 <!--                                                                        &lt;!&ndash;<p>-->
-<!--	<img onclick="window.open('http://2020.lib.pku.edu.cn')" src="static/picture/2020.jpg" style="cursor:pointer;" /></p>&ndash;&gt;-->
+<!--	<img onclick="window.open('http://2020.lib.pku.edu.cn')" src="/static/picture/2020.jpg" style="cursor:pointer;" /></p>&ndash;&gt;-->
 <!--                                                                        <p style="margin-top:10px;border:none;">-->
 <!--                                                                            <img onclick="window.open('http://media.lib.pku.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=33&amp;id=7301')"-->
-<!--                                                                                 src="static/picture/120-aboutus.png"-->
+<!--                                                                                 src="/static/picture/120-aboutus.png"-->
 <!--                                                                                 style="cursor:pointer;"/></p>-->
 
 <!--                                                                    </section>-->
@@ -4061,7 +4060,7 @@
 <!--                            <p title="展开/收起搜索面板">-->
 <!--                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>搜索图书馆资源</span>-->
 <!--                                <img id="custom-global-top-search-switch-arrow"-->
-<!--                                     src="static/picture/custom-global-top-search-arrow.png"/></p>-->
+<!--                                     src="/static/picture/custom-global-top-search-arrow.png"/></p>-->
 <!--                        </div>-->
 <!--                        &lt;!&ndash; 自定义区块结束 &ndash;&gt;-->
 <!--                    </section>-->
@@ -4722,7 +4721,7 @@
 
 <!--                                    <h2 class="block-title">未名学术搜索</h2>-->
 
-<!--                                    <link rel="stylesheet" type="text/css" media="screen" href="static/css/suggest.css">-->
+<!--                                    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/suggest.css">-->
 <!--                                    <div id="custom-front-top-summon">-->
 <!--                                        <div id="search-wrapper">-->
 <!--                                            <form target="_blank" action="/portal/summon/search/" method="GET"-->
@@ -4753,7 +4752,7 @@
 <!--                                        </div>-->
 
 <!--                                    </div>-->
-<!--                                    &lt;!&ndash;<script defer="true" id="summon-search-widget" type="text/javascript" src="static/js/searchbox.js"></script>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;<script defer="true" id="summon-search-widget" type="text/javascript" src="/static/js/searchbox.js"></script>&ndash;&gt;-->
 <!--                                    <script type="text/javascript">-->
 <!--                                        document.getElementById('summon-search-field').focus()-->
 <!--                                    </script>-->
@@ -5358,9 +5357,9 @@
     jQuery(window).on("scroll", showHideAnchorNav);
 
 </script>
-<script src="static/js/bootstrap.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 <div style="display:none;">
-    <script src=" static/js/h.js" type="text/javascript"></script>
+	<script src="/static/js/h.js" type="text/javascript"></script>
 </div>
 </body>
 </html>

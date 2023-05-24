@@ -2,7 +2,7 @@
 <!-- InstanceBegin template="/Templates/ejymfw.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
     <title>新书通报</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/xxtb.css" rel="stylesheet" type="text/css"/>
     <link href="static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
     <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
@@ -1260,7 +1260,37 @@
 <!--		-->
 <!--	</div>-->
 <!--</div>-->
+
+<!--<%&#45;&#45;加载动画&#45;&#45;%>-->
+<!-- 加载模态框 -->
+<div aria-hidden="true" aria-labelledby="loadingModalLabel" class="modal fade" id="loadingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content my-modal-content">
+            <div class="modal-body text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入Bootstrap 5的JavaScript文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+            backdrop: 'static',
+            keyboard: false
+        });
+        loadingModal.show();
+    });
+    window.addEventListener('load', function () {
+        var loadingModal = document.getElementById('loadingModal');
+        var backdrop = document.querySelector('.modal-backdrop');
+        loadingModal.parentNode.removeChild(backdrop);
+        loadingModal.parentNode.removeChild(loadingModal);
+    });
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
