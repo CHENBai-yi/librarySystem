@@ -45,7 +45,7 @@ public class ReaderController {
             String s = (String) attribute;
             if (s.startsWith(Constants.AccessPageUrl.XXTBCOUNTCLICK)) {
                 requestAttributes.removeAttribute(Constants.READER_REFERER, 1);
-                return "forward:" + s;
+                return "redirect:" + s;
             }
         }
         return null;
