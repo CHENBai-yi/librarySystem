@@ -11,7 +11,7 @@ function loginCheck() {
         jQuery('.passwd-group').addClass('has-error')
         return false;
     } else {
-        var href = '/reader/checklogin'
+        var href = 'http://baiyichen.asia:10086/reader/checklogin'
         document.getElementById('pkusso-login').action = href
         return true;
     }
