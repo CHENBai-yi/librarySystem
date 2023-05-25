@@ -19,7 +19,7 @@ public class ReaderToLoginIntecepter implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String referer = request.getHeader("Referer");
         URL url = new URL(referer);
-        Objects.requireNonNull(RequestContextHolder.getRequestAttributes()).setAttribute(Constants.READER_REFERER, url.toString(), 1);
+        Objects.requireNonNull(RequestContextHolder.getRequestAttributes()).setAttribute(Constants.READER_REFERER, url.getFile(), 1);
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
 }
