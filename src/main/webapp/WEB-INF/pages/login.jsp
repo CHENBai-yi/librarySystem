@@ -3,7 +3,6 @@
 <head>
     <title>图书馆首页</title>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-
     <script src="/static/js/js.cookie.js"></script>
 <style>
     #login{
