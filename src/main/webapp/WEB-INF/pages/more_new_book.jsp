@@ -30,6 +30,7 @@
 	</style>
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
+         alert("aa")
         var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
             backdrop: 'static',
             keyboard: false
@@ -38,7 +39,6 @@
     });
 
     window.addEventListener('load', function () {
-        alert("aa")
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.parentNode.removeChild(backdrop);
@@ -547,7 +547,7 @@
 
 <!-- 加载模态框 -->
 <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+	<!--<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content my-modal-content">
 			<div class="modal-body text-center">
 				<div class="spinner-border text-primary" role="status">
@@ -555,7 +555,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 </div>
 
 </body>
