@@ -28,6 +28,14 @@
             overflow: auto !important;
             padding-right: 0 !important;
         }
+
+        .spinner-grow:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .spinner-grow:nth-child(even) {
+            animation-delay: 0.4s;
+        }
 	</style>
 </head>
 
@@ -37,7 +45,31 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content my-modal-content">
 			<div class="modal-body text-center">
-				<div class="spinner-border text-primary" role="status">
+				<%--<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>--%>
+				<div class="spinner-grow text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-secondary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-success" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-danger" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-warning" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-info" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-light" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div class="spinner-grow text-dark" role="status">
 					<span class="visually-hidden">Loading...</span>
 				</div>
 			</div>
