@@ -541,6 +541,7 @@
 	</div>
 </div>
 
+</body>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
         var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
@@ -558,6 +559,4 @@
         loadingModal.parentNode.removeChild(loadingModal);
     });
 </script>
-
-</body>
 </html>
