@@ -1,4 +1,4 @@
-﻿<%@ page import="cn.hutool.core.date.DateUtil" %>
+<%@ page import="cn.hutool.core.date.DateUtil" %>
 <%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page import="com.bai.utils.CharUtils" %>
 <%@ page import="com.sun.tools.classfile.ConstantPool" %>
@@ -471,8 +471,7 @@
 			<c:if test="${totalPage<size}">
 		<span>
 		<c:forEach begin="${totalSize+1}" end="${totalPage}" var="cur">
-		              <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
-			              mypage=${cur}&orderid=${bookQuery.orderid}&
+		              <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=${cur}&orderid=${bookQuery.orderid}&
 	classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&
 	searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=
 	${bookQuery.language}&listflag=${bookQuery.listflag}&multiclassno=${bookQuery.multiclassno}&callnorderid=${bookQuery.callnorderid}&alllocflag=${bookQuery.alllocflag}#brow">
@@ -492,8 +491,7 @@
 		<c:forEach begin="1" end="${size}" var="cur">
 			<%--@elvariable id="Math" type="java"--%>
 			<fmt:formatNumber maxFractionDigits="0" value="${Math.floor(cur1/size)}" type="number" var="p"/>
-			<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
-			              mypage=${cur+p*size}&orderid=${bookQuery.orderid}&
+			<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=${cur+p*size}&orderid=${bookQuery.orderid}&
 	classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&
 	searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=
 	${bookQuery.language}&listflag=${bookQuery.listflag}&multiclassno=${bookQuery.multiclassno}&callnorderid=${bookQuery.callnorderid}&alllocflag=${bookQuery.alllocflag}#brow">
