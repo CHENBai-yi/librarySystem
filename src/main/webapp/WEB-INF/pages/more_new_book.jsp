@@ -30,7 +30,7 @@
 	</style>
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-         alert("aa")
+         alert("aa11")
         var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
             backdrop: 'static',
             keyboard: false
@@ -38,12 +38,11 @@
         loadingModal.show();
     });
     window.addEventListener('load', function () {
+        alert("aa22")
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
-        loadingModal.remove()
-        backdrop.remove()
-        // loadingModal.parentNode.removeChild(backdrop);
-        // loadingModal.parentNode.removeChild(loadingModal);
+        loadingModal.parentNode.removeChild(backdrop);
+        loadingModal.parentNode.removeChild(loadingModal);
     });
 
     
