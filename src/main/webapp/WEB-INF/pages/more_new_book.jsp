@@ -542,12 +542,8 @@
 </div>
 
 <script type="text/javascript">
-var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
-            backdrop: 'static',
-            keyboard: false
-        });
+
    window.addEventListener('load', function () {
-       loadingModal.hidden();
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.parentNode.removeChild(backdrop);
@@ -555,6 +551,10 @@ var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), 
 
     });
     document.addEventListener('DOMContentLoaded', function () {
+        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+            backdrop: 'static',
+            keyboard: false
+        });
         loadingModal.show();
     });
 </script>
