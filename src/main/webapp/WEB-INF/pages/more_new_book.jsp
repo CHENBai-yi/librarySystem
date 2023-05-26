@@ -36,14 +36,14 @@
             keyboard: false
         });
         loadingModal.show();
-        window.addEventListener('load', function () {
+    });
+    window.addEventListener('load', function () {
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.remove()
         backdrop.remove()
-        loadingModal.parentNode.removeChild(backdrop);
-        loadingModal.parentNode.removeChild(loadingModal);
-    });
+        // loadingModal.parentNode.removeChild(backdrop);
+        // loadingModal.parentNode.removeChild(loadingModal);
     });
 
     
