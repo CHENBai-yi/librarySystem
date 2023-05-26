@@ -543,13 +543,11 @@
 
 <script type="text/javascript">
 
-   window.addEventListener('load', function () {
+    $(function(){
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
-        loadingModal.classList.remove("show")
         loadingModal.parentNode.removeChild(backdrop);
         loadingModal.parentNode.removeChild(loadingModal);
-
     });
     document.addEventListener('DOMContentLoaded', function () {
         var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
