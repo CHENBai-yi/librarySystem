@@ -8,13 +8,16 @@ import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
 import com.bai.service.NewsService;
 import com.bai.utils.QueryStringStyle;
+import com.bai.utils.constants.Constants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.util.AntPathMatcher;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -59,6 +62,34 @@ public class TestJunit {
     public void testbookRecommendationHotVos() {
         MoreNewBookIndexVo x = bookService.moreNewBookPage(new BookQueryBo());
         System.out.println(JSONUtil.toJsonStr(x));
+    }
+
+    private final Set<String> accessUrl = new HashSet<>();
+
+    @Before
+    public void testAntPathPaternMatcherBefore() {
+        accessUrl.add("/");
+        accessUrl.add("/index");
+        accessUrl.add("/tologin");
+        accessUrl.add("/logout.html");
+        accessUrl.add("/checklogin");
+        accessUrl.add("/static/**");
+        accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK);
+        accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL);
+        accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN);
+        accessUrl.add(Constants.AccessPageUrl.READER_LOGIN_URL);
+        accessUrl.add(Constants.AccessPageUrl.MORE_NEW_BOOK);
+        accessUrl.add(Constants.AccessPageUrl.ACTIVITY_URL);
+        accessUrl.add(Constants.AccessPageUrl.NOTICE_URL);
+        accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL);
+    }
+
+    @Test
+    public void testAntPathPaternMatcher() {
+        // https://library.baiyichen.asia/xxtbcountclick;jsessionid=7F572EAE076A1CF45B5B2B051A6738AF?jmptype=9&isbn=9787530216835&newbookid=1
+        // /xxtbcountclick;jsessionid=7F572EAE076A1CF45B5B2B051A6738AF
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        System.out.println(antPathMatcher.matchStart(Constants.AccessPageUrl.NOTICE_URL + "/**", "/news/notice/page/2"));
     }
 
     @Test

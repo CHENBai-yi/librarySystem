@@ -24,20 +24,21 @@ public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
+        String suffix = "/**";
         accessUrl.add("/");
         accessUrl.add("/index");
         accessUrl.add("/tologin");
         accessUrl.add("/logout.html");
         accessUrl.add("/checklogin");
-        accessUrl.add("/static");
-        accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK);
-        accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL);
-        accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN);
-        accessUrl.add(Constants.AccessPageUrl.READER_LOGIN_URL);
-        accessUrl.add(Constants.AccessPageUrl.MORE_NEW_BOOK);
-        accessUrl.add(Constants.AccessPageUrl.ACTIVITY_URL);
-        accessUrl.add(Constants.AccessPageUrl.NOTICE_URL);
-        accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL);
+        accessUrl.add("/static/**");
+        accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK + suffix);
+        accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL + suffix);
+        accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN + suffix);
+        accessUrl.add(Constants.AccessPageUrl.READER_LOGIN_URL + suffix);
+        accessUrl.add(Constants.AccessPageUrl.MORE_NEW_BOOK + suffix);
+        accessUrl.add(Constants.AccessPageUrl.ACTIVITY_URL + suffix);
+        accessUrl.add(Constants.AccessPageUrl.NOTICE_URL + suffix);
+        accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL + suffix);
     }
 
     @Override
