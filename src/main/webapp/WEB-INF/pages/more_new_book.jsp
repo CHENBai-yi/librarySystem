@@ -543,8 +543,9 @@
 
 <script type="text/javascript">
 
-    $(function(){
-        var loadingModal = document.getElementById('loadingModal');
+      window.addEventListener('load', function () {
+        
+ var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.parentNode.removeChild(backdrop);
         loadingModal.parentNode.removeChild(loadingModal);
