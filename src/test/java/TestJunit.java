@@ -54,7 +54,7 @@ public class TestJunit {
 
     @Test
     public void testBookeDetail() {
-        NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(0, " 9787113170202", 19, null);
+        NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(0, " 9787113170202", 19, null, null);
         System.out.println(newBookDetailVos);
     }
 

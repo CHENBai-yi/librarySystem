@@ -17,6 +17,7 @@
 	<script src="/static/js/jquery.superslide2.js" type="text/javascript"></script>
 	<!-- 引入Bootstrap 5的JavaScript文件 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/static/js/loading_modal.js"></script>
 	<style type="text/css">
         .my-modal-content {
             border: none;
@@ -30,8 +31,19 @@
 	</style>
 </head>
 
-
 <body>
+<!-- 加载模态框 -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content my-modal-content">
+			<div class="modal-body text-center">
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!---------头部：LOGO、导航栏菜单------------>
 <div id="xxtb-banner">
 	<div class="content-wrapper">
@@ -471,8 +483,7 @@
 			<c:if test="${totalPage<size}">
 		<span>
 		<c:forEach begin="${totalSize+1}" end="${totalPage}" var="cur">
-		              <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
-			              mypage=${cur}&orderid=${bookQuery.orderid}&
+		              <a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=${cur}&orderid=${bookQuery.orderid}&
 	classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&
 	searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=
 	${bookQuery.language}&listflag=${bookQuery.listflag}&multiclassno=${bookQuery.multiclassno}&callnorderid=${bookQuery.callnorderid}&alllocflag=${bookQuery.alllocflag}#brow">
@@ -492,11 +503,7 @@
 		<c:forEach begin="1" end="${size}" var="cur">
 			<%--@elvariable id="Math" type="java"--%>
 			<fmt:formatNumber maxFractionDigits="0" value="${Math.floor(cur1/size)}" type="number" var="p"/>
-			<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?
-			              mypage=${cur+p*size}&orderid=${bookQuery.orderid}&
-	classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&
-	searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=
-	${bookQuery.language}&listflag=${bookQuery.listflag}&multiclassno=${bookQuery.multiclassno}&callnorderid=${bookQuery.callnorderid}&alllocflag=${bookQuery.alllocflag}#brow">
+			<a href="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>?mypage=${cur+p*size}&orderid=${bookQuery.orderid}&classno=${bookQuery.classno}&searchtxt=${bookQuery.searchtxt}&searchfield=${bookQuery.searchfield}&searchlibrary=${bookQuery.searchlibrary}&collectyear=${bookQuery.collectyear}&collectmonth=${bookQuery.collectmonth}&language=${bookQuery.language}&listflag=${bookQuery.listflag}&multiclassno=${bookQuery.multiclassno}&callnorderid=${bookQuery.callnorderid}&alllocflag=${bookQuery.alllocflag}#brow">
 					               <font
 							               <c:if
 									               test="${cur1%size+1 eq cur}"> style="color:#e26b2f;font-weight:bold;"
@@ -529,44 +536,5 @@
 <!-- -->
 <!-- </div>-->
 <!--</div>-->
-
-<!-- 加载模态框 -->
-<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content my-modal-content">
-			<div class="modal-body text-center">
-				<div class="spinner-border text-primary" role="status">
-					<span class="visually-hidden">Loading...</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
-            backdrop: 'static',
-            keyboard: false
-        });
-        loadingModal.show();
-    });
-    window.addEventListener('load', function () {
-        var loadingModal = document.getElementById('loadingModal');
-        var backdrop = document.querySelector('.modal-backdrop');
-        loadingModal.parentNode.removeChild(backdrop);
-        loadingModal.parentNode.removeChild(loadingModal);
-
-    });
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?2e4e4ad9369812e47f6230a823376a33";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-
-</script>
-
 </body>
 </html>

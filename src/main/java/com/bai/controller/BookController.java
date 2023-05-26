@@ -81,9 +81,8 @@ public class BookController {
 
     @RequestMapping(value = Constants.AccessPageUrl.XXTBCOUNTCLICK, method = {RequestMethod.GET})
     public String bookDetailAndRelationBook(@RequestParam(value = "jmptype", required = false) long type, @RequestParam(value = "isbn", required = false) String isbn, @RequestParam("newbookid") long bookId, Model model, HttpSession session) {
-        NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(type, isbn, bookId, session);
+        NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(type, isbn, bookId, session, model);
         // todo 做ip下的浏览次数
-
         model.addAttribute("detailList", newBookDetailVos);
         return "detail_new_book";
     }

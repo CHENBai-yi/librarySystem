@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public class LoginController {
     }
 
     @PostMapping(path = {Constants.AccessPageUrl.READER_CHECK_LOGIN_URL})
-    public String readerCheckLogin(@RequestParam("userid") String id, String password, Model model, HttpSession session) {
+    public String readerCheckLogin(@RequestParam("userid") String id, String password, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
         synchronized (this) {
             Object query = this.query(id, password, session);
             Map<String, String> map = (Map<String, String>) query;
@@ -90,7 +91,10 @@ public class LoginController {
                     RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
                     if (requestAttributes != null) {
                         String s = ReaderController.getString(requestAttributes);
-                        if (s != null) return s;
+                        if (s != null) {
+                            return s;
+                        }
+
                     }
                     if (i == 2) return "redirect:/reader_admin";
                     else return "redirect:/admin_main.html";

@@ -5,6 +5,7 @@ import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -34,7 +35,7 @@ public interface BookService {
 
     List<RecommendedBooksVo> queryNewAllBooksVo();
 
-    NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session);
+    NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session, Model model);
 
     MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo);
 }

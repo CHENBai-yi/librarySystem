@@ -15,6 +15,7 @@ import com.bai.utils.constants.Constants;
 import com.bai.utils.mapStruct.BookMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -72,12 +73,13 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session) {
+    public NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session, Model model) {
         NewBookDetailVo newBookDetailVo = bookMapper.selectNewBooksDetail(type, isbn, bookId, Constants.RECOMMENDED_NEW_BOOK_RELATION_SIZE);
         Object readercard = session.getAttribute("readercard");
         Object admin = session.getAttribute("admin");
         if (admin != null) {
             Admin admin1 = (Admin) admin;
+            model.addAttribute("msg", "登录成功。欢迎您：管理员，" + admin1.getUsername());
             long adminId = admin1.getAdminId();
             Lend returnBook = lendMapper.findReturnBook(adminId, bookId);
             if (returnBook == null) {
@@ -90,6 +92,7 @@ public class BookServiceImp implements BookService {
 
         } else if (readercard != null) {
             Reader reader = (Reader) readercard;
+            model.addAttribute("msg", "登录成功。欢迎您：" + reader.getUsername());
             long readerId = reader.getReaderId();
             Lend returnBook = lendMapper.findReturnBook(readerId, bookId);
             if (returnBook == null) {
