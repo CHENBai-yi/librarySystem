@@ -546,6 +546,7 @@
    window.addEventListener('load', function () {
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
+        loadingModal.classList.remove("show")
         loadingModal.parentNode.removeChild(backdrop);
         loadingModal.parentNode.removeChild(loadingModal);
 
