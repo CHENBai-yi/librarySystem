@@ -40,6 +40,7 @@
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.remove()
+        backdrop.remove()
         loadingModal.parentNode.removeChild(backdrop);
         loadingModal.parentNode.removeChild(loadingModal);
     });
