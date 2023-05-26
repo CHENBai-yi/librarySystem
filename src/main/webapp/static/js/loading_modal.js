@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', a);
-window.addEventListener('load', () => setTimeout(b, 1000));
+window.addEventListener('load', () => setTimeout(b, 500));
 
 function a() {
     var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
