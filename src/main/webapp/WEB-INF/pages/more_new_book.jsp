@@ -28,23 +28,6 @@
             padding-right: 0 !important;
         }
 	</style>
-    <script>
-         window.addEventListener('load', function () {
-        var loadingModal = document.getElementById('loadingModal');
-        var backdrop = document.querySelector('.modal-backdrop');
-        loadingModal.parentNode.removeChild(backdrop);
-        loadingModal.parentNode.removeChild(loadingModal);
-
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
-            backdrop: 'static',
-            keyboard: false
-        });
-        loadingModal.show();
-    });
-   
-    </script>
 </head>
 
 
@@ -558,15 +541,22 @@
 	</div>
 </div>
 
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?2e4e4ad9369812e47f6230a823376a33";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+<script type="text/javascript">
+var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+            backdrop: 'static',
+            keyboard: false
+        });
+   window.addEventListener('load', function () {
+       loadingModal.hidden();
+        var loadingModal = document.getElementById('loadingModal');
+        var backdrop = document.querySelector('.modal-backdrop');
+        loadingModal.parentNode.removeChild(backdrop);
+        loadingModal.parentNode.removeChild(loadingModal);
 
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        loadingModal.show();
+    });
 </script>
 
 </body>
