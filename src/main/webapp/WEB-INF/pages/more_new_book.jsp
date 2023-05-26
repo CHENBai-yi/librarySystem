@@ -551,7 +551,7 @@
     });
 
     window.addEventListener('load', function () {
-        
+        alert("aa")
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.parentNode.removeChild(backdrop);
