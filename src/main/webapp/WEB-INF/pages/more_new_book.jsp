@@ -36,14 +36,15 @@
             keyboard: false
         });
         loadingModal.show();
-    });
-
-    window.addEventListener('load', function () {
+        window.addEventListener('load', function () {
         var loadingModal = document.getElementById('loadingModal');
         var backdrop = document.querySelector('.modal-backdrop');
         loadingModal.parentNode.removeChild(backdrop);
         loadingModal.parentNode.removeChild(loadingModal);
     });
+    });
+
+    
 </script>
 </head>
 
@@ -547,7 +548,7 @@
 
 <!-- 加载模态框 -->
 <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
-	<!--<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content my-modal-content">
 			<div class="modal-body text-center">
 				<div class="spinner-border text-primary" role="status">
@@ -555,7 +556,7 @@
 				</div>
 			</div>
 		</div>
-	</div>-->
+	</div>
 </div>
 
 </body>
