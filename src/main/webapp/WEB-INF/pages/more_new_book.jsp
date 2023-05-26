@@ -28,6 +28,23 @@
             padding-right: 0 !important;
         }
 	</style>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+            backdrop: 'static',
+            keyboard: false
+        });
+        loadingModal.show();
+    });
+
+    window.addEventListener('load', function () {
+        alert("aa")
+        var loadingModal = document.getElementById('loadingModal');
+        var backdrop = document.querySelector('.modal-backdrop');
+        loadingModal.parentNode.removeChild(backdrop);
+        loadingModal.parentNode.removeChild(loadingModal);
+    });
+</script>
 </head>
 
 
@@ -542,21 +559,4 @@
 </div>
 
 </body>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
-            backdrop: 'static',
-            keyboard: false
-        });
-        loadingModal.show();
-    });
-
-    window.addEventListener('load', function () {
-        alert("aa")
-        var loadingModal = document.getElementById('loadingModal');
-        var backdrop = document.querySelector('.modal-backdrop');
-        loadingModal.parentNode.removeChild(backdrop);
-        loadingModal.parentNode.removeChild(loadingModal);
-    });
-</script>
 </html>
