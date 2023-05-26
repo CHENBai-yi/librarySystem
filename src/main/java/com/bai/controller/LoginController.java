@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -61,7 +62,8 @@ public class LoginController {
             admin.setPassword(password);
             session.setAttribute("admin", admin);
             map.put("stateCode", "1");
-            map.put("msg", "管理员登录成功");
+            map.put("msg", "管理员登录成功。");
+            map.put("username", admin.getUsername());
         } else if (isReader) {
             Reader reader = new Reader();
             reader.setReaderId(Long.parseLong(id));
@@ -69,17 +71,18 @@ public class LoginController {
             reader.setPassword(password);
             session.setAttribute("readercard", reader);
             map.put("stateCode", "2");
-            map.put("msg", "读者登录成功");
+            map.put("msg", "读者登录成功。");
+            map.put("username", reader.getUsername());
 
         } else {
             map.put("stateCode", "0");
-            map.put("msg", "账号或密码错误");
+            map.put("msg", "账号或密码错误。！！！");
         }
         return map;
     }
 
     @PostMapping(path = {Constants.AccessPageUrl.READER_CHECK_LOGIN_URL})
-    public String readerCheckLogin(@RequestParam("userid") String id, String password, Model model, HttpSession session) {
+    public String readerCheckLogin(@RequestParam("userid") String id, String password, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
         synchronized (this) {
             Object query = this.query(id, password, session);
             Map<String, String> map = (Map<String, String>) query;
@@ -91,6 +94,9 @@ public class LoginController {
                     if (requestAttributes != null) {
                         String s = ReaderController.getString(requestAttributes);
                         if (s != null) {
+                            String msg = map.get("msg");
+                            String username = map.get("username");
+                            redirectAttributes.addFlashAttribute("msg", msg + "欢迎您：" + username);
                             return s;
                         }
                     }
