@@ -1,6 +1,7 @@
 package com.bai.utils.config;
 
 import com.bai.utils.constants.Constants;
+import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -28,21 +29,30 @@ public class LoginFilter implements Filter {
         accessUrl.add("/tologin");
         accessUrl.add("/logout.html");
         accessUrl.add("/checklogin");
+        accessUrl.add("/static");
         accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK);
         accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL);
         accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN);
         accessUrl.add(Constants.AccessPageUrl.READER_LOGIN_URL);
         accessUrl.add(Constants.AccessPageUrl.MORE_NEW_BOOK);
+        accessUrl.add(Constants.AccessPageUrl.ACTIVITY_URL);
+        accessUrl.add(Constants.AccessPageUrl.NOTICE_URL);
+        accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL);
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String requestURI = httpServletRequest.getRequestURI();
-        if (requestURI.startsWith("/static") || accessUrl.contains(requestURI) || requestURI.startsWith(Constants.AccessPageUrl.ACTIVITY_URL) || requestURI.startsWith(Constants.AccessPageUrl.NOTICE_URL) || requestURI.startsWith(Constants.AccessPageUrl.JOURNALISM_URL)) {
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        if (accessUrl.stream().anyMatch(t -> antPathMatcher.match(t, requestURI.replaceAll(";jsessionid=.*", "")))) {
             chain.doFilter(request, response);
             return;
         }
+        /*if (requestURI.startsWith("/static") || accessUrl.contains(requestURI) || requestURI.startsWith(Constants.AccessPageUrl.ACTIVITY_URL) || requestURI.startsWith(Constants.AccessPageUrl.NOTICE_URL) || requestURI.startsWith(Constants.AccessPageUrl.JOURNALISM_URL)) {
+            chain.doFilter(request, response);
+            return;
+        }*/
         HttpSession session = httpServletRequest.getSession();
         Object readercard = session.getAttribute("readercard");
         Object admin = session.getAttribute("admin");
