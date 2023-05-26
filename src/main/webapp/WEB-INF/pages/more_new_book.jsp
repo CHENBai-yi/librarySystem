@@ -9,15 +9,12 @@
 <!-- InstanceBegin template="/Templates/ejymfw.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 	<title>新书通报</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/static/css/xxtb.css" rel="stylesheet" type="text/css"/>
 	<link href="/static/css/xxtb-new-new.css" rel="stylesheet" type="text/css"/>
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
 	<script src="/static/js/jquery.js" type="text/javascript"></script>
 	<script src="/static/js/jquery.superslide2.js" type="text/javascript"></script>
-	<!-- 引入Bootstrap 5的JavaScript文件 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="${pageContext.servletContext.contextPath}/static/js/loading_modal.js"></script>
 	<style type="text/css">
         .my-modal-content {
             border: none;
@@ -33,12 +30,15 @@
 
 <body>
 <!-- 加载模态框 -->
-<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+<div class="modal" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content my-modal-content">
 			<div class="modal-body text-center">
 				<div class="spinner-border text-light" role="status">
 					<span class="visually-hidden">Loading...</span>
+					<!-- 引入Bootstrap 5的JavaScript文件 -->
+					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+					<script src="${pageContext.servletContext.contextPath}/static/js/loading_modal.js"></script>
 				</div>
 			</div>
 		</div>
@@ -530,7 +530,7 @@
 <!-- <div class="content-wrapper">-->
 <!-- <div id="xxtb-bottom-top">-->
 <!-- <div id="xxtb-bottom-logo"><a href="http://newbooks.lib.pku.edu.cn" ><img src="/static/picture/banner-logo.png"></a></div>-->
-<!-- 版权所有 北京大学图书馆©2017-2019-->
+<!-- 版权所有 XXX图书馆©2017-2019-->
 <!-- </div>-->
 <!-- -->
 <!-- </div>-->
