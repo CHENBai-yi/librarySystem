@@ -31,6 +31,14 @@ public class Constants {
             this.code = code;
         }
 
+        public String getType() {
+            return type;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
         public News getNews(int code) {
             switch (code) {
                 case 0:

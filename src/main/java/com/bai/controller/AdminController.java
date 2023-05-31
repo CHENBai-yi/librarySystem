@@ -5,6 +5,7 @@ import com.bai.service.AdminService;
 import com.bai.service.AppointService;
 import com.bai.service.BookService;
 import com.bai.service.NewsService;
+import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -119,7 +120,8 @@ public class AdminController {
 
     // 跳转至发布公告界面
     @RequestMapping("/admin_news_add.html")
-    public String ToNewsAdd() {
+    public String ToNewsAdd(Model model) {
+        model.addAttribute("newsList", Constants.News.values());
         return "admin_news_add";
     }
 
@@ -146,6 +148,7 @@ public class AdminController {
     public String ToupdateNews(String newsId, Model model) {
         News news = newsService.queryById(Long.parseLong(newsId));
         model.addAttribute("news", news);
+        model.addAttribute("newsList", Constants.News.values());
         return "admin_news_edit";
     }
 

@@ -43,14 +43,15 @@
     
     
     <insert id="addNews" parameterType="News">
-        insert into library.news (news_admin, news_title, news_content, create_time)
-        values (#{newsAdmin}, #{newsTitle}, #{newsContent}, #{createTime});
+        insert into library.news (news_admin, news_title, news_content, create_time, news_type)
+        values (#{newsAdmin}, #{newsTitle}, #{newsContent}, #{createTime}, #{newsType});
     </insert>
     
     <update id="updateNews" parameterType="News">
         update library.news
         set news_title=#{newsTitle},
-            news_content=#{newsContent}
+            news_content=#{newsContent},
+            news_type=#{newsType}
         where news_id = #{newsId};
     </update>
     
