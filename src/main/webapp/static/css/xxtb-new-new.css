@@ -1,0 +1,706 @@
+﻿body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+a {
+    color: #005b8c;
+    text-decoration: none;
+}
+
+a:hover {
+    background: #005b8c;
+    color: #fff;
+    font-weight: normal;
+}
+
+.content-wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+
+/****************************头部：LOGO、导航栏菜单**********************************/
+#xxtb-banner {
+    height: 80px;
+    background: #242d3c;
+}
+
+#xxtb-banner-logo {
+    float: left;
+    padding-top: 20px;
+}
+
+#xxtb-banner-menu {
+    float: right;
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+    padding-top: 40px;
+}
+
+#xxtb-banner-menu a {
+    margin-left: 40px;
+}
+
+#xxtb-banner-menu .menu {
+    color: #fff;
+}
+
+#xxtb-banner-menu .menu-selected {
+    color: #e26b2f;
+}
+
+/****************************上半部：搜索框、新书驾到**********************************/
+#xxtb-top {
+    height: 220px;
+    background: url(../images/back-library.png) no-repeat scroll 0 0 #ff7f38;
+}
+
+#xxtb-xinshujiadao-title {
+    padding-top: 100px;
+}
+
+#xxtb-search-form #searchtxt {
+    width: 635px;
+    height: 50px;
+    font-size: 16px;
+    font-family: 'Microsoft Yahei';
+}
+
+#xxtb-search-form #searchfield {
+    margin-left: 10px;
+    height: 50px;
+    width: 145px;
+    font-size: 16px;
+    font-family: 'Microsoft Yahei';
+}
+
+#xxtb-search-form #button {
+    margin-left: 10px;
+    height: 50px;
+    width: 120px;
+    background: url(../images/search.png) no-repeat;
+}
+
+#xxtb-xinshujiadao {
+    margin-top: 80px;
+}
+
+#xxtb-xinshujiadao ul {
+    list-style: none;
+    padding-left: 30px;
+}
+
+#xxtb-xinshujiadao ul img {
+    float: left;
+    height: 293px;
+    width: 193px;
+    margin-right: 35px;
+}
+
+#xxtb-xinshujiadao .mr_frbox {
+    padding: 0;
+}
+
+#xxtb-xinshujiadao .mr_frBtnL {
+    margin: 100px 22px 0px 0px;
+}
+
+#xxtb-xinshujiadao .mr_frBtnR {
+    margin: 100px 22px 0px 0px;
+}
+
+#xxtb-xinshujiadao .mr_frUl ul li img {
+    border: 0;
+}
+
+#xxtb-xinshujiadao .arrow {
+    position: absolute;
+    top: 58%;
+    z-index: 100;
+    width: 29px;
+    height: 36px;
+    cursor: pointer;
+}
+
+#xxtb-xinshujiadao .arrow-left {
+    background: url(../images/arrow_l.png) no-repeat;
+    left: 17%;
+}
+
+#xxtb-xinshujiadao .arrow-right {
+    background: url(../images/arrow_r.png) no-repeat;
+    right: 17%;
+}
+
+/****************************内容：分类浏览、热门关注图书榜**********************************/
+#xxtb-content {
+    padding-bottom: 30px;
+    min-height: 325px;
+}
+
+#xxtb-content-left {
+    width: 600px;
+    float: left;
+    padding-top: 12px;
+}
+
+.browse-book-title {
+    border-bottom: 1px solid #a4a4a4;
+    font-family: '楷体';
+    font-size: 18px;
+    padding: 20px 0 5px 0;
+}
+
+#browse-by-month {
+    margin-top: 15px;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    color: #5f5f5f;
+}
+
+#browse-by-location, #browse-by-subject, #browse-by-callno, #browse-by-language {
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    color: #5f5f5f;
+}
+
+#browse-by-month ul li, #browse-by-subject ul li, #browse-by-language ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+#browse-by-month ul li a, #browse-by-subject ul li a, #browse-by-language ul li a, #browse-by-location ul li a, #browse-by-callno ul li a {
+    line-height: 25px;
+}
+
+#browse-by-location ul li {
+    display: block;
+    width: 115px;
+    float: left;
+}
+
+#browse-by-callno ul li {
+    display: block;
+    width: 130px;
+    float: left;
+}
+
+#xxtb-content .focus a {
+    color: #e26b2f;
+    font-weight: bold;
+}
+
+.select-label {
+    width: 100%;
+    float: left;
+    font-weight: bold;
+}
+
+.select-option {
+    height: 22px;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    color: #5f5f5f;
+}
+
+#browse-type {
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    line-height: 35px;
+}
+
+#browse-order {
+    margin-top: -20px;
+    text-align: right;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    line-height: 35px;
+    color: #5f5f5f;
+}
+
+#browse-order .order-option {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#browse-order .icon_n {
+    background: url(../images/btn_new.gif) 0 0 no-repeat;
+}
+
+#browse-order .icon_t {
+    background: url(../images/btn_new.gif) -8px 0 no-repeat;
+}
+
+#browse-order .icon_b {
+    background: url(../images/btn_new.gif) -16px 0 no-repeat;
+}
+
+#browse-order .icon {
+    display: inline-block;
+    height: 11px;
+    width: 7px;
+    /*background-position: 0 -195px;*/
+    margin-left: 5px;
+    *vertical-align: middle;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#browse-books ul {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+#browse-books ul li {
+    float: left;
+}
+
+#browse-books .book-full {
+    width: 33%;
+    min-width: 320px;
+
+    margin-bottom: 40px;
+}
+
+#browse-books .book-image {
+    float: left;
+    padding-top: 0px;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#browse-books .book-image img {
+    max-width: 130px;
+    max-height: 130px;
+}
+
+#browse-books .book-intro {
+    float: left;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    line-height: 20px;
+    width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#browse-books .book-intro li.book-title {
+    color: #005b8c;
+}
+
+#browse-books .book-intro ul li {
+    list-style: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 13em;
+}
+
+#book-table {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#book-table tr:nth-of-type(1) {
+    background: #e26b2f;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+#book-table tr {
+    line-height: 30px;
+}
+
+#book-table tr td {
+    padding: 3px;
+}
+
+#pagging {
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    text-align: center;
+    line-height: 35px;
+}
+
+#pagging a {
+    margin-left: 8px;
+}
+
+#xxtb-content-right {
+    float: left;
+    width: 255px;
+    margin-left: 70px;
+    padding-top: 12px;
+}
+
+#hot-books ul {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+#hot-books ul li {
+    float: left;
+    margin-bottom: 15px;
+}
+
+#hot-books .hot-book-image {
+    height: 174px;
+    padding-bottom: 20px;
+}
+
+#hot-books .hot-book-image img {
+    float: left;
+    width: 130px;
+
+}
+
+#hot-books .hot-book-image .book-intro {
+    float: left;
+    padding-left: 20px;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    line-height: 20px;
+    width: 105px;
+}
+
+#hot-books .hot-book-image .book-intro .book-title {
+    color: #005b8c;
+    margin-bottom: 10px;
+
+}
+
+#hot-books .hot-book-image .book-intro .book-author {
+    margin-bottom: 10px;
+}
+
+/****************************底部：LOGO、分享、导航栏展开**********************************/
+#xxtb-bottom {
+    height: 180px; /*480px;*/
+    background: #242d3c;
+}
+
+#xxtb-bottom-top {
+    text-align: center;
+    /*float:left;*/
+    /*width:162px;/*280px;*/
+}
+
+#xxtb-bottom-logo {
+    padding-top: 43px; /*50px;*/
+    padding-bottom: 40px;
+}
+
+#xxtb-bottom-share {
+    display: none;
+}
+
+#xxtb-bottom-share img {
+    margin-right: 10px;
+}
+
+#xxtb-bottom-down {
+    float: left;
+}
+
+#xxtb-bottom-menu {
+    font-size: 14px;
+    /*padding-top:60px;*/
+    float: left;
+}
+
+#xxtb-bottom-menu .bottom-menu {
+    font-family: 'Microsoft Yahei';
+    float: left;
+    width: 153px; /*133px;*/
+    text-align: left; /*center;*/
+}
+
+#xxtb-bottom .menu {
+    color: #fff;
+}
+
+#xxtb-bottom-menu .menu-selected {
+    color: #e26b2f;
+}
+
+#xxtb-bottom-menu-detail {
+    color: #fff;
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+}
+
+#xxtb-bottom-menu-detail ul {
+    float: left;
+    width: 153px; /*93px;/*95px*/
+    list-style: none;
+    line-height: 30px;
+    padding-left: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+/****************************新书详细页面**********************************/
+.article h1 {
+    color: #005b8c;
+    font-size: 24px;
+    font-family: Times New Roman, 宋体;
+    padding: 22px 0;
+}
+
+.article {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+}
+
+#book-basic-info .basic-image {
+    display: block;
+    width: 216px;
+    /*height:300px;*/
+    float: left;
+    min-height: 260px;
+}
+
+#book-basic-info .basic-image img {
+    float: left;
+    max-width: 216px;
+    max-height: 260px;
+
+}
+
+#book-basic-info .basic-content {
+    display: block;
+    /*margin-left:140px;
+    min-height:300px;*/
+}
+
+#book-basic-info .basic-content ul {
+    list-style: none;
+    padding-left: 0;
+    line-height: 30px;
+    min-height: 180px;
+    font-size: 16px;
+    font-family: Times New Roman, 宋体;
+}
+
+#book-basic-info .basic-content ul li.button a {
+    background: #e26b2f;
+    padding: 8px;
+    color: white;
+}
+
+#book-table tr td.aligncenter {
+    text-align: center;
+}
+
+#book-table tr td.aligncenter a {
+    background: #e26b2f;
+    padding: 8px;
+    color: white;
+}
+
+#book-detail-info {
+    border-top: 2px solid #e26b2f;
+    margin-top: 40px;
+}
+
+#book-detail-info .detail-label {
+    font-size: 18px;
+    color: #005b8c;
+    padding-top: 32px;
+    padding-bottom: 28px;
+}
+
+#book-detail-info .detail-content {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+#book-detail-info .detail-content-mulu {
+    line-height: 26px;
+    font-size: 14px;
+}
+
+/****************************搜索结果页面**********************************/
+#search-results-num {
+    text-align: right;
+    line-height: 45px;
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+}
+
+#search-results-detail {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+}
+
+.search-result {
+    border-top: 1px dashed #ddd;
+    padding-top: 10px;
+}
+
+#search-results-detail .detail-image img {
+    float: left;
+    width: 120px;
+    height: 180px;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+#search-results-detail .detail-content ul {
+    list-style: none;
+    padding-left: 0;
+    line-height: 25px;
+    min-height: 180px;
+}
+
+/**********************************内页搜索框*************************************/
+#xxtb-content-top {
+    height: 150px;
+    background: url(../images/back-library-small.png) no-repeat scroll 0 0 #ff7f38;
+}
+
+#xxtb-content-search-form {
+    padding-top: 50px;
+}
+
+#xxtb-content-search-form #searchtxt {
+    width: 635px;
+    height: 50px;
+    font-size: 16px;
+    font-family: 'Microsoft Yahei';
+}
+
+#xxtb-content-search-form #searchfield {
+    margin-left: 10px;
+    height: 50px;
+    width: 145px;
+    font-size: 16px;
+    font-family: 'Microsoft Yahei';
+}
+
+#xxtb-content-search-form #button {
+    margin-left: 10px;
+    height: 50px;
+    width: 120px;
+    background: url(../images/search.png) no-repeat;
+}
+
+/**********************************热门浏览页面*************************************/
+#xxtb-top-for-click {
+    height: 250px;
+    background: url(../images/back-library.png) no-repeat scroll 0 0 #ff7f38;
+}
+
+.browse-title {
+    margin-top: 40px;
+    margin-bottom: 32px;
+    font-size: 26px;
+    font-family: 黑体;
+}
+
+.browse-by-language {
+    padding-bottom: 8px;
+    border-bottom: 3px solid #a4a4a4;
+    margin-bottom: 32px;
+}
+
+.browse-by-language span {
+    padding: 0 80px 0 20px;
+}
+
+.browse-by-click-book {
+    width: 48%;
+    float: left;
+    padding-bottom: 30px;
+    min-height: 235px;
+    padding-right: 10px;
+}
+
+.browse-by-click-book .basic-image {
+    float: left;
+    min-height: 235px;
+}
+
+.browse-by-click-book .basic-image img {
+    float: left;
+    width: 120px;
+    height: 184px;
+    padding-right: 32px;
+}
+
+.browse-by-click-book .basic-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.browse-by-click-book .basic-content ul li {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.browse-by-click-book .basic-content ul li.title {
+    font-size: 18px;
+    font-family: 'Microsoft Yahei';
+    padding-bottom: 14px;
+    height: 25px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.browse-by-click-book .basic-content ul li.limit {
+    height: 24px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.browse-by-click-book .basic-content ul li.button a {
+    background: #e26b2f;
+    padding: 5px;
+    color: white;
+}
+
+#click-pagging {
+    margin-bottom: 20px;
+}
+
+#click-pagging .left {
+    float: left;
+}
+
+#click-pagging .right {
+    float: right;
+}
+
+#click-pagging .right span {
+    margin-right: 5px;
+}
+
+#xxtb-bottom {
+    color: #fff;
+    font-size: 14px;
+}
+
+#xxtb-banner-logo a:hover {
+    background: none;
+}
+
+#xxtb-bottom a:hover {
+    background: none;
+}

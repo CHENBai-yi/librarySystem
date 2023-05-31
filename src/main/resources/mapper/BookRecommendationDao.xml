@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.BookRecommendationDao">
+    <resultMap id="BaseResultMap" type="com.bai.pojo.BookRecommendation">
+        <id column="book_recommendation_id" jdbcType="INTEGER" property="id"/>
+        <result column="book_recommendation_reader_id" jdbcType="BIGINT" property="readerId"/>
+        <result column="book_recommendation_book_id" jdbcType="BIGINT" property="bookId"/>
+        <result column="book_recommendation_recommendation_reason" jdbcType="VARCHAR" property="recommendationReason"/>
+        <result column="book_recommendation_recommendation_time" jdbcType="TIMESTAMP" property="recommendationTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        book_recommendation.id as book_recommendation_id, book_recommendation.reader_id as book_recommendation_reader_id,
+    book_recommendation.book_id as book_recommendation_book_id, book_recommendation.recommendation_reason as book_recommendation_recommendation_reason, 
+    book_recommendation.recommendation_time as book_recommendation_recommendation_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from book_recommendation book_recommendation
+        where book_recommendation.id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from book_recommendation
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookRecommendation"
+            useGeneratedKeys="true">
+        insert into book_recommendation (reader_id, book_id, recommendation_reason,
+                                         recommendation_time)
+        values (#{readerId,jdbcType=BIGINT}, #{bookId,jdbcType=BIGINT}, #{recommendationReason,jdbcType=VARCHAR},
+                #{recommendationTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookRecommendation"
+            useGeneratedKeys="true">
+        insert into book_recommendation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="readerId != null">
+                reader_id,
+            </if>
+            <if test="bookId != null">
+                book_id,
+            </if>
+            <if test="recommendationReason != null">
+                recommendation_reason,
+            </if>
+            <if test="recommendationTime != null">
+                recommendation_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="readerId != null">
+                #{readerId,jdbcType=BIGINT},
+            </if>
+            <if test="bookId != null">
+                #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="recommendationReason != null">
+                #{recommendationReason,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendationTime != null">
+                #{recommendationTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.BookRecommendation">
+        update book_recommendation
+        <set>
+            <if test="readerId != null">
+                reader_id = #{readerId,jdbcType=BIGINT},
+            </if>
+            <if test="bookId != null">
+                book_id = #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="recommendationReason != null">
+                recommendation_reason = #{recommendationReason,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendationTime != null">
+                recommendation_time = #{recommendationTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bai.pojo.BookRecommendation">
+        update book_recommendation
+        set reader_id             = #{readerId,jdbcType=BIGINT},
+            book_id               = #{bookId,jdbcType=BIGINT},
+            recommendation_reason = #{recommendationReason,jdbcType=VARCHAR},
+            recommendation_time   = #{recommendationTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <!--  自己写的-->
+    
+    <resultMap id="BookRecommendationMap" type="bookRecommendationVo">
+        <id property="readerId" column="reader_id" jdbcType="BIGINT"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="recommendationTime" column="timeInterval" jdbcType="VARCHAR"/>
+        <collection property="dataVos"
+                    javaType="list"
+                    ofType="com.bai.pojo.vo.BookRecommendationVo$DataVo"
+                    column="reader_id"
+                    select="findRecentlyHotBookByReader"/>
+    </resultMap>
+    <resultMap id="dataVoMap" type="com.bai.pojo.vo.BookRecommendationVo$DataVo">
+        <id property="bookId" column="book_id" jdbcType="BIGINT"/>
+        <result property="bookTitle" column="name" jdbcType="VARCHAR"/>
+        <result property="bookAuthor" column="author" jdbcType="VARCHAR"/>
+        <result property="publishYear" column="publishYear" jdbcType="VARCHAR"/>
+        <result property="isbn" column="ISBN" jdbcType="VARCHAR"/>
+        <result property="reason" column="recommendation_reason" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <select id="findRecentlyHotBook" resultMap="BookRecommendationMap">
+        SELECT book_recommendation.reader_id,
+               reader_card.username,
+               CONCAT(min(book_recommendation.recommendation_time), "~",
+                      max(book_recommendation.recommendation_time)) as timeInterval
+        from library.book_recommendation
+                 NATURAL JOIN library.reader_card
+        GROUP BY book_recommendation.reader_id, reader_card.username
+    </select>
+    <select id="findRecentlyHotBookByReader" resultMap="dataVoMap">
+        select *, CONCAT(book_info.publish, " ", YEAR(book_info.pub_date)) as publishYear
+        from library.book_recommendation
+                 NATURAL join library.book_info
+        where book_recommendation.reader_id = #{reader_id}
+    </select>
+</mapper>

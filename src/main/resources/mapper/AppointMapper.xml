@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.AppointMapper">
+    <cache readOnly="true" eviction="FIFO" flushInterval="60000" size="512"/>
+    <update id="updateAppointInfo" parameterType="AppointInfo">
+        update library.appoint_info
+        set appoint_time=#{appointTime},
+            appoint_text=#{appointText},
+            appoint_ins=#{appointIns},
+            appoint_role=#{appointRole},
+            update_time=#{updateTime};
+    </update>
+    
+    
+    <update id="updateAppointNum" parameterType="long">
+        update appoint_info
+        set appoint_num=appoint_num + 1;
+    </update>
+    
+    <delete id="delAppoint" parameterType="long">
+        delete
+        from library.appoint
+        where appoint_id = #{appointId};
+    </delete>
+    
+    <insert id="addAppointInfo" parameterType="AppointInfo">
+        insert into library.appoint_info (appoint_text, appoint_time, re_appoint_num, appoint_ins, appoint_role,
+                                          create_time, admin_name)
+        values (#{appointText}, #{appointTime}, #{reappointNum}, #{appointIns}, #{appointRole}, #{createTime},
+                #{adminName});
+    </insert>
+    
+    
+    <insert id="addAppointTake" parameterType="AppointInfo">
+        insert into library.appoint (reader_id, username, location, bookName, appoint_time)
+        values (#{readerId}, #{username}, #{location}, #{bookName}, #{appointTime});
+    </insert>
+    
+    <select id="queryInfo" resultType="AppointInfo">
+        select *
+        from library.appoint_info;
+    </select>
+    
+    <!--    -->
+    <!--    <resultMap id="appointInfo" type="RoomInfo">-->
+    <!--        <result property="room" column="room"/>-->
+    <!--        <result property="seatNum" column="seat_num"/>-->
+    <!--        <result property="isnull" column="is_null"/>-->
+    <!--        <collection property="books" ofType="Book">-->
+    <!--            <result property="bookId" column="book_id"/>-->
+    <!--            <result property="name" column="name"/>-->
+    <!--        </collection>-->
+    <!--    </resultMap>-->
+    
+    <!--    <select id="queryAppointInfo" resultMap="appointInfo">-->
+    <!--        select r.room,r.seat_num,r.is_null,b.book_id,b.name   from room r ,book_info b;-->
+    <!--    </select>-->
+    
+    
+    <select id="queryRoomInfo" resultType="RoomInfo">
+        select *
+        from library.room;
+    </select>
+    
+    <select id="queryAppointTake" resultType="Appoint" parameterType="long">
+        select *
+        from library.appoint
+        where reader_id = #{readerId};
+    </select>
+    
+    
+    <select id="queryAllAppoint" resultType="Appoint">
+        select *
+        from library.appoint;
+    </select>
+</mapper>
