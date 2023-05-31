@@ -420,8 +420,8 @@
 			<nav class="anchor-nav" role="navigation">
 				<a alt="News" class="active" href="#front-news" id="anchor1">01<i class="anchor-tip">最新消息</i></a>
 				<a alt="Selected Services" href="#front-service" id="anchor2">02<i class="anchor-tip">热门服务</i></a>
-				<a alt="Collections" href="#front-resource" id="anchor3">03<i class="anchor-tip">馆藏资源</i></a>
-				<a alt="Special Collections" href="#front-special" id="anchor4">04<i class="anchor-tip">特色资源</i></a>
+<%--				<a alt="Collections" href="#front-resource" id="anchor3">03<i class="anchor-tip">馆藏资源</i></a>
+				<a alt="Special Collections" href="#front-special" id="anchor4">04<i class="anchor-tip">特色资源</i></a>--%>
 				<a alt="Recommended Reading" href="#front-recommendation" id="anchor5">05<i
 						class="anchor-tip">阅读推荐</i></a>
 			</nav>
@@ -872,314 +872,314 @@
 					</div>
 				</div>
 			</div>
-			<div class="panel-block" id="front-resource">
-				<div class="pane-title-wrapper"><h3 class="pane-title"><span>馆藏资源</span></h3></div>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2">
-							<div class="panel-pane pane-block pane-block-50">
-								
-								
-								<div class="pane-content">
-									<!-- 自定义区块开始：资源左侧介绍页列表
-									@Author wanghx
-									-->
-									<ul id="custom-front-resource-left">
-										<c:if test="${classInfoList==null}">
-											<!--图书和电子图书不是一个url-->
-											<li>
-												<p>
-													<a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
-													   target="_blank" title="">图书/期刊</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&titleType=BOOKS"
-													   target="_blank" title="">电子图书</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&amp;titleType=JOURNALS"
-													   target="_blank" title="">电子期刊</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://dbnav.lib.pku.edu.cn/" target="_blank"
-													   title="">数据库</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=35"
-													   target="_blank" title="">学位论文</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="zy/zzzy/guji" target="_blank" title="">古籍</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://media.lib.pku.edu.cn/" target="_blank"
-													   title="">视频/音频</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://appendcd.lib.pku.edu.cn/"
-													   target="_blank">随书光盘</a>
-												</p>
-											</li>
-											<li>
-												<p>
-													<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=34"
-													   target="_blank" title="">报纸</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=38"
-													   target="_blank" title="">统计数据/研究数据</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=37"
-													   target="_blank" title="">档案</a></p>
-											</li>
-											<li>
-												<p>
-													<a href="/portal/cn/zy/software" target="_blank"
-													   title="">工具与软件</a>
-												</p>
-											</li>
-										</c:if>
-										<c:if test="${classInfoList!=null}">
-											<c:forEach items="${classInfoList}" var="classs">
-												<li>
-													<p>
-															<%--todo 这里需要返回的是classVo--%>
-														<a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
-														   target="_blank" title="">${classs.className}</a></p>
-												</li>
-											</c:forEach>
-										</c:if>
-									</ul>
-									
-									<!-- 自定义区块结束 --> </div>
-							
-							
-							</div>
-						</div>
-						<div class="col-lg-10 col-md-10">
-							<div class="panel-pane pane-block pane-block-51">
-								
-								
-								<div class="pane-content">
-									<!-- 自定义区块开始：资源右侧含图片资源链接
-									@Author wanghx
-									-->
-									<div id="custom-front-resource-right">
-										<h3>
-											文学图书奖系列</h3>
-										<ul>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-												<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
-												   target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-1.jpg"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
-														   target="_blank" title="">艾略特奖/ The T. S. Eliot Prize</a>
-													</p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-												<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
-												   target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-2.jpg"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
-														   target="_blank" title="">布克奖/ The Man Booker Prize</a></p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-												<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
-												   target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-3.jpg"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
-														   target="_blank" title="">龚古尔奖/Le prix Goncourt</a></p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-												<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
-												   target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-4.jpg"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
-														   target="_blank" title="">美国国家图书奖/National Book
-															Awards</a></p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-												<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
-												   target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-5.jpg"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
-														   target="_blank" title="">普利策小说奖/ The Pulitzer Prize for
-															Fiction</a></p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
-											<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6 resource-readmore">
-												<a href="zy/huojiangtushu" target="_blank" title="">
-													<div class="prize-img"><img alt=""
-													                            src="/static/picture/custom-front-resource-right-5.png"/>
-													</div>
-													<div class="prize-info"><p class="prize-title">
-														<a href="zy/huojiangtushu" target="_blank"
-														   title="">了解更多+</a></p>
-														<p class="prize-intro">
-														</p></div>
-												</a>
-											</li>
+			<%--			<div class="panel-block" id="front-resource">
+							<div class="pane-title-wrapper"><h3 class="pane-title"><span>馆藏资源</span></h3></div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-2 col-md-2">
+										<div class="panel-pane pane-block pane-block-50">
+											
+											
+											<div class="pane-content">
+												<!-- 自定义区块开始：资源左侧介绍页列表
+												@Author wanghx
+												-->
+												<ul id="custom-front-resource-left">
+													<c:if test="${classInfoList==null}">
+														<!--图书和电子图书不是一个url-->
+														<li>
+															<p>
+																<a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
+																   target="_blank" title="">图书/期刊</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&titleType=BOOKS"
+																   target="_blank" title="">电子图书</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://zm8lp2fe5j.search.serialssolutions.com/ejp/?libHash=ZM8LP2FE5J#/?language=zh-CN&amp;titleType=JOURNALS"
+																   target="_blank" title="">电子期刊</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://dbnav.lib.pku.edu.cn/" target="_blank"
+																   title="">数据库</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=35"
+																   target="_blank" title="">学位论文</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="zy/zzzy/guji" target="_blank" title="">古籍</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://media.lib.pku.edu.cn/" target="_blank"
+																   title="">视频/音频</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://appendcd.lib.pku.edu.cn/"
+																   target="_blank">随书光盘</a>
+															</p>
+														</li>
+														<li>
+															<p>
+																<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=34"
+																   target="_blank" title="">报纸</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=38"
+																   target="_blank" title="">统计数据/研究数据</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="http://dbnav.lib.pku.edu.cn/newdbi?field_fenlei_neirongleixing_tid%5B%5D=37"
+																   target="_blank" title="">档案</a></p>
+														</li>
+														<li>
+															<p>
+																<a href="/portal/cn/zy/software" target="_blank"
+																   title="">工具与软件</a>
+															</p>
+														</li>
+													</c:if>
+													<c:if test="${classInfoList!=null}">
+														<c:forEach items="${classInfoList}" var="classs">
+															<li>
+																<p>
+																		&lt;%&ndash;todo 这里需要返回的是classVo&ndash;%&gt;
+																	<a href="http://162.105.138.200/uhtbin/cgisirsi/0/0/0/49"
+																	   target="_blank" title="">${classs.className}</a></p>
+															</li>
+														</c:forEach>
+													</c:if>
+												</ul>
+												
+												<!-- 自定义区块结束 --> </div>
 										
-										</ul>
-										<p>
-											<a href="zy/huojiangtushu" target="_blank" title="">往届精选图书&gt;</a></p>
+										
+										</div>
+									</div>
+									<div class="col-lg-10 col-md-10">
+										<div class="panel-pane pane-block pane-block-51">
+											
+											
+											<div class="pane-content">
+												<!-- 自定义区块开始：资源右侧含图片资源链接
+												@Author wanghx
+												-->
+												<div id="custom-front-resource-right">
+													<h3>
+														文学图书奖系列</h3>
+													<ul>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+															<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
+															   target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-1.jpg"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=73"
+																	   target="_blank" title="">艾略特奖/ The T. S. Eliot Prize</a>
+																</p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+															<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
+															   target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-2.jpg"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=72"
+																	   target="_blank" title="">布克奖/ The Man Booker Prize</a></p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+															<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
+															   target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-3.jpg"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=77"
+																	   target="_blank" title="">龚古尔奖/Le prix Goncourt</a></p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+															<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
+															   target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-4.jpg"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=70"
+																	   target="_blank" title="">美国国家图书奖/National Book
+																		Awards</a></p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+															<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
+															   target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-5.jpg"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="/portal/cn/zy/huojiangtushu?field_selected_jiangxiang_tid=71"
+																	   target="_blank" title="">普利策小说奖/ The Pulitzer Prize for
+																		Fiction</a></p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+														<li class="col-lg-4 col-md-4 col-sm-6 col-xs-6 resource-readmore">
+															<a href="zy/huojiangtushu" target="_blank" title="">
+																<div class="prize-img"><img alt=""
+																							src="/static/picture/custom-front-resource-right-5.png"/>
+																</div>
+																<div class="prize-info"><p class="prize-title">
+																	<a href="zy/huojiangtushu" target="_blank"
+																	   title="">了解更多+</a></p>
+																	<p class="prize-intro">
+																	</p></div>
+															</a>
+														</li>
+													
+													</ul>
+													<p>
+														<a href="zy/huojiangtushu" target="_blank" title="">往届精选图书&gt;</a></p>
+												</div>
+											</div>
+										
+										
+										</div>
 									</div>
 								</div>
-							
-							
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="panel-block" id="front-special">
-				<div class="pane-title-wrapper"><h3 class="pane-title"><span>特色资源</span></h3></div>
-				<div class="container">
-					<div class="panel-pane pane-block pane-block-67">
-						
-						
-						<div class="pane-content">
-							<div id="custom-front-special">
-								<div class="special-readmore">
-    <span><a href="/portal/cn/zy/tszy">浏览更多></a>
+						<div class="panel-block" id="front-special">
+							<div class="pane-title-wrapper"><h3 class="pane-title"><span>特色资源</span></h3></div>
+							<div class="container">
+								<div class="panel-pane pane-block pane-block-67">
+									
+									
+									<div class="pane-content">
+										<div id="custom-front-special">
+											<div class="special-readmore">
+				<span><a href="/portal/cn/zy/tszy">浏览更多></a>
+											</div>
+											<ul class="row">
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="http://rbdl.calis.edu.cn/aopac/indexold.jsp" target="_blank" title="">
+														<div class="special-img"><img alt="古文献资源库"
+																					  data-src="/static/picture/custom-front-special-1.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															古文献资源库
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="http://162.105.138.115/index.php?m=content&c=index&a=lists&catid=33&sserial=3713"
+													   target="_blank" title="">
+														<div class="special-img"><img alt="北大讲座"
+																					  data-src="/static/picture/custom-front-special-2.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															北大讲座
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/minguowenxian" target="_blank" title="">
+														<div class="special-img"><img alt="晚清民国文献"
+																					  data-src="/static/picture/custom-front-special-3.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															晚清民国文献
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/xiwentecang" target="_blank" title="">
+														<div class="special-img"><img alt="西文特藏"
+																					  data-src="/static/picture/custom-front-special-4.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															西文特藏
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/yandalunwen" target="_blank" title="">
+														<div class="special-img"><img alt="燕大学位论文"
+																					  data-src="/portal/sites/default/files/siteimages/custom-front-special-5.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															燕大学位论文
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/beidawenku" target="_blank" title="">
+														<div class="special-img"><img alt="北大文库"
+																					  data-src="/portal/sites/default/files/siteimages/custom-front-special-6.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															北大文库
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/mingrencangshu" target="_blank" title="">
+														<div class="special-img"><img alt="名人藏书"
+																					  data-src="/portal/sites/default/files/siteimages/custom-front-special-7.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															名人藏书
+														</div>
+													</a>
+												</li>
+												<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+													<a href="/portal/cn/zy/tszy/shuzitecang" target="_blank" title="">
+														<div class="special-img"><img alt="数字特藏"
+																					  data-src="/portal/sites/default/files/siteimages/custom-front-special-8.png"
+																					  src="/static/picture/image_placeholder.gif"/>
+														</div>
+														<div class="special-title">
+															数字特藏
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								
+								
 								</div>
-								<ul class="row">
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="http://rbdl.calis.edu.cn/aopac/indexold.jsp" target="_blank" title="">
-											<div class="special-img"><img alt="古文献资源库"
-											                              data-src="/static/picture/custom-front-special-1.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												古文献资源库
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="http://162.105.138.115/index.php?m=content&c=index&a=lists&catid=33&sserial=3713"
-										   target="_blank" title="">
-											<div class="special-img"><img alt="北大讲座"
-											                              data-src="/static/picture/custom-front-special-2.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												北大讲座
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/minguowenxian" target="_blank" title="">
-											<div class="special-img"><img alt="晚清民国文献"
-											                              data-src="/static/picture/custom-front-special-3.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												晚清民国文献
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/xiwentecang" target="_blank" title="">
-											<div class="special-img"><img alt="西文特藏"
-											                              data-src="/static/picture/custom-front-special-4.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												西文特藏
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/yandalunwen" target="_blank" title="">
-											<div class="special-img"><img alt="燕大学位论文"
-											                              data-src="/portal/sites/default/files/siteimages/custom-front-special-5.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												燕大学位论文
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/beidawenku" target="_blank" title="">
-											<div class="special-img"><img alt="北大文库"
-											                              data-src="/portal/sites/default/files/siteimages/custom-front-special-6.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												北大文库
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/mingrencangshu" target="_blank" title="">
-											<div class="special-img"><img alt="名人藏书"
-											                              data-src="/portal/sites/default/files/siteimages/custom-front-special-7.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												名人藏书
-											</div>
-										</a>
-									</li>
-									<li class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<a href="/portal/cn/zy/tszy/shuzitecang" target="_blank" title="">
-											<div class="special-img"><img alt="数字特藏"
-											                              data-src="/portal/sites/default/files/siteimages/custom-front-special-8.png"
-											                              src="/static/picture/image_placeholder.gif"/>
-											</div>
-											<div class="special-title">
-												数字特藏
-											</div>
-										</a>
-									</li>
-								</ul>
 							</div>
-						</div>
-					
-					
-					</div>
-				</div>
-			</div>
+						</div>--%>
 			<div class="panel-block" id="front-recommendation">
 				<div class="pane-title-wrapper"><h3 class="pane-title"><span>阅读推荐</span></h3></div>
 				<div class="container">
