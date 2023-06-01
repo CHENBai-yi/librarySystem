@@ -96,7 +96,7 @@ public class LoginController {
                         if (s != null) {
                             String msg = map.get("msg");
                             String username = map.get("username");
-                            redirectAttributes.addFlashAttribute("msg", msg + "欢迎您：" + username);
+                            redirectAttributes.addFlashAttribute("msg", msg + "欢迎您：<br>" + username);
                             return s;
                         }
                     }
