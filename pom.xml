@@ -19,9 +19,17 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <mapStruct.version>1.5.5.Final</mapStruct.version>
         <lombok.version>1.18.20</lombok.version>
+        <hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
     </properties>
     
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        
         <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
         <dependency>
             <groupId>org.mapstruct</groupId>

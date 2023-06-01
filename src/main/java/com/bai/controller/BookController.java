@@ -1,10 +1,13 @@
 package com.bai.controller;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.bo.BookCommentBo;
 import com.bai.pojo.bo.BookQueryBo;
+import com.bai.pojo.vo.BookCommentVo;
 import com.bai.pojo.vo.BookRecommendationVo;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
+import com.bai.service.BookCommentService;
 import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
 import com.bai.utils.DateUtils;
@@ -12,11 +15,10 @@ import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -26,6 +28,8 @@ public class BookController {
     private BookService bookService;
     @Autowired
     private BookRecommendationService bookRecommendationService;
+    @Autowired
+    private BookCommentService bookCommentService;
 
     // 查看所有的书籍
     @RequestMapping("/admin_books.html")
@@ -101,6 +105,12 @@ public class BookController {
         if (bookQueryBo == null) model.addAttribute("bookQuery", new BookQueryBo());
         else model.addAttribute("bookQuery", bookQueryBo);
         return "more_new_book";
+    }
+
+    @ResponseBody
+    @PostMapping(path = Constants.AccessPageUrl.BOOK_COMMENT)
+    public BookCommentVo bookComment(@Valid BookCommentBo bookCommentBo) {
+        return bookCommentService.insertOneComment(bookCommentBo);
     }
 
 }

@@ -12,6 +12,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>新书通报--图书详细信息</title>
+	<link href='static/css/style.min.css' id='wp-block-library-css' media='all' rel='stylesheet' type='text/css'/>
+	<link href='static/css/classic-themes.min.css' id='classic-theme-styles-css' media='all' rel='stylesheet'
+	      type='text/css'/>
+	<link href='static/css/bootstrap.min.css' id='_bootstrap-css' media='all' rel='stylesheet' type='text/css'/>
+	<link href='static/css/font-awesome.min.css' id='_fontawesome-css' media='all' rel='stylesheet' type='text/css'/>
+	<link href='static/css/main.min.css' id='_main-css' media='all' rel='stylesheet' type='text/css'/>
+	<script id='jquery-js' src='static/js/jquery.min.js' type='text/javascript'></script>
+	<!--[if IE]>
+	<script src="static/js/html5.min.js"></script><![endif]-->
 	<c:if test="${msg!=null}">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 		<style type="text/css">
@@ -200,8 +209,6 @@
 					</div>
 				</div>
 			</c:if>
-			
-			
 			<c:if test="${detailList==null}">
 				<div class="article">
 					<h1>经济与法探究--从部门法到法治一般(精)/法律与社会书系/光明社科文库(0)</h1>
@@ -272,6 +279,494 @@
 					</div>
 				</div>
 			</c:if>
+			<div style="border-top: 2px solid #e26b2f;margin: 40px;"></div>
+			<div class="theme-box" id="comments">
+				<div class="box-body notop">
+					<div class="title-theme">评论 <small>共243条</small></div>
+				</div>
+				
+				<div class="no_webshot main-bg theme-box box-body radius8 main-shadow">
+					<div class="flex ac jsb virtual-input " fixed-input="#respond">
+						<div class="flex flex1 ac"><img alt="头像" class="lazyload avatar avatar-id-0"
+						                                data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
+						                                src="static/picture/avatar-default.png">
+							<div class="text-ellipsis simulation mr10">欢迎您留言获取订阅地址！</div>
+						</div>
+						<span class="but c-blue">提交</span></div>
+					<div class="mobile-fixed" id="respond">
+						<div class="fixed-body"></div>
+						<form id="commentform">
+							<div class="flex ac">
+								<div class="comt-title text-center flex0 mr10">
+									<div class="comt-avatar mb10"><img alt="头像"
+									                                   class="lazyload avatar avatar-id-0"
+									                                   data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
+									                                   src="static/picture/avatar-default.png"></div>
+									<p class="" data-target="#comment-user-info" data-toggle="tooltip"
+									   data-toggle-class="open" title="填写用户信息">昵称</p></div>
+								<div class="comt-box grow1">
+									<div class="action-text mb10 em09 muted-2-color"></div>
+									<textarea autoheight="true" class="form-control grin" cols="100%"
+									          id="comment" maxheight="188" name="comment"
+									          onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"
+									          placeholder="欢迎您留言获取订阅地址！"
+									          rows="4"
+									          tabindex="1"></textarea>
+									<div class="comt-ctrl relative">
+										<div class="comt-tips">
+											<input id='comment_post_ID' name='comment_post_ID' type='hidden'
+											       value='3013'/>
+											<input id='comment_parent' name='comment_parent' type='hidden' value='0'/>
+										</div>
+										<div class="comt-tips-right pull-right">
+											<a class="but c-red" href="javascript:;"
+											   id="cancel-comment-reply-link">取消</a>
+											<button class="but c-blue pw-1em" id="submit" name="submit" tabindex="5">
+												提交评论
+											</button>
+										</div>
+										<div class="comt-tips-left">
+											<!--       <span class="dropup relative" id="comment-user-info"
+														 require_name_email="true"><a class="but mr6"
+																					  data-target="#comment-user-info"
+																					  data-toggle-class="open"
+																					  href="javascript:;"><i
+														   class="fa fa-fw fa-user"></i><span class="hide-sm">昵称</span></a><div
+														   class="dropdown-menu box-body" style="width:250px;"><div
+														   class="mb20"><p>请填写联系信息：</p><ul><li
+														   class="line-form mb10"><input class="line-form-input" name="author"
+																						 placeholder="" tabindex="1"
+																						 type="text" value=""><div
+														   class="scale-placeholder">昵称(必填)</div><div
+														   class="abs-right muted-color"><i class="fa fa-fw fa-user"></i></div><i
+														   class="line-form-line"></i></li><li class="line-form"><input
+														   class="line-form-input" name="email" placeholder="" tabindex="2"
+														   type="text" value=""><div class="scale-placeholder">建议填写QQ邮箱【接收订阅】(必填)</div><div
+														   class="abs-right muted-color"><i class="fa fa-fw fa-envelope-o"></i></div><i
+														   class="line-form-line"></i></li></ul></div></div></span>--><span
+												class="dropup relative smilie"><a
+												class="but btn-input-expand input-smilie mr6" href="javascript:;"><i
+												class="fa fa-fw fa-smile-o"></i><span class="hide-sm">表情</span></a><div
+												class="dropdown-menu"><div
+												class="dropdown-smilie scroll-y mini-scrollbar"><a class="smilie-icon"
+											                                                       data-smilie="aoman"
+											                                                       href="javascript:;"><img
+												alt="[aoman]" class="lazyload" data-src="static/picture/aoman.gif"/></a><a
+												class="smilie-icon" data-smilie="baiyan" href="javascript:;"><img
+												alt="[baiyan]" class="lazyload"
+												data-src="static/picture/baiyan.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="bishi"
+											                                                 href="javascript:;"><img
+												alt="[bishi]"
+												class="lazyload"
+												data-src="static/picture/bishi.gif"/></a><a
+												class="smilie-icon" data-smilie="bizui" href="javascript:;"><img
+												alt="[bizui]" class="lazyload" data-src="static/picture/bizui.gif"/></a><a
+												class="smilie-icon" data-smilie="cahan" href="javascript:;"><img
+												alt="[cahan]" class="lazyload" data-src="static/picture/cahan.gif"/></a><a
+												class="smilie-icon" data-smilie="ciya" href="javascript:;"><img
+												alt="[ciya]" class="lazyload" data-src="static/picture/ciya.gif"/></a><a
+												class="smilie-icon" data-smilie="dabing" href="javascript:;"><img
+												alt="[dabing]" class="lazyload"
+												data-src="static/picture/dabing.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="daku"
+											                                                 href="javascript:;"><img
+												alt="[daku]"
+												class="lazyload"
+												data-src="static/picture/daku.gif"/></a><a
+												class="smilie-icon" data-smilie="deyi" href="javascript:;"><img
+												alt="[deyi]" class="lazyload" data-src="static/picture/deyi.gif"/></a><a
+												class="smilie-icon" data-smilie="doge" href="javascript:;"><img
+												alt="[doge]" class="lazyload" data-src="static/picture/doge.gif"/></a><a
+												class="smilie-icon" data-smilie="fadai" href="javascript:;"><img
+												alt="[fadai]" class="lazyload" data-src="static/picture/fadai.gif"/></a><a
+												class="smilie-icon" data-smilie="fanu" href="javascript:;"><img
+												alt="[fanu]" class="lazyload" data-src="static/picture/fanu.gif"/></a><a
+												class="smilie-icon" data-smilie="fendou" href="javascript:;"><img
+												alt="[fendou]" class="lazyload"
+												data-src="static/picture/fendou.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="ganga"
+											                                                 href="javascript:;"><img
+												alt="[ganga]"
+												class="lazyload"
+												data-src="static/picture/ganga.gif"/></a><a
+												class="smilie-icon" data-smilie="guzhang" href="javascript:;"><img
+												alt="[guzhang]" class="lazyload" data-src="static/picture/guzhang.gif"/></a><a
+												class="smilie-icon" data-smilie="haixiu" href="javascript:;"><img
+												alt="[haixiu]" class="lazyload"
+												data-src="static/picture/haixiu.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="hanxiao"
+											                                                 href="javascript:;"><img
+												alt="[hanxiao]"
+												class="lazyload"
+												data-src="static/picture/hanxiao.gif"/></a><a
+												class="smilie-icon" data-smilie="zuohengheng" href="javascript:;"><img
+												alt="[zuohengheng]" class="lazyload"
+												data-src="static/picture/zuohengheng.gif"/></a><a class="smilie-icon"
+											                                                      data-smilie="zhuakuang"
+											                                                      href="javascript:;"><img
+												alt="[zhuakuang]" class="lazyload"
+												data-src="static/picture/zhuakuang.gif"/></a><a class="smilie-icon"
+											                                                    data-smilie="zhouma"
+											                                                    href="javascript:;"><img
+												alt="[zhouma]"
+												class="lazyload"
+												data-src="static/picture/zhouma.gif"/></a><a
+												class="smilie-icon" data-smilie="zhemo" href="javascript:;"><img
+												alt="[zhemo]" class="lazyload" data-src="static/picture/zhemo.gif"/></a><a
+												class="smilie-icon" data-smilie="zhayanjian" href="javascript:;"><img
+												alt="[zhayanjian]" class="lazyload"
+												data-src="static/picture/zhayanjian.gif"/></a><a class="smilie-icon"
+											                                                     data-smilie="zaijian"
+											                                                     href="javascript:;"><img
+												alt="[zaijian]"
+												class="lazyload"
+												data-src="static/picture/zaijian.gif"/></a><a
+												class="smilie-icon" data-smilie="yun" href="javascript:;"><img
+												alt="[yun]" class="lazyload" data-src="static/picture/yun.gif"/></a><a
+												class="smilie-icon" data-smilie="youhengheng" href="javascript:;"><img
+												alt="[youhengheng]" class="lazyload"
+												data-src="static/picture/youhengheng.gif"/></a><a class="smilie-icon"
+											                                                      data-smilie="yiwen"
+											                                                      href="javascript:;"><img
+												alt="[yiwen]"
+												class="lazyload"
+												data-src="static/picture/yiwen.gif"/></a><a
+												class="smilie-icon" data-smilie="yinxian" href="javascript:;"><img
+												alt="[yinxian]" class="lazyload" data-src="static/picture/yinxian.gif"/></a><a
+												class="smilie-icon" data-smilie="xu" href="javascript:;"><img
+												alt="[xu]" class="lazyload" data-src="static/picture/xu.gif"/></a><a
+												class="smilie-icon" data-smilie="xieyanxiao" href="javascript:;"><img
+												alt="[xieyanxiao]" class="lazyload"
+												data-src="static/picture/xieyanxiao.gif"/></a><a class="smilie-icon"
+											                                                     data-smilie="xiaoku"
+											                                                     href="javascript:;"><img
+												alt="[xiaoku]"
+												class="lazyload"
+												data-src="static/picture/xiaoku.gif"/></a><a
+												class="smilie-icon" data-smilie="xiaojiujie" href="javascript:;"><img
+												alt="[xiaojiujie]" class="lazyload"
+												data-src="static/picture/xiaojiujie.gif"/></a><a class="smilie-icon"
+											                                                     data-smilie="xia"
+											                                                     href="javascript:;"><img
+												alt="[xia]"
+												class="lazyload"
+												data-src="static/picture/xia.gif"/></a><a
+												class="smilie-icon" data-smilie="wunai" href="javascript:;"><img
+												alt="[wunai]" class="lazyload" data-src="static/picture/wunai.gif"/></a><a
+												class="smilie-icon" data-smilie="wozuimei" href="javascript:;"><img
+												alt="[wozuimei]" class="lazyload"
+												data-src="static/picture/wozuimei.gif"/></a><a class="smilie-icon"
+											                                                   data-smilie="weixiao"
+											                                                   href="javascript:;"><img
+												alt="[weixiao]"
+												class="lazyload"
+												data-src="static/picture/weixiao.gif"/></a><a
+												class="smilie-icon" data-smilie="weiqu" href="javascript:;"><img
+												alt="[weiqu]" class="lazyload" data-src="static/picture/weiqu.gif"/></a><a
+												class="smilie-icon" data-smilie="tuosai" href="javascript:;"><img
+												alt="[tuosai]" class="lazyload"
+												data-src="static/picture/tuosai.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="tu"
+											                                                 href="javascript:;"><img
+												alt="[tu]"
+												class="lazyload"
+												data-src="static/picture/tu.gif"/></a><a
+												class="smilie-icon" data-smilie="touxiao" href="javascript:;"><img
+												alt="[touxiao]" class="lazyload" data-src="static/picture/touxiao.gif"/></a><a
+												class="smilie-icon" data-smilie="tiaopi" href="javascript:;"><img
+												alt="[tiaopi]" class="lazyload"
+												data-src="static/picture/tiaopi.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="shui"
+											                                                 href="javascript:;"><img
+												alt="[shui]"
+												class="lazyload"
+												data-src="static/picture/shui.gif"/></a><a
+												class="smilie-icon" data-smilie="se" href="javascript:;"><img
+												alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
+												class="smilie-icon" data-smilie="saorao" href="javascript:;"><img
+												alt="[saorao]" class="lazyload"
+												data-src="static/picture/saorao.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="qiudale"
+											                                                 href="javascript:;"><img
+												alt="[qiudale]"
+												class="lazyload"
+												data-src="static/picture/qiudale.gif"/></a><a
+												class="smilie-icon" data-smilie="se" href="javascript:;"><img
+												alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
+												class="smilie-icon" data-smilie="qinqin" href="javascript:;"><img
+												alt="[qinqin]" class="lazyload"
+												data-src="static/picture/qinqin.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="qiaoda"
+											                                                 href="javascript:;"><img
+												alt="[qiaoda]"
+												class="lazyload"
+												data-src="static/picture/qiaoda.gif"/></a><a
+												class="smilie-icon" data-smilie="piezui" href="javascript:;"><img
+												alt="[piezui]" class="lazyload"
+												data-src="static/picture/piezui.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="penxue"
+											                                                 href="javascript:;"><img
+												alt="[penxue]"
+												class="lazyload"
+												data-src="static/picture/penxue.gif"/></a><a
+												class="smilie-icon" data-smilie="nanguo" href="javascript:;"><img
+												alt="[nanguo]" class="lazyload"
+												data-src="static/picture/nanguo.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="liulei"
+											                                                 href="javascript:;"><img
+												alt="[liulei]"
+												class="lazyload"
+												data-src="static/picture/liulei.gif"/></a><a
+												class="smilie-icon" data-smilie="liuhan" href="javascript:;"><img
+												alt="[liuhan]" class="lazyload"
+												data-src="static/picture/liuhan.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="lenghan"
+											                                                 href="javascript:;"><img
+												alt="[lenghan]"
+												class="lazyload"
+												data-src="static/picture/lenghan.gif"/></a><a
+												class="smilie-icon" data-smilie="leiben" href="javascript:;"><img
+												alt="[leiben]" class="lazyload"
+												data-src="static/picture/leiben.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="kun"
+											                                                 href="javascript:;"><img
+												alt="[kun]"
+												class="lazyload"
+												data-src="static/picture/kun.gif"/></a><a
+												class="smilie-icon" data-smilie="kuaikule" href="javascript:;"><img
+												alt="[kuaikule]" class="lazyload"
+												data-src="static/picture/kuaikule.gif"/></a><a class="smilie-icon"
+											                                                   data-smilie="ku"
+											                                                   href="javascript:;"><img
+												alt="[ku]"
+												class="lazyload"
+												data-src="static/picture/ku.gif"/></a><a
+												class="smilie-icon" data-smilie="koubi" href="javascript:;"><img
+												alt="[koubi]" class="lazyload" data-src="static/picture/koubi.gif"/></a><a
+												class="smilie-icon" data-smilie="kelian" href="javascript:;"><img
+												alt="[kelian]" class="lazyload"
+												data-src="static/picture/kelian.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="keai"
+											                                                 href="javascript:;"><img
+												alt="[keai]"
+												class="lazyload"
+												data-src="static/picture/keai.gif"/></a><a
+												class="smilie-icon" data-smilie="jingya" href="javascript:;"><img
+												alt="[jingya]" class="lazyload"
+												data-src="static/picture/jingya.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="jingxi"
+											                                                 href="javascript:;"><img
+												alt="[jingxi]"
+												class="lazyload"
+												data-src="static/picture/jingxi.gif"/></a><a
+												class="smilie-icon" data-smilie="jingkong" href="javascript:;"><img
+												alt="[jingkong]" class="lazyload"
+												data-src="static/picture/jingkong.gif"/></a><a class="smilie-icon"
+											                                                   data-smilie="jie"
+											                                                   href="javascript:;"><img
+												alt="[jie]"
+												class="lazyload"
+												data-src="static/picture/jie.gif"/></a><a
+												class="smilie-icon" data-smilie="huaixiao" href="javascript:;"><img
+												alt="[huaixiao]" class="lazyload"
+												data-src="static/picture/huaixiao.gif"/></a><a class="smilie-icon"
+											                                                   data-smilie="haqian"
+											                                                   href="javascript:;"><img
+												alt="[haqian]"
+												class="lazyload"
+												data-src="static/picture/haqian.gif"/></a><a
+												class="smilie-icon" data-smilie="aini" href="javascript:;"><img
+												alt="[aini]" class="lazyload" data-src="static/picture/aini.gif"/></a><a
+												class="smilie-icon" data-smilie="OK" href="javascript:;"><img
+												alt="[OK]" class="lazyload" data-src="static/picture/ok.gif"/></a><a
+												class="smilie-icon" data-smilie="qiang" href="javascript:;"><img
+												alt="[qiang]" class="lazyload" data-src="static/picture/qiang.gif"/></a><a
+												class="smilie-icon" data-smilie="quantou" href="javascript:;"><img
+												alt="[quantou]" class="lazyload" data-src="static/picture/quantou.gif"/></a><a
+												class="smilie-icon" data-smilie="shengli" href="javascript:;"><img
+												alt="[shengli]" class="lazyload" data-src="static/picture/shengli.gif"/></a><a
+												class="smilie-icon" data-smilie="woshou" href="javascript:;"><img
+												alt="[woshou]" class="lazyload"
+												data-src="static/picture/woshou.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="gouyin"
+											                                                 href="javascript:;"><img
+												alt="[gouyin]"
+												class="lazyload"
+												data-src="static/picture/gouyin.gif"/></a><a
+												class="smilie-icon" data-smilie="baoquan" href="javascript:;"><img
+												alt="[baoquan]" class="lazyload" data-src="static/picture/baoquan.gif"/></a><a
+												class="smilie-icon" data-smilie="aixin" href="javascript:;"><img
+												alt="[aixin]" class="lazyload" data-src="static/picture/aixin.gif"/></a><a
+												class="smilie-icon" data-smilie="bangbangtang" href="javascript:;"><img
+												alt="[bangbangtang]" class="lazyload"
+												data-src="static/picture/bangbangtang.gif"/></a><a class="smilie-icon"
+											                                                       data-smilie="xiaoyanger"
+											                                                       href="javascript:;"><img
+												alt="[xiaoyanger]" class="lazyload"
+												data-src="static/picture/xiaoyanger.gif"/></a><a class="smilie-icon"
+											                                                     data-smilie="xigua"
+											                                                     href="javascript:;"><img
+												alt="[xigua]"
+												class="lazyload"
+												data-src="static/picture/xigua.gif"/></a><a
+												class="smilie-icon" data-smilie="hexie" href="javascript:;"><img
+												alt="[hexie]" class="lazyload" data-src="static/picture/hexie.gif"/></a><a
+												class="smilie-icon" data-smilie="pijiu" href="javascript:;"><img
+												alt="[pijiu]" class="lazyload" data-src="static/picture/pijiu.gif"/></a><a
+												class="smilie-icon" data-smilie="lanqiu" href="javascript:;"><img
+												alt="[lanqiu]" class="lazyload"
+												data-src="static/picture/lanqiu.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="juhua"
+											                                                 href="javascript:;"><img
+												alt="[juhua]"
+												class="lazyload"
+												data-src="static/picture/juhua.gif"/></a><a
+												class="smilie-icon" data-smilie="hecai" href="javascript:;"><img
+												alt="[hecai]" class="lazyload" data-src="static/picture/hecai.gif"/></a><a
+												class="smilie-icon" data-smilie="haobang" href="javascript:;"><img
+												alt="[haobang]" class="lazyload" data-src="static/picture/haobang.gif"/></a><a
+												class="smilie-icon" data-smilie="caidao" href="javascript:;"><img
+												alt="[caidao]" class="lazyload"
+												data-src="static/picture/caidao.gif"/></a><a class="smilie-icon"
+											                                                 data-smilie="baojin"
+											                                                 href="javascript:;"><img
+												alt="[baojin]"
+												class="lazyload"
+												data-src="static/picture/baojin.gif"/></a><a
+												class="smilie-icon" data-smilie="chi" href="javascript:;"><img
+												alt="[chi]" class="lazyload" data-src="static/picture/chi.gif"/></a><a
+												class="smilie-icon" data-smilie="dan" href="javascript:;"><img
+												alt="[dan]" class="lazyload" data-src="static/picture/dan.gif"/></a><a
+												class="smilie-icon" data-smilie="kulou" href="javascript:;"><img
+												alt="[kulou]" class="lazyload" data-src="static/picture/kulou.gif"/></a><a
+												class="smilie-icon" data-smilie="shuai" href="javascript:;"><img
+												alt="[shuai]" class="lazyload" data-src="static/picture/shuai.gif"/></a><a
+												class="smilie-icon" data-smilie="shouqiang" href="javascript:;"><img
+												alt="[shouqiang]" class="lazyload"
+												data-src="static/picture/shouqiang.gif"/></a><a class="smilie-icon"
+											                                                    data-smilie="yangtuo"
+											                                                    href="javascript:;"><img
+												alt="[yangtuo]"
+												class="lazyload"
+												data-src="static/picture/yangtuo.gif"/></a><a
+												class="smilie-icon" data-smilie="youling" href="javascript:;"><img
+												alt="[youling]" class="lazyload"
+												data-src="static/picture/youling.gif"/></a></div></div></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="postcomments">
+						<ol class="commentlist list-unstyled">
+							<div class="comment-filter tab-nav-theme flex ac jsb" win-ajax-replace="comment-order-btn">
+								<ul class="list-inline comment-order-box" style="padding:0;">
+									<li class="mr6 active"><a class="comment-orderby"
+									                          href="https://www.clash-gaming.com/3013.html?corderby=comment_date_gmt">最新</a>
+									</li>
+									<li class=""><a class="comment-orderby"
+									                href="https://www.clash-gaming.com/3013.html?corderby=comment_like">最热</a>
+									</li>
+								</ul>
+								<a class="but comment-orderby btn-only-author p2-10"
+								   href="https://www.clash-gaming.com/3013.html?only_author=2">只看作者</a></div>
+							<li class="comment even thread-even depth-1" id="comment-17942">
+								<ul class="list-inline">
+									<li class="comt-main" id="div-comment-17942">
+										<div class="comment-header mb10">
+											<div class="author-box flex ac"><span class="avatar-img comt-avatar"><img
+													alt="头像" class="lazyload avatar avatar-id-0"
+													data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
+													src="static/picture/avatar-default.png"></span>
+												<name class="flex ac flex1"><b class="mr6">Chen Bai Yi</b></name>
+												<a class="action action-comment-like muted-2-color flex0 ml10"
+												   data-action="comment_like"
+												   data-pid="17942"
+												   href="javascript:;">
+													<svg aria-hidden="true" class="icon mr3">
+														<use xlink:href="#icon-like"></use>
+													</svg>
+													<text></text>
+													<count>0</count>
+												</a></div>
+										</div>
+										<div class="comment-footer">
+											<div class="mb10 comment-content" id="comment-content-17942"><img
+													alt="表情[xia]|Clash for Windows" class="smilie-icon"
+													data-src="https://www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/smilies/xia.gif"
+													src="static/picture/thumbnail.svg"></div>
+											<div class="comt-meta muted-2-color"><span class="comt-author"
+											                                           title="2023年05月29日 16:48:47">23分钟前</span><span
+													class="badge-approve"></span></div>
+										</div>
+									</li>
+								</ul>
+							</li><!-- #comment-## -->
+							<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17929">
+								<ul class="list-inline">
+									<li class="comt-main" id="div-comment-17929">
+										<div class="comment-header mb10">
+											<div class="author-box flex ac"><span class="avatar-img comt-avatar"><img
+													alt="头像" class="lazyload avatar avatar-id-0"
+													data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
+													src="static/picture/avatar-default.png"></span>
+												<name class="flex ac flex1"><b class="mr6">asdasd</b></name>
+												<a class="action action-comment-like muted-2-color flex0 ml10"
+												   data-action="comment_like"
+												   data-pid="17929"
+												   href="javascript:;">
+													<svg aria-hidden="true" class="icon mr3">
+														<use xlink:href="#icon-like"></use>
+													</svg>
+													<text></text>
+													<count>0</count>
+												</a></div>
+										</div>
+										<div class="comment-footer">
+											<div class="mb10 comment-content" id="comment-content-17929">1111</div>
+											<div class="comt-meta muted-2-color"><span class="comt-author"
+											                                           title="2023年05月29日 15:51:03">1小时前</span><span
+													class="badge-approve"></span></div>
+										</div>
+									</li>
+								</ul>
+							</li><!-- #comment-## -->
+							<div class="post_ajax_loader" style="display:none;">
+								<ul class="list-inline flex">
+									<div class="avatar-img placeholder radius"></div>
+									<li class="flex1">
+										<div class="placeholder s1 mb6" style="width: 30%;"></div>
+										<div class="placeholder k2 mb10"></div>
+										<i class="placeholder s1 mb6"></i><i class="placeholder s1 mb6 ml10"></i></li>
+								</ul>
+								<ul class="list-inline flex">
+									<div class="avatar-img placeholder radius"></div>
+									<li class="flex1">
+										<div class="placeholder s1 mb6" style="width: 30%;"></div>
+										<div class="placeholder k2 mb10"></div>
+										<i class="placeholder s1 mb6"></i><i class="placeholder s1 mb6 ml10"></i></li>
+								</ul>
+								<ul class="list-inline flex">
+									<div class="avatar-img placeholder radius"></div>
+									<li class="flex1">
+										<div class="placeholder s1 mb6" style="width: 30%;"></div>
+										<div class="placeholder k2 mb10"></div>
+										<i class="placeholder s1 mb6"></i><i class="placeholder s1 mb6 ml10"></i></li>
+								</ul>
+								<ul class="list-inline flex">
+									<div class="avatar-img placeholder radius"></div>
+									<li class="flex1">
+										<div class="placeholder s1 mb6" style="width: 30%;"></div>
+										<div class="placeholder k2 mb10"></div>
+										<i class="placeholder s1 mb6"></i><i class="placeholder s1 mb6 ml10"></i></li>
+								</ul>
+							</div>
+						</ol>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<!-------------相关图书（可根据690分类号字段获取，取最新上架的5本书）---------------->
@@ -398,7 +893,44 @@
 		
 	</div>
 </div>-->
+<script type="text/javascript">
+    window._win = {
+        views: '3013',
+        www: 'https://www.clash-gaming.com',
+        uri: 'https://www.clash-gaming.com/wp-content/themes/zibll%20V6.5',
+        ver: '6.5',
+        imgbox: '',
+        imgbox_type: 'group',
+        imgbox_thumbs: '1',
+        imgbox_zoom: '1',
+        imgbox_play: '1',
+        imgbox_down: '1',
+        sign_type: 'modal',
+        signin_url: 'https://www.clash-gaming.com/user-sign?tab=signin&redirect_to=https://www.clash-gaming.com/3013.html',
+        signup_url: 'https://www.clash-gaming.com/user-sign?tab=signup&redirect_to=https://www.clash-gaming.com/3013.html',
+        ajax_url: '/comment/book',
+        ajaxpager: '',
+        ajax_trigger: '<i class="fa fa-angle-right"></i>加载更多',
+        ajax_nomore: '没有更多内容了',
+        qj_loading: '',
+        highlight_kg: '1',
+        highlight_hh: '',
+        highlight_btn: '',
+        highlight_zt: 'enlighter',
+        highlight_white_zt: 'enlighter',
+        highlight_dark_zt: 'dracula',
+        up_max_size: '4',
+        comment_upload_img: ''
+    }
+</script>
+
+<script async id='crisp-js' src='static/js/l.js' type='text/javascript'></script>
+<script id='bootstrap-js' src='static/js/bootstrap.min.js' type='text/javascript'></script>
+<script id='_loader-js' src='static/js/loader.js' type='text/javascript'></script>
+<!--FOOTER_CODE_START-->
+<script async data-website-id="3b09fa9c-69a7-4f1f-bde0-f8e512f7ef34" src="static/js/script.js"></script>
 <script>
+    console.log("数据库查询：92次 | 页面生成耗时：3358.386ms");
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
