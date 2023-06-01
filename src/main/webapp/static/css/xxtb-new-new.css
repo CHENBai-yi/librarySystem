@@ -9,8 +9,8 @@ a {
 }
 
 a:hover {
-    background: #005b8c;
-    color: #fff;
+    /* background: #005b8c;
+     color: #fff;*/
     font-weight: normal;
 }
 

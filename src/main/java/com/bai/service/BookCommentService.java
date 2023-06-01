@@ -3,6 +3,8 @@ package com.bai.service;
 import com.bai.pojo.bo.BookCommentBo;
 import com.bai.pojo.vo.BookCommentVo;
 
+import java.util.List;
+
 /**
  * Author:XY
  * PACkAGE:com.bai.service
@@ -10,4 +12,6 @@ import com.bai.pojo.vo.BookCommentVo;
  */
 public interface BookCommentService {
     BookCommentVo insertOneComment(BookCommentBo bookCommentBo);
+
+    List<BookCommentVo> selectAllComment(long bookId);
 }

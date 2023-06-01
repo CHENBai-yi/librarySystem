@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.BookReviewsDao">
+    <resultMap id="BaseResultMap" type="com.bai.pojo.BookReviews">
+        <id column="book_reviews_id" jdbcType="INTEGER" property="id"/>
+        <result column="book_reviews_review_text" jdbcType="VARCHAR" property="reviewText"/>
+        <result column="book_reviews_book_id" jdbcType="BIGINT" property="bookId"/>
+        <result column="book_reviews_reader_id" jdbcType="BIGINT" property="readerId"/>
+        <result column="book_reviews_review_date" jdbcType="TIMESTAMP" property="reviewDate"/>
+        <result column="book_reviews_author" jdbcType="VARCHAR" property="author"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        book_reviews.id as book_reviews_id, book_reviews.review_text as book_reviews_review_text,
+    book_reviews.book_id as book_reviews_book_id, book_reviews.reader_id as book_reviews_reader_id, 
+    book_reviews.review_date as book_reviews_review_date, book_reviews.author as book_reviews_author
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from book_reviews book_reviews
+        where book_reviews.id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultType="com.bai.pojo.BookReviews">
+        select *
+        from library.book_reviews
+        where book_reviews.book_id = #{bookId}
+        order by library.book_reviews.review_date desc
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from book_reviews
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookReviews"
+            useGeneratedKeys="true">
+        insert into book_reviews (review_text, book_id, reader_id,
+                                  review_date, author)
+        values (#{reviewText,jdbcType=VARCHAR}, #{bookId,jdbcType=BIGINT}, #{readerId,jdbcType=BIGINT},
+                #{reviewDate,jdbcType=TIMESTAMP}, #{author,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookReviews"
+            useGeneratedKeys="true">
+        insert into book_reviews
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="reviewText != null">
+                review_text,
+            </if>
+            <if test="bookId != null">
+                book_id,
+            </if>
+            <if test="readerId != null">
+                reader_id,
+            </if>
+            <if test="reviewDate != null">
+                review_date,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="reviewText != null">
+                #{reviewText,jdbcType=VARCHAR},
+            </if>
+            <if test="bookId != null">
+                #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="readerId != null">
+                #{readerId,jdbcType=BIGINT},
+            </if>
+            <if test="reviewDate != null">
+                #{reviewDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.BookReviews">
+        update book_reviews
+        <set>
+            <if test="reviewText != null">
+                review_text = #{reviewText,jdbcType=VARCHAR},
+            </if>
+            <if test="bookId != null">
+                book_id = #{bookId,jdbcType=BIGINT},
+            </if>
+            <if test="readerId != null">
+                reader_id = #{readerId,jdbcType=BIGINT},
+            </if>
+            <if test="reviewDate != null">
+                review_date = #{reviewDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="author != null">
+                author = #{author,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bai.pojo.BookReviews">
+        update book_reviews
+        set review_text = #{reviewText,jdbcType=VARCHAR},
+            book_id     = #{bookId,jdbcType=BIGINT},
+            reader_id   = #{readerId,jdbcType=BIGINT},
+            review_date = #{reviewDate,jdbcType=TIMESTAMP},
+            author      = #{author,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

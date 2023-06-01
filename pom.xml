@@ -20,9 +20,17 @@
         <mapStruct.version>1.5.5.Final</mapStruct.version>
         <lombok.version>1.18.20</lombok.version>
         <hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
+        <hibernate.core.version>5.4.2.Final</hibernate.core.version>
     </properties>
     
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.core.version}</version>
+        </dependency>
+        
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
         <dependency>
             <groupId>org.hibernate</groupId>

@@ -15,10 +15,10 @@ import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -86,8 +86,10 @@ public class BookController {
     @RequestMapping(value = Constants.AccessPageUrl.XXTBCOUNTCLICK, method = {RequestMethod.GET})
     public String bookDetailAndRelationBook(@RequestParam(value = "jmptype", required = false) long type, @RequestParam(value = "isbn", required = false) String isbn, @RequestParam("newbookid") long bookId, Model model, HttpSession session) {
         NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(type, isbn, bookId, session);
+        List<BookCommentVo> bookCommentVos = bookCommentService.selectAllComment(bookId);
         // todo 做ip下的浏览次数
         model.addAttribute("detailList", newBookDetailVos);
+        model.addAttribute("bookComments", bookCommentVos);
         return "detail_new_book";
     }
 
@@ -95,6 +97,7 @@ public class BookController {
     public String hottertuijian(Model model) {
         List<BookRecommendationVo> bookRecommendationVoList = bookRecommendationService.findRecentlyHotBook();
         model.addAttribute("bookRecommendationList", bookRecommendationVoList);
+
         return "more_hot_book";
     }
 
@@ -109,7 +112,7 @@ public class BookController {
 
     @ResponseBody
     @PostMapping(path = Constants.AccessPageUrl.BOOK_COMMENT)
-    public BookCommentVo bookComment(@Valid BookCommentBo bookCommentBo) {
+    public BookCommentVo bookComment(@Validated BookCommentBo bookCommentBo) {
         return bookCommentService.insertOneComment(bookCommentBo);
     }
 
