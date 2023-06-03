@@ -13,8 +13,8 @@
     <insert id="addBook" parameterType="Book">
         insert into book_info (`name`, author, publish, ISBN, introduction, `language`, `price`, pub_date, class_id,
                                `number`, `cover_img`, `score`)
-        values (#{name}, #{author}, #{publish}, #{ISBN}, #{introduction}, #{language}, #{price}, #{pub_date},
-                #{class_id}, #{number}, #{coverImg}, #{score})
+        values (#{name}, #{author}, #{publish}, #{ISBN}, #{introduction}, #{language}, #{price}, #{pubDate}, #{classId},
+                #{number}, #{coverImg}, #{score})
     </insert>
     
     <select id="getBookDetailById" parameterType="long" resultType="com.bai.pojo.Book">
@@ -34,7 +34,8 @@
             `price`=#{price},
             pub_date=#{pubDate},
             class_id=#{classId},
-            `number`=#{number}
+            `number`=#{number},
+            cover_img=#{coverImg}
         where book_id = #{bookId}
     </update>
     

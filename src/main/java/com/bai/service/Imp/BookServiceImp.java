@@ -15,10 +15,15 @@ import com.bai.utils.constants.Constants;
 import com.bai.utils.mapStruct.BookMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BookServiceImp implements BookService {
@@ -43,9 +48,10 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public void updateBook(Book book, long bookId, Date pubstr) {
+    public void updateBook(Book book, long bookId, Date pubstr, String bookCoverImg) {
         book.setBookId(bookId);
         book.setPubDate(pubstr);
+        book.setCoverImg(bookCoverImg);
         bookMapper.updateBook(book);
     }
 
@@ -114,4 +120,25 @@ public class BookServiceImp implements BookService {
         // }
         return moreNewBookIndexVo;
     }
+
+    @Override
+    public String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException {
+        String realPath = httpServletRequest.getServletContext().getRealPath("/");
+        String path = "/static/img/";
+        String originalFilename = multipartFile.getOriginalFilename();
+        if (originalFilename == null) throw new RuntimeException();
+        String fileSuffix = originalFilename.substring(originalFilename.lastIndexOf("."));
+        String fileName = UUID.randomUUID().toString().replaceAll("-", "").concat(fileSuffix);
+        File parent = new File(realPath, path);
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
+        File file = new File(parent, fileName);
+        if (file.createNewFile()) {
+            multipartFile.transferTo(file);
+        }
+        return path.concat(fileName);
+    }
+
+
 }

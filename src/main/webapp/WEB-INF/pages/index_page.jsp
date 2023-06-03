@@ -422,7 +422,7 @@
 				<a alt="Selected Services" href="#front-service" id="anchor2">02<i class="anchor-tip">热门服务</i></a>
 <%--				<a alt="Collections" href="#front-resource" id="anchor3">03<i class="anchor-tip">馆藏资源</i></a>
 				<a alt="Special Collections" href="#front-special" id="anchor4">04<i class="anchor-tip">特色资源</i></a>--%>
-				<a alt="Recommended Reading" href="#front-recommendation" id="anchor5">05<i
+				<a alt="Recommended Reading" href="#front-recommendation" id="anchor5">03<i
 						class="anchor-tip">阅读推荐</i></a>
 			</nav>
 			<div class="panel-block" id="front-news">

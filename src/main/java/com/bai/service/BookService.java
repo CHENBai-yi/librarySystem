@@ -5,8 +5,11 @@ import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +25,7 @@ public interface BookService {
     Book getBookDetailById(long bookId);
 
     // 更新书本信息
-    void updateBook(Book book, long bookId, Date pubstr);
+    void updateBook(Book book, long bookId, Date pubstr, String bookCoverImg);
 
     // 删除书本
     void delBook(long bookId);
@@ -37,4 +40,6 @@ public interface BookService {
     NewBookDetailVo selectNewBooksDetail(long type, String isbn, long bookId, HttpSession session);
 
     MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo);
+
+    String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException;
 }
