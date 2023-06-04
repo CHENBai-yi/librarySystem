@@ -420,8 +420,8 @@
 			<nav class="anchor-nav" role="navigation">
 				<a alt="News" class="active" href="#front-news" id="anchor1">01<i class="anchor-tip">最新消息</i></a>
 				<a alt="Selected Services" href="#front-service" id="anchor2">02<i class="anchor-tip">热门服务</i></a>
-<%--				<a alt="Collections" href="#front-resource" id="anchor3">03<i class="anchor-tip">馆藏资源</i></a>
-				<a alt="Special Collections" href="#front-special" id="anchor4">04<i class="anchor-tip">特色资源</i></a>--%>
+				<%--				<a alt="Collections" href="#front-resource" id="anchor3">03<i class="anchor-tip">馆藏资源</i></a>
+								<a alt="Special Collections" href="#front-special" id="anchor4">04<i class="anchor-tip">特色资源</i></a>--%>
 				<a alt="Recommended Reading" href="#front-recommendation" id="anchor5">03<i
 						class="anchor-tip">阅读推荐</i></a>
 			</nav>
@@ -584,33 +584,68 @@
 														</li>
 													</ul>
 												</li>
-												
-												
-												<%--<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-													图书借阅
-													<ul>
-														<li>
-															<p>
-																<a href="/portal/mylib/services/status" target="_blank"
-																   title="">个人借阅状态查询</a></p>
-														</li>
-														<li>
-															<p>
-																<a href="/portal/cn/jyfw/jybl/cjygh" target="_blank"
-																   title="">出借与归还</a></p>
-														</li>
-														<li>
-															<p>
-																<a href="/portal/cn/jyfw/jybl/xjyyj" target="_blank"
-																   title="">续借与预约</a></p>
-														</li>
-														<li>
-															<p>
-																<a href="/portal/cn/fg/jieyueshuoming" target="_blank"
-																   title="">借阅分馆FAQ</a></p>
-														</li>
-													</ul>
-												</li>--%>
+													<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+														读者指南
+														<ul>
+															<li>
+																<p>
+																	<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
+																	   target="_blank"
+																	   title="">文明读者公约</a>
+																</p>
+															</li>
+															<li>
+																<p>
+																	<a href="<c:url value="<%=Constants.AccessPageUrl.RUGUANGUANLI%>"/>"
+																	   target="_blank"
+																	   title="">用户入馆管理办法</a></p>
+															</li>
+														</ul>
+													</li>
+													<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+														关于本馆
+														<ul>
+															<li>
+																<p>
+																	<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
+																	   target="_blank"
+																	   title="">加入我们</a>
+																</p>
+															</li>
+															<li>
+																<p>
+																	<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
+																	   target="_blank"
+																	   title="">联系我们</a>
+																</p>
+															</li>
+														</ul>
+													</li>
+													<%--<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+														图书借阅
+														<ul>
+															<li>
+																<p>
+																	<a href="/portal/mylib/services/status" target="_blank"
+																	   title="">个人借阅状态查询</a></p>
+															</li>
+															<li>
+																<p>
+																	<a href="/portal/cn/jyfw/jybl/cjygh" target="_blank"
+																	   title="">出借与归还</a></p>
+															</li>
+															<li>
+																<p>
+																	<a href="/portal/cn/jyfw/jybl/xjyyj" target="_blank"
+																	   title="">续借与预约</a></p>
+															</li>
+															<li>
+																<p>
+																	<a href="/portal/cn/fg/jieyueshuoming" target="_blank"
+																	   title="">借阅分馆FAQ</a></p>
+															</li>
+														</ul>
+													</li>--%>
 												<%--   <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
 													   馆际互借
 													   <ul>

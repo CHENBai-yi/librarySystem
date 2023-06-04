@@ -39,6 +39,8 @@ public class LoginFilter implements Filter {
         accessUrl.add(Constants.AccessPageUrl.ACTIVITY_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.NOTICE_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL + suffix);
+        accessUrl.add(Constants.AccessPageUrl.WENMINGGONGYUE + suffix);
+        accessUrl.add(Constants.AccessPageUrl.RUGUANGUANLI + suffix);
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
 import com.bai.service.ClassInfoService;
 import com.bai.service.NewsService;
+import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,4 +36,16 @@ public class IndexController {
         model.addAttribute("hotBooks", hotBooks);
         return "index_page";
     }
+
+    @GetMapping(path = Constants.AccessPageUrl.RUGUANGUANLI)
+    public String ruGuanGuanLi(Model model) {
+        return "ruguanguanli";
+    }
+
+    @GetMapping(path = Constants.AccessPageUrl.WENMINGGONGYUE)
+    public String wenMingGongYue(Model model) {
+        return "civilized_reader_pact";
+    }
+
+
 }
