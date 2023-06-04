@@ -47,5 +47,10 @@ public class IndexController {
         return "civilized_reader_pact";
     }
 
+    @GetMapping(path = Constants.AccessPageUrl.CONCATME)
+    public String concatMe(Model model) {
+        return "concat_me";
+    }
+
 
 }

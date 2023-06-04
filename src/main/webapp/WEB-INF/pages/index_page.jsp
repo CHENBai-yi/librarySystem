@@ -607,18 +607,19 @@
 														<ul>
 															<li>
 																<p>
-																	<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
+																	<a href="<c:url value="<%=Constants.AccessPageUrl.CONCATME%>"/>"
 																	   target="_blank"
-																	   title="">加入我们</a>
+																	   title="">联系我们</a>
 																</p>
 															</li>
 															<li>
 																<p>
 																	<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
 																	   target="_blank"
-																	   title="">联系我们</a>
+																	   title="">加入我们</a>
 																</p>
 															</li>
+														
 														</ul>
 													</li>
 													<%--<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -646,22 +647,22 @@
 															</li>
 														</ul>
 													</li>--%>
-												<%--   <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-													   馆际互借
-													   <ul>
-														   <li>
-															   <p>
-																   <a href="/portal/cn/fw/gjhj/tijiaoshenqing"
-																	  target="_blank" title="">提交申请</a></p>
-														   </li>
-														   <!--这个链接没有找到 -->
-														   <li>
-															   <p>
-																   <a href="/portal/cn/fw/gjhj/changyongshumu"
-																	  target="_blank" title="">校外书目查询系统</a></p>
-														   </li>
-													   </ul>
-												   </li>--%>
+													<%--   <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+														   馆际互借
+														   <ul>
+															   <li>
+																   <p>
+																	   <a href="/portal/cn/fw/gjhj/tijiaoshenqing"
+																		  target="_blank" title="">提交申请</a></p>
+															   </li>
+															   <!--这个链接没有找到 -->
+															   <li>
+																   <p>
+																	   <a href="/portal/cn/fw/gjhj/changyongshumu"
+																		  target="_blank" title="">校外书目查询系统</a></p>
+															   </li>
+														   </ul>
+													   </li>--%>
 												<%--     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
 														 阅读推广
 														 <ul>

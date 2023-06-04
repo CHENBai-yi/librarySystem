@@ -80,6 +80,7 @@ public class Constants {
         public static final String BOOK_COMMENT = "/comment/book";
         public static final String WENMINGGONGYUE = "/dzzn/gzzd/wenminggongyue";
         public static final String RUGUANGUANLI = "/dzzn/gzzd/ruguanguanli";
+        public static final String CONCATME = "/concat/me";
 
     }
 }
