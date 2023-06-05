@@ -1,4 +1,6 @@
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,12 +53,21 @@
 		</div>
 	</div>
 </div>
+<script src="<c:url value="/webjars/sockjs-client/1.5.1/sockjs.min.js"/>"></script>
+<script src="<c:url value="/webjars/stomp-websocket/2.3.3/stomp.min.js"/>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
         crossorigin="anonymous"></script>
 <script>
-    var socket = new WebSocket("ws://your-websocket-server-url");
-
+    <c:set value="<%=Constants.AccessPageUrl.CONSULT%>" var="myContext" />
+    <c:set value="<%=request.getRequestURL().toString()%>" var="requestPath" />
+    <c:set value="<%=request.getRequestURI()%>" var="requestPathUri" />
+    let socket;
+    let p = "${requestPath.replaceAll(requestPathUri,myContext)}"
+    if (window.webSocket) {
+        <c:set value="<%=request.getScheme()%>" var="scheme" />
+        socket = new WebSocket(p.replaceAll("${scheme}", "ws"));
+    } else socket = new SockJS(p);
     socket.onopen = function (event) {
         console.log("WebSocket connection established.");
     };

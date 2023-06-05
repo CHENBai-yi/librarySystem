@@ -17,7 +17,7 @@ import java.util.Set;
  * PACkAGE:com.bai.utils.config
  * Date:2023/5/19 14:50
  */
-@WebFilter(urlPatterns = {"/*"})
+@WebFilter(urlPatterns = {"/*"}, asyncSupported = true)
 public class LoginFilter implements Filter {
     private final Set<String> accessUrl = new HashSet<>();
 
@@ -41,6 +41,9 @@ public class LoginFilter implements Filter {
         accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.WENMINGGONGYUE + suffix);
         accessUrl.add(Constants.AccessPageUrl.RUGUANGUANLI + suffix);
+        accessUrl.add(Constants.AccessPageUrl.CONCATME + suffix);
+        accessUrl.add(Constants.AccessPageUrl.CONSULT + suffix);
+        accessUrl.add("/webjars" + suffix);
     }
 
     @Override
