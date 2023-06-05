@@ -64,6 +64,8 @@
     <c:set value="<%=request.getRequestURI()%>" var="requestPathUri" />
     let socket;
     let p = "${requestPath.replaceAll(requestPathUri,myContext)}"
+
+    alert(p)
     if (window.webSocket) {
         <c:set value="<%=request.getScheme()%>" var="scheme" />
         socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
