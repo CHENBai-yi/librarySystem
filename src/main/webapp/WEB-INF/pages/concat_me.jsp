@@ -70,9 +70,10 @@
         <c:set value="<%=request.getScheme()%>" var="scheme" />
         socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
     } else {
-        if ("${scheme}" === "https")
-            socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});
-        else socket = new SockJS(p)
+        <%--if ("${scheme}" === "https")--%>
+        <%--    socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});--%>
+        <%--else socket = new SockJS(p)--%>
+        socket = new SockJS(p)
     }
 
     socket.onopen = function (event) {
