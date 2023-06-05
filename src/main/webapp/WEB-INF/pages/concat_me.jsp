@@ -60,7 +60,7 @@
         crossorigin="anonymous"></script>
 <script>
     <c:set value="<%=Constants.AccessPageUrl.CONSULT%>" var="myContext" />
-    if (window.webSocket)
+    if (window.WebSocket)
         socket = new WebSocket("${"wss://".concat("library.baiyichen.asia").concat(myContext)}");
     else {
         alert("您的浏览器不支持WebSocket")
