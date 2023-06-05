@@ -68,7 +68,7 @@
     alert(p)
     if (window.WebSocket) {
         <c:set value="<%=request.getScheme()%>" var="scheme" />
-        socket = new WebSocket(p.replaceAll("${scheme}", "ws"));
+        socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
     } else {
         if ("${scheme}" === "https")
             socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});
