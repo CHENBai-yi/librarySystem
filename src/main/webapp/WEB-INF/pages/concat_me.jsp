@@ -69,10 +69,7 @@
         socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
     } else {
         if ("${scheme}" === "https")
-            socket = new SockJS(p, {
-                transports: ['websocket'],
-                websocket: true
-            });
+            socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});
         else socket = new SockJS(p)
     }
 
