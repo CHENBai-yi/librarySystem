@@ -66,8 +66,16 @@
     let p = "${requestPath.replaceAll(requestPathUri,myContext)}"
     if (window.webSocket) {
         <c:set value="<%=request.getScheme()%>" var="scheme" />
-        socket = new WebSocket(p.replaceAll("${scheme}", "ws"));
-    } else socket = new SockJS(p);
+        socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
+    } else {
+        if ("${scheme}" === "https")
+            socket = new SockJS(p, {
+                transports: ['websocket'],
+                websocket: true
+            });
+        else socket = new SockJS(p)
+    }
+
     socket.onopen = function (event) {
         console.log("WebSocket connection established.");
     };
