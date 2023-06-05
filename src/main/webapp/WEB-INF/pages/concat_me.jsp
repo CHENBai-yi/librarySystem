@@ -61,15 +61,10 @@
 <script>
     <c:set value="<%=Constants.AccessPageUrl.CONSULT%>" var="myContext" />
     if (window.WebSocket)
-        socket = new WebSocket("${"ws://".concat("library.baiyichen.asia").concat(myContext)}");
-    else {
-        alert("您的浏览器不支持WebSocket")
-        /*if ("
-        
-        ${scheme}" === "https")
-            socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});
-        else socket = new SockJS(p)*/
-    }
+        socket = new WebSocket("${"wss://".concat("library.baiyichen.asia").concat(myContext)}");
+    else
+        socket = new SockJS(${"http://".concat("library.baiyichen.asia").concat(myContext)}, null, {transports: ['websocket', 'xhr-polling']});
+
 
     socket.onopen = function (event) {
         console.log("WebSocket connection established.");
