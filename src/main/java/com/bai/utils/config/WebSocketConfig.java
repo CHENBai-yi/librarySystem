@@ -23,6 +23,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
         webSocketHandlerRegistry.addHandler(consultService, Constants.AccessPageUrl.CONSULT)
                 .setAllowedOrigins("*")
-                .withSockJS();
+        /*.withSockJS()*/;
     }
 }

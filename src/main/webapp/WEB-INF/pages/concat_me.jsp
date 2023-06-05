@@ -60,19 +60,14 @@
         crossorigin="anonymous"></script>
 <script>
     <c:set value="<%=Constants.AccessPageUrl.CONSULT%>" var="myContext" />
-    <c:set value="<%=request.getRequestURL().toString()%>" var="requestPath" />
-    <c:set value="<%=request.getRequestURI()%>" var="requestPathUri" />
-    let socket;
-    let p = "${requestPath.replaceAll(requestPathUri,myContext)}"
-
-    alert(p)
-    if (window.WebSocket) {
-        <c:set value="<%=request.getScheme()%>" var="scheme" />
-        socket = new WebSocket(p.replaceAll("${scheme}", "wss"));
-    } else {
-        if ("${scheme}" === "https")
+    if (window.webSocket)
+        socket = new WebSocket("${"wss://".concat("library.baiyichen.asia").concat(myContext)}");
+    else {
+        alert("您的浏览器不支持WebSocket")
+        /*if ("
+        ${scheme}" === "https")
             socket = new SockJS(p, null, {transports: ['websocket', 'xhr-polling']});
-        else socket = new SockJS(p)
+        else socket = new SockJS(p)*/
     }
 
     socket.onopen = function (event) {
