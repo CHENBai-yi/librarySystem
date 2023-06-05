@@ -63,7 +63,7 @@
     if (window.WebSocket)
         socket = new WebSocket("${"wss://".concat("library.baiyichen.asia").concat(myContext)}");
     else
-        socket = new SockJS(${"http://".concat("library.baiyichen.asia").concat(myContext)}, null, {transports: ['websocket', 'xhr-polling']});
+        socket = new SockJS("${"http://".concat("library.baiyichen.asia").concat(myContext)}", null, {transports: ['websocket', 'xhr-polling']});
 
 
     socket.onopen = function (event) {
