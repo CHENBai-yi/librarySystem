@@ -2,6 +2,7 @@ package com.bai.service;
 
 import com.bai.pojo.Book;
 import com.bai.pojo.bo.BookQueryBo;
+import com.bai.pojo.vo.ChatVO;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
@@ -42,4 +43,6 @@ public interface BookService {
     MoreNewBookIndexVo moreNewBookPage(BookQueryBo bookQueryBo);
 
     String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException;
+
+    ChatVO getMsgVo(HttpSession session);
 }

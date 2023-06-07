@@ -16,7 +16,10 @@
             (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
     -->
     <mvc:annotation-driven/>
-    
+    <mvc:cors>
+        <mvc:mapping path="/**" allowed-methods="*" allowed-headers="*" allowed-origins="*" exposed-headers="Allow"
+                     allow-credentials="true" max-age="3600"/>
+    </mvc:cors>
     <!-- 2.静态资源默认servlet配置
             (1)加入对静态资源的处理：js,gif,png
             (2)允许使用"/"做整体映射
@@ -25,6 +28,7 @@
     <mvc:resources mapping="/css/**" location="/static/css/**"/>
     <mvc:resources mapping="/img/**" location="/static/img/**"/>
     <mvc:resources mapping="/js/**" location="/static/js/**"/>
+    
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="#{T(com.bai.utils.constants.Constants$AccessPageUrl).READER_LOGIN_URL}"/>

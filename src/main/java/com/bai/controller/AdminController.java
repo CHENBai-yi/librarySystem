@@ -1,10 +1,8 @@
 package com.bai.controller;
 
 import com.bai.pojo.*;
-import com.bai.service.AdminService;
-import com.bai.service.AppointService;
-import com.bai.service.BookService;
-import com.bai.service.NewsService;
+import com.bai.pojo.vo.ChatVO;
+import com.bai.service.*;
 import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -234,6 +232,14 @@ public class AdminController {
         List<Book> books = bookService.queryByName(searchWord);
         model.addAttribute("books", books);
         return "admin_books";
+    }
+
+    @RequestMapping(Constants.AccessPageUrl.CONCAT_ME_ADMIN)
+    public String concat_me_admin(Model model, HttpSession session) {
+        ChatVO chatVO = bookService.getMsgVo(session);
+        model.addAttribute("chatVo", chatVO);
+        model.addAttribute("online", ConsultService.sessionsMap);
+        return "concat_me_admin";
     }
 
 }

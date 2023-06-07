@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bai.utils.constants.Constants" %><%--
   Created by IntelliJ IDEA.
   User: 云飘
   Date: 2020/6/2
@@ -71,7 +71,23 @@
 					<ul class="dropdown-menu">
 						<li><a href="lendlist.html">借还日志</a></li>
 						<li><a href="admin_appoint_list.html">预约日志</a></li>
+						<li><a href="lendlist.html">操作日志</a></li>
+						<li><a href="admin_appoint_list.html">登录日志</a></li>
 					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+						统计分析
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">待开发</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="<c:url value="<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>"/>" style="color: white">
+						读者咨询
+					</a>
 				</li>
 				<li>
 					<a href="admin_repasswd.html" style="color: white">

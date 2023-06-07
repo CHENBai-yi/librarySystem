@@ -31,6 +31,7 @@ public class LoginFilter implements Filter {
         accessUrl.add("/logout.html");
         accessUrl.add("/checklogin");
         accessUrl.add("/static/**");
+        accessUrl.add("/webjars" + suffix);
         accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK + suffix);
         accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN + suffix);
@@ -41,9 +42,9 @@ public class LoginFilter implements Filter {
         accessUrl.add(Constants.AccessPageUrl.JOURNALISM_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.WENMINGGONGYUE + suffix);
         accessUrl.add(Constants.AccessPageUrl.RUGUANGUANLI + suffix);
-        accessUrl.add(Constants.AccessPageUrl.CONCATME + suffix);
         accessUrl.add(Constants.AccessPageUrl.CONSULT + suffix);
-        accessUrl.add("/webjars" + suffix);
+        accessUrl.add(Constants.AccessPageUrl.CONCATME + suffix);
+        accessUrl.add(Constants.AccessPageUrl.CONCAT_ME_ADMIN + suffix);
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.HandshakeInterceptor;
 
 /**
  * Author:XY
@@ -18,10 +19,13 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
     @Autowired
     private ConsultServiceImpl consultService;
+    @Autowired
+    private HandshakeInterceptor myHandshakeHandler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
         webSocketHandlerRegistry.addHandler(consultService, Constants.AccessPageUrl.CONSULT)
+                .addInterceptors(myHandshakeHandler)
                 .setAllowedOrigins("*")
         /*.withSockJS()*/;
     }

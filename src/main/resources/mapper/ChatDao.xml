@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.ChatDao">
+    <resultMap id="BaseResultMap" type="com.bai.pojo.Chat">
+        <id column="chat_message_id" jdbcType="BIGINT" property="messageId"/>
+        <result column="chat_sender_id" jdbcType="BIGINT" property="senderId"/>
+        <result column="chat_receiver_id" jdbcType="BIGINT" property="receiverId"/>
+        <result column="chat_sender_name" jdbcType="VARCHAR" property="senderName"/>
+        <result column="chat_receiver_name" jdbcType="VARCHAR" property="receiverName"/>
+        <result column="chat_content" jdbcType="VARCHAR" property="content"/>
+        <result column="chat_send_time" jdbcType="TIMESTAMP" property="sendTime"/>
+        <result column="chat_message_type" jdbcType="OTHER" property="messageType"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        chat.message_id as chat_message_id, chat.sender_id as chat_sender_id, chat.receiver_id as chat_receiver_id,
+    chat.sender_name as chat_sender_name, chat.receiver_name as chat_receiver_name, chat.content as chat_content, 
+    chat.send_time as chat_send_time, chat.message_type as chat_message_type
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chat chat
+        where chat.message_id = #{messageId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from chat
+        where message_id = #{messageId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="message_id" keyProperty="messageId" parameterType="com.bai.pojo.Chat"
+            useGeneratedKeys="true">
+        insert into chat (sender_id, receiver_id, sender_name,
+                          receiver_name, content, send_time,
+                          message_type)
+        values (#{senderId,jdbcType=BIGINT}, #{receiverId,jdbcType=BIGINT}, #{senderName,jdbcType=VARCHAR},
+                #{receiverName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{sendTime,jdbcType=TIMESTAMP},
+                #{messageType,jdbcType=OTHER})
+    </insert>
+    <insert id="insertSelective" keyColumn="message_id" keyProperty="messageId" parameterType="com.bai.pojo.Chat"
+            useGeneratedKeys="true">
+        insert into chat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="senderId != null">
+                sender_id,
+            </if>
+            <if test="receiverId != null">
+                receiver_id,
+            </if>
+            <if test="senderName != null">
+                sender_name,
+            </if>
+            <if test="receiverName != null">
+                receiver_name,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="sendTime != null">
+                send_time,
+            </if>
+            <if test="messageType != null">
+                message_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="senderId != null">
+                #{senderId,jdbcType=BIGINT},
+            </if>
+            <if test="receiverId != null">
+                #{receiverId,jdbcType=BIGINT},
+            </if>
+            <if test="senderName != null">
+                #{senderName,jdbcType=VARCHAR},
+            </if>
+            <if test="receiverName != null">
+                #{receiverName,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="messageType != null">
+                #{messageType,jdbcType=OTHER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.Chat">
+        update chat
+        <set>
+            <if test="senderId != null">
+                sender_id = #{senderId,jdbcType=BIGINT},
+            </if>
+            <if test="receiverId != null">
+                receiver_id = #{receiverId,jdbcType=BIGINT},
+            </if>
+            <if test="senderName != null">
+                sender_name = #{senderName,jdbcType=VARCHAR},
+            </if>
+            <if test="receiverName != null">
+                receiver_name = #{receiverName,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                send_time = #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="messageType != null">
+                message_type = #{messageType,jdbcType=OTHER},
+            </if>
+        </set>
+        where message_id = #{messageId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bai.pojo.Chat">
+        update chat
+        set sender_id     = #{senderId,jdbcType=BIGINT},
+            receiver_id   = #{receiverId,jdbcType=BIGINT},
+            sender_name   = #{senderName,jdbcType=VARCHAR},
+            receiver_name = #{receiverName,jdbcType=VARCHAR},
+            content       = #{content,jdbcType=VARCHAR},
+            send_time     = #{sendTime,jdbcType=TIMESTAMP},
+            message_type  = #{messageType,jdbcType=OTHER}
+        where message_id = #{messageId,jdbcType=BIGINT}
+    </update>
+</mapper>

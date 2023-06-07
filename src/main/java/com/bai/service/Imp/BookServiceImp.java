@@ -7,6 +7,7 @@ import com.bai.pojo.Book;
 import com.bai.pojo.Lend;
 import com.bai.pojo.Reader;
 import com.bai.pojo.bo.BookQueryBo;
+import com.bai.pojo.vo.ChatVO;
 import com.bai.pojo.vo.MoreNewBookIndexVo;
 import com.bai.pojo.vo.NewBookDetailVo;
 import com.bai.pojo.vo.RecommendedBooksVo;
@@ -138,6 +139,27 @@ public class BookServiceImp implements BookService {
             multipartFile.transferTo(file);
         }
         return path.concat(fileName);
+    }
+
+    @Override
+    public ChatVO getMsgVo(HttpSession session) {
+        Object readercard = session.getAttribute("readercard");
+        Object admin = session.getAttribute("admin");
+        ChatVO chatVO = new ChatVO();
+        if (admin != null) {
+            Admin admin1 = (Admin) admin;
+            long adminId = admin1.getAdminId();
+            chatVO.setSenderId(adminId);
+            chatVO.setSenderName(admin1.getUsername());
+        } else if (readercard != null) {
+            Reader reader = (Reader) readercard;
+            long readerId = reader.getReaderId();
+            chatVO.setSenderId(readerId);
+            chatVO.setSenderName(reader.getUsername());
+        }
+        chatVO.setReceiverId(0L);
+        chatVO.setReceiverName("baiyichen");
+        return chatVO;
     }
 
 

@@ -1,5 +1,7 @@
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -307,6 +309,111 @@
 	<span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
 </div>
 <div class="theme-cyan" id="layout">
+	
+	
+	<div class="sidebar border-end py-xl-4 py-3 px-xl-4 px-3">
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="nav-tab-chat" role="tabpanel">
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<h3 class="mb-0 text-primary">用户列表</h3>
+				</div>
+				<div class="form-group input-group-lg search mb-3">
+					<i class="zmdi zmdi-search"></i>
+					<i class="zmdi zmdi-dialpad"></i>
+					<input class="form-control chat-search" placeholder="搜索..." type="text">
+				</div>
+				<ul class="chat-list">
+					<li class="header chat-all-header d-flex justify-content-between ps-3 pe-3 mb-1">
+						<span>最近聊天记录</span>
+						<div class="dropdown">
+							<a aria-expanded="false" aria-haspopup="true"
+							   class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle"
+							   data-toggle="dropdown" href="#" role="button"><i
+									class="zmdi zmdi-filter-list"></i></a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="#">导入</a>
+								<a class="dropdown-item" href="#">全部清理</a>
+							</div>
+						</div>
+					</li>
+					<c:if test="${online!=null and online.size()>0}">
+						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
+							<c:if test="${s.first}">
+								<c:set value="${online[k]}" var="firstOne"/>
+								<c:set value="${firstOne.attributes['uid']}" var="uid"/>
+								<c:set value="${firstOne.attributes['uname']}" var="uname"/>
+							</c:if>
+							<c:set value="${online[k]}" var="item"/>
+							<c:set value="${item.attributes}" var="attributes"/>
+							<c:if test="${attributes['id'] ne 0}">
+								<li class="online chat-title active new" data-id="${item.id}">
+									<div class="hover_action">
+										<button class="btn btn-link text-info" data-original-title="标记为公开"
+										        data-toggle="tooltip"
+										        onclick="openChat('${item.id}')" type="button"><i
+												class="zmdi zmdi-eye"></i></button>
+										<button class="btn btn-link text-warning" data-answer="点击我来跟chatgpt聊天吧"
+										        data-original-title="修改聊天"
+										        data-title="新建聊天"
+										        onclick="editChat('${item.id}')"
+										        type="button"><i class="zmdi zmdi-edit"></i>
+										</button>
+										<button class="btn btn-link text-danger" data-original-title="移除聊天"
+										        data-toggle="tooltip"
+										        onclick="removeChat('${item.id}')" type="button"><i
+												class="zmdi zmdi-delete"></i>
+										</button>
+									</div>
+									<a class="card" href="#"
+									   onclick="changeSessionId('${item.id}','${attributes["uid"]}','${attributes["uname"]}')">
+										<div class="card-body">
+											<div class="media">
+												<div class="avatar me-3">
+													<div class="avatar rounded-circle no-image bg-primary text-light">
+													<span class="msg-avatar">
+                                        <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
+                                             class="avatar avatar-lg rounded-circle">
+                                    </span>
+													</div>
+												</div>
+												<div class="media-body overflow-hidden">
+													<div class="d-flex align-items-center mb-1">
+														<h6 class="text-truncate mb-0 me-auto chat-question-header">${attributes["uname"]}</h6>
+														<p class="small text-muted text-nowrap ms-4 mb-0">
+															<fmt:formatDate
+																	value="<%=new Date()%>"
+																	pattern="yyyy-MM-dd HH:mm:ss"/></p>
+													</div>
+													<div class="text-truncate chat-answer-header">
+														<font color="red">当前在线</font>
+													</div>
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+							</c:if>
+						</c:forEach>
+					</c:if>
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="nav-tab-pages" role="tabpanel">
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<h3 class="mb-0 text-primary">聊天</h3>
+				</div>
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<div class="text-truncate">这是别人公开或者分享的聊天。</div>
+				</div>
+				<div class="card border-0">
+					<ul class="list-group list-group-flush chat-public">
+						<!--                        <li class="list-group-item border-0">-->
+						<!--                            <a class="link" href="#"><i class="zmdi zmdi-label-alt me-2"></i> 你好啊</a>-->
+						<!--                        </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="main px-xl-5 px-lg-4 px-3">
 		<div class="chat-body">
 			<div class="chat-header border-bottom py-xl-4 py-md-3 py-2">
@@ -321,12 +428,12 @@
 										<span><i class="zmdi zmdi-comment-text"></i></span>
 									</div>
 								</div>
-								<div class="media-body overflow-hidden">
-									<div class="d-flex align-items-center mb-1">
-										<h6 class="text-truncate mb-0 me-auto">图书馆咨询</h6>
-									</div>
-									<div class="text-truncate">客服在线答疑</div>
-								</div>
+								<%--								<div class="media-body overflow-hidden">--%>
+								<%--									<div class="d-flex align-items-center mb-1">--%>
+								<%--										<h6 class="text-truncate mb-0 me-auto">图书馆咨询</h6>--%>
+								<%--									</div>--%>
+								<%--									<div class="text-truncate">客服在线答疑</div>--%>
+								<%--								</div>--%>
 							</div>
 						</div>
 						<div class="col-6 col-xl-8 text-end">
@@ -448,7 +555,16 @@
             header: null,
             payload: null,
             signature: null
-        }
+        },
+        messageContent: {}
+    }
+
+    function changeSessionId(id, uid, uname) {
+        webMetaData.messageContent.receiverId = uid
+        webMetaData.messageContent.receiverName = uname
+        webMetaData.messageContent.messageId = id
+        webMetaData.messageContent.senderId = "${chatVo.senderId}"
+        webMetaData.messageContent.senderName = "${chatVo.senderName}";
     }
 
     $(function () {
@@ -460,6 +576,8 @@
             localStorage.setItem("userId", webMetaData.userId);
         }
         $("#user_id").text("欢迎您,游客:" + webMetaData.userId);
+
+        changeSessionId("${firstOne.id}", "${uid}", "${uname}")
         init();
         bind();
         // connect("sse");
@@ -1184,7 +1302,7 @@
             };
             webMetaData.ws.onmessage = function (event) {
                 const chatVo = JSON.parse(event.data)
-                buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
+                buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
                     chatVo.content, webMetaData.index, false);
             };
             webMetaData.ws.onclose = function () {
@@ -1244,17 +1362,10 @@
             return;
         }
         $("#sendText").val("");
-        buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), "${chatVo.senderName}", "http://hoppinzq.com/zui/static/picture/0.jpg", question, webMetaData.index, false);
-        webMetaData.ws.send(JSON.stringify({
-            <c:if test="${chatVo.senderId!=null}">
-            senderId: ${chatVo.senderId},
-            receiverId:${chatVo.receiverId},
-            senderName: "${chatVo.senderName}",
-            receiverName: "${chatVo.receiverName}",
-            </c:if>
-            sendTime: __zqChat.getRealDate(new Date()),
-            content: question
-        }))
+        buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), webMetaData.messageContent.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg", question, webMetaData.index, false);
+        webMetaData.messageContent.sendTime = __zqChat.getRealDate(new Date())
+        webMetaData.messageContent.content = question
+        webMetaData.ws.send(JSON.stringify(webMetaData.messageContent))
     };
 
     /**

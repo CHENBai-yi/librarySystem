@@ -2,6 +2,7 @@ package com.bai.controller;
 
 import com.bai.pojo.ClassInfo;
 import com.bai.pojo.News;
+import com.bai.pojo.vo.ChatVO;
 import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
 import com.bai.service.ClassInfoService;
@@ -10,9 +11,11 @@ import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class IndexController {
@@ -48,8 +51,17 @@ public class IndexController {
     }
 
     @GetMapping(path = Constants.AccessPageUrl.CONCATME)
-    public String concatMe(Model model) {
+    public String concatMe(Model model, HttpSession session) {
+        ChatVO chatVO = bookService.getMsgVo(session);
+        model.addAttribute("chatVo", chatVO);
         return "concat_me";
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/v1/chat/completions/poststream/{id}", method = {RequestMethod.POST, RequestMethod.GET})
+    public String poststream(Map<String, Object> map, @PathVariable("id") String a) {
+        System.out.println(a);
+        return "concat_me_bak  okook";
     }
 
 

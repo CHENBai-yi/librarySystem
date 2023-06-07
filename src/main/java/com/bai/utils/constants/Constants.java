@@ -82,6 +82,7 @@ public class Constants {
         public static final String RUGUANGUANLI = "/dzzn/gzzd/ruguanguanli";
         public static final String CONCATME = "/concat/me";
         public static final String CONSULT = "/fw/consult";
+        public static final String CONCAT_ME_ADMIN = "/concat/me/backend";
 
     }
 }
