@@ -339,15 +339,16 @@
 					</li>
 					<c:if test="${online!=null and online.size()>0}">
 						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
-							<c:if test="${s.first}">
-								<c:set value="${online[k]}" var="firstOne"/>
-								<c:set value="${firstOne.attributes['uid']}" var="uid"/>
-								<c:set value="${firstOne.attributes['uname']}" var="uname"/>
-							</c:if>
 							
 							
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
+							
+							<c:if test="${item.attributes['uid'] eq chatVo.senderId}">
+								<c:set value="${k}" var="messageId"/>
+								<c:set value="${item.attributes['uid']}" var="uid"/>
+								<c:set value="${item.attributes['uname']}" var="uname"/>
+							</c:if>
 							<c:if test="${attributes['id'] ne 0}">
 								<li
 										class="online chat-title"
@@ -634,7 +635,7 @@
             signature: null
         },
         messageContent: {
-            messageId: "${firstOne.id}",
+            messageId: "${messageId}",
             receiverId: "${uid}",
             receiverName: "${uname}",
             senderId: "${chatVo.senderId}",
