@@ -344,7 +344,7 @@
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
 							
-							<c:if test="${item.attributes['uid'] eq chatVo.senderId}">
+							<c:if test="${item.attributes['uid'] eq chatVo.receiverId}">
 								<c:set value="${k}" var="messageId"/>
 								<c:set value="${item.attributes['uid']}" var="uid"/>
 								<c:set value="${item.attributes['uname']}" var="uname"/>
