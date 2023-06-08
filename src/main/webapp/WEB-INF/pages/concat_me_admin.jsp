@@ -338,21 +338,25 @@
 						</div>
 					</li>
 					<c:if test="${online!=null and online.size()>0}">
+						<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
 						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
 							
 							
-							<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
-							<c:if test="${readerId!=null and readerId eq item.attributes['uid']}">
-								<c:set value="${k}" var="firstOne"/>
-								<c:set value="${item.attributes['uid']}" var="uid"/>
-								<c:set value="${item.attributes['uname']}" var="uname"/>
-							</c:if>
-							
 							<c:if test="${attributes['id'] ne 0}">
 								<li
-										class="online chat-title"
+										<c:choose>
+											<c:when test="${readerId!=null and readerId eq item.attributes['uid']}">
+												<c:set value="${k}" var="firstOne"/>
+												<c:set value="${item.attributes['uid']}" var="uid"/>
+												<c:set value="${item.attributes['uname']}" var="uname"/>
+												class="online chat-title show active"
+											</c:when>
+											<c:otherwise>
+												class="online chat-title"
+											</c:otherwise>
+										</c:choose>
 										data-id="${k}">
 									<div class="hover_action">
 										<button class="btn btn-link text-info" data-original-title="标记为公开"
