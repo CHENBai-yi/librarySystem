@@ -339,16 +339,17 @@
 					</li>
 					<c:if test="${online!=null and online.size()>0}">
 						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
-							
-							
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
 							
-							<c:if test="${item.attributes['uid'] eq requestScope['readerId']}">
-								<c:set value="${k}" var="messageId"/>
+							
+							<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
+							<c:if test="${readerId!=null and readerId eq item.attributes['uid']}">
+								<c:set value="${k}" var="firstOne"/>
 								<c:set value="${item.attributes['uid']}" var="uid"/>
 								<c:set value="${item.attributes['uname']}" var="uname"/>
 							</c:if>
+							
 							<c:if test="${attributes['id'] ne 0}">
 								<li
 										class="online chat-title"
@@ -635,7 +636,7 @@
             signature: null
         },
         messageContent: {
-            messageId: "${messageId}",
+            messageId: "${firstOne}",
             receiverId: "${uid}",
             receiverName: "${uname}",
             senderId: "${chatVo.senderId}",
