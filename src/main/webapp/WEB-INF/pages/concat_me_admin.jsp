@@ -344,7 +344,7 @@
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
 							
-							<c:if test="${item.attributes['uid'] eq chatVo.receiverId}">
+							<c:if test="${item.attributes['uid'] eq requestScope['readerId']}">
 								<c:set value="${k}" var="messageId"/>
 								<c:set value="${item.attributes['uid']}" var="uid"/>
 								<c:set value="${item.attributes['uname']}" var="uname"/>
@@ -352,26 +352,26 @@
 							<c:if test="${attributes['id'] ne 0}">
 								<li
 										class="online chat-title"
-										data-id="${item.id}">
+										data-id="${k}">
 									<div class="hover_action">
 										<button class="btn btn-link text-info" data-original-title="标记为公开"
 										        data-toggle="tooltip"
-										        onclick="openChat('${item.id}')" type="button"><i
+										        onclick="openChat('${k}')" type="button"><i
 												class="zmdi zmdi-eye"></i></button>
 										<button class="btn btn-link text-warning" data-answer="点击我来跟chatgpt聊天吧"
 										        data-original-title="修改聊天"
 										        data-title="新建聊天"
-										        onclick="editChat('${item.id}')"
+										        onclick="editChat('${k}')"
 										        type="button"><i class="zmdi zmdi-edit"></i>
 										</button>
 										<button class="btn btn-link text-danger" data-original-title="移除聊天"
 										        data-toggle="tooltip"
-										        onclick="removeChat('${item.id}')" type="button"><i
+										        onclick="removeChat('${k}')" type="button"><i
 												class="zmdi zmdi-delete"></i>
 										</button>
 									</div>
 									<a class="card" href="#"
-									   onclick="changeSessionId('${item.id}','${attributes["uid"]}','${attributes["uname"]}')">
+									   onclick="changeSessionId('${k}','${attributes["uid"]}','${attributes["uname"]}')">
 										<div class="card-body">
 											<div class="media">
 												<div class="avatar me-3">
