@@ -27,7 +27,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
-        String hostAddress = Objects.requireNonNull(session.getRemoteAddress()).getAddress().getHostAddress();
+        String hostAddress = Objects.requireNonNull(session.getLocalAddress()).getAddress().getHostAddress();
         log.info("成功建立连接：" + hostAddress);
         System.out.println("成功建立连接：" + hostAddress);
         if (Objects.equals(0L, session.getAttributes().get("id"))) {
