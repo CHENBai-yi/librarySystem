@@ -1,6 +1,9 @@
 package com.bai.dao;
 
 import com.bai.pojo.Chat;
+import com.bai.pojo.vo.ChatVO;
+
+import java.util.List;
 
 public interface ChatDao {
     int deleteByPrimaryKey(Long messageId);
@@ -14,4 +17,8 @@ public interface ChatDao {
     int updateByPrimaryKeySelective(Chat record);
 
     int updateByPrimaryKey(Chat record);
+
+    void saveChat(ChatVO chatVO);
+
+    List<ChatVO> findAllRecoreds(Long senderId);
 }

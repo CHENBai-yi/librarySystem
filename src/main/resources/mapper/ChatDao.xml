@@ -22,6 +22,15 @@
         from chat chat
         where chat.message_id = #{messageId,jdbcType=BIGINT}
     </select>
+    <select id="findAllRecoreds" resultType="com.bai.pojo.vo.ChatVO">
+        select *from library.chat
+        <where>
+            <if test="senderId!=null">
+                chat.sender_id=#{senderId} or chat.receiver_id=#{senderId}
+            </if>
+        </where>
+        order by send_time asc
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from chat
@@ -85,6 +94,11 @@
                 #{messageType,jdbcType=OTHER},
             </if>
         </trim>
+    </insert>
+    <insert id="saveChat" parameterType="ChatVO">
+        insert into library.chat
+        values (#{messageId}, #{senderId}, #{receiverId}, #{senderName}, #{receiverName}, #{content}, #{sendTime},
+                default)
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.Chat">
         update chat

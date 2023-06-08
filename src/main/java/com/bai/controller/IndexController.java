@@ -5,6 +5,7 @@ import com.bai.pojo.News;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
+import com.bai.service.ChatService;
 import com.bai.service.ClassInfoService;
 import com.bai.service.NewsService;
 import com.bai.utils.constants.Constants;
@@ -26,6 +27,8 @@ public class IndexController {
     private ClassInfoService classInfoService;
     @Autowired
     private BookService bookService;
+    @Autowired
+    private ChatService chatService;
 
     @GetMapping("/index")
     public String indexPage(Model model) {
@@ -53,7 +56,10 @@ public class IndexController {
     @GetMapping(path = Constants.AccessPageUrl.CONCATME)
     public String concatMe(Model model, HttpSession session) {
         ChatVO chatVO = bookService.getMsgVo(session);
+        List<ChatVO> chatVOList = chatService.findAllRecoredsById(chatVO.getSenderId());
+        model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);
+
         return "concat_me";
     }
 

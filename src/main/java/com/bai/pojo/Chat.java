@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 public class Chat implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Long messageId;
+    private String messageId;
     private Long senderId;
     private Long receiverId;
     private String senderName;

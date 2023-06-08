@@ -28,6 +28,8 @@ public class AdminController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private ChatService chatService;
 
     // 进入管理员界面
     @RequestMapping("/admin_main.html")
@@ -235,8 +237,10 @@ public class AdminController {
     }
 
     @RequestMapping(Constants.AccessPageUrl.CONCAT_ME_ADMIN)
-    public String concat_me_admin(Model model, HttpSession session) {
+    public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) {
         ChatVO chatVO = bookService.getMsgVo(session);
+        List<ChatVO> chatVOList = chatService.findAllRecoredsById(readerId);
+        model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);
         model.addAttribute("online", ConsultService.sessionsMap);
         return "concat_me_admin";

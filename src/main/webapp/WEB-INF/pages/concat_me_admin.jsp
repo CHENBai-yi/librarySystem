@@ -1,4 +1,5 @@
 <%@ page import="java.util.Date" %>
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -343,10 +344,14 @@
 								<c:set value="${firstOne.attributes['uid']}" var="uid"/>
 								<c:set value="${firstOne.attributes['uname']}" var="uname"/>
 							</c:if>
+							
+							
 							<c:set value="${online[k]}" var="item"/>
 							<c:set value="${item.attributes}" var="attributes"/>
 							<c:if test="${attributes['id'] ne 0}">
-								<li class="online chat-title active new" data-id="${item.id}">
+								<li
+										class="online chat-title"
+										data-id="${item.id}">
 									<div class="hover_action">
 										<button class="btn btn-link text-info" data-original-title="标记为公开"
 										        data-toggle="tooltip"
@@ -466,7 +471,79 @@
 			<div class="chat-content" id="chat-content">
 				<div class="container-xxl">
 					<ul class="list-unstyled py-4 chat-message" id="chat-message">
-					
+						<c:if test="${chatVOList!=null and chatVOList.size()>0}">
+							<c:forEach varStatus="s" begin="0" end="${chatVOList.size()-1}" var="index">
+								<c:set value="${chatVOList[index]}" var="items"/>
+								<c:choose>
+									<c:when test="${items.senderName eq chatVo.senderName}">
+										<li class="d-flex message message-bot" id="user-chat-question-${index+1}">
+											<div class="message-body">
+												<div class="d-flex align-items-center">
+													<div class="avatar sm rounded-circle bg-primary d-flex align-items-center justify-content-center">
+														<span><i class="zmdi zmdi-comment-text text-light"></i></span>
+													</div>
+													<div class="mx-10 p-2">
+														<a href="#"
+														   class="text-dark hover-primary font-weight-bold">${items.senderName}</a>
+													</div>
+												</div>
+												<span class="date-time text-muted">${items.sendTime}<i
+														class="zmdi zmdi-check-all text-primary"></i></span>
+												<div class="message-row d-flex align-items-center">
+													<div class="message-content message-content-ex p-3 text-chat"
+													     data-role="helper">${items.content}</div>
+												</div>
+											</div>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="d-flex message message-user right"
+										    id="user-chat-question-${index+1}">
+											<div class="message-body">
+												<div class="d-flex align-items-center justify-content-end">
+													<div class="mx-10 p-2">
+														<a href="#"
+														   class="text-dark hover-primary font-weight-bold">${items.senderName}</a>
+													</div>
+													<span class="msg-avatar">
+                                        <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
+                                             class="avatar avatar-lg rounded-circle">
+                                    </span>
+												</div>
+												<span class="date-time text-muted">${items.sendTime}<i
+														class="zmdi zmdi-check-all text-primary"></i></span>
+												<div class="message-row d-flex align-items-center justify-content-end">
+													<div class="dropdown">
+														<a class="text-muted me-1 p-2 text-muted" href="#"
+														   data-toggle="dropdown" aria-haspopup="true"
+														   aria-expanded="false">
+															<i class="zmdi zmdi-more-vert"></i>
+														</a>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="#" onclick="needhelp()"
+															   title="将会还原ChatBot原来的文本">有疑问？</a>
+														</div>
+													</div>
+													<div class="message-content p-3 text-chat"
+													     id="message-user-chat-question-1"
+													     data-img="http://hoppinzq.com/zui/static/picture/0.jpg"
+													     data-user="${items.senderName}" data-role="user"
+													     data-date="${items.sendTime}"
+													     data-id="${items.messageId}">${items.content}</div>
+												</div>
+											</div>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								
+								
+								<c:if test="${s.last}">
+									<li class="d-flex message divider mt-xl-5 mt-md-3 mb-xl-5 mb-md-3" id="lastA">
+										<small class="text-muted">历史消息记录</small>
+									</li>
+								</c:if>
+							</c:forEach>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -556,18 +633,24 @@
             payload: null,
             signature: null
         },
-        messageContent: {}
+        messageContent: {
+            messageId: "${firstOne.id}",
+            receiverId: "${uid}",
+            receiverName: "${uname}",
+            senderId: "${chatVo.senderId}",
+            senderName: "${chatVo.senderName}"
+        }
     }
 
     function changeSessionId(id, uid, uname) {
-        webMetaData.messageContent.receiverId = uid
-        webMetaData.messageContent.receiverName = uname
-        webMetaData.messageContent.messageId = id
-        webMetaData.messageContent.senderId = "${chatVo.senderId}"
-        webMetaData.messageContent.senderName = "${chatVo.senderName}";
+        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
     }
 
     $(function () {
+        var anchorElement = document.getElementById("lastA");
+        if (anchorElement) {
+            anchorElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        }
         apikey()
         webMetaData.userno = __zqChat.uuid(32, 64);
         webMetaData.userId = localStorage.getItem("userId");
@@ -577,7 +660,6 @@
         }
         $("#user_id").text("欢迎您,游客:" + webMetaData.userId);
 
-        changeSessionId("${firstOne.id}", "${uid}", "${uname}")
         init();
         bind();
         // connect("sse");
@@ -1298,7 +1380,6 @@
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
             webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
             // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
-
             webMetaData.ws.onopen = function () {
                 console.log("建立连接")
             };

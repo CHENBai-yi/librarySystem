@@ -14,6 +14,5 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public interface ConsultService {
     Map<String, WebSocketSession> sessionsMap = new ConcurrentHashMap<>();
-
     void forwardMsg(TextMessage message) throws IOException;
 }

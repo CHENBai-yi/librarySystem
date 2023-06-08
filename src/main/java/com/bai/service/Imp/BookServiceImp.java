@@ -143,6 +143,7 @@ public class BookServiceImp implements BookService {
 
     @Override
     public ChatVO getMsgVo(HttpSession session) {
+
         Object readercard = session.getAttribute("readercard");
         Object admin = session.getAttribute("admin");
         ChatVO chatVO = new ChatVO();
@@ -157,8 +158,12 @@ public class BookServiceImp implements BookService {
             chatVO.setSenderId(readerId);
             chatVO.setSenderName(reader.getUsername());
         }
+
         chatVO.setReceiverId(0L);
         chatVO.setReceiverName("baiyichen");
+        // WebSocketSession session_admin = ConsultService.sessionsMap.get("admin");
+        // if (session_admin == null) chatVO.setMessageId("");
+        // else chatVO.setMessageId(session_admin.getId());
         return chatVO;
     }
 

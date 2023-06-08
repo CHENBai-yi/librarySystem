@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd">
+	http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 配置整合mybatis过程 -->
     <!-- 1.配置数据库相关参数properties的属性：${url} -->
     <!--    <context:property-placeholder location="classpath:db.properties" />-->
@@ -57,4 +60,14 @@
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="com.bai.dao"/>
     </bean>
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="rollbackOnCommitFailure" value="true"/>
+        <property name="globalRollbackOnParticipationFailure" value="true"/>
+        <property name="nestedTransactionAllowed" value="true"/>
+        <property name="failEarlyOnGlobalRollbackOnly" value="true"/>
+    </bean>
+    <!-- 4.扫描web相关的bean -->
+    <context:component-scan base-package="com.bai.service,com.bai.dao"/>
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 </beans>

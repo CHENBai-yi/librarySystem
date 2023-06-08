@@ -359,7 +359,79 @@
 			<div class="chat-content" id="chat-content">
 				<div class="container-xxl">
 					<ul class="list-unstyled py-4 chat-message" id="chat-message">
-					
+						<c:if test="${chatVOList!=null and chatVOList.size()>0}">
+							<c:forEach varStatus="s" begin="0" end="${chatVOList.size()-1}" var="index">
+								<c:set value="${chatVOList[index]}" var="item"/>
+								<c:choose>
+									<c:when test="${item.senderName eq chatVo.senderName}">
+										<li class="d-flex message message-user right"
+										    id="user-chat-question-${index+1}">
+											<div class="message-body">
+												<div class="d-flex align-items-center justify-content-end">
+													<div class="mx-10 p-2">
+														<a href="#"
+														   class="text-dark hover-primary font-weight-bold">${item.senderName}</a>
+													</div>
+													<span class="msg-avatar">
+                                        <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
+                                             class="avatar avatar-lg rounded-circle">
+                                    </span>
+												</div>
+												<span class="date-time text-muted">${item.sendTime}<i
+														class="zmdi zmdi-check-all text-primary"></i></span>
+												<div class="message-row d-flex align-items-center justify-content-end">
+													<div class="dropdown">
+														<a class="text-muted me-1 p-2 text-muted" href="#"
+														   data-toggle="dropdown" aria-haspopup="true"
+														   aria-expanded="false">
+															<i class="zmdi zmdi-more-vert"></i>
+														</a>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="#" onclick="needhelp()"
+															   title="将会还原ChatBot原来的文本">有疑问？</a>
+														</div>
+													</div>
+													<div class="message-content p-3 text-chat"
+													     id="message-user-chat-question-1"
+													     data-img="http://hoppinzq.com/zui/static/picture/0.jpg"
+													     data-user="${item.senderName}" data-role="user"
+													     data-date="${item.sendTime}"
+													     data-id="${item.messageId}">${item.content}</div>
+												</div>
+											</div>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="d-flex message message-bot" id="user-chat-question-${index+1}">
+											<div class="message-body">
+												<div class="d-flex align-items-center">
+													<div class="avatar sm rounded-circle bg-primary d-flex align-items-center justify-content-center">
+														<span><i class="zmdi zmdi-comment-text text-light"></i></span>
+													</div>
+													<div class="mx-10 p-2">
+														<a href="#"
+														   class="text-dark hover-primary font-weight-bold">${item.senderName}</a>
+													</div>
+												</div>
+												<span class="date-time text-muted">${item.sendTime}<i
+														class="zmdi zmdi-check-all text-primary"></i></span>
+												<div class="message-row d-flex align-items-center">
+													<div class="message-content message-content-ex p-3 text-chat"
+													     data-role="helper">${item.content}</div>
+												</div>
+											</div>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								
+								
+								<c:if test="${s.last}">
+									<li class="d-flex message divider mt-xl-5 mt-md-3 mb-xl-5 mb-md-3" id="lastA">
+										<small class="text-muted">历史消息记录</small>
+									</li>
+								</c:if>
+							</c:forEach>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -452,6 +524,10 @@
     }
 
     $(function () {
+        var anchorElement = document.getElementById("lastA");
+        if (anchorElement) {
+            anchorElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        }
         apikey()
         webMetaData.userno = __zqChat.uuid(32, 64);
         webMetaData.userId = localStorage.getItem("userId");
@@ -1195,6 +1271,7 @@
                 }, 2000);
             };
             webMetaData.ws.onerror = function () {
+                // alert("请先登录：")
                 setTimeout(function () {
                     connect(); // 重新连接
                 }, 2000);

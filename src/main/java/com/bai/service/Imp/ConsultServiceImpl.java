@@ -2,7 +2,10 @@ package com.bai.service.Imp;
 
 import cn.hutool.json.JSONUtil;
 import com.bai.pojo.vo.ChatVO;
+import com.bai.service.ChatService;
 import com.bai.service.ConsultService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
@@ -16,12 +19,20 @@ import java.util.Objects;
  * Date:2023/6/5 19:37
  */
 @Service
+@Slf4j
 public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultService {
+    @Autowired
+    private ChatService chatService;
+
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
-        System.out.println("建立连接");
-        sessionsMap.put(session.getId(), session);
+        String hostAddress = Objects.requireNonNull(session.getRemoteAddress()).getAddress().getHostAddress();
+        log.info("成功建立连接：" + hostAddress);
+        System.out.println("成功建立连接：" + hostAddress);
+        if (Objects.equals(0L, session.getAttributes().get("id"))) {
+            sessionsMap.put("admin", session);
+        } else /*sessionsMap.put(session.getId(), session);*/sessionsMap.put(hostAddress, session);
     }
 
     @Override
@@ -68,20 +79,28 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         ChatVO chatVO = JSONUtil.toBean(message.getPayload(), ChatVO.class);
         for (String s : sessionsMap.keySet()) {
             WebSocketSession webSocketSession = sessionsMap.get(s);
-            Object id = webSocketSession.getAttributes().get("id");
-            if (chatVO.getMessageId() != null) {
-                if (s.equals(chatVO.getMessageId())) {
-                    webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
-                    return;
+            if (chatVO.getMessageId() == null) {
+                WebSocketSession admin = sessionsMap.get("admin");
+                if (admin == null) log.warn("-----当前管理员不在线----");
+                else {
+                    chatVO.setMessageId(admin.getId());
+                    chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
+                    chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
+                    chatService.saveChat(chatVO);
+                    admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
                 }
+                return;
             }
-            if (Objects.equals(id, chatVO.getReceiverId())) {
-                Object uname = webSocketSession.getAttributes().get("uname");
-                Object uid = webSocketSession.getAttributes().get("uid");
-                chatVO.setReceiverName(uname + "");
-                chatVO.setReceiverId(Long.parseLong(uid + ""));
+          /*  if (webSocketSession.getId().equals(chatVO.getMessageId())) {
+                chatService.saveChat(chatVO);
+                webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+            }*/
+            // 改用ip作为key
+            if (s.equals(chatVO.getMessageId())) {
+                chatService.saveChat(chatVO);
                 webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
             }
         }
+
     }
 }
