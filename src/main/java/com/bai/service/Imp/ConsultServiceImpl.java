@@ -62,7 +62,11 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         super.afterConnectionClosed(session, status);
-        sessionsMap.remove(session.getId());
+        String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
+        if (ip == null) {
+            ip = Objects.requireNonNull(session.getRemoteAddress()).getHostName();
+        }
+        sessionsMap.remove(ip);
         session.close();
     }
 

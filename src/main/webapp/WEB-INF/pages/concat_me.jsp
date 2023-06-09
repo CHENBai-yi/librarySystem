@@ -1266,9 +1266,6 @@
             };
             webMetaData.ws.onclose = function () {
                 $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
-                setTimeout(function () {
-                    connect(); // 重新连接
-                }, 2000);
             };
             webMetaData.ws.onerror = function () {
                 // alert("请先登录：")
