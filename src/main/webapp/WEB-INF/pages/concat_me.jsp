@@ -1250,6 +1250,20 @@
      * websocket可以当作demo学习或者使用，本项目使用了sse，官网也是。
      * */
     function connect(type) {
+        <c:if test="${msg!=null}">
+        window.onload = () => {
+            var alertHtml = '<div class="alert alert-success alert-fixed-top" role="alert">请登录！</div>';
+            $(alertHtml).appendTo('body');
+            var alertBox = $('.alert-fixed-top');
+            alertBox.animate({top: '50px'}, 200, 'swing')
+                .delay(5000)
+                .animate({top: '-100px', opacity: 0}, 500, 'linear', function () {
+                    $(this).remove();
+                    $("style").remove();
+                });
+        }
+        </c:if>
+
         if (type == "sse") {
 
         } else {
@@ -1266,9 +1280,11 @@
             };
             webMetaData.ws.onclose = function () {
                 $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
+                setTimeout(function () {
+                    connect(); // 重新连接
+                }, 2000);
             };
             webMetaData.ws.onerror = function () {
-                // alert("请先登录：")
                 setTimeout(function () {
                     connect(); // 重新连接
                 }, 2000);
