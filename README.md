@@ -1,4 +1,3 @@
-# librarySystem
 
 ### 图书馆管理系统 ssm+bootstrap
 
@@ -16,9 +15,28 @@
 
 ##### 基本功能展示
 
+###### 主页面：
+
+![img.png](.asserts/img.png)
+
+###### 读者咨询页面：
+
+![img_1.png](.asserts/img_1.png)
+
+###### 图书详情页面：
+
+![img_2.png](.asserts/img_2.png)
+
+###### 图书检索页面：
+
+![img_3.png](.asserts/img_3.png)
 ![Image text](https://github.com/byescoding/librarySystem/blob/master/library_images/QQ%E6%88%AA%E5%9B%BE20200702133500.png)
 
-##### 数据库表结构
+##### 数据库表结构：
+
+###### 物理模型：
+
+![img.png](img.png)
 
 ![Image text](https://github.com/byescoding/librarySystem/blob/master/library_images/QQ%E6%88%AA%E5%9B%BE20200702133924.png)
 
