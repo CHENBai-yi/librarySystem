@@ -304,6 +304,25 @@
     .markdown-body table {
         display: table-row !important;
     }
+
+    .navigation {
+        display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+        .navigation {
+            background-color: var(--sidebar-bg);
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            display: flex;
+            border: 0;
+            justify-content: left !important;
+        }
+    }
 </style>
 <body>
 <div class="zq_preloader zq_preloader_center">
@@ -311,6 +330,9 @@
 </div>
 <div class="theme-cyan" id="layout">
 	
+	<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">
+		<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>
+	</div>
 	
 	<div class="sidebar border-end py-xl-4 py-3 px-xl-4 px-3">
 		<div class="tab-content">
