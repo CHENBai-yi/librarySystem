@@ -36,7 +36,7 @@
 
 ###### 物理模型：
 
-![img.png](img.png)
+![img.png](.asserts/img6.png)
 
 ![Image text](https://github.com/byescoding/librarySystem/blob/master/library_images/QQ%E6%88%AA%E5%9B%BE20200702133924.png)
 
