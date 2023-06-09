@@ -42,6 +42,8 @@
 
 ##### 使用环境
 
-tomcat9.0 jdk8.0 maven
+tomcat9.0 
+jdk8.0 
+Maven
+项目路径： /
 
-#### 图片展示在文件夹 library_images
