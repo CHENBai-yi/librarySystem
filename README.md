@@ -30,15 +30,12 @@
 ###### 图书检索页面：
 
 ![img_3.png](.asserts/img_3.png)
-![Image text](https://github.com/byescoding/librarySystem/blob/master/library_images/QQ%E6%88%AA%E5%9B%BE20200702133500.png)
 
 ##### 数据库表结构：
 
 ###### 物理模型：
 
 ![img.png](.asserts/img6.png)
-
-![Image text](https://github.com/byescoding/librarySystem/blob/master/library_images/QQ%E6%88%AA%E5%9B%BE20200702133924.png)
 
 ##### 使用环境
 
