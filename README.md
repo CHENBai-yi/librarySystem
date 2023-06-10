@@ -15,6 +15,10 @@
 
 ##### 基本功能展示
 
+###### 后台页面：
+
+![img.png](.asserts/img7.png)
+
 ###### 主页面：
 
 ![img.png](.asserts/img.png)
@@ -43,4 +47,5 @@ tomcat9.0
 jdk8.0 
 Maven
 项目路径： /
+
 
