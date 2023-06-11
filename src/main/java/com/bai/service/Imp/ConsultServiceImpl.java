@@ -23,9 +23,9 @@ import java.util.Objects;
 @Service
 @Slf4j
 public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultService {
+    public static volatile WebSocketSession admin;
     @Autowired
     private ChatService chatService;
-    public static volatile WebSocketSession admin;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -44,7 +44,9 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         Object uid = attributes.get("uid");
         Object id = attributes.get("id");
         if (Objects.equals(id, 0L)) {
-           if (admin == null) admin = session;
+            Map<String, Object> attributes1 = admin.getAttributes();
+            session.getAttributes().putAll(attributes1);
+            admin = session;
             System.out.println("成功建立连接，管理员id：" + uid);
         } else {
             System.out.println("成功建立连接，读者id：" + uid);
