@@ -1256,8 +1256,8 @@
     }
 
     function changeSessionId(id, uid, uname) {
-        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
-        <%--window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
+        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
+        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
     }
 
     /**
@@ -1283,8 +1283,8 @@
 
         } else {
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
+            webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
+            // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
             webMetaData.ws.onopen = function () {
                 console.log("建立连接")
             };
