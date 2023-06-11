@@ -1,5 +1,6 @@
 package com.bai.service.Imp;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.service.ChatService;
@@ -105,14 +106,15 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             WebSocketSession webSocketSession = sessionsMap.get(s);
             if (chatVO.getMessageId() == null) {
                 if (admin == null) log.warn("-----当前管理员不在线----");
-                else if (chatVO.getOnlineFlag() != null) {
+                else if (StrUtil.isNotBlank(chatVO.getOnlineFlag())) {
                     chatVO.setMessageId(admin.getId());
                     chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                     chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
                     chatService.saveChat(chatVO);
                     admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+                    return;
                 }
-                return;
+
             }
           /*  if (webSocketSession.getId().equals(chatVO.getMessageId())) {
                 chatService.saveChat(chatVO);
