@@ -11,6 +11,7 @@ import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,11 +24,12 @@ import java.util.Objects;
 public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultService {
     @Autowired
     private ChatService chatService;
+    public static volatile WebSocketSession admin;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
-        String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
+      /*  String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
         if (ip == null) {
             ip = Objects.requireNonNull(session.getRemoteAddress()).getHostName();
         }
@@ -35,7 +37,19 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         System.out.println("成功建立连接：" + ip);
         if (Objects.equals(0L, session.getAttributes().get("id"))) {
             sessionsMap.put("admin", session);
-        } else /*sessionsMap.put(session.getId(), session);*/sessionsMap.put(ip, session);
+        } else *//*sessionsMap.put(session.getId(), session);*//*sessionsMap.put(ip, session);*/
+
+        Map<String, Object> attributes = session.getAttributes();
+        Object uid = attributes.get("uid");
+        Object id = attributes.get("id");
+        if (Objects.equals(id, 0L)) {
+            admin = session;
+            System.out.println("成功建立连接，管理员id：" + uid);
+        } else {
+            System.out.println("成功建立连接，读者id：" + uid);
+            sessionsMap.put(uid.toString(), session);
+        }
+
     }
 
     @Override
@@ -52,6 +66,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
     @Override
     protected void handlePongMessage(WebSocketSession session, PongMessage message) throws Exception {
         super.handlePongMessage(session, message);
+
     }
 
     @Override
@@ -61,13 +76,15 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        super.afterConnectionClosed(session, status);
-        String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
-        if (ip == null) {
-            ip = Objects.requireNonNull(session.getRemoteAddress()).getHostName();
-        }
-        sessionsMap.remove(ip);
-        session.close();
+        // super.afterConnectionClosed(session, status);
+        // String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
+        // if (ip == null) {
+        //     ip = Objects.requireNonNull(session.getRemoteAddress()).getHostName();
+        // }
+        // sessionsMap.remove(ip);
+        Map<String, Object> attributes = session.getAttributes();
+        Object uid = attributes.get("uid");
+        sessionsMap.remove(uid);
     }
 
     @Override
@@ -87,7 +104,6 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         for (String s : sessionsMap.keySet()) {
             WebSocketSession webSocketSession = sessionsMap.get(s);
             if (chatVO.getMessageId() == null) {
-                WebSocketSession admin = sessionsMap.get("admin");
                 if (admin == null) log.warn("-----当前管理员不在线----");
                 else if (chatVO.getOnlineFlag() != null) {
                     chatVO.setMessageId(admin.getId());
@@ -109,5 +125,9 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             }
         }
 
+    }
+
+    public void aVoid(WebSocketSession session, TextMessage message) throws Exception {
+        session.sendMessage(message);
     }
 }

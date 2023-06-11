@@ -7,12 +7,14 @@ import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
 import com.bai.service.ChatService;
 import com.bai.service.ClassInfoService;
+import com.bai.service.Imp.ConsultServiceImpl;
 import com.bai.service.NewsService;
 import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -57,6 +59,10 @@ public class IndexController {
     public String concatMe(Model model, HttpSession session) {
         ChatVO chatVO = bookService.getMsgVo(session);
         List<ChatVO> chatVOList = chatService.findAllRecoredsById(chatVO.getSenderId());
+        WebSocketSession admin = ConsultServiceImpl.admin;
+        if (admin != null) {
+            chatVO.setOnlineFlag(admin.getAttributes().get("onlineKey") + "");
+        }
         model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);
 

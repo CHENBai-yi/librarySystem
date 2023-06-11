@@ -1,18 +1,23 @@
 package com.bai.controller;
 
+import cn.hutool.json.JSONUtil;
 import com.bai.pojo.*;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.service.*;
+import com.bai.service.Imp.ConsultServiceImpl;
 import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -236,13 +241,24 @@ public class AdminController {
         return "admin_books";
     }
 
+    @Autowired
+    ConsultServiceImpl consultServiceImp;
+
     @RequestMapping(Constants.AccessPageUrl.CONCAT_ME_ADMIN)
-    public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) {
+    public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) throws Exception {
         ChatVO chatVO = bookService.getMsgVo(session);
         List<ChatVO> chatVOList = chatService.findAllRecoredsById(readerId);
+        Map<String, WebSocketSession> sessionsMap = ConsultService.sessionsMap;
+        if (readerId != null) {
+            ConsultServiceImpl.admin.getAttributes().put("onlineKey", chatVO.getOnlineFlag());
+            String key = readerId.toString();
+            WebSocketSession session1 = sessionsMap.get(key);
+            consultServiceImp.aVoid(session1, new TextMessage(JSONUtil.toJsonStr(chatVO)));
+        }
         model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);
-        model.addAttribute("online", ConsultService.sessionsMap);
+
+        model.addAttribute("online", sessionsMap);
         return "concat_me_admin";
     }
 
