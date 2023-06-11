@@ -1255,10 +1255,6 @@
 
     }
 
-    function changeSessionId(id, uid, uname) {
-        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
-        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
-    }
 
     /**
      * 连接，sse为sse服务，ws为websocket服务，其中两个服务对话都可以用，但是后续功能（如终止对话等）全部只支持sse
