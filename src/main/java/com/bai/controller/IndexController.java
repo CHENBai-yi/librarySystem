@@ -61,7 +61,10 @@ public class IndexController {
         List<ChatVO> chatVOList = chatService.findAllRecoredsById(chatVO.getSenderId());
         WebSocketSession admin = ConsultServiceImpl.admin;
         if (admin != null) {
-            chatVO.setOnlineFlag(admin.getAttributes().get("onlineKey") + "");
+
+            Object onlineKey = admin.getAttributes().get("onlineKey");
+            if (onlineKey != null)
+                chatVO.setOnlineFlag(onlineKey + "");
         }
         model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);

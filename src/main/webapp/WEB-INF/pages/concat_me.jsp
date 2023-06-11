@@ -528,8 +528,6 @@
             receiverId:${chatVo.receiverId},
             senderName: "${chatVo.senderName}",
             receiverName: "${chatVo.receiverName}",
-            </c:if>
-            <c:if test="${chatVo.onlineFlag!=null}">
             onlineFlag: "${chatVo.onlineFlag}",
             </c:if>
 
