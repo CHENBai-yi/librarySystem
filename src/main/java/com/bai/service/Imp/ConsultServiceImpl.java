@@ -110,7 +110,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             WebSocketSession webSocketSession = sessionsMap.get(s);
             if (chatVO.getMessageId() == null) {
                 if (admin == null) log.warn("-----当前管理员不在线----");
-                else if (StrUtil.isNotBlank(chatVO.getOnlineFlag())) {
+                else if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey") + "")) {
                     chatVO.setMessageId(admin.getId());
                     chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                     chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
