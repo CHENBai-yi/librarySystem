@@ -44,7 +44,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         Object uid = attributes.get("uid");
         Object id = attributes.get("id");
         if (Objects.equals(id, 0L)) {
-            admin = session;
+           if (admin == null) admin = session;
             System.out.println("成功建立连接，管理员id：" + uid);
         } else {
             System.out.println("成功建立连接，读者id：" + uid);

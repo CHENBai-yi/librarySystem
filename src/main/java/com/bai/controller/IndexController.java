@@ -61,7 +61,6 @@ public class IndexController {
         List<ChatVO> chatVOList = chatService.findAllRecoredsById(chatVO.getSenderId());
         WebSocketSession admin = ConsultServiceImpl.admin;
         if (admin != null) {
-
             Object onlineKey = admin.getAttributes().get("onlineKey");
             if (onlineKey != null)
                 chatVO.setOnlineFlag(onlineKey + "");
