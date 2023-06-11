@@ -89,7 +89,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             if (chatVO.getMessageId() == null) {
                 WebSocketSession admin = sessionsMap.get("admin");
                 if (admin == null) log.warn("-----当前管理员不在线----");
-                else {
+                else if (chatVO.getOnlineFlag() != null) {
                     chatVO.setMessageId(admin.getId());
                     chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                     chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));

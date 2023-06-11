@@ -152,6 +152,7 @@ public class BookServiceImp implements BookService {
             long adminId = admin1.getAdminId();
             chatVO.setSenderId(adminId);
             chatVO.setSenderName(admin1.getUsername());
+            chatVO.setOnlineFlag(UUID.randomUUID().toString());
         } else if (readercard != null) {
             Reader reader = (Reader) readercard;
             long readerId = reader.getReaderId();

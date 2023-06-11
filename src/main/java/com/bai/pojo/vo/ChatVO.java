@@ -17,4 +17,5 @@ public class ChatVO {
     private String content; // 聊天内容
     private String sendTime; // 发送时间
     private String messageType; // 消息类型
+    private String onlineFlag; // 消息类型
 }

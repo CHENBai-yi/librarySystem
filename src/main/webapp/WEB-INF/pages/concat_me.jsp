@@ -1,3 +1,4 @@
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -520,6 +521,15 @@
             header: null,
             payload: null,
             signature: null
+        },
+        messageContent: {
+            <c:if test="${chatVo.senderId!=null}">
+            senderId: ${chatVo.senderId},
+            receiverId:${chatVo.receiverId},
+            senderName: "${chatVo.senderName}",
+            receiverName: "${chatVo.receiverName}",
+            </c:if>
+
         }
     }
 
@@ -1245,6 +1255,11 @@
 
     }
 
+    function changeSessionId(id, uid, uname) {
+        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        <%--window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
+    }
+
     /**
      * 连接，sse为sse服务，ws为websocket服务，其中两个服务对话都可以用，但是后续功能（如终止对话等）全部只支持sse
      * websocket可以当作demo学习或者使用，本项目使用了sse，官网也是。
@@ -1268,13 +1283,14 @@
 
         } else {
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
+            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
+            webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
             webMetaData.ws.onopen = function () {
                 console.log("建立连接")
             };
             webMetaData.ws.onmessage = function (event) {
                 const chatVo = JSON.parse(event.data)
+                webMetaData.messageContent.onlineFlag = chatVo.onlineFlag
                 buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
                     chatVo.content, webMetaData.index, false);
             };
@@ -1336,16 +1352,9 @@
         }
         $("#sendText").val("");
         buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), "${chatVo.senderName}", "http://hoppinzq.com/zui/static/picture/0.jpg", question, webMetaData.index, false);
-        webMetaData.ws.send(JSON.stringify({
-            <c:if test="${chatVo.senderId!=null}">
-            senderId: ${chatVo.senderId},
-            receiverId:${chatVo.receiverId},
-            senderName: "${chatVo.senderName}",
-            receiverName: "${chatVo.receiverName}",
-            </c:if>
-            sendTime: __zqChat.getRealDate(new Date()),
-            content: question
-        }))
+        webMetaData.messageContent.sendTime = __zqChat.getRealDate(new Date())
+        webMetaData.messageContent.content = question
+        webMetaData.ws.send(JSON.stringify(webMetaData.messageContent))
     };
 
     /**
