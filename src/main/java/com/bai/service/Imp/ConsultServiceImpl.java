@@ -92,7 +92,6 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         Object id = attributes.get("id");
         sessionsMap.remove(uid.toString());
         if (Objects.equals(id, 0L)) admin = null;
-        session.close();
     }
 
     @Override
