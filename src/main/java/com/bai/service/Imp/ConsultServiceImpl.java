@@ -89,7 +89,10 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         // sessionsMap.remove(ip);
         Map<String, Object> attributes = session.getAttributes();
         Object uid = attributes.get("uid");
-        sessionsMap.remove(uid);
+        Object id = attributes.get("id");
+        sessionsMap.remove(uid.toString());
+        if (Objects.equals(id, 0L)) admin = null;
+        session.close();
     }
 
     @Override
@@ -117,6 +120,8 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                     chatService.saveChat(chatVO);
                     admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
                     return;
+                } else {
+                    // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
                 }
 
             }
