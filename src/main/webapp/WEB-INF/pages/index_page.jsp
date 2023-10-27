@@ -663,111 +663,111 @@
 															   </li>
 														   </ul>
 													   </li>--%>
-												<%--     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-														 阅读推广
-														 <ul>
-															 <li>
-																 <p>
-																	 <a href="http://newbooks.lib.pku.edu.cn/"
-																		target="_blank" title="">新书通报</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/ydtj/jiaoshoutuijian"
-																		target="_blank" title="">教授推荐阅读</a></p>
-															 </li>
-															 <!--这个链接画了删除线 -->
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/ydtj/xuezituijian"
-																		target="_blank" title="">学子推荐阅读</a></p>
-															 </li>
-														 </ul>
-													 </li>
-													<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-														 设备设施
-														 <ul>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/xxzc/tycx?qt-content_page_innovation=2#qt-content_page_innovation"
-																		target="_blank" title="">3D打印服务</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
-																		target="_blank" title="">自助服务</a></p>
-															 </li>
-														 </ul>
-													 </li>
-													 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-														 提升信息素养
-														 <ul>
-															 <!--无链接 -->
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
-																		title="">一小时讲座</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
-																		target="_blank" title="">信息素养课</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
-																		target="_blank"
-																		title="">《数字图书馆资源检索与利用》视频课</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="http://il.lib.pku.edu.cn/" target="_blank"
-																		title="">信息素养能力评测</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyangyouxi"
-																		target="_blank" title="">信息素养手机游戏</a></p>
-															 </li>
-															 <li>
-																 <p>&nbsp;
-																 </p>
-															 </li>
-														 </ul>
-													 </li>
-													 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
-														 常用软件与培训
-														 <ul>
-															 <!--无链接 -->
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
-																		target="_blank" title="">联创自助打印系统驱动</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/zy/software" target="_blank"
-																		title="">SPSS</a></p>
-															 </li>
-															 <!--无链接 -->
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/zy/software?qt-content_page_software=3#qt-content_page_software"
-																		target="_blank" title="">NoteExpress</a></p>
-															 </li>
-															 <!--无链接 -->
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
-																		target="_blank" title="">EndNote</a></p>
-															 </li>
-															 <li>
-																 <p>
-																	 <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=4#qt-content_page_onehour"
-																		target="_blank" title="">一小时讲座之软件达人</a></p>
-															 </li>
-														 </ul>
-													 </li>--%>
+													<%--     <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+															 阅读推广
+															 <ul>
+																 <li>
+																	 <p>
+																		 <a href="http://newbooks.lib.pku.edu.cn/"
+																			target="_blank" title="">新书通报</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/ydtj/jiaoshoutuijian"
+																			target="_blank" title="">教授推荐阅读</a></p>
+																 </li>
+																 <!--这个链接画了删除线 -->
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/ydtj/xuezituijian"
+																			target="_blank" title="">学子推荐阅读</a></p>
+																 </li>
+															 </ul>
+														 </li>
+														<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+															 设备设施
+															 <ul>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/xxzc/tycx?qt-content_page_innovation=2#qt-content_page_innovation"
+																			target="_blank" title="">3D打印服务</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
+																			target="_blank" title="">自助服务</a></p>
+																 </li>
+															 </ul>
+														 </li>
+														 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+															 提升信息素养
+															 <ul>
+																 <!--无链接 -->
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/xxzc/yixiaoshi" target="_blank"
+																			title="">一小时讲座</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
+																			target="_blank" title="">信息素养课</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyang"
+																			target="_blank"
+																			title="">《数字图书馆资源检索与利用》视频课</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="http://il.lib.pku.edu.cn/" target="_blank"
+																			title="">信息素养能力评测</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/yixiaoshijiangzuo/xinxisuyangyouxi"
+																			target="_blank" title="">信息素养手机游戏</a></p>
+																 </li>
+																 <li>
+																	 <p>&nbsp;
+																	 </p>
+																 </li>
+															 </ul>
+														 </li>
+														 <li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
+															 常用软件与培训
+															 <ul>
+																 <!--无链接 -->
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/fw/kongjiansheshi/zizhufuwu"
+																			target="_blank" title="">联创自助打印系统驱动</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/zy/software" target="_blank"
+																			title="">SPSS</a></p>
+																 </li>
+																 <!--无链接 -->
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/zy/software?qt-content_page_software=3#qt-content_page_software"
+																			target="_blank" title="">NoteExpress</a></p>
+																 </li>
+																 <!--无链接 -->
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/zy/software?qt-content_page_software=4#qt-content_page_software"
+																			target="_blank" title="">EndNote</a></p>
+																 </li>
+																 <li>
+																	 <p>
+																		 <a href="/portal/cn/xxzc/yixiaoshi?qt-content_page_onehour=4#qt-content_page_onehour"
+																			target="_blank" title="">一小时讲座之软件达人</a></p>
+																 </li>
+															 </ul>
+														 </li>--%>
 											</ul>
 										</div>
 									</div>
@@ -1738,15 +1738,18 @@
 															</c:if>
 														</div>
 														<!-- Add Pagination -->
-														<div class="swiper-button-next"></div>
-														<div class="swiper-button-prev"></div>
+														<c:if test="${recommendedBooksVos.size()>=7}">
+															<div class="swiper-button-next"></div>
+															<div class="swiper-button-prev"></div>
+														</c:if>
+													
 													</div>
-													<c:if test="${recommendedBooksVos.size()>=7}">
-														<div class="view-more-newbooks"><a
-																href="<c:url value="/fw/morenewbook"/>" target="_blank">浏览更多新书<span
+													
+													<div class="view-more-newbooks">
+														<a href="<c:url value="/fw/morenewbook"/>" target="_blank">浏览全部图书<span
 																class="glyphicon glyphicon-circle-arrow-right"><span></a>
-														</div>
-													</c:if>
+													</div>
+													
 													<script>
                                                         var newbooksSwiper = new Swiper('.newbooks-swiper-container', {
                                                             slidesPerView: 6,

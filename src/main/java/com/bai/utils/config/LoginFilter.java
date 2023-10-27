@@ -1,6 +1,7 @@
 package com.bai.utils.config;
 
 import com.bai.utils.constants.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.*;
@@ -17,6 +18,7 @@ import java.util.Set;
  * PACkAGE:com.bai.utils.config
  * Date:2023/5/19 14:50
  */
+@Slf4j
 @WebFilter(urlPatterns = {"/*"}, asyncSupported = true)
 public class LoginFilter implements Filter {
     private final Set<String> accessUrl = new HashSet<>();
@@ -52,6 +54,22 @@ public class LoginFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String requestURI = httpServletRequest.getRequestURI();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
+        // try {
+        //     Optional.ofNullable(WebUtils.getCookie(httpServletRequest, "loginStatus"))
+        //             .ifPresent(cookie -> {
+        //
+        //                 Optional.ofNullable(JSONUtil.toBean(cookie.getValue(), new TypeReference<Role>() {
+        //                 }, true)).ifPresent(role -> {
+        //                     try {
+        //                         chain.doFilter(request, response);
+        //                     } catch (IOException | ServletException e) {
+        //                         throw new RuntimeException(e);
+        //                     }
+        //                 });
+        //             });
+        // } catch (Exception e) {
+        //     log.debug("重复登录时获取cookie失败");
+        // }
         if (accessUrl.stream().anyMatch(t -> antPathMatcher.match(t, requestURI.replaceAll(";jsessionid=.*", "")))) {
             chain.doFilter(request, response);
             return;

@@ -49,16 +49,20 @@
 	<div class="content-wrapper">
 		<!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="/static/picture/banner-logo.png"></a></div>-->
 		<div id="xxtb-banner-menu">
-			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu-selected">新书通报</span></a>
-			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
-			<a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
+			<%--			todo 待开发--%>
+			<%--			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu-selected">新书通报</span></a>--%>
+			<%--			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>--%>
+			<a href="/index" target="_self"><span class="menu">图书馆首页</span></a>
 		</div>
 	</div>
 </div>
 <!---------上半部：搜索框、新书驾到------------>
 <div id="xxtb-top">
 	<div class="content-wrapper">
-		<div id="xxtb-xinshujiadao-title"><img src="/static/picture/newinlib.png"></div>
+		<div id="xxtb-xinshujiadao-title">
+			<%--			<img src="/static/picture/newinlib.png">--%>
+			<img src="">
+		</div>
 		<div id="xxtb-search-form">
 			<form action="<%=Constants.AccessPageUrl.MORE_NEW_BOOK%>" id="form3" method="post" name="form3">
 				<label for="textfield"></label>

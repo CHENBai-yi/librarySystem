@@ -8,7 +8,7 @@ public class DateUtils {
     // 时间转换
     public static Date getDate(String str) {
         try {
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             return df.parse(str);
         } catch (ParseException e) {
             e.printStackTrace();

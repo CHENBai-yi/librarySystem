@@ -1,5 +1,6 @@
 package com.bai.service.Imp;
 
+import cn.hutool.core.util.StrUtil;
 import com.bai.dao.BookMapper;
 import com.bai.dao.LendMapper;
 import com.bai.pojo.Admin;
@@ -75,6 +76,9 @@ public class BookServiceImp implements BookService {
     @Override
     public List<RecommendedBooksVo> queryNewAllBooksVo() {
         List<Book> bookList = bookMapper.selectNewBooks(Constants.RECOMMENDED_BOOK_SIZE);
+        if (bookList.isEmpty()) {
+            bookList = bookMapper.queryAllBook().subList(0, 10);
+        }
         return BookMap.BOOK_MAP.getRecommendedBooksVo(bookList);
     }
 
@@ -123,11 +127,11 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException {
+    public String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException, RuntimeException {
         String realPath = httpServletRequest.getServletContext().getRealPath("/");
         String path = "/static/img/";
         String originalFilename = multipartFile.getOriginalFilename();
-        if (originalFilename == null) throw new RuntimeException();
+        if (StrUtil.isBlank(originalFilename)) throw new RuntimeException();
         String fileSuffix = originalFilename.substring(originalFilename.lastIndexOf("."));
         String fileName = UUID.randomUUID().toString().replaceAll("-", "").concat(fileSuffix);
         File parent = new File(realPath, path);

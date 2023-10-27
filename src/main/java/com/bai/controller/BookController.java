@@ -12,6 +12,7 @@ import com.bai.service.BookRecommendationService;
 import com.bai.service.BookService;
 import com.bai.utils.DateUtils;
 import com.bai.utils.constants.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class BookController {
 
     @Autowired
@@ -50,17 +52,19 @@ public class BookController {
 
     @RequestMapping("book_add_do.html")
     public String addBook(Book book, @RequestParam("pubstr") String pubstr, @RequestParam("classId") String classId, @RequestParam("bookCoverInp") MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
+        String bookCoverImg = null;
         try {
-            String bookCoverImg = bookService.uploadBookCoverImg(multipartFile, httpServletRequest);
-            book.setClassId(Integer.parseInt(classId));
-            book.setPubDate(DateUtils.getDate(pubstr));
-            book.setCoverImg(bookCoverImg);
-            bookService.addBook(book);
-            return "admin_book_add";
+            bookCoverImg = bookService.uploadBookCoverImg(multipartFile, httpServletRequest);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.debug("封面写入异常");
+        } catch (RuntimeException e) {
+            log.debug("封面未上传");
         }
-
+        book.setClassId(Integer.parseInt(classId));
+        book.setPubDate(DateUtils.getDate(pubstr));
+        book.setCoverImg(bookCoverImg);
+        bookService.addBook(book);
+        return "admin_book_add";
     }
 
     // 跳转至书本详情页
@@ -82,13 +86,17 @@ public class BookController {
     // 编辑书本信息
     @RequestMapping("/book_edit_do.html")
     public String editBook(Book book, String bookId, String pubstr, @RequestParam("bookCoverInp") MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
+        String bookCoverImg = null;
         try {
-            String bookCoverImg = bookService.uploadBookCoverImg(multipartFile, httpServletRequest);
-            bookService.updateBook(book, Long.parseLong(bookId), DateUtils.getDate(pubstr), bookCoverImg);
-            return "redirect:/admin_books.html";
+            bookCoverImg = bookService.uploadBookCoverImg(multipartFile, httpServletRequest);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.debug("封面写入异常");
+        } catch (RuntimeException e) {
+            log.debug("封面未上传");
         }
+        bookService.updateBook(book, Long.parseLong(bookId), DateUtils.getDate(pubstr), bookCoverImg);
+        return "redirect:/admin_books.html";
+
     }
 
     // 删除书本

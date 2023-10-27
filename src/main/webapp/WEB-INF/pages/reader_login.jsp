@@ -311,7 +311,7 @@
                         }
 					</style>
 					<div id="pkusso-login-block"
-					     style="background-image:url('/static/images/star.png');height: 99.5vh">
+					     style="background-image:url('/static/img/reader_login.jpg');height: 99.5vh">
 						<div class="container">
 							<div>
 								<div class="pkusso-login-form-header">
@@ -326,12 +326,12 @@
 								      onsubmit="loginCheck()">
 									<div class="form-group uid-group has-feedback">
 										<input class="form-control" id="userid" name="userid"
-										       placeholder="请输入校园卡号或图书证号"
+										       placeholder="请输入学号"
 										       type="text">
 									</div>
 									<div class="form-group passwd-group">
 										<input autocomplete="off" class="form-control" id="password" name="password"
-										       placeholder="请输入证号密码" type="password">
+										       placeholder="请输入密码（默认为身份证后六位）" type="password">
 									</div>
 									<button class="btn btn-default mylib-login-submit" type="submit">
 										登录
