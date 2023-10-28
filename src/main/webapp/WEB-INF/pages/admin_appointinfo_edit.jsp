@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<title>修改发布预约信息</title>
@@ -15,6 +16,7 @@
 </head>
 <body background="/static/img/1583851799.jpg"
       style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
+<c:set var="current" value="1" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
 <div class="col-xs-6 col-md-offset-3" style="position:relative;top:150px">

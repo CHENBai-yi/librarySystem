@@ -5,36 +5,45 @@ import com.bai.pojo.*;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.service.*;
 import com.bai.service.Imp.ConsultServiceImpl;
+import com.bai.service.Imp.ExcelServiceImpl;
 import com.bai.utils.constants.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.servlet.http.HttpSession;
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+@Slf4j
 @Controller
 public class AdminController {
 
     @Autowired
+    ConsultServiceImpl consultServiceImp;
+    @Autowired
     private AdminService adminService;
-
     @Autowired
     private NewsService newsService;
-
     @Autowired
     private AppointService appointService;
-
     @Autowired
     private BookService bookService;
     @Autowired
     private ChatService chatService;
+    @Autowired
+    private ExcelServiceImpl excelService;
 
     // 进入管理员界面
     @RequestMapping("/admin_main.html")
@@ -241,9 +250,7 @@ public class AdminController {
         return "admin_books";
     }
 
-    @Autowired
-    ConsultServiceImpl consultServiceImp;
-
+    // 选中聊天人页面
     @RequestMapping(Constants.AccessPageUrl.CONCAT_ME_ADMIN)
     public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) throws Exception {
         ChatVO chatVO = bookService.getMsgVo(session);
@@ -262,4 +269,32 @@ public class AdminController {
         return "concat_me_admin";
     }
 
+    // 批量添加读者信息
+    @PostMapping("/upload/excel")
+    public String upload(MultipartFile boundFile, Model model) throws Exception {
+        boolean flag = excelService.getExcel(boundFile);
+        if (flag) {
+            model.addAttribute("Message", "上传成功");
+        } else {
+            model.addAttribute("Message", "上传失败");
+        }
+        return "admin_reader_add";
+    }
+
+    @GetMapping(value = "/download/excel", produces = {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel"})
+    @ResponseBody
+    public Object download() {
+        try {
+            ByteArrayOutputStream value = excelService.generalExcel();
+            if (Optional.ofNullable(value).isPresent()) {
+                return value.toByteArray();
+            }
+        } catch (Exception e) {
+            log.debug("execle下载失败！！");
+        }
+        return null;
+    }
 }
+/**
+ * todo 1. 柱状图分析 2. chat心跳 3.评论区 4.读者推荐
+ */

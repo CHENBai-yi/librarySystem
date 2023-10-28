@@ -65,7 +65,7 @@
 					</c:choose>
 				</a>
 				</li>
-				<li><a href="logout.html">退出</a></li>
+				<li><a href="<c:url value="/logout.html"/>">退出</a></li>
 			</ul>
 		</div>
 	</div>

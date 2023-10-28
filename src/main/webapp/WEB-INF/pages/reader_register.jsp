@@ -25,7 +25,7 @@ background-attachment: fixed;">
 		<div>
 			<p>登录账号：${readerId}</p>
 		</div>
-		<a href="/tologin" class="alert-link">返回登录页面</a>
+		<a href="<c:url value="/new_login"/> " class="alert-link">返回登录页面</a>
 	</div>
 </c:if>
 

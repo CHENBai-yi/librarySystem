@@ -22,7 +22,7 @@
 </head>
 <body background="/static/img/1583851799.jpg"
       style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
-
+<c:set var="current" value="1" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 <div style="width: 600px;position: relative;left: 25%;top: 100px">
 	<div class="panel panel-primary">

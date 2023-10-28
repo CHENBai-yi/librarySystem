@@ -1280,8 +1280,8 @@
 
         } else {
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
+            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
+            webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
             webMetaData.ws.onopen = function () {
                 console.log("建立连接")
             };

@@ -16,7 +16,7 @@
 <body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;">
-
+<c:set var="current" value="7" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
 <div style="position: relative">
@@ -39,7 +39,7 @@ background-attachment: fixed;">
 		</div>
 	</c:if>
 </div>
-<div class="col-xs-6 col-md-offset-3" style="position: relative;">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 60px;">
 	<div class="panel panel-primary ">
 		<div class="panel-heading">
 			<h3 class="panel-title">密码修改</h3>

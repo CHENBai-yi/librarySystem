@@ -19,6 +19,18 @@
         insert into reader_card (reader_id, username, password)
         values (#{readerId}, #{username}, #{password});
     </insert>
+    <insert id="saveAll">
+        insert into library.reader_info values
+        <foreach collection="list" separator="," item="reader">
+            (#{reader.readerId},#{reader.name},#{reader.sex},#{reader.birth},#{reader.address},#{reader.phone})
+        </foreach>
+    </insert>
+    <insert id="saveAll_reader_card">
+        insert into library.reader_card values
+        <foreach collection="reader_cards" separator="," item="reader1">
+            (#{reader1.readerId},#{reader1.username},#{reader1.password})
+        </foreach>;
+    </insert>
     
     <update id="updatePassword" parameterType="Reader">
         update library.reader_card

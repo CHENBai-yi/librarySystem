@@ -20,8 +20,6 @@
 	      type="text/css"/>
 	<link href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
 	      type="text/css"/>
-	<style>
-	</style>
 	<!--[if IE 9]>
 	<link type="text/css" rel="stylesheet" media="all" href="/static/css/ie9.css"/>
 	<![endif]-->
@@ -279,6 +277,16 @@
             }
         }
     });</script>
+	<style>
+
+
+        a:hover, a:visited {
+            text-decoration: none;
+            color: #3c763d !important;
+            background: none !important;
+        }
+	
+	</style>
 </head>
 <body class="html not-front not-logged-in no-sidebars page-mylib i18n-zh-hans section-mylib">
 <div id="skip-link">
@@ -332,6 +340,7 @@
 									<div class="form-group passwd-group">
 										<input autocomplete="off" class="form-control" id="password" name="password"
 										       placeholder="请输入密码（默认为身份证后六位）" type="password">
+										<input type="hidden" id="_model" name="_model" value="reader">
 									</div>
 									<button class="btn btn-default mylib-login-submit" type="submit">
 										登录
@@ -349,6 +358,9 @@
 										<!--<input type="hidden" value="" id="goto" name="goto">-->
 										<!--input type="hidden" value="http://162.105.138.184:8090/idp/pku?goto=http%3A%2F%2Fuas.bj.calis.edu.cn%3A8090%2Famconsole%2FAuthServices%2F211010%3Fverb%3Dsplogin%26goto%3Dhttp%3A%2F%2F162.105.140.125%2Fdrupal6%2Fpkusso%2Flogin%253Fidp%253D211010" id="goto" name="goto"-->
 									</div>
+									<h3 class="mylib-title" style="float: right"><a
+											href="<c:url value="/reader_register.html"/>">注册</a>
+									</h3>
 								</form>
 							</div>
 						</div>

@@ -325,6 +325,7 @@
     }
 </style>
 <body>
+
 <div class="zq_preloader zq_preloader_center">
 	<span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
 </div>
@@ -585,19 +586,19 @@
 							                                                   type="text">
 								<div class="input-group-append d-none d-sm-block">
                                     <span class="input-group-text border-0">
-                                        <button class="btn btn-sm btn-link text-muted" data-toggle="tooltip"
-                                                title="重新提问" type="button">
-                                            <i class="zmdi zmdi-refresh font-22"></i>
-                                        </button>
+<%--                                        <button class="btn btn-sm btn-link text-muted" data-toggle="tooltip"--%>
+<%--                                                title="重新提问" type="button">--%>
+<%--                                            <i class="zmdi zmdi-refresh font-22"></i>--%>
+<%--                                        </button>--%>
                                     </span>
 								</div>
 								<div class="input-group-append">
                                     <span class="input-group-text border-0">
-                                        <button class="btn btn-sm btn-link text-muted" data-original-title="生成截图"
-                                                data-toggle="tooltip" onclick="getScreenshot()" title=""
-                                                type="button">
-                                            <i class="zmdi zmdi-camera font-22"></i>
-                                        </button>
+<%--                                        <button class="btn btn-sm btn-link text-muted" data-original-title="生成截图"--%>
+<%--                                                data-toggle="tooltip" onclick="getScreenshot()" title=""--%>
+<%--                                                type="button">--%>
+<%--                                            <i class="zmdi zmdi-camera font-22"></i>--%>
+<%--                                        </button>--%>
                                     </span>
 								</div>
 								<div class="input-group-append">
@@ -618,6 +619,7 @@
 		</div>
 	</div>
 </div>
+
 <script src="https://hoppinzq.com/video/assets/js/jquery-3.3.1.min.js"></script>
 <script src="https://hoppinzq.com/chat/static/js/bootstrap.bundle.min.js"></script>
 <script src="https://hoppinzq.com/chat/static/js/template.js"></script>
@@ -1396,9 +1398,10 @@
     }
 
     function changeSessionId(id, uid, uname) {
-        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
-        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        <%--window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
     }
+
 
     /**
      * 连接，sse为sse服务，ws为websocket服务，其中两个服务对话都可以用，但是后续功能（如终止对话等）全部只支持sse
@@ -1408,30 +1411,88 @@
         if (type == "sse") {
 
         } else {
-            // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
-            webMetaData.ws.onopen = function () {
-                console.log("建立连接")
-            };
-            webMetaData.ws.onmessage = function (event) {
+            // webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
+            webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
+            let socket = webMetaData.ws
+// 定义心跳间隔时间（以毫秒为单位）
+            const heartbeatInterval = 30000;  // 30秒
+
+// 记录上一次收到心跳回应的时间戳
+            let lastHeartbeatResponse = Date.now();
+
+// 开启WebSocket连接
+            socket.addEventListener('open', () => {
+                console.log('WebSocket连接已打开');
+                // 开始心跳检测
+                startHeartbeat();
+            });
+
+// 监听WebSocket消息
+            socket.addEventListener('message', (event) => {
+                // 处理接收到的消息
+                let message = event.data;
+                // 在这里处理接收到的消息
+                console.log('接收到消息: ' + message);
                 const chatVo = JSON.parse(event.data)
                 buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
                     chatVo.content, webMetaData.index, false);
-            };
-            webMetaData.ws.onclose = function () {
-                $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
-                setTimeout(function () {
-                    connect(); // 重新连接
-                }, 2000);
-            };
-            webMetaData.ws.onerror = function () {
-                setTimeout(function () {
-                    connect(); // 重新连接
-                }, 2000);
-            };
+                // 更新最后收到心跳回应的时间戳
+                lastHeartbeatResponse = Date.now();
+            });
+
+// 监听WebSocket关闭
+            socket.addEventListener('close', () => {
+                console.log('WebSocket连接已关闭');
+
+                // 停止心跳检测
+                stopHeartbeat();
+            });
+
+// 心跳检测函数
+            function startHeartbeat() {
+                // 使用定时器定期发送心跳消息
+                setInterval(() => {
+                    // 发送心跳消息
+                    socket.send('heartbeat');
+                    // 检查最后收到心跳回应的时间，如果超时则关闭WebSocket连接
+                    const currentTime = Date.now();
+                    if (currentTime - lastHeartbeatResponse > heartbeatInterval) {
+                        console.log('WebSocket连接超时，关闭连接');
+                        socket.close();
+                    }
+                }, heartbeatInterval);
+            }
+
+// 停止心跳检测
+            function stopHeartbeat() {
+                clearInterval(heartbeatInterval);
+            }
+
+            // // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
+            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
+            // // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
+            // webMetaData.ws.onopen = function () {
+            //     console.log("建立连接")
+            // };
+            // webMetaData.ws.onmessage = function (event) {
+            //     const chatVo = JSON.parse(event.data)
+            //     buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
+            //         chatVo.content, webMetaData.index, false);
+            // };
+            // webMetaData.ws.onclose = function () {
+            //     $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
+            //     setTimeout(function () {
+            //         connect(); // 重新连接
+            //     }, 2000);
+            // };
+            // webMetaData.ws.onerror = function () {
+            //     setTimeout(function () {
+            //         connect(); // 重新连接
+            //     }, 2000);
+            // };
         }
     }
+
 
     /**
      * 提问

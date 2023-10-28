@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -36,7 +37,7 @@
 <h2 style="text-align: center; color: white; font-family: '华文行楷'; font-size: 500%">图 书 馆</h2>
 
 <div class="panel panel-default" id="login">
-	<div style="color: #CCCCCC;left: 350px;position: relative;"><h3><a href="/reader_register.html">注册</a></h3></div>
+	<%--	<div style="color: #CCCCCC;left: 350px;position: relative;"><h3><a href="<c:url value="/reader_register.do"/>">注册</a></h3></div>--%>
 	<div class="panel-body">
 		<div class="form-group">
 			<label for="id">账号</label>
@@ -44,6 +45,7 @@
 		</div>
 		<div class="form-group">
 			<label for="passwd">密码</label>
+			<input type="hidden" name="_model" value="admin" id="_model">
 			<input type="password" class="form-control" id="passwd" placeholder="请输入密码">
 		</div>
 		<div class="checkbox text-left">
@@ -51,6 +53,7 @@
 				<input type="checkbox" id="remember">记住密码
 			</label>
 		</div>
+		
 		
 		<p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
 		<button id="loginButton" class="btn btn-primary  btn-block">登陆
@@ -100,6 +103,7 @@
         function () {
             let id = $("#id").val()
             let password = $("#passwd").val()
+            let _model = $("#_model").val()
             let checked = $("#remember").prop("checked")
             if (id == '') {
                 $("#info").text("提示:账号不能为空");
@@ -113,9 +117,11 @@
                     type: "POST",
                     dataType: "json",
                     async: true,
-                    data: {id: id, password: password},
+                    data: {id: id, password: password, _model},
                     success: data => {
-                        if (data.stateCode.trim() === "0") {
+                        if (data.stateCode.trim() === "-1") {
+                            $("#info").text("提示:" + data.msg);
+                        } else if (data.stateCode.trim() === "0") {
                             $("#info").text("提示:账号或密码错误！");
                         } else if (data.stateCode.trim() === "1") {
                             $("#info").text("提示:登陆成功，跳转中...");

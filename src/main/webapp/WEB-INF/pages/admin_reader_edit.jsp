@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<title>编辑读者信息《 ${readerInfo.readerId}》</title>
@@ -16,7 +17,7 @@
 background-size:100% 100%;
 background-attachment: fixed;">
 <%--<div id="header" style="padding-bottom: 80px"></div>--%>
-
+<c:set var="current" value="3" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
 <div class="col-xs-6 col-md-offset-3" style="position: relative;top: 80px">

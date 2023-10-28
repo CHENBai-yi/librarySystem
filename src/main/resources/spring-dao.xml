@@ -13,7 +13,7 @@
     <!-- 1.配置数据库相关参数properties的属性：${url} -->
     <!--    <context:property-placeholder location="classpath:db.properties" />-->
     <context:property-placeholder location="classpath:db2.properties"/>
-    
+    <context:annotation-config/>
     <!-- 2.数据库连接池 -->
     <!--		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
     <!--				&lt;!&ndash; 配置连接池属性 &ndash;&gt;-->
@@ -69,5 +69,5 @@
     </bean>
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.bai.service,com.bai.dao"/>
-    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
 </beans>

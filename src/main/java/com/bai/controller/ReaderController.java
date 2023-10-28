@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
@@ -53,10 +54,10 @@ public class ReaderController {
 
     // 跳转至主页面并展示内容
     @RequestMapping(value = {"/reader_admin", "/reader_main.html"})
-    public String toReadeAdmin(Model model, HttpSession session) {
-        model.addAttribute("readercard", session.getAttribute("readercard"));
+    public String toReadeAdmin(Model model, @SessionAttribute(value = "readercard", required = false) Reader readercard) {
+        if (readercard == null) return "redirect:/reader/tologin";
+        model.addAttribute("readercard", readercard);
         List<News> news = newsService.queryAllNews();
-
         model.addAttribute("news", news);
         return "reader_main";
     }
@@ -226,6 +227,7 @@ public class ReaderController {
         return "reader_appoint_list";
     }
 
+    // 注册页面
     @RequestMapping("/reader_register.html")
     public String toRegister() {
         return "reader_register";
@@ -253,5 +255,9 @@ public class ReaderController {
         return "reader_register";
     }
 
+    @RequestMapping("/new_login")
+    public String tologin() {
+        return "reader_login";
+    }
 
 }

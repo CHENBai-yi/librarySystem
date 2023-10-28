@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<title>添加读者</title>
@@ -15,7 +16,7 @@
 <body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;">
-
+<c:set var="current" value="3" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
 <div class="col-xs-6 col-md-offset-3" style="padding-top: 100px;position: relative">
@@ -67,6 +68,44 @@ background-attachment: fixed;">
 		</div>
 	</div>
 
+</div>
+<div class="col-xs-6 col-md-offset-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"> 批量导入 </h3>
+		</div>
+		<form action="<c:url value="/upload/excel"/>" method="post" enctype="multipart/form-data" id="boundFile_form">
+			<div class="panel-body">
+				<div class="form-group form-group col-xs-11 ">
+					<div class="input-group">
+						<script type="text/javascript">
+                            function getFileName(even) {
+                                console.log(even)
+                                let file = even.files
+                                console.log(file)
+                                if (!!file && file.length > 0) {
+                                    let name = file[0].name;
+                                    let size = file[0].size;
+                                    let number = Math.ceil(size / 1024 / 1024);
+                                    $("#readonly_control")[0].value = name + "   " + number + "MB"
+                                }
+                            }
+						</script>
+						<label class="input-group-btn" for="boundFile">
+                                <span class="btn btn-default">
+                                    选择文件<input type="file" name="boundFile" id="boundFile"
+                                                   style="display: none;" onchange="getFileName(this)">
+	                                
+                                </span>
+						</label>
+						<input type="text" class="form-control" value="" readonly id="readonly_control">
+					</div>
+				</div>
+				<button class="btn btn-success" type="submit">上传</button>
+				<h3 class="alert-info">${Message}</h3>
+			</div>
+		</form>
+	</div>
 </div>
 
 </body>

@@ -31,6 +31,8 @@ public class LoginFilter implements Filter {
         accessUrl.add("/index");
         accessUrl.add("/tologin");
         accessUrl.add("/logout.html");
+        accessUrl.add("/reader_register.html");
+        accessUrl.add("/reader_register.do");
         accessUrl.add("/checklogin");
         accessUrl.add("/static/**");
         accessUrl.add("/webjars" + suffix);
@@ -54,22 +56,6 @@ public class LoginFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String requestURI = httpServletRequest.getRequestURI();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
-        // try {
-        //     Optional.ofNullable(WebUtils.getCookie(httpServletRequest, "loginStatus"))
-        //             .ifPresent(cookie -> {
-        //
-        //                 Optional.ofNullable(JSONUtil.toBean(cookie.getValue(), new TypeReference<Role>() {
-        //                 }, true)).ifPresent(role -> {
-        //                     try {
-        //                         chain.doFilter(request, response);
-        //                     } catch (IOException | ServletException e) {
-        //                         throw new RuntimeException(e);
-        //                     }
-        //                 });
-        //             });
-        // } catch (Exception e) {
-        //     log.debug("重复登录时获取cookie失败");
-        // }
         if (accessUrl.stream().anyMatch(t -> antPathMatcher.match(t, requestURI.replaceAll(";jsessionid=.*", "")))) {
             chain.doFilter(request, response);
             return;
