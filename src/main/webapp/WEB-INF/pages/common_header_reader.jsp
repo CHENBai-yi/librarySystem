@@ -10,8 +10,8 @@
 <nav class="navbar navbar-default" role="navigation" style="background-color:#122b40">
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
-			<a class="navbar-brand " href="reader_main.html"><p class="text-primary"
-			                                                    style="font-family: 华文行楷; font-size: 200%; color: white ">
+			<a class="navbar-brand " href="<c:url value="/index"/> "><p class="text-primary"
+			                                                            style="font-family: 华文行楷; font-size: 200%; color: white ">
 				我的图书馆</p></a>
 		</div>
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">

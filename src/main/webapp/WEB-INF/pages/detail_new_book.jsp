@@ -49,12 +49,15 @@
 	<div class="content-wrapper">
 		<!--		<div id="xxtb-banner-logo"><a href="http://newbooks.lib.pku.edu.cn/"  ><img src="/static/picture/banner-logo.png"></a></div>-->
 		<div id="xxtb-banner-menu">
-			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu">新书通报</span></a>
-			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>
+			<%--			todo 待开发--%>
+			<%--			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu">新书通报</span></a>--%>
+			<%--			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>--%>
 			<a href="/index" target="_blank"><span class="menu">图书馆首页</span></a>
 		</div>
 	</div>
 </div>
+</div>
+
 <!---------内容：图书详细信息、相关图书（可根据690分类号字段获取，取最新上架的5本书）------------>
 <div id="xxtb-content">
 	<div class="content-wrapper">
@@ -118,8 +121,7 @@
 
                                     function b(bookId) {
                                         let isLogin =
-                                        ${!empty sessionScope.readercard.readerId}||${!empty sessionScope.admin.adminId}
-                                        console.log(isLogin)
+                                        ${!empty sessionScope.readercard.readerId}||${!empty sessionScope.readercard.readerId}
                                         if (!isLogin) {
                                             if (confirm('登陆后还书，点击确定去登录>>')) {
                                                 window.location.href = "<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
@@ -159,6 +161,82 @@
 							
 							</ul>
 						</div>
+						<c:if test="${backBookStatus}">
+							
+							<div class="alert alert-success alert-dismissable">
+								<button type="button" class="close" data-dismiss="alert"
+								        aria-hidden="true" id="close_rec">
+									&times;
+								</button>
+								<a href="<c:url value="#"/> " class="alert-link open-modal">是否推荐本书</a>
+							
+							</div>
+							<!-- 模态框结构 -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							     aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel">设定</h4>
+										</div>
+										<div class="modal-body">
+											<!-- 推荐按钮和取消按钮 -->
+											<button class="btn btn-primary" id="recommendBtn">推荐</button>
+											<button class="btn btn-default" data-dismiss="modal">取消</button>
+											
+											<!-- 文本输入框 -->
+											<input type="text" class="form-control" id="textInput"
+											       placeholder="输入文本">
+										</div>
+									</div>
+								</div>
+							</div>
+							<script>
+                                // 当点击打开模态框的按钮时，显示模态框
+                                $('.open-modal').click(function () {
+                                    $('#myModal').modal('show');
+                                });
+
+                                // 当模态框关闭时，触发的事件
+                                $('#myModal').on('hidden.bs.modal', function () {
+                                    var inputValue = $('#textInput').val();
+                                    if (inputValue) {
+                                        // 处理推荐逻辑，这里只是简单的提示
+                                        // alert('推荐成功：' + inputValue);
+                                    }
+                                });
+
+                                // 自定义逻辑，处理推荐按钮的点击事件
+                                $('#recommendBtn').click(function () {
+                                    let id =
+                                    ${sessionScope.readercard.readerId}||${sessionScope.readercard.readerId}
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/fw/readertuijian",
+                                        data: JSON.stringify({
+                                            bookId: $("#comment_post_ID").val(),
+                                            readerId: id,
+                                            recommendationReason: $('#textInput').val()
+                                        }),
+                                        dataType: "JSON",
+
+                                        contentType: "application/json",
+                                        success: function ({code, msg}) {
+                                            if (!!code && code === 1) {
+                                                alert('推荐成功：' + msg);
+                                                $("#close_rec")[0].click()
+                                                $('#myModal').modal('hide');
+                                            }
+                                        }
+                                    })
+
+                                });
+							</script>
+						
+						</c:if>
 					</div>
 					<div id="book-detail-info">
 						<!----------以下信息（作者简介、目录、内容提要、序言、评论）有则显示，无则隐藏----------->
@@ -310,7 +388,8 @@
 													<a class="but c-red" href="javascript:;"
 													   id="cancel-comment-reply-link">取消</a>
 													<button class="but c-blue pw-1em" id="submit" name="submit"
-													        tabindex="5">
+													        onclick="sendComment()"
+													        type="button">
 														提交评论
 													</button>
 												</div>
@@ -699,8 +778,9 @@
 												<div class="comt-tips-right pull-right">
 													<a class="but c-red" href="javascript:;"
 													   id="cancel-comment-reply-link">取消</a>
-													<button class="but c-blue pw-1em" id="submit" name="submit"
-													        tabindex="5">
+													<button class="but c-blue pw-1em" name="submit"
+													        onclick="sendComment()"
+													        type="button">
 														提交评论
 													</button>
 												</div>
@@ -1049,87 +1129,18 @@
 					
 					
 					<div id="postcomments">
-						<ol class="commentlist list-unstyled">
-							<div class="comment-filter tab-nav-theme flex ac jsb" win-ajax-replace="comment-order-btn">
-								<ul class="list-inline comment-order-box" style="padding:0;">
-									<li class="mr6 active"><a class="comment-orderby"
-									                          href="https://www.clash-gaming.com/3013.html?corderby=comment_date_gmt">最新</a>
-									</li>
-									<li class=""><a class="comment-orderby"
-									                href="https://www.clash-gaming.com/3013.html?corderby=comment_like">最热</a>
-									</li>
-								</ul>
-								<a class="but comment-orderby btn-only-author p2-10"
-								   href="https://www.clash-gaming.com/3013.html?only_author=2">只看作者</a></div>
-							
-							
-							<c:if test="${bookComments==null or bookComments.size()==0}">
-								<li class="comment even thread-even depth-1" id="comment-17942">
-									<ul class="list-inline">
-										<li class="comt-main" id="div-comment-17942">
-											<div class="comment-header mb10">
-												<div class="author-box flex ac"><span
-														class="avatar-img comt-avatar"><img
-														alt="头像" class="lazyload avatar avatar-id-0"
-														data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
-														src="static/picture/avatar-default.png"></span>
-													<name class="flex ac flex1"><b class="mr6">Chen Bai Yi</b></name>
-													<a class="action action-comment-like muted-2-color flex0 ml10"
-													   data-action="comment_like"
-													   data-pid="17942"
-													   href="javascript:;">
-														<svg aria-hidden="true" class="icon mr3">
-															<use xlink:href="#icon-like"></use>
-														</svg>
-														<text></text>
-														<count>0</count>
-													</a></div>
-											</div>
-											<div class="comment-footer">
-												<div class="mb10 comment-content" id="comment-content-17942"><img
-														alt="表情[xia]|Clash for Windows" class="smilie-icon"
-														data-src="https://www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/smilies/xia.gif"
-														src="static/picture/thumbnail.svg"></div>
-												<div class="comt-meta muted-2-color"><span class="comt-author"
-												                                           title="2023年05月29日 16:48:47">23分钟前</span><span
-														class="badge-approve"></span></div>
-											</div>
-										</li>
-									</ul>
+						<div class="comment-filter tab-nav-theme flex ac jsb" win-ajax-replace="comment-order-btn">
+							<ul class="list-inline comment-order-box" style="padding:0;">
+								<li class="mr6 active"><a class="comment-orderby"
+								                          href="https://www.clash-gaming.com/3013.html?corderby=comment_date_gmt">最新</a>
 								</li>
-								<!-- #comment-## -->
-								<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17929">
-									<ul class="list-inline">
-										<li class="comt-main" id="div-comment-17929">
-											<div class="comment-header mb10">
-												<div class="author-box flex ac"><span
-														class="avatar-img comt-avatar"><img
-														alt="头像" class="lazyload avatar avatar-id-0"
-														data-src="//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png"
-														src="static/picture/avatar-default.png"></span>
-													<name class="flex ac flex1"><b class="mr6">asdasd</b></name>
-													<a class="action action-comment-like muted-2-color flex0 ml10"
-													   data-action="comment_like"
-													   data-pid="17929"
-													   href="javascript:;">
-														<svg aria-hidden="true" class="icon mr3">
-															<use xlink:href="#icon-like"></use>
-														</svg>
-														<text></text>
-														<count>0</count>
-													</a></div>
-											</div>
-											<div class="comment-footer">
-												<div class="mb10 comment-content" id="comment-content-17929">1111</div>
-												<div class="comt-meta muted-2-color"><span class="comt-author"
-												                                           title="2023年05月29日 15:51:03">1小时前</span><span
-														class="badge-approve"></span></div>
-											</div>
-										</li>
-									</ul>
+								<li class=""><a class="comment-orderby"
+								                href="https://www.clash-gaming.com/3013.html?corderby=comment_like">最热</a>
 								</li>
-								<!-- #comment-## -->
-							</c:if>
+							</ul>
+							<a class="but comment-orderby btn-only-author p2-10"
+							   href="https://www.clash-gaming.com/3013.html?only_author=2">只看作者</a></div>
+						<ol class="commentlist list-unstyled" id="comments_area">
 							<c:if test="${bookComments!=null and bookComments.size()>0}">
 								<c:forEach items="${bookComments}" var="comment">
 									${comment.html}
@@ -1199,92 +1210,10 @@
 				</div>
 			</div>
 		</c:if>
-		<c:if test="${relatedBooks==null||relatedBooks.size()==0}">
-			<div id="xxtb-content-right">
-				<div class="browse-book-title">相关图书</div>
-				<div id="hot-books">
-					<ul>
-						
-						<li>
-							<div class="hot-book-image">
-								<a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532"><img
-										src="/static/picture/4333851-fm.jpg!cckb_b" title="经济法基础 刘泽海主编"
-										alt="经济法基础 刘泽海主编"></a>
-								<div class="book-intro">
-									<div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=254532">经济法基础
-										刘泽海主编</a></div>
-									<div class="book-author">刘泽海 主编</div>
-									<div class="book-publisher">北京 清华大学出版社 2018</div>
-								</div>
-							</div>
-						</li>
-						
-						<li>
-							<div class="hot-book-image">
-								<a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907"><img
-										src="/static/picture/4575702-fm.jpg" title="中国早期经济法文献辑注与研究 "
-										alt="中国早期经济法文献辑注与研究 "></a>
-								<div class="book-intro">
-									<div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=153907">中国早期经济法文献辑注与研究 </a>
-									</div>
-									<div class="book-author">张世明 编著 王济东 编著</div>
-									<div class="book-publisher">北京 社会科学文献出版社 2019</div>
-								</div>
-							</div>
-						</li>
-						
-						<li>
-							<div class="hot-book-image">
-								<a href="xxtbcountclick.jsp?jmptype=4&newbookid=198985"><img
-										src="/static/picture/4844277-fm.jpg" title="电子商务法律法规 "
-										alt="电子商务法律法规 "></a>
-								<div class="book-intro">
-									<div class="book-title"><a
-											href="xxtbcountclick.jsp?jmptype=4&newbookid=198985">电子商务法律法规 </a>
-									</div>
-									<div class="book-author">罗佩华 主编 魏彦珩 主编</div>
-									<div class="book-publisher">北京 清华大学出版社 2019</div>
-								</div>
-							</div>
-						</li>
-						
-						<li>
-							<div class="hot-book-image">
-								<a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392"><img
-										src="/static/picture/4594434-fm.jpg" title="强制性产品认证的经济法规制 "
-										alt="强制性产品认证的经济法规制 "></a>
-								<div class="book-intro">
-									<div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=167392">强制性产品认证的经济法规制 </a>
-									</div>
-									<div class="book-author">高国钧 著</div>
-									<div class="book-publisher">北京 法律出版社 2019</div>
-								</div>
-							</div>
-						</li>
-						
-						<li>
-							<div class="hot-book-image">
-								<a href="xxtbcountclick.jsp?jmptype=4&newbookid=180954"><img
-										src="/static/picture/xstjkb.jpg"
-										title="2019年注册会计师考试应试指导及全真模拟测试经济法 郭守杰编著"
-										alt="2019年注册会计师考试应试指导及全真模拟测试经济法 郭守杰编著"></a>
-								<div class="book-intro">
-									<div class="book-title"><a href="xxtbcountclick.jsp?jmptype=4&newbookid=180954">2019年注册会计师考试应试指导及全真模拟测试经济法
-										郭守杰编著</a></div>
-									<div class="book-author">郭守杰 编著</div>
-									<div class="book-publisher">北京 北京科学技术出版社 2019</div>
-								</div>
-							</div>
-						</li>
-						
-						<!-------每页显示5本书，以下重复4遍------->
-					</ul>
-				</div>
-			</div>
-		</c:if>
 		<div class="clear"></div>
 	</div>
 </div>
+
 <!---------底部：LOGO、分享、导航栏展开------------>
 <!--<div id="xxtb-bottom">
 	<div class="content-wrapper">
@@ -1296,34 +1225,28 @@
 	</div>
 </div>-->
 <script type="text/javascript">
-    window._win = {
-        views: '${detailList.newBookId}',
-        www: 'https://www.clash-gaming.com',
-        uri: 'https://www.clash-gaming.com/wp-content/themes/zibll%20V6.5',
-        ver: '6.5',
-        imgbox: '',
-        imgbox_type: 'group',
-        imgbox_thumbs: '1',
-        imgbox_zoom: '1',
-        imgbox_play: '1',
-        imgbox_down: '1',
-        sign_type: 'modal',
-        signin_url: 'https://www.clash-gaming.com/user-sign?tab=signin&redirect_to=https://www.clash-gaming.com/3013.html',
-        signup_url: 'https://www.clash-gaming.com/user-sign?tab=signup&redirect_to=https://www.clash-gaming.com/3013.html',
-        ajax_url: '/comment/book',
-        ajaxpager: '',
-        ajax_trigger: '<i class="fa fa-angle-right"></i>加载更多',
-        ajax_nomore: '没有更多内容了',
-        qj_loading: '',
-        highlight_kg: '1',
-        highlight_hh: '',
-        highlight_btn: '',
-        highlight_zt: 'enlighter',
-        highlight_white_zt: 'enlighter',
-        highlight_dark_zt: 'dracula',
-        up_max_size: '4',
-        comment_upload_img: ''
+    function sendComment() {
+        $.ajax({
+            type: "POST",
+            url: "/comment/book",
+            data: JSON.stringify({
+                comment_post_ID: $("#comment_post_ID").val(),
+                author: $("#author").val(),
+                comment: $("#comment").val()
+            }),
+            dataType: "JSON",
+
+            contentType: "application/json",
+            success: function ({error, html}) {
+                console.log(!!error, error, html)
+                if (!!error && error === 1) {
+                    $("#comment")[0].value = ""
+                    $("#comments_area").prepend(html)
+                }
+            }
+        })
     }
+
 </script>
 
 <script async id='crisp-js' src='/static/js/l.js' type='text/javascript'></script>

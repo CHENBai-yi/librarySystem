@@ -31,6 +31,7 @@
         values (#{readerId,jdbcType=BIGINT}, #{bookId,jdbcType=BIGINT}, #{recommendationReason,jdbcType=VARCHAR},
                 #{recommendationTime,jdbcType=TIMESTAMP})
     </insert>
+    
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookRecommendation"
             useGeneratedKeys="true">
         insert into book_recommendation

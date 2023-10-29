@@ -56,7 +56,7 @@ public class BookCommentServiceImpl implements BookCommentService {
             text = text.replaceAll("\\[g=" + group + "]", format);
         }
         Integer id = bookReviews.getId();
-        bookCommentVo.setError(0);
+        bookCommentVo.setError(1);
         bookCommentVo.setMsg("评论已提交成功");
         bookCommentVo.setWait_time(timeString);
         bookCommentVo.setHtml(MessageFormat.format(msgTemplate, id, id, bookReviews.getAuthor(), id, 9999, id, text, bookReviews.getReviewDate(), bookCommentVo.getWait_time()));

@@ -1,6 +1,7 @@
 package com.bai.controller;
 
 import com.bai.pojo.Book;
+import com.bai.pojo.BookRecommendation;
 import com.bai.pojo.bo.BookCommentBo;
 import com.bai.pojo.bo.BookQueryBo;
 import com.bai.pojo.vo.BookCommentVo;
@@ -14,6 +15,7 @@ import com.bai.utils.DateUtils;
 import com.bai.utils.constants.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -106,8 +108,19 @@ public class BookController {
         return "redirect:/admin_books.html";
     }
 
+    @Autowired
+    private BookRecommendationService recommendationService;
+
+    @RequestMapping(value = Constants.AccessPageUrl.HOTTERTUIJIAN, method = {RequestMethod.GET})
+    public String hottertuijian(Model model) {
+        List<BookRecommendationVo> bookRecommendationVoList = bookRecommendationService.findRecentlyHotBook();
+        model.addAttribute("bookRecommendationList", bookRecommendationVoList);
+
+        return "more_hot_book";
+    }
+
     @RequestMapping(value = Constants.AccessPageUrl.XXTBCOUNTCLICK, method = {RequestMethod.GET})
-    public String bookDetailAndRelationBook(@RequestParam(value = "jmptype", required = false) long type, @RequestParam(value = "isbn", required = false) String isbn, @RequestParam("newbookid") long bookId, Model model, HttpSession session) {
+    public String bookDetailAndRelationBook(@RequestParam(value = "jmptype", required = false) Long type, @RequestParam(value = "isbn", required = false) String isbn, @RequestParam("newbookid") long bookId, Model model, HttpSession session) {
         NewBookDetailVo newBookDetailVos = bookService.selectNewBooksDetail(type, isbn, bookId, session);
         List<BookCommentVo> bookCommentVos = bookCommentService.selectAllComment(bookId);
         // todo 做ip下的浏览次数
@@ -116,12 +129,10 @@ public class BookController {
         return "detail_new_book";
     }
 
-    @RequestMapping(value = Constants.AccessPageUrl.HOTTERTUIJIAN, method = {RequestMethod.GET})
-    public String hottertuijian(Model model) {
-        List<BookRecommendationVo> bookRecommendationVoList = bookRecommendationService.findRecentlyHotBook();
-        model.addAttribute("bookRecommendationList", bookRecommendationVoList);
-
-        return "more_hot_book";
+    @PostMapping(Constants.AccessPageUrl.READERTUIJIAN)
+    @ResponseBody
+    public ResponseEntity<Object> readertuijian(@RequestBody BookRecommendation bookRecommendation) {
+        return recommendationService.addBookRecommendation(bookRecommendation);
     }
 
     @RequestMapping(value = Constants.AccessPageUrl.MORE_NEW_BOOK, method = {RequestMethod.GET, RequestMethod.POST})
@@ -135,7 +146,7 @@ public class BookController {
 
     @ResponseBody
     @PostMapping(path = Constants.AccessPageUrl.BOOK_COMMENT)
-    public BookCommentVo bookComment(@Validated BookCommentBo bookCommentBo) {
+    public BookCommentVo bookComment(@Validated @RequestBody BookCommentBo bookCommentBo) {
         return bookCommentService.insertOneComment(bookCommentBo);
     }
 

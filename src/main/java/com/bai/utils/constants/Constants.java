@@ -76,6 +76,7 @@ public class Constants {
         public static final String LENDBOOK = "/lendbook.html";
         public static final String XXTBCOUNTCLICK = "/xxtbcountclick";
         public static final String HOTTERTUIJIAN = "/fw/hottertuijian";
+        public static final String READERTUIJIAN = "/fw/readertuijian";
         public static final String MORE_NEW_BOOK = "/fw/morenewbook";
         public static final String BOOK_COMMENT = "/comment/book";
         public static final String WENMINGGONGYUE = "/dzzn/gzzd/wenminggongyue";

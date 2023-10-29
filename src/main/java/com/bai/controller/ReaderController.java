@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -129,14 +130,14 @@ public class ReaderController {
 
     // 借阅书籍
     @RequestMapping(Constants.AccessPageUrl.LENDBOOK)
-    public String addLend(String bookId, HttpSession session) {
+    public String addLend(String bookId, HttpSession session, RedirectAttributes redirectAttributes) {
         Lend lend = new Lend();
         lend.setLendDate(new Date());
         lend.setBookId(Long.parseLong(bookId));
         Reader reader = (Reader) session.getAttribute("readercard");
         lend.setReaderId(reader.getReaderId());
         lendService.addLend(lend, bookId);
-        return getReferer();
+        return getReferer(redirectAttributes, 0);
     }
 
     // 读者的借还信息
@@ -150,16 +151,19 @@ public class ReaderController {
 
     // 归还书本
     @RequestMapping(Constants.AccessPageUrl.RETURNBOOK)
-    public String backBook(String bookId) {
+    public String backBook(String bookId, RedirectAttributes redirectAttributes) {
         lendService.backBook(Long.parseLong(bookId));
-        return getReferer();
+        return getReferer(redirectAttributes, 1);
     }
 
-    private String getReferer() {
+    private String getReferer(RedirectAttributes redirectAttributes, int flag) {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if (requestAttributes != null) {
             String s = getString(requestAttributes);
-            if (s != null) return s;
+            if (s != null) {
+                if (flag == 1) redirectAttributes.addFlashAttribute("backBookStatus", true);
+                return s;
+            }
         }
         return "redirect:/reader_books.html";
     }

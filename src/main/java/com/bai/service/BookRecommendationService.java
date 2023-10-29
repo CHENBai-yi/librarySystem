@@ -1,6 +1,8 @@
 package com.bai.service;
 
+import com.bai.pojo.BookRecommendation;
 import com.bai.pojo.vo.BookRecommendationVo;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -11,4 +13,6 @@ import java.util.List;
  */
 public interface BookRecommendationService {
     List<BookRecommendationVo> findRecentlyHotBook();
+
+    ResponseEntity<Object> addBookRecommendation(BookRecommendation bookRecommendation);
 }
