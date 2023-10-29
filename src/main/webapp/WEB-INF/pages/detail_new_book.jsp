@@ -118,8 +118,9 @@
 
                                     function b(bookId) {
                                         let isLogin =
-                                        ${sessionScope.readercard.readerId==null}
-                                        if (isLogin) {
+                                        ${!empty sessionScope.readercard.readerId}||${!empty sessionScope.admin.adminId}
+                                        console.log(isLogin)
+                                        if (!isLogin) {
                                             if (confirm('登陆后还书，点击确定去登录>>')) {
                                                 window.location.href = "<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
                                             }

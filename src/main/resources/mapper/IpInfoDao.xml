@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.dao.IpInfoDao">
+    <resultMap id="BaseResultMap" type="com.bai.pojo.IpInfo">
+        <id column="ip_address" jdbcType="VARCHAR" property="ipAddress"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="isp" jdbcType="VARCHAR" property="isp"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ip_address, country, region, province, city, isp
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ip_info
+        where ip_address = #{ipAddress,jdbcType=VARCHAR}
+    </select>
+    <select id="findAll" resultType="com.bai.pojo.IpInfo">
+        select *
+        from ip_info;
+    </select>
+    <select id="findAllGroupByDate" resultType="com.bai.pojo.vo.DataSheetVo$PrettierChart">
+        select ip_info.date as name, count(*) as val
+        from ip_info
+        group by ip_info.date;
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ip_info
+        where ip_address = #{ipAddress,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" keyColumn="ip_address" keyProperty="ipAddress" parameterType="com.bai.pojo.IpInfo"
+            useGeneratedKeys="true">
+        insert into ip_info (country, region, province,
+                             city, isp)
+        values (#{country,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
+                #{city,jdbcType=VARCHAR}, #{isp,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="ip_address" keyProperty="ipAddress" parameterType="com.bai.pojo.IpInfo"
+            useGeneratedKeys="true">
+        insert into ip_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="country != null">
+                country,
+            </if>
+            <if test="region != null">
+                region,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="isp != null">
+                isp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="region != null">
+                #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="isp != null">
+                #{isp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bai.pojo.IpInfo">
+        update ip_info
+        <set>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="region != null">
+                region = #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="isp != null">
+                isp = #{isp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ip_address = #{ipAddress,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bai.pojo.IpInfo">
+        update ip_info
+        set country  = #{country,jdbcType=VARCHAR},
+            region   = #{region,jdbcType=VARCHAR},
+            province = #{province,jdbcType=VARCHAR},
+            city     = #{city,jdbcType=VARCHAR},
+            isp      = #{isp,jdbcType=VARCHAR}
+        where ip_address = #{ipAddress,jdbcType=VARCHAR}
+    </update>
+</mapper>
