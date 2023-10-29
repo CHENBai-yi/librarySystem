@@ -20,4 +20,6 @@ public interface ReaderMapper {
     void saveAll(@Param("list") List<ReaderInfo> list);
 
     void saveAll_reader_card(@Param("reader_cards") List<Reader> reader_cards);
+
+    List<ReaderInfo> findAll();
 }

@@ -14,6 +14,11 @@
         from library.reader_card
         where reader_id = #{readerId};
     </select>
+    <select id="findAll" resultType="com.bai.pojo.ReaderInfo">
+        select *
+        from library.reader_info
+        order by reader_id asc
+    </select>
     
     <insert id="addReader" parameterType="Reader">
         insert into reader_card (reader_id, username, password)

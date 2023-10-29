@@ -22,7 +22,8 @@ background-attachment: fixed;">
 
 <c:if test="${!empty info}">
 	<script>alert("${info}");
-    window.location.href = "allreaders.html"</script>
+    window.location.href = "allreaders.html"
+	</script>
 </c:if>
 
 <div style="position: relative;top: 15%">
@@ -48,9 +49,15 @@ background-attachment: fixed;">
 
 
 <div class="panel panel-default" style="position:relative;top: 80px;width: 90%;margin-left: 5%">
-	<div class="panel-heading">
+	<div class="panel-heading" style="
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;">
 		<h3 class="panel-title">
 			全部读者
+		</h3>
+		<h3 class="panel-title">
+			<a class="btn btn-success btn-xs" style="color: #fff;" href="<c:url value="/download/excel"/>">导出</a>
 		</h3>
 	</div>
 	<div class="panel-body">

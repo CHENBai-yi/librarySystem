@@ -50,4 +50,5 @@
     </bean>
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.bai.controller"/>
+    <context:component-scan base-package="com.bai.utils.exception"/>
 </beans>

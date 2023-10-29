@@ -61,8 +61,9 @@
 					<ul class="dropdown-menu">
 						<li><a href="<c:url value="/lendlist.html"/>">借还日志</a></li>
 						<li><a href="<c:url value="/admin_appoint_list.html"/>">预约日志</a></li>
-						<li><a href="<c:url value="/lendlist.html"/>">操作日志</a></li>
-						<li><a href="<c:url value="/admin_appoint_list.html"/>">登录日志</a></li>
+						<%--						todo 待实现--%>
+						<li><a href="<c:url value="/logginglist.html"/>">操作日志</a></li>
+						<li><a href="<c:url value="/logginglist.html"/>">登录日志</a></li>
 					</ul>
 				</li>
 				<li <c:if test="${current eq 5}">class="dropdown active"</c:if>>
@@ -71,7 +72,7 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="<c:url value="#"/>">待开发</a></li>
+						<li><a href="<c:url value="/data/sheet"/>">管理</a></li>
 					</ul>
 				</li>
 				<li <c:if test="${current eq 6}">class="active"</c:if>>

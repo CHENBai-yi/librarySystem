@@ -23,9 +23,22 @@
         <hibernate.core.version>5.4.2.Final</hibernate.core.version>
         <poi.version>3.17</poi.version>
         <poi-ooxml.version>3.17</poi-ooxml.version>
+        <ip2region.version>2.7.0</ip2region.version>
     </properties>
     
     <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.19</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.lionsoul/ip2region -->
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <version>${ip2region.version}</version>
+        </dependency>
+        
         <!-- poi的包 3.15版本后单元格类型获取方式有调整 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -238,6 +251,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.xdb</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
@@ -246,6 +260,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.xdb</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>

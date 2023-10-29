@@ -1,22 +1,32 @@
 package com.bai.service.Imp;
 
+import com.bai.dao.IpInfoDao;
 import com.bai.dao.ReaderMapper;
+import com.bai.pojo.Book;
+import com.bai.pojo.ClassInfo;
 import com.bai.pojo.Reader;
 import com.bai.pojo.ReaderInfo;
+import com.bai.pojo.vo.DataSheetVo;
+import com.bai.service.BookService;
+import com.bai.service.ClassInfoService;
 import com.bai.service.ExcelService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Author:XY
@@ -28,6 +38,14 @@ import java.util.List;
 public class ExcelServiceImpl implements ExcelService {
     @Autowired
     private ReaderMapper excelRepository;
+    @Autowired
+    private IpInfoDao ipInfoDao;
+    @Autowired
+    private ClassInfoService classInfoService;
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Transactional
     @Override
@@ -96,28 +114,31 @@ public class ExcelServiceImpl implements ExcelService {
     public ByteArrayOutputStream generalExcel() throws Exception {
         ByteArrayOutputStream byteArrayOutputStream = null;
         try (Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("Test Data");
+            Sheet sheet = workbook.createSheet("借阅者信息");
 
             // 创建表头行
             Row headerRow = sheet.createRow(0);
-            headerRow.createCell(0).setCellValue("reader_id");
-            headerRow.createCell(1).setCellValue("name");
-            headerRow.createCell(2).setCellValue("sex");
-            headerRow.createCell(3).setCellValue("birth");
-            headerRow.createCell(4).setCellValue("address");
-            headerRow.createCell(5).setCellValue("phone");
+            headerRow.createCell(0).setCellValue("借阅号");
+            headerRow.createCell(1).setCellValue("姓名");
+            headerRow.createCell(2).setCellValue("性别");
+            headerRow.createCell(3).setCellValue("生日");
+            headerRow.createCell(4).setCellValue("地址");
+            headerRow.createCell(5).setCellValue("手机号");
 
-            // 生成100条测试数据
-            for (int i = 1; i <= 100; i++) {
-                Row dataRow = sheet.createRow(i);
-                dataRow.createCell(0).setCellValue(i);
-                dataRow.createCell(1).setCellValue("Reader " + i);
-                dataRow.createCell(2).setCellValue(i % 2 == 0 ? "男" : "女");
-                dataRow.createCell(3).setCellValue(new Date()); // 使用当前日期作为出生日期
-                dataRow.createCell(4).setCellValue("Address " + i);
-                dataRow.createCell(5).setCellValue("Phone " + i);
-            }
-
+            // 封装所有读者信息数据
+            List<ReaderInfo> readerInfoList = excelRepository.findAll();
+            Optional.ofNullable(readerInfoList).ifPresent(readerInfos -> {
+                for (int i = 0; i < readerInfos.size(); i++) {
+                    Row dataRow = sheet.createRow(i + 1);
+                    ReaderInfo readerInfo = readerInfos.get(i);
+                    dataRow.createCell(0).setCellValue(readerInfo.getReaderId());
+                    dataRow.createCell(1).setCellValue(readerInfo.getName());
+                    dataRow.createCell(2).setCellValue(readerInfo.getSex());
+                    dataRow.createCell(3).setCellValue(readerInfo.getBirth()); // 使用当前日期作为出生日期
+                    dataRow.createCell(4).setCellValue(readerInfo.getAddress());
+                    dataRow.createCell(5).setCellValue(readerInfo.getPhone());
+                }
+            });
             // 保存到文件
             byteArrayOutputStream = new ByteArrayOutputStream();
             workbook.write(byteArrayOutputStream);
@@ -127,4 +148,37 @@ public class ExcelServiceImpl implements ExcelService {
         return byteArrayOutputStream;
     }
 
+    @Transactional
+    @Override
+    public void getSheetData(Model model) throws JsonProcessingException {
+        List<ReaderInfo> all = excelRepository.findAll();
+        Optional.ofNullable(all)
+                .ifPresent(readerInfos -> {
+                    int man = 0, wowen = 0;
+                    for (ReaderInfo readerInfo : readerInfos) {
+                        if ("男".equals(readerInfo.getSex())) man++;
+                        else wowen++;
+                        model.addAttribute("man", man);
+                        model.addAttribute("wowen", wowen);
+                    }
+                });
+        model.addAttribute("pc", objectMapper.writeValueAsString(prettierChart()));
+        model.addAttribute("nc", objectMapper.writeValueAsString(nightingaleChart()));
+    }
+
+    public List<String[]> prettierChart() {
+        List<DataSheetVo.PrettierChart> group = ipInfoDao.findAllGroupByDate();
+        return group.stream().map(item -> new String[]{item.getName(), item.getVal() * 1000 + ""}).collect(Collectors.toList());
+    }
+
+    public List<DataSheetVo.NightingaleChart> nightingaleChart() {
+        List<DataSheetVo.NightingaleChart> list = new ArrayList<>();
+        List<ClassInfo> classInfos = classInfoService.selectClassInfoList();
+        List<Book> bookList = bookService.queryAllBook();
+        for (ClassInfo classInfo : classInfos) {
+            int size = bookList.stream().filter(book -> book.getClassId() == classInfo.getClassId()).collect(Collectors.toList()).size();
+            list.add(new DataSheetVo.NightingaleChart(classInfo.getClassName(), size));
+        }
+        return list;
+    }
 }

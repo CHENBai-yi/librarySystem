@@ -9,6 +9,7 @@ import com.bai.service.BookService;
 import com.bai.service.NewsService;
 import com.bai.utils.QueryStringStyle;
 import com.bai.utils.constants.Constants;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.AntPathMatcher;
 
+import java.io.FileInputStream;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -43,9 +46,14 @@ public class TestJunit {
     @Autowired
     BookMapper bookMapper;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         News news = new News();
+        Base64.Encoder encoder = Base64.getEncoder();
+        FileInputStream fileInputStream = new FileInputStream("D:\\Documents\\JavaCode\\Code\\librarySystem\\src\\main\\webapp\\static\\img\\男.png");
 
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byteArrayOutputStream.write(fileInputStream);
+        System.out.println(encoder.encodeToString(byteArrayOutputStream.toByteArray()));
     }
 
     @Test

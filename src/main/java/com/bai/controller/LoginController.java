@@ -3,8 +3,11 @@ package com.bai.controller;
 import com.bai.pojo.Admin;
 import com.bai.pojo.Reader;
 import com.bai.service.AdminService;
+import com.bai.service.LogService;
 import com.bai.service.ReaderService;
 import com.bai.utils.constants.Constants;
+import com.bai.utils.exception.LogingException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +21,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@Slf4j
 public class LoginController {
     @Autowired
     private AdminService adminService;
     @Autowired
     private ReaderService readerService;
+    @Autowired
+    private LogService logService;
 
     // 退出登录
     @RequestMapping("/logout.html")
@@ -33,36 +39,41 @@ public class LoginController {
 
     // 进入登录界面
     @RequestMapping(value = {"/tologin"})
-    public String tologin(@SessionAttribute(value = "admin", required = false) Admin admin, @SessionAttribute(value = "readercard", required = false) Reader readercard, Model model) {
+    public String tologin(@SessionAttribute(value = "admin", required = false) Admin admin, @SessionAttribute(value = "readercard", required = false) Reader readercard, Model model) throws LogingException {
         if (admin != null) return "forward:/admin_main.html";
         else if (readercard != null) {
             model.addAttribute("msg", "请从读者登录页登录！");
+            throw new LogingException("请从读者登录页登录！");
         }
         return "login";
     }
 
     // 读者进入登录界面
     @RequestMapping(value = {Constants.AccessPageUrl.READER_LOGIN_URL})
-    public String tologinReader(@SessionAttribute(value = "admin", required = false) Admin admin, @SessionAttribute(value = "readercard", required = false) Reader readercard, Model model) {
+    public String tologinReader(@SessionAttribute(value = "admin", required = false) Admin admin, @SessionAttribute(value = "readercard", required = false) Reader readercard, Model model) throws LogingException {
+
         if (readercard != null) return "forward:/reader_main.html";
         else if (admin != null) {
-            model.addAttribute("msg", "请从读者登录页登录！");
+            model.addAttribute("msg", "请从管理员页登录！");
+            throw new LogingException("请从管理员页登录！");
         }
+
         return "reader_login";
     }
 
     // 登录验证
     @PostMapping("/checklogin")
     @ResponseBody
-    public Object query(String id, String password, String _model, HttpSession session) {
+    public Object query(String id, String password, String _model, HttpSession session) throws LogingException {
         boolean isAdmin = adminService.hasAdmin(Long.parseLong(id), password);
         boolean isReader = readerService.hasReader(Long.parseLong(id), password);
 
         System.out.println(isAdmin);
         HashMap<String, String> map = new HashMap<>();
+
         if (isAdmin) {
+            Admin admin = new Admin();
             if (_model.equals("admin")) {
-                Admin admin = new Admin();
                 admin.setAdminId(Long.parseLong(id));
                 admin.setUsername(adminService.getAdminName(Long.parseLong(id)));
                 admin.setPassword(password);
@@ -73,10 +84,12 @@ public class LoginController {
             } else {
                 map.put("stateCode", "-1");
                 map.put("msg", "  请从管理员登录页登录！！！");
+                throw new LogingException(admin.getUsername() + " 请从管理员登录页登录！！！");
             }
         } else if (isReader) {
+            Reader reader = new Reader();
             if (_model.equals("reader")) {
-                Reader reader = new Reader();
+
                 reader.setReaderId(Long.parseLong(id));
                 reader.setUsername(readerService.getReaderName(Long.parseLong(id)));
                 reader.setPassword(password);
@@ -87,10 +100,12 @@ public class LoginController {
             } else {
                 map.put("stateCode", "-1");
                 map.put("msg", "请从读者登录页登录！！！");
+                throw new LogingException(reader.getUsername() + " 请从读者登录页登录！！！");
             }
         } else {
             map.put("stateCode", "0");
             map.put("msg", "账号或密码错误。！！！");
+            throw new LogingException("账号或密码错误。！！！");
         }
         return map;
     }

@@ -2,7 +2,9 @@ package com.bai.utils.config;
 
 import com.bai.service.Imp.ConsultServiceImpl;
 import com.bai.utils.constants.Constants;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
@@ -28,5 +30,10 @@ public class WebSocketConfig implements WebSocketConfigurer {
                 .addInterceptors(myHandshakeHandler)
                 .setAllowedOrigins("*")
         /*.withSockJS()*/;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

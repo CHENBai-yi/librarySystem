@@ -1,20 +1,19 @@
 package com.bai.controller;
 
 import cn.hutool.json.JSONUtil;
+import com.bai.dao.IpInfoDao;
 import com.bai.pojo.*;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.service.*;
 import com.bai.service.Imp.ConsultServiceImpl;
 import com.bai.service.Imp.ExcelServiceImpl;
 import com.bai.utils.constants.Constants;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -44,6 +43,8 @@ public class AdminController {
     private ChatService chatService;
     @Autowired
     private ExcelServiceImpl excelService;
+    @Autowired
+    private IpInfoDao ipInfoDao;
 
     // 进入管理员界面
     @RequestMapping("/admin_main.html")
@@ -293,6 +294,29 @@ public class AdminController {
             log.debug("execle下载失败！！");
         }
         return null;
+    }
+
+    // 柱状图分析
+    @GetMapping("/data/sheet")
+    public String dataSheet(Model model) throws JsonProcessingException {
+        excelService.getSheetData(model);
+        return "pictorialBar-spirit";
+    }
+
+    @GetMapping("/logginglist.html")
+    public String loggingList(Model model) {
+        List<IpInfo> ipInfoList = ipInfoDao.findAll();
+        if (!ipInfoList.isEmpty())
+            model.addAttribute("list", ipInfoList);
+        else
+            model.addAttribute("error", "暂无更多");
+        return "admin_logging_list";
+    }
+
+    @GetMapping("/deletelogging.html")
+    public String deletelogging(@RequestParam("serNum") String ip) {
+        ipInfoDao.deleteByPrimaryKey(ip);
+        return "redirect:/logginglist.html";
     }
 }
 /**
