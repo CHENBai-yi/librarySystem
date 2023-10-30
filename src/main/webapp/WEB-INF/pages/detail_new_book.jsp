@@ -25,22 +25,33 @@
 	<!--[if IE]>
 	<script src="/static/js/html5.min.js"></script><![endif]-->
 	<script id='jquery-js' src='/static/js/jquery.min.js' type='text/javascript'></script>
-	<c:if test="${msg!=null}">
-		<style>
-            /* 控制消息提示框的位置 */
-            .alert-fixed-top {
-                position: fixed;
-                top: -100px;
-                left: 0;
-                right: 0;
-                margin-left: auto;
-                margin-right: auto;
-                z-index: 9999;
-                text-align: center;
-                width: 200px; /* 设置弹窗宽度 */
-            }
-		</style>
-	</c:if>
+	
+	<style>
+		<c:if test="${msg!=null}">
+        /* 控制消息提示框的位置 */
+        .alert-fixed-top {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 9999;
+            text-align: center;
+            width: 200px; /* 设置弹窗宽度 */
+        }
+		
+		</c:if>
+        .comment {
+            margin-bottom: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .comment:hover {
+            transform: scale(1.05);
+        }
+	</style>
+
 </head>
 
 <body>
@@ -105,8 +116,8 @@
 								<script type="text/javascript">
                                     function click(bookId) {
                                         let isLogin =
-                                        ${sessionScope.readercard.readerId==null}
-                                        if (isLogin) {
+                                        ${!empty sessionScope.readercard}||${!empty sessionScope.admin}
+                                        if (!isLogin) {
                                             if (confirm('登陆后借阅，点击确定去登录>>')) {
                                                 window.location.href = "<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
                                             }
@@ -121,7 +132,7 @@
 
                                     function b(bookId) {
                                         let isLogin =
-                                        ${!empty sessionScope.readercard.readerId}||${!empty sessionScope.readercard.readerId}
+                                        ${!empty sessionScope.readercard}||${!empty sessionScope.admin}
                                         if (!isLogin) {
                                             if (confirm('登陆后还书，点击确定去登录>>')) {
                                                 window.location.href = "<%=Constants.AccessPageUrl.READER_LOGIN_URL%>"
@@ -180,16 +191,16 @@
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
-											<h4 class="modal-title" id="myModalLabel">设定</h4>
+											<h4 class="modal-title" id="myModalLabel">读书心得</h4>
 										</div>
 										<div class="modal-body">
+											<!-- 文本输入框 -->
+											<input type="text" class="form-control" id="textInput"
+											       placeholder="输入文本"
+											       style="padding: 34px 12px;margin-bottom: 20px">
 											<!-- 推荐按钮和取消按钮 -->
 											<button class="btn btn-primary" id="recommendBtn">推荐</button>
 											<button class="btn btn-default" data-dismiss="modal">取消</button>
-											
-											<!-- 文本输入框 -->
-											<input type="text" class="form-control" id="textInput"
-											       placeholder="输入文本">
 										</div>
 									</div>
 								</div>
@@ -380,7 +391,7 @@
 													<input id='comment_post_ID' name='comment_post_ID' type='hidden'
 													       value='${detailList.newBookId}'/>
 													<input id='comment_parent' name='comment_parent' type='hidden'
-													       value='0'/>
+													       value='${admin.adminId}'/>
 													<input id='author' name='author' type='hidden'
 													       value='${admin.username}'/>
 												</div>
@@ -394,339 +405,340 @@
 													</button>
 												</div>
 												<div class="comt-tips-left">
-											<span
-													class="dropup relative smilie"><a
-													class="but btn-input-expand input-smilie mr6" href="javascript:;"><i
-													class="fa fa-fw fa-smile-o"></i><span
-													class="hide-sm">表情</span></a><div
-													class="dropdown-menu"><div
-													class="dropdown-smilie scroll-y mini-scrollbar"><a
-													class="smilie-icon"
-													data-smilie="aoman"
-													href="javascript:;"><img
-													alt="[aoman]" class="lazyload" data-src="static/picture/aoman.gif"/></a><a
-													class="smilie-icon" data-smilie="baiyan" href="javascript:;"><img
-													alt="[baiyan]" class="lazyload"
-													data-src="static/picture/baiyan.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="bishi"
-											                                                     href="javascript:;"><img
-													alt="[bishi]"
-													class="lazyload"
-													data-src="static/picture/bishi.gif"/></a><a
-													class="smilie-icon" data-smilie="bizui" href="javascript:;"><img
-													alt="[bizui]" class="lazyload" data-src="static/picture/bizui.gif"/></a><a
-													class="smilie-icon" data-smilie="cahan" href="javascript:;"><img
-													alt="[cahan]" class="lazyload" data-src="static/picture/cahan.gif"/></a><a
-													class="smilie-icon" data-smilie="ciya" href="javascript:;"><img
-													alt="[ciya]" class="lazyload"
-													data-src="static/picture/ciya.gif"/></a><a
-													class="smilie-icon" data-smilie="dabing" href="javascript:;"><img
-													alt="[dabing]" class="lazyload"
-													data-src="static/picture/dabing.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="daku"
-											                                                     href="javascript:;"><img
-													alt="[daku]"
-													class="lazyload"
-													data-src="static/picture/daku.gif"/></a><a
-													class="smilie-icon" data-smilie="deyi" href="javascript:;"><img
-													alt="[deyi]" class="lazyload"
-													data-src="static/picture/deyi.gif"/></a><a
-													class="smilie-icon" data-smilie="doge" href="javascript:;"><img
-													alt="[doge]" class="lazyload"
-													data-src="static/picture/doge.gif"/></a><a
-													class="smilie-icon" data-smilie="fadai" href="javascript:;"><img
-													alt="[fadai]" class="lazyload" data-src="static/picture/fadai.gif"/></a><a
-													class="smilie-icon" data-smilie="fanu" href="javascript:;"><img
-													alt="[fanu]" class="lazyload"
-													data-src="static/picture/fanu.gif"/></a><a
-													class="smilie-icon" data-smilie="fendou" href="javascript:;"><img
-													alt="[fendou]" class="lazyload"
-													data-src="static/picture/fendou.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="ganga"
-											                                                     href="javascript:;"><img
-													alt="[ganga]"
-													class="lazyload"
-													data-src="static/picture/ganga.gif"/></a><a
-													class="smilie-icon" data-smilie="guzhang" href="javascript:;"><img
-													alt="[guzhang]" class="lazyload"
-													data-src="static/picture/guzhang.gif"/></a><a
-													class="smilie-icon" data-smilie="haixiu" href="javascript:;"><img
-													alt="[haixiu]" class="lazyload"
-													data-src="static/picture/haixiu.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="hanxiao"
-											                                                     href="javascript:;"><img
-													alt="[hanxiao]"
-													class="lazyload"
-													data-src="static/picture/hanxiao.gif"/></a><a
-													class="smilie-icon" data-smilie="zuohengheng"
-													href="javascript:;"><img
-													alt="[zuohengheng]" class="lazyload"
-													data-src="static/picture/zuohengheng.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="zhuakuang"
-													href="javascript:;"><img
-													alt="[zhuakuang]" class="lazyload"
-													data-src="static/picture/zhuakuang.gif"/></a><a class="smilie-icon"
-											                                                        data-smilie="zhouma"
-											                                                        href="javascript:;"><img
-													alt="[zhouma]"
-													class="lazyload"
-													data-src="static/picture/zhouma.gif"/></a><a
-													class="smilie-icon" data-smilie="zhemo" href="javascript:;"><img
-													alt="[zhemo]" class="lazyload" data-src="static/picture/zhemo.gif"/></a><a
-													class="smilie-icon" data-smilie="zhayanjian"
-													href="javascript:;"><img
-													alt="[zhayanjian]" class="lazyload"
-													data-src="static/picture/zhayanjian.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="zaijian"
-											                                                         href="javascript:;"><img
-													alt="[zaijian]"
-													class="lazyload"
-													data-src="static/picture/zaijian.gif"/></a><a
-													class="smilie-icon" data-smilie="yun" href="javascript:;"><img
-													alt="[yun]" class="lazyload" data-src="static/picture/yun.gif"/></a><a
-													class="smilie-icon" data-smilie="youhengheng"
-													href="javascript:;"><img
-													alt="[youhengheng]" class="lazyload"
-													data-src="static/picture/youhengheng.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="yiwen"
-													href="javascript:;"><img
-													alt="[yiwen]"
-													class="lazyload"
-													data-src="static/picture/yiwen.gif"/></a><a
-													class="smilie-icon" data-smilie="yinxian" href="javascript:;"><img
-													alt="[yinxian]" class="lazyload"
-													data-src="static/picture/yinxian.gif"/></a><a
-													class="smilie-icon" data-smilie="xu" href="javascript:;"><img
-													alt="[xu]" class="lazyload" data-src="static/picture/xu.gif"/></a><a
-													class="smilie-icon" data-smilie="xieyanxiao"
-													href="javascript:;"><img
-													alt="[xieyanxiao]" class="lazyload"
-													data-src="static/picture/xieyanxiao.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xiaoku"
-											                                                         href="javascript:;"><img
-													alt="[xiaoku]"
-													class="lazyload"
-													data-src="static/picture/xiaoku.gif"/></a><a
-													class="smilie-icon" data-smilie="xiaojiujie"
-													href="javascript:;"><img
-													alt="[xiaojiujie]" class="lazyload"
-													data-src="static/picture/xiaojiujie.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xia"
-											                                                         href="javascript:;"><img
-													alt="[xia]"
-													class="lazyload"
-													data-src="static/picture/xia.gif"/></a><a
-													class="smilie-icon" data-smilie="wunai" href="javascript:;"><img
-													alt="[wunai]" class="lazyload" data-src="static/picture/wunai.gif"/></a><a
-													class="smilie-icon" data-smilie="wozuimei" href="javascript:;"><img
-													alt="[wozuimei]" class="lazyload"
-													data-src="static/picture/wozuimei.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="weixiao"
-											                                                       href="javascript:;"><img
-													alt="[weixiao]"
-													class="lazyload"
-													data-src="static/picture/weixiao.gif"/></a><a
-													class="smilie-icon" data-smilie="weiqu" href="javascript:;"><img
-													alt="[weiqu]" class="lazyload" data-src="static/picture/weiqu.gif"/></a><a
-													class="smilie-icon" data-smilie="tuosai" href="javascript:;"><img
-													alt="[tuosai]" class="lazyload"
-													data-src="static/picture/tuosai.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="tu"
-											                                                     href="javascript:;"><img
-													alt="[tu]"
-													class="lazyload"
-													data-src="static/picture/tu.gif"/></a><a
-													class="smilie-icon" data-smilie="touxiao" href="javascript:;"><img
-													alt="[touxiao]" class="lazyload"
-													data-src="static/picture/touxiao.gif"/></a><a
-													class="smilie-icon" data-smilie="tiaopi" href="javascript:;"><img
-													alt="[tiaopi]" class="lazyload"
-													data-src="static/picture/tiaopi.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="shui"
-											                                                     href="javascript:;"><img
-													alt="[shui]"
-													class="lazyload"
-													data-src="static/picture/shui.gif"/></a><a
-													class="smilie-icon" data-smilie="se" href="javascript:;"><img
-													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
-													class="smilie-icon" data-smilie="saorao" href="javascript:;"><img
-													alt="[saorao]" class="lazyload"
-													data-src="static/picture/saorao.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="qiudale"
-											                                                     href="javascript:;"><img
-													alt="[qiudale]"
-													class="lazyload"
-													data-src="static/picture/qiudale.gif"/></a><a
-													class="smilie-icon" data-smilie="se" href="javascript:;"><img
-													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
-													class="smilie-icon" data-smilie="qinqin" href="javascript:;"><img
-													alt="[qinqin]" class="lazyload"
-													data-src="static/picture/qinqin.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="qiaoda"
-											                                                     href="javascript:;"><img
-													alt="[qiaoda]"
-													class="lazyload"
-													data-src="static/picture/qiaoda.gif"/></a><a
-													class="smilie-icon" data-smilie="piezui" href="javascript:;"><img
-													alt="[piezui]" class="lazyload"
-													data-src="static/picture/piezui.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="penxue"
-											                                                     href="javascript:;"><img
-													alt="[penxue]"
-													class="lazyload"
-													data-src="static/picture/penxue.gif"/></a><a
-													class="smilie-icon" data-smilie="nanguo" href="javascript:;"><img
-													alt="[nanguo]" class="lazyload"
-													data-src="static/picture/nanguo.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="liulei"
-											                                                     href="javascript:;"><img
-													alt="[liulei]"
-													class="lazyload"
-													data-src="static/picture/liulei.gif"/></a><a
-													class="smilie-icon" data-smilie="liuhan" href="javascript:;"><img
-													alt="[liuhan]" class="lazyload"
-													data-src="static/picture/liuhan.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="lenghan"
-											                                                     href="javascript:;"><img
-													alt="[lenghan]"
-													class="lazyload"
-													data-src="static/picture/lenghan.gif"/></a><a
-													class="smilie-icon" data-smilie="leiben" href="javascript:;"><img
-													alt="[leiben]" class="lazyload"
-													data-src="static/picture/leiben.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="kun"
-											                                                     href="javascript:;"><img
-													alt="[kun]"
-													class="lazyload"
-													data-src="static/picture/kun.gif"/></a><a
-													class="smilie-icon" data-smilie="kuaikule" href="javascript:;"><img
-													alt="[kuaikule]" class="lazyload"
-													data-src="static/picture/kuaikule.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="ku"
-											                                                       href="javascript:;"><img
-													alt="[ku]"
-													class="lazyload"
-													data-src="static/picture/ku.gif"/></a><a
-													class="smilie-icon" data-smilie="koubi" href="javascript:;"><img
-													alt="[koubi]" class="lazyload" data-src="static/picture/koubi.gif"/></a><a
-													class="smilie-icon" data-smilie="kelian" href="javascript:;"><img
-													alt="[kelian]" class="lazyload"
-													data-src="static/picture/kelian.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="keai"
-											                                                     href="javascript:;"><img
-													alt="[keai]"
-													class="lazyload"
-													data-src="static/picture/keai.gif"/></a><a
-													class="smilie-icon" data-smilie="jingya" href="javascript:;"><img
-													alt="[jingya]" class="lazyload"
-													data-src="static/picture/jingya.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="jingxi"
-											                                                     href="javascript:;"><img
-													alt="[jingxi]"
-													class="lazyload"
-													data-src="static/picture/jingxi.gif"/></a><a
-													class="smilie-icon" data-smilie="jingkong" href="javascript:;"><img
-													alt="[jingkong]" class="lazyload"
-													data-src="static/picture/jingkong.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="jie"
-											                                                       href="javascript:;"><img
-													alt="[jie]"
-													class="lazyload"
-													data-src="static/picture/jie.gif"/></a><a
-													class="smilie-icon" data-smilie="huaixiao" href="javascript:;"><img
-													alt="[huaixiao]" class="lazyload"
-													data-src="static/picture/huaixiao.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="haqian"
-											                                                       href="javascript:;"><img
-													alt="[haqian]"
-													class="lazyload"
-													data-src="static/picture/haqian.gif"/></a><a
-													class="smilie-icon" data-smilie="aini" href="javascript:;"><img
-													alt="[aini]" class="lazyload"
-													data-src="static/picture/aini.gif"/></a><a
-													class="smilie-icon" data-smilie="OK" href="javascript:;"><img
-													alt="[OK]" class="lazyload" data-src="static/picture/ok.gif"/></a><a
-													class="smilie-icon" data-smilie="qiang" href="javascript:;"><img
-													alt="[qiang]" class="lazyload" data-src="static/picture/qiang.gif"/></a><a
-													class="smilie-icon" data-smilie="quantou" href="javascript:;"><img
-													alt="[quantou]" class="lazyload"
-													data-src="static/picture/quantou.gif"/></a><a
-													class="smilie-icon" data-smilie="shengli" href="javascript:;"><img
-													alt="[shengli]" class="lazyload"
-													data-src="static/picture/shengli.gif"/></a><a
-													class="smilie-icon" data-smilie="woshou" href="javascript:;"><img
-													alt="[woshou]" class="lazyload"
-													data-src="static/picture/woshou.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="gouyin"
-											                                                     href="javascript:;"><img
-													alt="[gouyin]"
-													class="lazyload"
-													data-src="static/picture/gouyin.gif"/></a><a
-													class="smilie-icon" data-smilie="baoquan" href="javascript:;"><img
-													alt="[baoquan]" class="lazyload"
-													data-src="static/picture/baoquan.gif"/></a><a
-													class="smilie-icon" data-smilie="aixin" href="javascript:;"><img
-													alt="[aixin]" class="lazyload" data-src="static/picture/aixin.gif"/></a><a
-													class="smilie-icon" data-smilie="bangbangtang"
-													href="javascript:;"><img
-													alt="[bangbangtang]" class="lazyload"
-													data-src="static/picture/bangbangtang.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="xiaoyanger"
-													href="javascript:;"><img
-													alt="[xiaoyanger]" class="lazyload"
-													data-src="static/picture/xiaoyanger.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xigua"
-											                                                         href="javascript:;"><img
-													alt="[xigua]"
-													class="lazyload"
-													data-src="static/picture/xigua.gif"/></a><a
-													class="smilie-icon" data-smilie="hexie" href="javascript:;"><img
-													alt="[hexie]" class="lazyload" data-src="static/picture/hexie.gif"/></a><a
-													class="smilie-icon" data-smilie="pijiu" href="javascript:;"><img
-													alt="[pijiu]" class="lazyload" data-src="static/picture/pijiu.gif"/></a><a
-													class="smilie-icon" data-smilie="lanqiu" href="javascript:;"><img
-													alt="[lanqiu]" class="lazyload"
-													data-src="static/picture/lanqiu.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="juhua"
-											                                                     href="javascript:;"><img
-													alt="[juhua]"
-													class="lazyload"
-													data-src="static/picture/juhua.gif"/></a><a
-													class="smilie-icon" data-smilie="hecai" href="javascript:;"><img
-													alt="[hecai]" class="lazyload" data-src="static/picture/hecai.gif"/></a><a
-													class="smilie-icon" data-smilie="haobang" href="javascript:;"><img
-													alt="[haobang]" class="lazyload"
-													data-src="static/picture/haobang.gif"/></a><a
-													class="smilie-icon" data-smilie="caidao" href="javascript:;"><img
-													alt="[caidao]" class="lazyload"
-													data-src="static/picture/caidao.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="baojin"
-											                                                     href="javascript:;"><img
-													alt="[baojin]"
-													class="lazyload"
-													data-src="static/picture/baojin.gif"/></a><a
-													class="smilie-icon" data-smilie="chi" href="javascript:;"><img
-													alt="[chi]" class="lazyload" data-src="static/picture/chi.gif"/></a><a
-													class="smilie-icon" data-smilie="dan" href="javascript:;"><img
-													alt="[dan]" class="lazyload" data-src="static/picture/dan.gif"/></a><a
-													class="smilie-icon" data-smilie="kulou" href="javascript:;"><img
-													alt="[kulou]" class="lazyload" data-src="static/picture/kulou.gif"/></a><a
-													class="smilie-icon" data-smilie="shuai" href="javascript:;"><img
-													alt="[shuai]" class="lazyload" data-src="static/picture/shuai.gif"/></a><a
-													class="smilie-icon" data-smilie="shouqiang" href="javascript:;"><img
-													alt="[shouqiang]" class="lazyload"
-													data-src="static/picture/shouqiang.gif"/></a><a class="smilie-icon"
-											                                                        data-smilie="yangtuo"
-											                                                        href="javascript:;"><img
-													alt="[yangtuo]"
-													class="lazyload"
-													data-src="static/picture/yangtuo.gif"/></a><a
-													class="smilie-icon" data-smilie="youling" href="javascript:;"><img
-													alt="[youling]" class="lazyload"
-													data-src="static/picture/youling.gif"/></a></div></div></span>
+														<%--											<span--%>
+														<%--													class="dropup relative smilie"><a--%>
+														<%--													class="but btn-input-expand input-smilie mr6" href="javascript:;"><i--%>
+														<%--													class="fa fa-fw fa-smile-o"></i><span--%>
+														<%--													class="hide-sm">表情</span></a><div--%>
+														<%--													class="dropdown-menu"><div--%>
+														<%--													class="dropdown-smilie scroll-y mini-scrollbar"><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="aoman"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[aoman]" class="lazyload" data-src="static/picture/aoman.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="baiyan" href="javascript:;"><img--%>
+														<%--													alt="[baiyan]" class="lazyload"--%>
+														<%--													data-src="static/picture/baiyan.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="bishi"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[bishi]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/bishi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="bizui" href="javascript:;"><img--%>
+														<%--													alt="[bizui]" class="lazyload" data-src="static/picture/bizui.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="cahan" href="javascript:;"><img--%>
+														<%--													alt="[cahan]" class="lazyload" data-src="static/picture/cahan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="ciya" href="javascript:;"><img--%>
+														<%--													alt="[ciya]" class="lazyload"--%>
+														<%--													data-src="static/picture/ciya.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="dabing" href="javascript:;"><img--%>
+														<%--													alt="[dabing]" class="lazyload"--%>
+														<%--													data-src="static/picture/dabing.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="daku"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[daku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/daku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="deyi" href="javascript:;"><img--%>
+														<%--													alt="[deyi]" class="lazyload"--%>
+														<%--													data-src="static/picture/deyi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="doge" href="javascript:;"><img--%>
+														<%--													alt="[doge]" class="lazyload"--%>
+														<%--													data-src="static/picture/doge.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fadai" href="javascript:;"><img--%>
+														<%--													alt="[fadai]" class="lazyload" data-src="static/picture/fadai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fanu" href="javascript:;"><img--%>
+														<%--													alt="[fanu]" class="lazyload"--%>
+														<%--													data-src="static/picture/fanu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fendou" href="javascript:;"><img--%>
+														<%--													alt="[fendou]" class="lazyload"--%>
+														<%--													data-src="static/picture/fendou.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="ganga"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[ganga]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/ganga.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="guzhang" href="javascript:;"><img--%>
+														<%--													alt="[guzhang]" class="lazyload"--%>
+														<%--													data-src="static/picture/guzhang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="haixiu" href="javascript:;"><img--%>
+														<%--													alt="[haixiu]" class="lazyload"--%>
+														<%--													data-src="static/picture/haixiu.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="hanxiao"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[hanxiao]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/hanxiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zuohengheng"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zuohengheng]" class="lazyload"--%>
+														<%--													data-src="static/picture/zuohengheng.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="zhuakuang"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zhuakuang]" class="lazyload"--%>
+														<%--													data-src="static/picture/zhuakuang.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                        data-smilie="zhouma"--%>
+														<%--											                                                        href="javascript:;"><img--%>
+														<%--													alt="[zhouma]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/zhouma.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zhemo" href="javascript:;"><img--%>
+														<%--													alt="[zhemo]" class="lazyload" data-src="static/picture/zhemo.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zhayanjian"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zhayanjian]" class="lazyload"--%>
+														<%--													data-src="static/picture/zhayanjian.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="zaijian"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[zaijian]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/zaijian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="yun" href="javascript:;"><img--%>
+														<%--													alt="[yun]" class="lazyload" data-src="static/picture/yun.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="youhengheng"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[youhengheng]" class="lazyload"--%>
+														<%--													data-src="static/picture/youhengheng.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="yiwen"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[yiwen]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/yiwen.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="yinxian" href="javascript:;"><img--%>
+														<%--													alt="[yinxian]" class="lazyload"--%>
+														<%--													data-src="static/picture/yinxian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xu" href="javascript:;"><img--%>
+														<%--													alt="[xu]" class="lazyload" data-src="static/picture/xu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xieyanxiao"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xieyanxiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/xieyanxiao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xiaoku"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xiaoku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xiaoku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xiaojiujie"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xiaojiujie]" class="lazyload"--%>
+														<%--													data-src="static/picture/xiaojiujie.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xia"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xia]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xia.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="wunai" href="javascript:;"><img--%>
+														<%--													alt="[wunai]" class="lazyload" data-src="static/picture/wunai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="wozuimei" href="javascript:;"><img--%>
+														<%--													alt="[wozuimei]" class="lazyload"--%>
+														<%--													data-src="static/picture/wozuimei.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="weixiao"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[weixiao]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/weixiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="weiqu" href="javascript:;"><img--%>
+														<%--													alt="[weiqu]" class="lazyload" data-src="static/picture/weiqu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="tuosai" href="javascript:;"><img--%>
+														<%--													alt="[tuosai]" class="lazyload"--%>
+														<%--													data-src="static/picture/tuosai.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="tu"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[tu]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/tu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="touxiao" href="javascript:;"><img--%>
+														<%--													alt="[touxiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/touxiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="tiaopi" href="javascript:;"><img--%>
+														<%--													alt="[tiaopi]" class="lazyload"--%>
+														<%--													data-src="static/picture/tiaopi.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="shui"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[shui]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/shui.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="se" href="javascript:;"><img--%>
+														<%--													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="saorao" href="javascript:;"><img--%>
+														<%--													alt="[saorao]" class="lazyload"--%>
+														<%--													data-src="static/picture/saorao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="qiudale"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[qiudale]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/qiudale.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="se" href="javascript:;"><img--%>
+														<%--													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="qinqin" href="javascript:;"><img--%>
+														<%--													alt="[qinqin]" class="lazyload"--%>
+														<%--													data-src="static/picture/qinqin.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="qiaoda"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[qiaoda]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/qiaoda.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="piezui" href="javascript:;"><img--%>
+														<%--													alt="[piezui]" class="lazyload"--%>
+														<%--													data-src="static/picture/piezui.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="penxue"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[penxue]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/penxue.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="nanguo" href="javascript:;"><img--%>
+														<%--													alt="[nanguo]" class="lazyload"--%>
+														<%--													data-src="static/picture/nanguo.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="liulei"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[liulei]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/liulei.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="liuhan" href="javascript:;"><img--%>
+														<%--													alt="[liuhan]" class="lazyload"--%>
+														<%--													data-src="static/picture/liuhan.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="lenghan"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[lenghan]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/lenghan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="leiben" href="javascript:;"><img--%>
+														<%--													alt="[leiben]" class="lazyload"--%>
+														<%--													data-src="static/picture/leiben.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="kun"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[kun]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/kun.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kuaikule" href="javascript:;"><img--%>
+														<%--													alt="[kuaikule]" class="lazyload"--%>
+														<%--													data-src="static/picture/kuaikule.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="ku"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[ku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/ku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="koubi" href="javascript:;"><img--%>
+														<%--													alt="[koubi]" class="lazyload" data-src="static/picture/koubi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kelian" href="javascript:;"><img--%>
+														<%--													alt="[kelian]" class="lazyload"--%>
+														<%--													data-src="static/picture/kelian.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="keai"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[keai]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/keai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="jingya" href="javascript:;"><img--%>
+														<%--													alt="[jingya]" class="lazyload"--%>
+														<%--													data-src="static/picture/jingya.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="jingxi"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[jingxi]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/jingxi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="jingkong" href="javascript:;"><img--%>
+														<%--													alt="[jingkong]" class="lazyload"--%>
+														<%--													data-src="static/picture/jingkong.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="jie"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[jie]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/jie.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="huaixiao" href="javascript:;"><img--%>
+														<%--													alt="[huaixiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/huaixiao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="haqian"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[haqian]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/haqian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="aini" href="javascript:;"><img--%>
+														<%--													alt="[aini]" class="lazyload"--%>
+														<%--													data-src="static/picture/aini.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="OK" href="javascript:;"><img--%>
+														<%--													alt="[OK]" class="lazyload" data-src="static/picture/ok.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="qiang" href="javascript:;"><img--%>
+														<%--													alt="[qiang]" class="lazyload" data-src="static/picture/qiang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="quantou" href="javascript:;"><img--%>
+														<%--													alt="[quantou]" class="lazyload"--%>
+														<%--													data-src="static/picture/quantou.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shengli" href="javascript:;"><img--%>
+														<%--													alt="[shengli]" class="lazyload"--%>
+														<%--													data-src="static/picture/shengli.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="woshou" href="javascript:;"><img--%>
+														<%--													alt="[woshou]" class="lazyload"--%>
+														<%--													data-src="static/picture/woshou.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="gouyin"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[gouyin]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/gouyin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="baoquan" href="javascript:;"><img--%>
+														<%--													alt="[baoquan]" class="lazyload"--%>
+														<%--													data-src="static/picture/baoquan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="aixin" href="javascript:;"><img--%>
+														<%--													alt="[aixin]" class="lazyload" data-src="static/picture/aixin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="bangbangtang"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[bangbangtang]" class="lazyload"--%>
+														<%--													data-src="static/picture/bangbangtang.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="xiaoyanger"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xiaoyanger]" class="lazyload"--%>
+														<%--													data-src="static/picture/xiaoyanger.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xigua"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xigua]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xigua.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="hexie" href="javascript:;"><img--%>
+														<%--													alt="[hexie]" class="lazyload" data-src="static/picture/hexie.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="pijiu" href="javascript:;"><img--%>
+														<%--													alt="[pijiu]" class="lazyload" data-src="static/picture/pijiu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="lanqiu" href="javascript:;"><img--%>
+														<%--													alt="[lanqiu]" class="lazyload"--%>
+														<%--													data-src="static/picture/lanqiu.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="juhua"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[juhua]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/juhua.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="hecai" href="javascript:;"><img--%>
+														<%--													alt="[hecai]" class="lazyload" data-src="static/picture/hecai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="haobang" href="javascript:;"><img--%>
+														<%--													alt="[haobang]" class="lazyload"--%>
+														<%--													data-src="static/picture/haobang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="caidao" href="javascript:;"><img--%>
+														<%--													alt="[caidao]" class="lazyload"--%>
+														<%--													data-src="static/picture/caidao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="baojin"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[baojin]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/baojin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="chi" href="javascript:;"><img--%>
+														<%--													alt="[chi]" class="lazyload" data-src="static/picture/chi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="dan" href="javascript:;"><img--%>
+														<%--													alt="[dan]" class="lazyload" data-src="static/picture/dan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kulou" href="javascript:;"><img--%>
+														<%--													alt="[kulou]" class="lazyload" data-src="static/picture/kulou.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shuai" href="javascript:;"><img--%>
+														<%--													alt="[shuai]" class="lazyload" data-src="static/picture/shuai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shouqiang" href="javascript:;"><img--%>
+														<%--													alt="[shouqiang]" class="lazyload"--%>
+														<%--													data-src="static/picture/shouqiang.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                        data-smilie="yangtuo"--%>
+														<%--											                                                        href="javascript:;"><img--%>
+														<%--													alt="[yangtuo]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/yangtuo.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="youling" href="javascript:;"><img--%>
+														<%--													alt="[youling]" class="lazyload"--%>
+														<%--													data-src="static/picture/youling.gif"/></a></div></div></span>--%>
+														<%--													todo 发送表情--%>
 												</div>
 											</div>
 										</div>
@@ -771,7 +783,7 @@
 													<input id='comment_post_ID' name='comment_post_ID' type='hidden'
 													       value='${detailList.newBookId}'/>
 													<input id='comment_parent' name='comment_parent' type='hidden'
-													       value='0'/>
+													       value='${reader.readerId}'/>
 													<input id='author' name='author' type='hidden'
 													       value='${reader.username}'/>
 												</div>
@@ -785,339 +797,340 @@
 													</button>
 												</div>
 												<div class="comt-tips-left">
-											<span
-													class="dropup relative smilie"><a
-													class="but btn-input-expand input-smilie mr6" href="javascript:;"><i
-													class="fa fa-fw fa-smile-o"></i><span
-													class="hide-sm">表情</span></a><div
-													class="dropdown-menu"><div
-													class="dropdown-smilie scroll-y mini-scrollbar"><a
-													class="smilie-icon"
-													data-smilie="aoman"
-													href="javascript:;"><img
-													alt="[aoman]" class="lazyload" data-src="static/picture/aoman.gif"/></a><a
-													class="smilie-icon" data-smilie="baiyan" href="javascript:;"><img
-													alt="[baiyan]" class="lazyload"
-													data-src="static/picture/baiyan.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="bishi"
-											                                                     href="javascript:;"><img
-													alt="[bishi]"
-													class="lazyload"
-													data-src="static/picture/bishi.gif"/></a><a
-													class="smilie-icon" data-smilie="bizui" href="javascript:;"><img
-													alt="[bizui]" class="lazyload" data-src="static/picture/bizui.gif"/></a><a
-													class="smilie-icon" data-smilie="cahan" href="javascript:;"><img
-													alt="[cahan]" class="lazyload" data-src="static/picture/cahan.gif"/></a><a
-													class="smilie-icon" data-smilie="ciya" href="javascript:;"><img
-													alt="[ciya]" class="lazyload"
-													data-src="static/picture/ciya.gif"/></a><a
-													class="smilie-icon" data-smilie="dabing" href="javascript:;"><img
-													alt="[dabing]" class="lazyload"
-													data-src="static/picture/dabing.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="daku"
-											                                                     href="javascript:;"><img
-													alt="[daku]"
-													class="lazyload"
-													data-src="static/picture/daku.gif"/></a><a
-													class="smilie-icon" data-smilie="deyi" href="javascript:;"><img
-													alt="[deyi]" class="lazyload"
-													data-src="static/picture/deyi.gif"/></a><a
-													class="smilie-icon" data-smilie="doge" href="javascript:;"><img
-													alt="[doge]" class="lazyload"
-													data-src="static/picture/doge.gif"/></a><a
-													class="smilie-icon" data-smilie="fadai" href="javascript:;"><img
-													alt="[fadai]" class="lazyload" data-src="static/picture/fadai.gif"/></a><a
-													class="smilie-icon" data-smilie="fanu" href="javascript:;"><img
-													alt="[fanu]" class="lazyload"
-													data-src="static/picture/fanu.gif"/></a><a
-													class="smilie-icon" data-smilie="fendou" href="javascript:;"><img
-													alt="[fendou]" class="lazyload"
-													data-src="static/picture/fendou.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="ganga"
-											                                                     href="javascript:;"><img
-													alt="[ganga]"
-													class="lazyload"
-													data-src="static/picture/ganga.gif"/></a><a
-													class="smilie-icon" data-smilie="guzhang" href="javascript:;"><img
-													alt="[guzhang]" class="lazyload"
-													data-src="static/picture/guzhang.gif"/></a><a
-													class="smilie-icon" data-smilie="haixiu" href="javascript:;"><img
-													alt="[haixiu]" class="lazyload"
-													data-src="static/picture/haixiu.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="hanxiao"
-											                                                     href="javascript:;"><img
-													alt="[hanxiao]"
-													class="lazyload"
-													data-src="static/picture/hanxiao.gif"/></a><a
-													class="smilie-icon" data-smilie="zuohengheng"
-													href="javascript:;"><img
-													alt="[zuohengheng]" class="lazyload"
-													data-src="static/picture/zuohengheng.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="zhuakuang"
-													href="javascript:;"><img
-													alt="[zhuakuang]" class="lazyload"
-													data-src="static/picture/zhuakuang.gif"/></a><a class="smilie-icon"
-											                                                        data-smilie="zhouma"
-											                                                        href="javascript:;"><img
-													alt="[zhouma]"
-													class="lazyload"
-													data-src="static/picture/zhouma.gif"/></a><a
-													class="smilie-icon" data-smilie="zhemo" href="javascript:;"><img
-													alt="[zhemo]" class="lazyload" data-src="static/picture/zhemo.gif"/></a><a
-													class="smilie-icon" data-smilie="zhayanjian"
-													href="javascript:;"><img
-													alt="[zhayanjian]" class="lazyload"
-													data-src="static/picture/zhayanjian.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="zaijian"
-											                                                         href="javascript:;"><img
-													alt="[zaijian]"
-													class="lazyload"
-													data-src="static/picture/zaijian.gif"/></a><a
-													class="smilie-icon" data-smilie="yun" href="javascript:;"><img
-													alt="[yun]" class="lazyload" data-src="static/picture/yun.gif"/></a><a
-													class="smilie-icon" data-smilie="youhengheng"
-													href="javascript:;"><img
-													alt="[youhengheng]" class="lazyload"
-													data-src="static/picture/youhengheng.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="yiwen"
-													href="javascript:;"><img
-													alt="[yiwen]"
-													class="lazyload"
-													data-src="static/picture/yiwen.gif"/></a><a
-													class="smilie-icon" data-smilie="yinxian" href="javascript:;"><img
-													alt="[yinxian]" class="lazyload"
-													data-src="static/picture/yinxian.gif"/></a><a
-													class="smilie-icon" data-smilie="xu" href="javascript:;"><img
-													alt="[xu]" class="lazyload" data-src="static/picture/xu.gif"/></a><a
-													class="smilie-icon" data-smilie="xieyanxiao"
-													href="javascript:;"><img
-													alt="[xieyanxiao]" class="lazyload"
-													data-src="static/picture/xieyanxiao.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xiaoku"
-											                                                         href="javascript:;"><img
-													alt="[xiaoku]"
-													class="lazyload"
-													data-src="static/picture/xiaoku.gif"/></a><a
-													class="smilie-icon" data-smilie="xiaojiujie"
-													href="javascript:;"><img
-													alt="[xiaojiujie]" class="lazyload"
-													data-src="static/picture/xiaojiujie.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xia"
-											                                                         href="javascript:;"><img
-													alt="[xia]"
-													class="lazyload"
-													data-src="static/picture/xia.gif"/></a><a
-													class="smilie-icon" data-smilie="wunai" href="javascript:;"><img
-													alt="[wunai]" class="lazyload" data-src="static/picture/wunai.gif"/></a><a
-													class="smilie-icon" data-smilie="wozuimei" href="javascript:;"><img
-													alt="[wozuimei]" class="lazyload"
-													data-src="static/picture/wozuimei.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="weixiao"
-											                                                       href="javascript:;"><img
-													alt="[weixiao]"
-													class="lazyload"
-													data-src="static/picture/weixiao.gif"/></a><a
-													class="smilie-icon" data-smilie="weiqu" href="javascript:;"><img
-													alt="[weiqu]" class="lazyload" data-src="static/picture/weiqu.gif"/></a><a
-													class="smilie-icon" data-smilie="tuosai" href="javascript:;"><img
-													alt="[tuosai]" class="lazyload"
-													data-src="static/picture/tuosai.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="tu"
-											                                                     href="javascript:;"><img
-													alt="[tu]"
-													class="lazyload"
-													data-src="static/picture/tu.gif"/></a><a
-													class="smilie-icon" data-smilie="touxiao" href="javascript:;"><img
-													alt="[touxiao]" class="lazyload"
-													data-src="static/picture/touxiao.gif"/></a><a
-													class="smilie-icon" data-smilie="tiaopi" href="javascript:;"><img
-													alt="[tiaopi]" class="lazyload"
-													data-src="static/picture/tiaopi.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="shui"
-											                                                     href="javascript:;"><img
-													alt="[shui]"
-													class="lazyload"
-													data-src="static/picture/shui.gif"/></a><a
-													class="smilie-icon" data-smilie="se" href="javascript:;"><img
-													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
-													class="smilie-icon" data-smilie="saorao" href="javascript:;"><img
-													alt="[saorao]" class="lazyload"
-													data-src="static/picture/saorao.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="qiudale"
-											                                                     href="javascript:;"><img
-													alt="[qiudale]"
-													class="lazyload"
-													data-src="static/picture/qiudale.gif"/></a><a
-													class="smilie-icon" data-smilie="se" href="javascript:;"><img
-													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a
-													class="smilie-icon" data-smilie="qinqin" href="javascript:;"><img
-													alt="[qinqin]" class="lazyload"
-													data-src="static/picture/qinqin.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="qiaoda"
-											                                                     href="javascript:;"><img
-													alt="[qiaoda]"
-													class="lazyload"
-													data-src="static/picture/qiaoda.gif"/></a><a
-													class="smilie-icon" data-smilie="piezui" href="javascript:;"><img
-													alt="[piezui]" class="lazyload"
-													data-src="static/picture/piezui.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="penxue"
-											                                                     href="javascript:;"><img
-													alt="[penxue]"
-													class="lazyload"
-													data-src="static/picture/penxue.gif"/></a><a
-													class="smilie-icon" data-smilie="nanguo" href="javascript:;"><img
-													alt="[nanguo]" class="lazyload"
-													data-src="static/picture/nanguo.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="liulei"
-											                                                     href="javascript:;"><img
-													alt="[liulei]"
-													class="lazyload"
-													data-src="static/picture/liulei.gif"/></a><a
-													class="smilie-icon" data-smilie="liuhan" href="javascript:;"><img
-													alt="[liuhan]" class="lazyload"
-													data-src="static/picture/liuhan.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="lenghan"
-											                                                     href="javascript:;"><img
-													alt="[lenghan]"
-													class="lazyload"
-													data-src="static/picture/lenghan.gif"/></a><a
-													class="smilie-icon" data-smilie="leiben" href="javascript:;"><img
-													alt="[leiben]" class="lazyload"
-													data-src="static/picture/leiben.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="kun"
-											                                                     href="javascript:;"><img
-													alt="[kun]"
-													class="lazyload"
-													data-src="static/picture/kun.gif"/></a><a
-													class="smilie-icon" data-smilie="kuaikule" href="javascript:;"><img
-													alt="[kuaikule]" class="lazyload"
-													data-src="static/picture/kuaikule.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="ku"
-											                                                       href="javascript:;"><img
-													alt="[ku]"
-													class="lazyload"
-													data-src="static/picture/ku.gif"/></a><a
-													class="smilie-icon" data-smilie="koubi" href="javascript:;"><img
-													alt="[koubi]" class="lazyload" data-src="static/picture/koubi.gif"/></a><a
-													class="smilie-icon" data-smilie="kelian" href="javascript:;"><img
-													alt="[kelian]" class="lazyload"
-													data-src="static/picture/kelian.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="keai"
-											                                                     href="javascript:;"><img
-													alt="[keai]"
-													class="lazyload"
-													data-src="static/picture/keai.gif"/></a><a
-													class="smilie-icon" data-smilie="jingya" href="javascript:;"><img
-													alt="[jingya]" class="lazyload"
-													data-src="static/picture/jingya.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="jingxi"
-											                                                     href="javascript:;"><img
-													alt="[jingxi]"
-													class="lazyload"
-													data-src="static/picture/jingxi.gif"/></a><a
-													class="smilie-icon" data-smilie="jingkong" href="javascript:;"><img
-													alt="[jingkong]" class="lazyload"
-													data-src="static/picture/jingkong.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="jie"
-											                                                       href="javascript:;"><img
-													alt="[jie]"
-													class="lazyload"
-													data-src="static/picture/jie.gif"/></a><a
-													class="smilie-icon" data-smilie="huaixiao" href="javascript:;"><img
-													alt="[huaixiao]" class="lazyload"
-													data-src="static/picture/huaixiao.gif"/></a><a class="smilie-icon"
-											                                                       data-smilie="haqian"
-											                                                       href="javascript:;"><img
-													alt="[haqian]"
-													class="lazyload"
-													data-src="static/picture/haqian.gif"/></a><a
-													class="smilie-icon" data-smilie="aini" href="javascript:;"><img
-													alt="[aini]" class="lazyload"
-													data-src="static/picture/aini.gif"/></a><a
-													class="smilie-icon" data-smilie="OK" href="javascript:;"><img
-													alt="[OK]" class="lazyload" data-src="static/picture/ok.gif"/></a><a
-													class="smilie-icon" data-smilie="qiang" href="javascript:;"><img
-													alt="[qiang]" class="lazyload" data-src="static/picture/qiang.gif"/></a><a
-													class="smilie-icon" data-smilie="quantou" href="javascript:;"><img
-													alt="[quantou]" class="lazyload"
-													data-src="static/picture/quantou.gif"/></a><a
-													class="smilie-icon" data-smilie="shengli" href="javascript:;"><img
-													alt="[shengli]" class="lazyload"
-													data-src="static/picture/shengli.gif"/></a><a
-													class="smilie-icon" data-smilie="woshou" href="javascript:;"><img
-													alt="[woshou]" class="lazyload"
-													data-src="static/picture/woshou.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="gouyin"
-											                                                     href="javascript:;"><img
-													alt="[gouyin]"
-													class="lazyload"
-													data-src="static/picture/gouyin.gif"/></a><a
-													class="smilie-icon" data-smilie="baoquan" href="javascript:;"><img
-													alt="[baoquan]" class="lazyload"
-													data-src="static/picture/baoquan.gif"/></a><a
-													class="smilie-icon" data-smilie="aixin" href="javascript:;"><img
-													alt="[aixin]" class="lazyload" data-src="static/picture/aixin.gif"/></a><a
-													class="smilie-icon" data-smilie="bangbangtang"
-													href="javascript:;"><img
-													alt="[bangbangtang]" class="lazyload"
-													data-src="static/picture/bangbangtang.gif"/></a><a
-													class="smilie-icon"
-													data-smilie="xiaoyanger"
-													href="javascript:;"><img
-													alt="[xiaoyanger]" class="lazyload"
-													data-src="static/picture/xiaoyanger.gif"/></a><a class="smilie-icon"
-											                                                         data-smilie="xigua"
-											                                                         href="javascript:;"><img
-													alt="[xigua]"
-													class="lazyload"
-													data-src="static/picture/xigua.gif"/></a><a
-													class="smilie-icon" data-smilie="hexie" href="javascript:;"><img
-													alt="[hexie]" class="lazyload" data-src="static/picture/hexie.gif"/></a><a
-													class="smilie-icon" data-smilie="pijiu" href="javascript:;"><img
-													alt="[pijiu]" class="lazyload" data-src="static/picture/pijiu.gif"/></a><a
-													class="smilie-icon" data-smilie="lanqiu" href="javascript:;"><img
-													alt="[lanqiu]" class="lazyload"
-													data-src="static/picture/lanqiu.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="juhua"
-											                                                     href="javascript:;"><img
-													alt="[juhua]"
-													class="lazyload"
-													data-src="static/picture/juhua.gif"/></a><a
-													class="smilie-icon" data-smilie="hecai" href="javascript:;"><img
-													alt="[hecai]" class="lazyload" data-src="static/picture/hecai.gif"/></a><a
-													class="smilie-icon" data-smilie="haobang" href="javascript:;"><img
-													alt="[haobang]" class="lazyload"
-													data-src="static/picture/haobang.gif"/></a><a
-													class="smilie-icon" data-smilie="caidao" href="javascript:;"><img
-													alt="[caidao]" class="lazyload"
-													data-src="static/picture/caidao.gif"/></a><a class="smilie-icon"
-											                                                     data-smilie="baojin"
-											                                                     href="javascript:;"><img
-													alt="[baojin]"
-													class="lazyload"
-													data-src="static/picture/baojin.gif"/></a><a
-													class="smilie-icon" data-smilie="chi" href="javascript:;"><img
-													alt="[chi]" class="lazyload" data-src="static/picture/chi.gif"/></a><a
-													class="smilie-icon" data-smilie="dan" href="javascript:;"><img
-													alt="[dan]" class="lazyload" data-src="static/picture/dan.gif"/></a><a
-													class="smilie-icon" data-smilie="kulou" href="javascript:;"><img
-													alt="[kulou]" class="lazyload" data-src="static/picture/kulou.gif"/></a><a
-													class="smilie-icon" data-smilie="shuai" href="javascript:;"><img
-													alt="[shuai]" class="lazyload" data-src="static/picture/shuai.gif"/></a><a
-													class="smilie-icon" data-smilie="shouqiang" href="javascript:;"><img
-													alt="[shouqiang]" class="lazyload"
-													data-src="static/picture/shouqiang.gif"/></a><a class="smilie-icon"
-											                                                        data-smilie="yangtuo"
-											                                                        href="javascript:;"><img
-													alt="[yangtuo]"
-													class="lazyload"
-													data-src="static/picture/yangtuo.gif"/></a><a
-													class="smilie-icon" data-smilie="youling" href="javascript:;"><img
-													alt="[youling]" class="lazyload"
-													data-src="static/picture/youling.gif"/></a></div></div></span>
+														<%--											<span--%>
+														<%--													class="dropup relative smilie"><a--%>
+														<%--													class="but btn-input-expand input-smilie mr6" href="javascript:;"><i--%>
+														<%--													class="fa fa-fw fa-smile-o"></i><span--%>
+														<%--													class="hide-sm">表情</span></a><div--%>
+														<%--													class="dropdown-menu"><div--%>
+														<%--													class="dropdown-smilie scroll-y mini-scrollbar"><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="aoman"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[aoman]" class="lazyload" data-src="static/picture/aoman.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="baiyan" href="javascript:;"><img--%>
+														<%--													alt="[baiyan]" class="lazyload"--%>
+														<%--													data-src="static/picture/baiyan.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="bishi"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[bishi]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/bishi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="bizui" href="javascript:;"><img--%>
+														<%--													alt="[bizui]" class="lazyload" data-src="static/picture/bizui.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="cahan" href="javascript:;"><img--%>
+														<%--													alt="[cahan]" class="lazyload" data-src="static/picture/cahan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="ciya" href="javascript:;"><img--%>
+														<%--													alt="[ciya]" class="lazyload"--%>
+														<%--													data-src="static/picture/ciya.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="dabing" href="javascript:;"><img--%>
+														<%--													alt="[dabing]" class="lazyload"--%>
+														<%--													data-src="static/picture/dabing.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="daku"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[daku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/daku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="deyi" href="javascript:;"><img--%>
+														<%--													alt="[deyi]" class="lazyload"--%>
+														<%--													data-src="static/picture/deyi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="doge" href="javascript:;"><img--%>
+														<%--													alt="[doge]" class="lazyload"--%>
+														<%--													data-src="static/picture/doge.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fadai" href="javascript:;"><img--%>
+														<%--													alt="[fadai]" class="lazyload" data-src="static/picture/fadai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fanu" href="javascript:;"><img--%>
+														<%--													alt="[fanu]" class="lazyload"--%>
+														<%--													data-src="static/picture/fanu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="fendou" href="javascript:;"><img--%>
+														<%--													alt="[fendou]" class="lazyload"--%>
+														<%--													data-src="static/picture/fendou.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="ganga"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[ganga]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/ganga.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="guzhang" href="javascript:;"><img--%>
+														<%--													alt="[guzhang]" class="lazyload"--%>
+														<%--													data-src="static/picture/guzhang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="haixiu" href="javascript:;"><img--%>
+														<%--													alt="[haixiu]" class="lazyload"--%>
+														<%--													data-src="static/picture/haixiu.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="hanxiao"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[hanxiao]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/hanxiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zuohengheng"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zuohengheng]" class="lazyload"--%>
+														<%--													data-src="static/picture/zuohengheng.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="zhuakuang"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zhuakuang]" class="lazyload"--%>
+														<%--													data-src="static/picture/zhuakuang.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                        data-smilie="zhouma"--%>
+														<%--											                                                        href="javascript:;"><img--%>
+														<%--													alt="[zhouma]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/zhouma.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zhemo" href="javascript:;"><img--%>
+														<%--													alt="[zhemo]" class="lazyload" data-src="static/picture/zhemo.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="zhayanjian"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[zhayanjian]" class="lazyload"--%>
+														<%--													data-src="static/picture/zhayanjian.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="zaijian"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[zaijian]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/zaijian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="yun" href="javascript:;"><img--%>
+														<%--													alt="[yun]" class="lazyload" data-src="static/picture/yun.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="youhengheng"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[youhengheng]" class="lazyload"--%>
+														<%--													data-src="static/picture/youhengheng.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="yiwen"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[yiwen]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/yiwen.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="yinxian" href="javascript:;"><img--%>
+														<%--													alt="[yinxian]" class="lazyload"--%>
+														<%--													data-src="static/picture/yinxian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xu" href="javascript:;"><img--%>
+														<%--													alt="[xu]" class="lazyload" data-src="static/picture/xu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xieyanxiao"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xieyanxiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/xieyanxiao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xiaoku"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xiaoku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xiaoku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="xiaojiujie"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xiaojiujie]" class="lazyload"--%>
+														<%--													data-src="static/picture/xiaojiujie.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xia"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xia]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xia.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="wunai" href="javascript:;"><img--%>
+														<%--													alt="[wunai]" class="lazyload" data-src="static/picture/wunai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="wozuimei" href="javascript:;"><img--%>
+														<%--													alt="[wozuimei]" class="lazyload"--%>
+														<%--													data-src="static/picture/wozuimei.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="weixiao"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[weixiao]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/weixiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="weiqu" href="javascript:;"><img--%>
+														<%--													alt="[weiqu]" class="lazyload" data-src="static/picture/weiqu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="tuosai" href="javascript:;"><img--%>
+														<%--													alt="[tuosai]" class="lazyload"--%>
+														<%--													data-src="static/picture/tuosai.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="tu"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[tu]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/tu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="touxiao" href="javascript:;"><img--%>
+														<%--													alt="[touxiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/touxiao.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="tiaopi" href="javascript:;"><img--%>
+														<%--													alt="[tiaopi]" class="lazyload"--%>
+														<%--													data-src="static/picture/tiaopi.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="shui"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[shui]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/shui.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="se" href="javascript:;"><img--%>
+														<%--													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="saorao" href="javascript:;"><img--%>
+														<%--													alt="[saorao]" class="lazyload"--%>
+														<%--													data-src="static/picture/saorao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="qiudale"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[qiudale]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/qiudale.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="se" href="javascript:;"><img--%>
+														<%--													alt="[se]" class="lazyload" data-src="static/picture/se.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="qinqin" href="javascript:;"><img--%>
+														<%--													alt="[qinqin]" class="lazyload"--%>
+														<%--													data-src="static/picture/qinqin.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="qiaoda"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[qiaoda]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/qiaoda.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="piezui" href="javascript:;"><img--%>
+														<%--													alt="[piezui]" class="lazyload"--%>
+														<%--													data-src="static/picture/piezui.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="penxue"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[penxue]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/penxue.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="nanguo" href="javascript:;"><img--%>
+														<%--													alt="[nanguo]" class="lazyload"--%>
+														<%--													data-src="static/picture/nanguo.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="liulei"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[liulei]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/liulei.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="liuhan" href="javascript:;"><img--%>
+														<%--													alt="[liuhan]" class="lazyload"--%>
+														<%--													data-src="static/picture/liuhan.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="lenghan"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[lenghan]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/lenghan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="leiben" href="javascript:;"><img--%>
+														<%--													alt="[leiben]" class="lazyload"--%>
+														<%--													data-src="static/picture/leiben.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="kun"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[kun]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/kun.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kuaikule" href="javascript:;"><img--%>
+														<%--													alt="[kuaikule]" class="lazyload"--%>
+														<%--													data-src="static/picture/kuaikule.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="ku"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[ku]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/ku.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="koubi" href="javascript:;"><img--%>
+														<%--													alt="[koubi]" class="lazyload" data-src="static/picture/koubi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kelian" href="javascript:;"><img--%>
+														<%--													alt="[kelian]" class="lazyload"--%>
+														<%--													data-src="static/picture/kelian.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="keai"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[keai]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/keai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="jingya" href="javascript:;"><img--%>
+														<%--													alt="[jingya]" class="lazyload"--%>
+														<%--													data-src="static/picture/jingya.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="jingxi"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[jingxi]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/jingxi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="jingkong" href="javascript:;"><img--%>
+														<%--													alt="[jingkong]" class="lazyload"--%>
+														<%--													data-src="static/picture/jingkong.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="jie"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[jie]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/jie.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="huaixiao" href="javascript:;"><img--%>
+														<%--													alt="[huaixiao]" class="lazyload"--%>
+														<%--													data-src="static/picture/huaixiao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                       data-smilie="haqian"--%>
+														<%--											                                                       href="javascript:;"><img--%>
+														<%--													alt="[haqian]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/haqian.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="aini" href="javascript:;"><img--%>
+														<%--													alt="[aini]" class="lazyload"--%>
+														<%--													data-src="static/picture/aini.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="OK" href="javascript:;"><img--%>
+														<%--													alt="[OK]" class="lazyload" data-src="static/picture/ok.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="qiang" href="javascript:;"><img--%>
+														<%--													alt="[qiang]" class="lazyload" data-src="static/picture/qiang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="quantou" href="javascript:;"><img--%>
+														<%--													alt="[quantou]" class="lazyload"--%>
+														<%--													data-src="static/picture/quantou.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shengli" href="javascript:;"><img--%>
+														<%--													alt="[shengli]" class="lazyload"--%>
+														<%--													data-src="static/picture/shengli.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="woshou" href="javascript:;"><img--%>
+														<%--													alt="[woshou]" class="lazyload"--%>
+														<%--													data-src="static/picture/woshou.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="gouyin"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[gouyin]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/gouyin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="baoquan" href="javascript:;"><img--%>
+														<%--													alt="[baoquan]" class="lazyload"--%>
+														<%--													data-src="static/picture/baoquan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="aixin" href="javascript:;"><img--%>
+														<%--													alt="[aixin]" class="lazyload" data-src="static/picture/aixin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="bangbangtang"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[bangbangtang]" class="lazyload"--%>
+														<%--													data-src="static/picture/bangbangtang.gif"/></a><a--%>
+														<%--													class="smilie-icon"--%>
+														<%--													data-smilie="xiaoyanger"--%>
+														<%--													href="javascript:;"><img--%>
+														<%--													alt="[xiaoyanger]" class="lazyload"--%>
+														<%--													data-src="static/picture/xiaoyanger.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                         data-smilie="xigua"--%>
+														<%--											                                                         href="javascript:;"><img--%>
+														<%--													alt="[xigua]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/xigua.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="hexie" href="javascript:;"><img--%>
+														<%--													alt="[hexie]" class="lazyload" data-src="static/picture/hexie.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="pijiu" href="javascript:;"><img--%>
+														<%--													alt="[pijiu]" class="lazyload" data-src="static/picture/pijiu.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="lanqiu" href="javascript:;"><img--%>
+														<%--													alt="[lanqiu]" class="lazyload"--%>
+														<%--													data-src="static/picture/lanqiu.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="juhua"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[juhua]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/juhua.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="hecai" href="javascript:;"><img--%>
+														<%--													alt="[hecai]" class="lazyload" data-src="static/picture/hecai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="haobang" href="javascript:;"><img--%>
+														<%--													alt="[haobang]" class="lazyload"--%>
+														<%--													data-src="static/picture/haobang.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="caidao" href="javascript:;"><img--%>
+														<%--													alt="[caidao]" class="lazyload"--%>
+														<%--													data-src="static/picture/caidao.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                     data-smilie="baojin"--%>
+														<%--											                                                     href="javascript:;"><img--%>
+														<%--													alt="[baojin]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/baojin.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="chi" href="javascript:;"><img--%>
+														<%--													alt="[chi]" class="lazyload" data-src="static/picture/chi.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="dan" href="javascript:;"><img--%>
+														<%--													alt="[dan]" class="lazyload" data-src="static/picture/dan.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="kulou" href="javascript:;"><img--%>
+														<%--													alt="[kulou]" class="lazyload" data-src="static/picture/kulou.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shuai" href="javascript:;"><img--%>
+														<%--													alt="[shuai]" class="lazyload" data-src="static/picture/shuai.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="shouqiang" href="javascript:;"><img--%>
+														<%--													alt="[shouqiang]" class="lazyload"--%>
+														<%--													data-src="static/picture/shouqiang.gif"/></a><a class="smilie-icon"--%>
+														<%--											                                                        data-smilie="yangtuo"--%>
+														<%--											                                                        href="javascript:;"><img--%>
+														<%--													alt="[yangtuo]"--%>
+														<%--													class="lazyload"--%>
+														<%--													data-src="static/picture/yangtuo.gif"/></a><a--%>
+														<%--													class="smilie-icon" data-smilie="youling" href="javascript:;"><img--%>
+														<%--													alt="[youling]" class="lazyload"--%>
+														<%--													data-src="static/picture/youling.gif"/></a></div></div></span>--%>
+														<%--								todo 表情--%>
 												</div>
 											</div>
 										</div>
@@ -1134,12 +1147,15 @@
 								<li class="mr6 active"><a class="comment-orderby"
 								                          href="https://www.clash-gaming.com/3013.html?corderby=comment_date_gmt">最新</a>
 								</li>
-								<li class=""><a class="comment-orderby"
-								                href="https://www.clash-gaming.com/3013.html?corderby=comment_like">最热</a>
-								</li>
+								<%--								todo 最热--%>
+								<%--								<li class=""><a class="comment-orderby"--%>
+								<%--								                href="https://www.clash-gaming.com/3013.html?corderby=comment_like">最热</a>--%>
+								<%--								</li>--%>
 							</ul>
-							<a class="but comment-orderby btn-only-author p2-10"
-							   href="https://www.clash-gaming.com/3013.html?only_author=2">只看作者</a></div>
+							<%--							todo 只看作者--%>
+							<%--							<a class="but comment-orderby btn-only-author p2-10"--%>
+							<%--							   href="https://www.clash-gaming.com/3013.html?only_author=2">只看作者</a>--%>
+						</div>
 						<ol class="commentlist list-unstyled" id="comments_area">
 							<c:if test="${bookComments!=null and bookComments.size()>0}">
 								<c:forEach items="${bookComments}" var="comment">
@@ -1232,7 +1248,8 @@
             data: JSON.stringify({
                 comment_post_ID: $("#comment_post_ID").val(),
                 author: $("#author").val(),
-                comment: $("#comment").val()
+                comment: $("#comment").val(),
+                comment_parent: $("#comment_parent").val()
             }),
             dataType: "JSON",
 
@@ -1241,12 +1258,73 @@
                 console.log(!!error, error, html)
                 if (!!error && error === 1) {
                     $("#comment")[0].value = ""
+                    console.log(html, "html")
                     $("#comments_area").prepend(html)
                 }
             }
         })
     }
 
+    $(document).ready(function () {
+        $('.comment').hover(
+            function () {
+                // 鼠标悬浮时显示取消评论按钮，添加平滑过渡效果
+                $(this).find('.cancel-comment').fadeIn(200);
+            },
+            function () {
+                // 鼠标离开时隐藏取消评论按钮，添加平滑过渡效果
+                $(this).find('.cancel-comment').fadeOut(200);
+            }
+        );
+        // // 点击取消评论按钮时
+        // $('.cancel-comment').click(function () {
+        //     var readerId = $(this).closest('.comment').data('comment-id');
+        //     var commentId = $(this).closest('.comment').data('reader-id');
+        //     console.log(commentId, readerId)
+        //     // 发送 Ajax 请求来删除评论
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/cancle/comment', // 替换成实际的处理删除评论的后端文件
+        //         data: {
+        //             commentId: commentId,
+        //             readerId: readerId
+        //         },
+        //         success: function ({code, msg}) {
+        //             // 删除评论成功后，使用过渡效果隐藏并移除评论
+        //             if (!!code && code === 1) {
+        //                 var comment = $("#comment-" + commentId);
+        //                 comment.fadeOut(200, function () {
+        //                     comment.remove();
+        //                 });
+        //             } else alert(msg)
+        //         }
+        //     });
+        // });
+    });
+
+    function cancle_btn(even) {
+        var readerId = $(even).closest('.comment').data('comment-id');
+        var commentId = $(even).closest('.comment').data('reader-id');
+        console.log(commentId, readerId)
+        // 发送 Ajax 请求来删除评论
+        $.ajax({
+            type: 'POST',
+            url: '/cancle/comment', // 替换成实际的处理删除评论的后端文件
+            data: {
+                commentId: commentId,
+                readerId: readerId
+            },
+            success: function ({code, msg}) {
+                // 删除评论成功后，使用过渡效果隐藏并移除评论
+                if (!!code && code === 1) {
+                    var comment = $("#comment-" + commentId);
+                    comment.fadeOut(200, function () {
+                        comment.remove();
+                    });
+                } else alert(msg)
+            }
+        });
+    }
 </script>
 
 <script async id='crisp-js' src='/static/js/l.js' type='text/javascript'></script>

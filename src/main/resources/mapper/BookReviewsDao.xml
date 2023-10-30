@@ -31,6 +31,12 @@
         from book_reviews
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteone">
+        delete
+        from book_reviews
+        where reader_id = #{readerId}
+          and id = #{commentId}
+    </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookReviews"
             useGeneratedKeys="true">
         insert into book_reviews (review_text, book_id, reader_id,

@@ -1282,26 +1282,87 @@
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
             webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
             // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
-            webMetaData.ws.onopen = function () {
-                console.log("建立连接")
-            };
-            webMetaData.ws.onmessage = function (event) {
-                const chatVo = JSON.parse(event.data)
+
+            let socket = webMetaData.ws
+// 定义心跳间隔时间（以毫秒为单位）
+            const heartbeatInterval = 30000;  // 30秒
+            // 记录上一次收到心跳回应的时间戳
+            let lastHeartbeatResponse;
+
+// 开启WebSocket连接
+            socket.addEventListener('open', () => {
+                console.log('WebSocket连接已打开');
+                // 开始心跳检测
+                socket.send('heartbeat');
+                startHeartbeat();
+            });
+
+// 监听WebSocket消息
+            socket.addEventListener('message', (event) => {
+                // 处理接收到的消息
+                let message = event.data;
+                // 在这里处理接收到的消息
+                if ("heartbeat" === message) {
+                    lastHeartbeatResponse = Date.now();
+                    console.log(message)
+                    return
+                }
+                const chatVo = JSON.parse(message)
                 webMetaData.messageContent.onlineFlag = chatVo.onlineFlag
                 buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
                     chatVo.content, webMetaData.index, false);
-            };
-            webMetaData.ws.onclose = function () {
-                $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
-                setTimeout(function () {
-                    connect(); // 重新连接
-                }, 2000);
-            };
-            webMetaData.ws.onerror = function () {
-                setTimeout(function () {
-                    connect(); // 重新连接
-                }, 2000);
-            };
+                // 更新最后收到心跳回应的时间戳
+                lastHeartbeatResponse = Date.now();
+            });
+
+// 监听WebSocket关闭
+            socket.addEventListener('close', () => {
+                console.log('WebSocket连接已关闭');
+
+                // 停止心跳检测
+                stopHeartbeat();
+            });
+
+// 心跳检测函数
+            function startHeartbeat() {
+                // 使用定时器定期发送心跳消息
+                setInterval(() => {
+                    // 发送心跳消息
+                    socket.send('heartbeat');
+                    // 检查最后收到心跳回应的时间，如果超时则关闭WebSocket连接
+                    const currentTime = Date.now();
+                    if (currentTime - lastHeartbeatResponse > heartbeatInterval + 1000) {
+                        console.log('WebSocket连接超时，关闭连接');
+                        socket.close();
+                    }
+                }, heartbeatInterval);
+            }
+
+// 停止心跳检测
+            function stopHeartbeat() {
+                clearInterval(heartbeatInterval);
+            }
+
+            // webMetaData.ws.onopen = function () {
+            //     console.log("建立连接")
+            // };
+            // webMetaData.ws.onmessage = function (event) {
+            //     const chatVo = JSON.parse(event.data)
+            //     webMetaData.messageContent.onlineFlag = chatVo.onlineFlag
+            //     buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
+            //         chatVo.content, webMetaData.index, false);
+            // };
+            // webMetaData.ws.onclose = function () {
+            //     $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
+            //     setTimeout(function () {
+            //         connect(); // 重新连接
+            //     }, 2000);
+            // };
+            // webMetaData.ws.onerror = function () {
+            //     setTimeout(function () {
+            //         connect(); // 重新连接
+            //     }, 2000);
+            // };
         }
     }
 

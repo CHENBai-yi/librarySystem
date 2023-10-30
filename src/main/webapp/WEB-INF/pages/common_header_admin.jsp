@@ -72,7 +72,7 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="<c:url value="/data/sheet"/>">管理</a></li>
+						<li><a href="<c:url value="/data/sheet"/>">统计图</a></li>
 					</ul>
 				</li>
 				<li <c:if test="${current eq 6}">class="active"</c:if>>

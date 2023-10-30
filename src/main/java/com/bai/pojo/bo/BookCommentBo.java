@@ -17,6 +17,8 @@ public class BookCommentBo {
     @NotNull(message = "comment_post_ID不能为空")
     @Digits(message = "comment_post_ID只能是数字", integer = 1000, fraction = 0)
     private Long comment_post_ID;
+    @NotNull(message = "comment_parent不能为空")
+    @Digits(message = "comment_parent只能是数字", integer = 1000, fraction = 0)
     private Long comment_parent;
     @NotNull(message = "评论者不能为空")
     private String author;

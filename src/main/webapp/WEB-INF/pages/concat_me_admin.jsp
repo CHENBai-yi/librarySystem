@@ -406,7 +406,7 @@
 													<div class="avatar rounded-circle no-image bg-primary text-light">
 													<span class="msg-avatar">
                                         <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
-                                             class="avatar avatar-lg rounded-circle">
+                                             class="avatar avatar-lg rounded-circle" style="filter: none">
                                     </span>
 													</div>
 												</div>
@@ -1416,14 +1416,14 @@
             let socket = webMetaData.ws
 // 定义心跳间隔时间（以毫秒为单位）
             const heartbeatInterval = 30000;  // 30秒
-
-// 记录上一次收到心跳回应的时间戳
-            let lastHeartbeatResponse = Date.now();
+            // 记录上一次收到心跳回应的时间戳
+            let lastHeartbeatResponse;
 
 // 开启WebSocket连接
             socket.addEventListener('open', () => {
                 console.log('WebSocket连接已打开');
                 // 开始心跳检测
+                socket.send('heartbeat');
                 startHeartbeat();
             });
 
@@ -1432,10 +1432,23 @@
                 // 处理接收到的消息
                 let message = event.data;
                 // 在这里处理接收到的消息
-                console.log('接收到消息: ' + message);
-                const chatVo = JSON.parse(event.data)
-                buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
-                    chatVo.content, webMetaData.index, false);
+                if ("heartbeat" === message) {
+                    lastHeartbeatResponse = Date.now();
+                    console.log(message)
+                    return
+                }
+                console.log(message)
+                let query_param = window.location.search;
+                console.log(query_param)
+                if (!!query_param) {
+                    const chatVo = JSON.parse(event.data)
+                    let splite = query_param.split("=")[1];
+                    console.log(splite)
+                    if (splite == chatVo.senderId) {
+                        buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
+                            chatVo.content, webMetaData.index, false);
+                    }
+                }
                 // 更新最后收到心跳回应的时间戳
                 lastHeartbeatResponse = Date.now();
             });
@@ -1456,7 +1469,7 @@
                     socket.send('heartbeat');
                     // 检查最后收到心跳回应的时间，如果超时则关闭WebSocket连接
                     const currentTime = Date.now();
-                    if (currentTime - lastHeartbeatResponse > heartbeatInterval) {
+                    if (currentTime - lastHeartbeatResponse > heartbeatInterval + 1000) {
                         console.log('WebSocket连接超时，关闭连接');
                         socket.close();
                     }

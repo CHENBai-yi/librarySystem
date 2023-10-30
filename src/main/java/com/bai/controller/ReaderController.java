@@ -5,17 +5,17 @@ import com.bai.service.*;
 import com.bai.utils.DateUtils;
 import com.bai.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -36,10 +36,12 @@ public class ReaderController {
     @Autowired
     private AppointService appointService;
 
-//    @RequestMapping("/reader_main.html")
+    //    @RequestMapping("/reader_main.html")
 //    public String toReaderMain(){
 //        return "reader_main";
 //    }
+    @Autowired
+    private BookCommentService bookCommentService;
 
     static String getString(RequestAttributes requestAttributes) {
         Object attribute = requestAttributes.getAttribute(Constants.READER_REFERER, 1);
@@ -98,6 +100,8 @@ public class ReaderController {
         return "reader_books";
     }
 
+//    更新个人信息
+
     // 查看个人信息
     @RequestMapping("/reader_info.html")
     public String getReaderInfo(HttpSession session, Model model) {
@@ -108,8 +112,6 @@ public class ReaderController {
         model.addAttribute("readercard", reader);
         return "reader_info";
     }
-
-//    更新个人信息
 
     // 跳转至更新信息页面
     @RequestMapping("reader_info_edit.html")
@@ -262,6 +264,29 @@ public class ReaderController {
     @RequestMapping("/new_login")
     public String tologin() {
         return "reader_login";
+    }
+
+    @PostMapping("/cancle/comment")
+    @ResponseBody
+    public ResponseEntity<Object> cancleComment(String readerId, Integer commentId) {
+        String collect = null;
+        HashMap<String, Object> hashMap = new HashMap<>();
+        try {
+            collect = String.join("", readerId.split(","));
+            int i = bookCommentService.deleteone(Long.parseLong(collect), commentId);
+            if (i > 0) {
+                hashMap.put("code", 1);
+                hashMap.put("msg", "删除成功！！");
+            } else {
+                hashMap.put("code", 0);
+                hashMap.put("msg", "删除失败！");
+            }
+
+        } catch (Exception ignored) {
+            hashMap.put("code", 0);
+            hashMap.put("msg", "删除失败！");
+        }
+        return ResponseEntity.ok(hashMap);
     }
 
 }

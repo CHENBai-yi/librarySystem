@@ -9,7 +9,10 @@ import org.lionsoul.ip2region.xdb.Searcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
+import java.sql.Date;
 
 /**
  * Author:XY
@@ -41,9 +44,17 @@ public class LogServiceImp implements LogService {
             ipInfo.setProvince(split[2]);
             ipInfo.setCity(split[3]);
             ipInfo.setIsp(split[4]);
+            ipInfo.setDate(new Date(System.currentTimeMillis()));
             ipInfoDao.insert(ipInfo);
         } catch (Exception e) {
             log.debug("LogServiceImp 28line--->登录ip解析出错");
         }
+    }
+
+    public String parseIp(ServletRequest servletRequest) {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        String localAddr = httpServletRequest.getHeader("X-Forwarded-For");
+        if (localAddr == null) localAddr = httpServletRequest.getRemoteAddr();
+        return localAddr;
     }
 }

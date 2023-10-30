@@ -65,6 +65,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         super.handleTextMessage(session, message);
+        if (sendHeartBeat(message)) return;
         forwardMsg(message);
     }
 
@@ -137,7 +138,28 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
 
     }
 
-    public void aVoid(WebSocketSession session, TextMessage message) throws Exception {
-        session.sendMessage(message);
+    public void aVoid(WebSocketSession session, TextMessage message) {
+        try {
+            session.sendMessage(message);
+        } catch (IOException e) {
+            log.debug("消息发送失败aVoid：{}", this.getClass().toString());
+        }
+    }
+
+    public boolean sendHeartBeat(TextMessage message) {
+
+        try {
+            if ("heartbeat".equals(message.getPayload())) {
+                if (admin != null) admin.sendMessage(message);
+                sessionsMap.values().forEach(session -> {
+                    aVoid(session, message);
+                });
+                return true;
+            }
+        } catch (IOException e) {
+            log.debug("心跳检测失败：{}", this.getClass().toString());
+        }
+
+        return false;
     }
 }

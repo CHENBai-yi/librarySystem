@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  */
 @Service("评论功能")
 public class BookCommentServiceImpl implements BookCommentService {
-    private static final String msgTemplate = "<li class=\"comment even thread-even depth-1\" id=\"comment-{0}\"><ul class=\"list-inline\"><li class=\"comt-main\" id=\"div-comment-{1}\"><div class=\"comment-header mb10\"><div class=\"author-box flex ac\"><span class=\"avatar-img comt-avatar\"><img alt=\"头像\" src=\"/static/images/avatar-default.png\" data-src=\"//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png\" class=\"lazyload avatar avatar-id-0\"></span><name class=\"flex ac flex1\"><b class=\"mr6\">{2}</b></name><a href=\"javascript:;\" data-action=\"comment_like\" class=\"action action-comment-like muted-2-color flex0 ml10\" data-pid=\"{3}\"><svg class=\"icon mr3\" aria-hidden=\"true\"><use xlink:href=\"#icon-like\"></use></svg><text></text><count>{4}</count></a></div></div><div class=\"comment-footer\"><div class=\"mb10 comment-content\" id=\"comment-content-{5}\">{6}</div><div class=\"comt-meta muted-2-color\"><span class=\"comt-author\" title=\"{7,time}\">{8}</span><span class=\"badge-approve\"></span></div></div></li></ul>";
+    private static final String msgTemplate = "<li class=\"comment even thread-even depth-1\" data-comment-id=\"{9}\" data-reader-id=\"{10}\" id=\"comment-{0}\"><ul class=\"list-inline\"><li class=\"comt-main\" id=\"div-comment-{1}\"><div class=\"comment-header mb10\"><div class=\"author-box flex ac\"><span class=\"avatar-img comt-avatar\"><img alt=\"头像\" src=\"/static/images/avatar-default.png\" data-src=\"//www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/avatar-default.png\" class=\"lazyload avatar avatar-id-0\"></span><name class=\"flex ac flex1\"><b class=\"mr6\">{2}</b></name><a href=\"javascript:;\" data-action=\"comment_like\" class=\"action action-comment-like muted-2-color flex0 ml10 cby\" data-pid=\"{3}\"><svg class=\"icon mr3\" aria-hidden=\"true\"><use xlink:href=\"#icon-like\"></use></svg><text></text><count>{4}</count></a></div></div>   <button class=\"btn btn-danger cancel-comment\" style=\"float: right; position: fixed; right: 25px; \" onclick=\"cancel_btn(this)\">取消评论</button>  <div class=\"comment-footer\"><div class=\"mb10 comment-content\" id=\"comment-content-{5}\">{6}</div><div class=\"comt-meta muted-2-color\"><span class=\"comt-author\" title=\"{7,time}\">{8}</span><span class=\"badge-approve\"></span></div></div></li></ul>";
     private static final String imgString = "<img class=\"smilie-icon\" data-src=\"http://www.clash-gaming.com/wp-content/themes/zibll%20V6.5/img/thumbnail.svg\" src=\"/static/picture/{0}.gif\" alt=\"表情[{1}]|library Demo\">";
     @Autowired
     private BookReviewsDao bookReviewsDao;
@@ -32,13 +32,12 @@ public class BookCommentServiceImpl implements BookCommentService {
     @Override
     public BookCommentVo insertOneComment(BookCommentBo bookCommentBo) {
         BookReviews bookReviews = BookCommentMap.BOOK_COMMENT_MAP.bookCommentBoToBookReviews(bookCommentBo);
+        bookReviews.setReaderId(bookCommentBo.getComment_parent());
         BookCommentVo bookCommentVo = new BookCommentVo();
         String timeString = CommentTimeHelper.getTimeString(new Date());
         // todo 插入数据库并返回评论vo
         if (bookReviewsDao.insert(bookReviews) > 0) {
-
             return getBookCommentVo(bookReviews, bookCommentVo, timeString);
-
         }
         bookCommentVo.setError(1);
         bookCommentVo.setMsg("评论提交失败");
@@ -59,7 +58,7 @@ public class BookCommentServiceImpl implements BookCommentService {
         bookCommentVo.setError(1);
         bookCommentVo.setMsg("评论已提交成功");
         bookCommentVo.setWait_time(timeString);
-        bookCommentVo.setHtml(MessageFormat.format(msgTemplate, id, id, bookReviews.getAuthor(), id, 9999, id, text, bookReviews.getReviewDate(), bookCommentVo.getWait_time()));
+        bookCommentVo.setHtml(MessageFormat.format(msgTemplate, id, id, bookReviews.getAuthor(), id, 9999, id, text, bookReviews.getReviewDate(), bookCommentVo.getWait_time(), bookReviews.getReaderId(), id));
         return bookCommentVo;
     }
 
@@ -71,5 +70,15 @@ public class BookCommentServiceImpl implements BookCommentService {
             bookCommentVos.add(getBookCommentVo(bookReview, new BookCommentVo(), CommentTimeHelper.getTimeString(bookReview.getReviewDate())));
         }
         return bookCommentVos;
+    }
+
+    @Override
+    public int deleteone(Long readerId, Integer commentId) {
+        try {
+            return bookReviewsDao.deleteone(readerId, commentId);
+        } catch (Exception e) {
+
+        }
+        return 0;
     }
 }

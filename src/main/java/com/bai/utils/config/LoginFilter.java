@@ -47,8 +47,8 @@ public class LoginFilter implements Filter {
         accessUrl.add(Constants.AccessPageUrl.WENMINGGONGYUE + suffix);
         accessUrl.add(Constants.AccessPageUrl.RUGUANGUANLI + suffix);
         accessUrl.add(Constants.AccessPageUrl.CONSULT + suffix);
-        accessUrl.add(Constants.AccessPageUrl.CONCATME + suffix);
-        accessUrl.add(Constants.AccessPageUrl.CONCAT_ME_ADMIN + suffix);
+        // accessUrl.add(Constants.AccessPageUrl.CONCATME + suffix);
+        // accessUrl.add(Constants.AccessPageUrl.CONCAT_ME_ADMIN + suffix);
     }
 
     @Override
