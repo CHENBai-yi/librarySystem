@@ -1316,15 +1316,16 @@
             },
             success: function ({code, msg}) {
                 // 删除评论成功后，使用过渡效果隐藏并移除评论
-                if (!!code) {
-                    if (code === 1) {
+                if (typeof code == 'undefined')
+                    alert("请登录！！")
+                else {
+                    if (!!code && code === 1) {
                         var comment = $("#comment-" + commentId);
                         comment.fadeOut(200, function () {
                             comment.remove();
                         });
-                    } else alert(msg)
-                } else {
-                    alert("请登录！！")
+                    }
+                    alert(msg)
                 }
             }
         });

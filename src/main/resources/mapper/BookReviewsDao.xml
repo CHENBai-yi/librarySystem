@@ -35,7 +35,7 @@
         delete
         from book_reviews
         where id = #{commentId}
-        <if test="! empty readerId">
+        <if test="readerId != null">
             and reader_id = #{readerId}
         </if>
     </delete>
