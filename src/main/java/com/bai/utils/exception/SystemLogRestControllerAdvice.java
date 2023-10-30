@@ -23,6 +23,9 @@ public class SystemLogRestControllerAdvice {
     @ExceptionHandler({LogingException.class,})
     public void loggingException(HttpServletRequest httpServletRequest, LogingException ex) {
         String remoteHost = httpServletRequest.getRemoteHost();
+        System.out.println(httpServletRequest.getRemoteAddr());
+        System.out.println(httpServletRequest.getLocalAddr());
+        System.out.println(httpServletRequest.getLocalName());
         logService.logingLog(remoteHost, ex.getMessage());
     }
 
