@@ -1302,7 +1302,7 @@
         // });
     });
 
-    function cancle_btn(even) {
+    function cancel_btn(even) {
         var readerId = $(even).closest('.comment').data('comment-id');
         var commentId = $(even).closest('.comment').data('reader-id');
         console.log(commentId, readerId)
