@@ -50,6 +50,7 @@
         .comment:hover {
             transform: scale(1.05);
         }
+	
 	</style>
 
 </head>
@@ -1255,7 +1256,6 @@
 
             contentType: "application/json",
             success: function ({error, html}) {
-                console.log(!!error, error, html)
                 if (!!error && error === 1) {
                     $("#comment")[0].value = ""
                     console.log(html, "html")
@@ -1265,7 +1265,7 @@
         })
     }
 
-    $(document).ready(function () {
+    function extracted() {
         $('.comment').hover(
             function () {
                 // 鼠标悬浮时显示取消评论按钮，添加平滑过渡效果
@@ -1276,30 +1276,27 @@
                 $(this).find('.cancel-comment').fadeOut(200);
             }
         );
-        // // 点击取消评论按钮时
-        // $('.cancel-comment').click(function () {
-        //     var readerId = $(this).closest('.comment').data('comment-id');
-        //     var commentId = $(this).closest('.comment').data('reader-id');
-        //     console.log(commentId, readerId)
-        //     // 发送 Ajax 请求来删除评论
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: '/cancle/comment', // 替换成实际的处理删除评论的后端文件
-        //         data: {
-        //             commentId: commentId,
-        //             readerId: readerId
-        //         },
-        //         success: function ({code, msg}) {
-        //             // 删除评论成功后，使用过渡效果隐藏并移除评论
-        //             if (!!code && code === 1) {
-        //                 var comment = $("#comment-" + commentId);
-        //                 comment.fadeOut(200, function () {
-        //                     comment.remove();
-        //                 });
-        //             } else alert(msg)
-        //         }
-        //     });
-        // });
+    }
+
+    $(document).ready(function () {
+        extracted();
+        //Firefox和Chrome早期版本中带有前缀
+
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+
+        //选择目标节点
+        var target = $("#comments_area")[0]
+        //创建观察者对象
+        var observer = new MutationObserver(function (mutations) {
+            window.location.reload("#comments_area")
+            console.log("元素发生变化")
+            // mutations.forEach(function(mutation){
+            //     console.log(mutation);
+            // });
+        });
+        var config = {attributes: true, childList: true, characterData: true}
+        observer.observe(target, config);
+
     });
 
     function cancel_btn(even) {
