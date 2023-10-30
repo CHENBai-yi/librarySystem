@@ -1260,12 +1260,14 @@
                     $("#comment")[0].value = ""
                     console.log(html, "html")
                     $("#comments_area").prepend(html)
+                    window.location.reload("#comments_area")
                 }
             }
         })
     }
 
-    function extracted() {
+
+    $(document).ready(function () {
         $('.comment').hover(
             function () {
                 // 鼠标悬浮时显示取消评论按钮，添加平滑过渡效果
@@ -1276,26 +1278,6 @@
                 $(this).find('.cancel-comment').fadeOut(200);
             }
         );
-    }
-
-    $(document).ready(function () {
-        extracted();
-        //Firefox和Chrome早期版本中带有前缀
-
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
-
-        //选择目标节点
-        var target = $("#comments_area")[0]
-        //创建观察者对象
-        var observer = new MutationObserver(function (mutations) {
-            window.location.reload("#comments_area")
-            console.log("元素发生变化")
-            // mutations.forEach(function(mutation){
-            //     console.log(mutation);
-            // });
-        });
-        var config = {attributes: true, childList: true, characterData: true}
-        observer.observe(target, config);
 
     });
 
