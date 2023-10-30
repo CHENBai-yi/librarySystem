@@ -19,7 +19,6 @@ import java.io.ByteArrayOutputStream;
 @Service
 @Slf4j
 public class LogServiceImp implements LogService {
-    private final String ip2region = "ip2region.xdb";
     private final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     @Autowired
     private IpInfoDao ipInfoDao;
@@ -28,19 +27,20 @@ public class LogServiceImp implements LogService {
     public void logingLog(String ip, String errorMsg) {
         try {
             if (byteArrayOutputStream.size() == 0) {
+                String ip2region = "ip2region.xdb";
                 byte[] ip2regions = Searcher.loadContentFromFile(Resources.getResourceURL(ip2region).getPath());
                 byteArrayOutputStream.write(ip2regions);
             }
             Searcher searcher = Searcher.newWithBuffer(byteArrayOutputStream.toByteArray());
             String search = searcher.search(ip);
-            String[] split = search.split("|");
+            String[] split = search.split("\\|");
             IpInfo ipInfo = new IpInfo();
-            ipInfo.setIpAddress(split[0]);
-            ipInfo.setCountry(split[1]);
-            ipInfo.setRegion(split[2]);
-            ipInfo.setProvince(split[3]);
-            ipInfo.setCity(split[4]);
-            ipInfo.setIsp(split[5]);
+            ipInfo.setIpAddress(ip);
+            ipInfo.setCountry(split[0]);
+            ipInfo.setRegion(split[1]);
+            ipInfo.setProvince(split[2]);
+            ipInfo.setCity(split[3]);
+            ipInfo.setIsp(split[4]);
             ipInfoDao.insert(ipInfo);
         } catch (Exception e) {
             log.debug("LogServiceImp 28line--->登录ip解析出错");
