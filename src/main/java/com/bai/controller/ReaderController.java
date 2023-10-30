@@ -268,12 +268,22 @@ public class ReaderController {
 
     @PostMapping("/cancle/comment")
     @ResponseBody
-    public ResponseEntity<Object> cancleComment(String readerId, Integer commentId) {
+    public ResponseEntity<Object> cancleComment(String readerId, Integer commentId, @SessionAttribute(value = "admin", required = false) Admin admin, @SessionAttribute(value = "readercard", required = false) Reader readercard) {
         String collect = null;
+        int i = 0;
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
-            collect = String.join("", readerId.split(","));
-            int i = bookCommentService.deleteone(Long.parseLong(collect), commentId);
+            long readerId1 = Long.parseLong(String.join("", readerId.split(",")));
+            if (readercard != null) {
+                if (readercard.getReaderId() == readerId1) {
+                    i = bookCommentService.deleteone(readerId1, commentId);
+                }
+            } else if (admin != null) {
+                i = bookCommentService.deleteone(null, commentId);
+            } else {
+                hashMap.put("code", 0);
+                hashMap.put("msg", "请登录！！");
+            }
             if (i > 0) {
                 hashMap.put("code", 1);
                 hashMap.put("msg", "删除成功！！");

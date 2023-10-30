@@ -34,8 +34,10 @@
     <delete id="deleteone">
         delete
         from book_reviews
-        where reader_id = #{readerId}
-          and id = #{commentId}
+        where id = #{commentId}
+        <if test="! empty readerId">
+            and reader_id = #{readerId}
+        </if>
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bai.pojo.BookReviews"
             useGeneratedKeys="true">

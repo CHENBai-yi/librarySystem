@@ -16,4 +16,5 @@ public interface BookCommentService {
     List<BookCommentVo> selectAllComment(long bookId);
 
     int deleteone(Long readerId, Integer commentId);
+
 }
