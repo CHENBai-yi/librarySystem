@@ -22,7 +22,8 @@ public class SystemLogRestControllerAdvice {
 
     @ExceptionHandler({LogingException.class,})
     public void loggingException(HttpServletRequest httpServletRequest, LogingException ex) {
-        String localAddr = httpServletRequest.getLocalAddr();
+        String localAddr = httpServletRequest.getHeader("X-Forwarded-For");
+        if (localAddr.isEmpty()) localAddr = httpServletRequest.getRemoteAddr();
         log.debug(localAddr);
         logService.logingLog(localAddr, ex.getMessage());
     }

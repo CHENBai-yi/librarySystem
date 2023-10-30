@@ -34,9 +34,10 @@
     </delete>
     <insert id="insert" keyColumn="ip_address" keyProperty="ipAddress" parameterType="com.bai.pojo.IpInfo"
             useGeneratedKeys="true">
-        insert into ip_info (country, region, province,
+        insert into ip_info (ip_address, country, region, province,
                              city, isp)
-        values (#{country,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
+        values (#{ipAddress,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR},
+                #{province,jdbcType=VARCHAR},
                 #{city,jdbcType=VARCHAR}, #{isp,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="ip_address" keyProperty="ipAddress" parameterType="com.bai.pojo.IpInfo"
