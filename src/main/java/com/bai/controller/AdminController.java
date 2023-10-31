@@ -253,19 +253,24 @@ public class AdminController {
 
     // 选中聊天人页面
     @RequestMapping(Constants.AccessPageUrl.CONCAT_ME_ADMIN)
-    public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) throws Exception {
-        ChatVO chatVO = bookService.getMsgVo(session);
-        List<ChatVO> chatVOList = chatService.findAllRecoredsById(readerId);
+    public String concat_me_admin(Model model, HttpSession session, String readerName, Long readerId) {
         Map<String, WebSocketSession> sessionsMap = ConsultService.sessionsMap;
-        if (readerId != null) {
-            ConsultServiceImpl.admin.getAttributes().put("onlineKey", chatVO.getOnlineFlag());
-            String key = readerId.toString();
-            WebSocketSession session1 = sessionsMap.get(key);
-            consultServiceImp.aVoid(session1, new TextMessage(JSONUtil.toJsonStr(chatVO)));
-        }
-        model.addAttribute("chatVOList", chatVOList);
-        model.addAttribute("chatVo", chatVO);
+        try {
+            ChatVO chatVO = bookService.getMsgVo(session);
+            List<ChatVO> chatVOList = chatService.findAllRecoredsById(readerId);
+            if (readerId != null) {
+                ConsultServiceImpl.admin.getAttributes().put("onlineKey", chatVO.getOnlineFlag());
+                String key = readerId.toString();
+                WebSocketSession session1 = sessionsMap.get(key);
+                consultServiceImp.aVoid(session1, new TextMessage(JSONUtil.toJsonStr(chatVO)));
+            }
+            model.addAttribute("chatVOList", chatVOList);
+            model.addAttribute("chatVo", chatVO);
 
+            model.addAttribute("online", sessionsMap);
+        } catch (Exception e) {
+            log.debug("有用户不在线");
+        }
         model.addAttribute("online", sessionsMap);
         return "concat_me_admin";
     }

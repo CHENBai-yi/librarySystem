@@ -1,5 +1,6 @@
 package com.bai.utils.config;
 
+import cn.hutool.core.date.DateUtil;
 import com.bai.pojo.Admin;
 import com.bai.pojo.Reader;
 import org.springframework.http.server.ServerHttpRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -27,6 +29,7 @@ public class MyHandshakeHandler implements HandshakeInterceptor {
         HttpServletRequest servletRequest = servletServerHttpRequest.getServletRequest();
         HttpSession session = servletRequest.getSession(false);
         if (session != null) {
+            attributes.put("logging_time", DateUtil.format(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss"));
             Object readercard = session.getAttribute("readercard");
             Object admin = session.getAttribute("admin");
             if (admin != null) {

@@ -12,8 +12,7 @@
 	<!-- <meta name="referrer" content="no-referrer"> -->
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
-	<link href="" rel="shortcut icon"
-	      type="image/vnd.microsoft.icon"/>
+	<link href="/img/library.png" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
 	<title>${initParam.title}</title>
 	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
 	      type="text/css"/>

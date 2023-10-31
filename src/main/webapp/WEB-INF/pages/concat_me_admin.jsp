@@ -360,75 +360,78 @@
 							</div>
 						</div>
 					</li>
-					<c:if test="${online!=null and online.size()>0}">
-						<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
-						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
-							<c:set value="${online[k]}" var="item"/>
-							<c:set value="${item.attributes}" var="attributes"/>
-							
-							
-							<c:if test="${attributes['id'] ne 0}">
-								<li
-										<c:choose>
-											<c:when test="${readerId!=null and readerId eq item.attributes['uid']}">
-												<c:set value="${k}" var="firstOne"/>
-												<c:set value="${item.attributes['uid']}" var="uid"/>
-												<c:set value="${item.attributes['uname']}" var="uname"/>
-												class="online chat-title show active"
-											</c:when>
-											<c:otherwise>
-												class="online chat-title"
-											</c:otherwise>
-										</c:choose>
-										data-id="${k}">
-									<div class="hover_action">
-										<button class="btn btn-link text-info" data-original-title="标记为公开"
-										        data-toggle="tooltip"
-										        onclick="openChat('${k}')" type="button"><i
-												class="zmdi zmdi-eye"></i></button>
-										<button class="btn btn-link text-warning" data-answer="点击我来跟chatgpt聊天吧"
-										        data-original-title="修改聊天"
-										        data-title="新建聊天"
-										        onclick="editChat('${k}')"
-										        type="button"><i class="zmdi zmdi-edit"></i>
-										</button>
-										<button class="btn btn-link text-danger" data-original-title="移除聊天"
-										        data-toggle="tooltip"
-										        onclick="removeChat('${k}')" type="button"><i
-												class="zmdi zmdi-delete"></i>
-										</button>
-									</div>
-									<a class="card" href="#"
-									   onclick="changeSessionId('${k}','${attributes["uid"]}','${attributes["uname"]}')">
-										<div class="card-body">
-											<div class="media">
-												<div class="avatar me-3">
-													<div class="avatar rounded-circle no-image bg-primary text-light">
+					<ul class="chat-list" id="online_area">
+						<c:if test="${online!=null and online.size()>0}">
+							<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
+							<c:forEach items="${online.keySet()}" var="k" varStatus="s">
+								<c:set value="${online[k]}" var="item"/>
+								<c:set value="${item.attributes}" var="attributes"/>
+								
+								
+								<c:if test="${attributes['id'] ne 0}">
+									<li
+											<c:choose>
+												<c:when test="${readerId!=null and readerId eq item.attributes['uid']}">
+													<c:set value="${k}" var="firstOne"/>
+													<c:set value="${item.attributes['uid']}" var="uid"/>
+													<c:set value="${item.attributes['uname']}" var="uname"/>
+													class="online chat-title show active"
+												</c:when>
+												<c:otherwise>
+													class="online chat-title"
+												</c:otherwise>
+											</c:choose>
+											data-id="${k}">
+										<div class="hover_action">
+											<button class="btn btn-link text-info" data-original-title="标记为公开"
+											        data-toggle="tooltip"
+											        onclick="openChat('${k}')" type="button"><i
+													class="zmdi zmdi-eye"></i></button>
+											<button class="btn btn-link text-warning"
+											        data-answer="点击我来跟chatgpt聊天吧"
+											        data-original-title="修改聊天"
+											        data-title="新建聊天"
+											        onclick="editChat('${k}')"
+											        type="button"><i class="zmdi zmdi-edit"></i>
+											</button>
+											<button class="btn btn-link text-danger" data-original-title="移除聊天"
+											        data-toggle="tooltip"
+											        onclick="removeChat('${k}')" type="button"><i
+													class="zmdi zmdi-delete"></i>
+											</button>
+										</div>
+										<a class="card" href="#"
+										   onclick="changeSessionId('${k}','${attributes["uid"]}','${attributes["uname"]}')">
+											<div class="card-body">
+												<div class="media">
+													<div class="avatar me-3">
+														<div class="avatar rounded-circle no-image bg-primary text-light">
 													<span class="msg-avatar">
                                         <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
                                              class="avatar avatar-lg rounded-circle" style="filter: none">
                                     </span>
+														</div>
 													</div>
-												</div>
-												<div class="media-body overflow-hidden">
-													<div class="d-flex align-items-center mb-1">
-														<h6 class="text-truncate mb-0 me-auto chat-question-header">${attributes["uname"]}</h6>
-														<p class="small text-muted text-nowrap ms-4 mb-0">
-															<fmt:formatDate
-																	value="<%=new Date()%>"
-																	pattern="yyyy-MM-dd HH:mm:ss"/></p>
-													</div>
-													<div class="text-truncate chat-answer-header">
-														<font color="red">当前在线</font>
+													<div class="media-body overflow-hidden">
+														<div class="d-flex align-items-center mb-1">
+															<h6 class="text-truncate mb-0 me-auto chat-question-header">${attributes["uname"]}</h6>
+															<p class="small text-muted text-nowrap ms-4 mb-0">
+																<fmt:formatDate
+																		value="<%=new Date()%>"
+																		pattern="yyyy-MM-dd HH:mm:ss"/></p>
+														</div>
+														<div class="text-truncate chat-answer-header">
+															<font color="red">当前在线</font>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									</a>
-								</li>
-							</c:if>
-						</c:forEach>
-					</c:if>
+										</a>
+									</li>
+								</c:if>
+							</c:forEach>
+						</c:if>
+					</ul>
 				</ul>
 			</div>
 			<div class="tab-pane fade" id="nav-tab-pages" role="tabpanel">
@@ -711,6 +714,11 @@
         //     edit({className: "code-editor"});
         // });
     })
+
+    // function btn_clic(e) {
+    //     console.log(e)
+    //     $(e).addClass('active')
+    // }
 
     function apikey() {
         if (localStorage.getItem("apikey") != null) {
@@ -1398,8 +1406,8 @@
     }
 
     function changeSessionId(id, uid, uname) {
-        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
-        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        <%--window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
     }
 
 
@@ -1411,8 +1419,8 @@
         if (type == "sse") {
 
         } else {
-            webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
-            // webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
+            // webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
+            webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
             let socket = webMetaData.ws
 // 定义心跳间隔时间（以毫秒为单位）
             const heartbeatInterval = 30000;  // 30秒
@@ -1429,9 +1437,23 @@
 
 // 监听WebSocket消息
             socket.addEventListener('message', (event) => {
+                console.log(event)
                 // 处理接收到的消息
                 let message = event.data;
                 // 在这里处理接收到的消息
+                console.log(message)
+                try {
+                    let parse = JSON.parse(message);
+                    let body = parse.body;
+                    console.log(body)
+                    if (typeof body !== "undefined" || !!body) {
+                        $("#online_area").empty()
+                        $("#online_area").append(body)
+                        // window.location.reload(".chat-list")
+                    }
+                } catch (e) {
+                    console.log("不是json")
+                }
                 if ("heartbeat" === message) {
                     lastHeartbeatResponse = Date.now();
                     console.log(message)
