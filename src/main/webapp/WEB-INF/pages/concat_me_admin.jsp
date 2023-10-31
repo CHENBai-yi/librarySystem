@@ -367,7 +367,6 @@
 								<c:set value="${online[k]}" var="item"/>
 								<c:set value="${item.attributes}" var="attributes"/>
 								
-								
 								<c:if test="${attributes['id'] ne 0}">
 									<li
 											<c:choose>
@@ -1406,8 +1405,8 @@
     }
 
     function changeSessionId(id, uid, uname) {
-        window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
-        <%--window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
+        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
+        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
     }
 
 
@@ -1419,8 +1418,8 @@
         if (type == "sse") {
 
         } else {
-            // webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
-            webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
+            webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
+            // webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
             let socket = webMetaData.ws
 // 定义心跳间隔时间（以毫秒为单位）
             const heartbeatInterval = 30000;  // 30秒

@@ -24,7 +24,6 @@ import java.util.Objects;
 @Service
 @Slf4j
 public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultService {
-    private static final String template = "<li class=\"online chat-title\" data-id=\"{0}\"><div class=\"hover_action\"><button class=\"btn btn-link text-info\" data-original-title=\"标记为公开\" data-toggle=\"tooltip\" onclick=\"openChat(\"{1}\")\" type=\"button\"><i class=\"zmdi zmdi-eye\"></i></button><button class=\"btn btn-link text-warning\" data-answer=\"点击我来跟chatgpt聊天吧\" data-original-title=\"修改聊天\" data-title=\"新建聊天\" onclick=\"editChat(\"{2}\")\" type=\"button\"><i class=\"zmdi zmdi-edit\"></i></button><button class=\"btn btn-link text-danger\" data-original-title=\"移除聊天\" data-toggle=\"tooltip\" onclick=\"removeChat(\"{3}\")\" type=\"button\"><i class=\"zmdi zmdi-delete\"></i></button></div><a class=\"card\" href=\"#\" onclick=\"changeSessionId(\"{4}\",\"{5}\",\"{6}\")\"><div class=\"card-body\"><div class=\"media\"><div class=\"avatar me-3\"><div class=\"avatar rounded-circle no-image bg-primary text-light\"><span class=\"msg-avatar\"><img src=\"http://hoppinzq.com/zui/static/picture/0.jpg\" class=\"avatar avatar-lg rounded-circle\" style=\"filter: none\"></span></div></div><div class=\"media-body overflow-hidden\"><div class=\"d-flex align-items-center mb-1\"><h6 class=\"text-truncate mb-0 me-auto chat-question-header\">{7}</h6><p class=\"small text-muted text-nowrap ms-4 mb-0\">{8}</p></div><div class=\"text-truncate chat-answer-header\"><font color=\"red\">当前在线</font></div></div></div></div></a></li>";
     private static final String template2 = "<li class=\"online chat-title\" data-id=\"%s\"><div class=\"hover_action\"><button class=\"btn btn-link text-info\" data-original-title=\"标记为公开\" data-toggle=\"tooltip\" onclick=\"openChat('%s')\" type=\"button\"><i class=\"zmdi zmdi-eye\"></i></button><button class=\"btn btn-link text-warning\" data-answer=\"点击我来跟chatgpt聊天吧\" data-original-title=\"修改聊天\" data-title=\"新建聊天\" onclick=\"editChat('%s')\" type=\"button\"><i class=\"zmdi zmdi-edit\"></i></button><button class=\"btn btn-link text-danger\" data-original-title=\"移除聊天\" data-toggle=\"tooltip\" onclick=\"removeChat('%s')\" type=\"button\"><i class=\"zmdi zmdi-delete\"></i></button></div><a class=\"card\" href=\"#\" onclick=\"changeSessionId('%s','%s','%s')\"><div class=\"card-body\"><div class=\"media\"><div class=\"avatar me-3\"><div class=\"avatar rounded-circle no-image bg-primary text-light\"><span class=\"msg-avatar\"><img src=\"http://hoppinzq.com/zui/static/picture/0.jpg\" class=\"avatar avatar-lg rounded-circle\" style=\"filter: none\"></span></div></div><div class=\"media-body overflow-hidden\"><div class=\"d-flex align-items-center mb-1\"><h6 class=\"text-truncate mb-0 me-auto chat-question-header\">%s</h6><p class=\"small text-muted text-nowrap ms-4 mb-0\">%s</p></div><div class=\"text-truncate chat-answer-header\"><font color=\"red\">当前在线</font></div></div></div></div></a></li>";
     public static volatile WebSocketSession admin;
     @Autowired
@@ -65,11 +64,10 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                 String uid = attributes.get("uid").toString();
                 Object uname = attributes.get("uname");
                 stringBuilder.append(String.format(template2, uid, uid, uid, uid, uid, uid, uname, uname, logging_time));
-                // stringBuilder.append(MessageFormat.format(template, uid, uid, uid, uid, uid, uid, uname, uname, logging_time));
             }
 
             aVoid(admin, new TextMessage(JSONUtil.toJsonStr(ResponseEntity.ok(stringBuilder.toString()))));
-            // aVoid(admin, new TextMessage(stringBuilder.toString()));
+
         }
 
     }
