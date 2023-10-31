@@ -10,6 +10,8 @@
 <html>
 <head>
 	<title>管理主页</title>
+	<link href="" rel="shortcut icon"
+	      type="img/library.png"/>
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<script src="/static/js/jquery-3.2.1.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>

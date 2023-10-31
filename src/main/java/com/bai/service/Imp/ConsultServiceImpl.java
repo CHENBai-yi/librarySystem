@@ -29,7 +29,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        super.afterConnectionEstablished(session);
+
       /*  String ip = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
         if (ip == null) {
             ip = Objects.requireNonNull(session.getRemoteAddress()).getHostName();
@@ -40,44 +40,65 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             sessionsMap.put("admin", session);
         } else *//*sessionsMap.put(session.getId(), session);*//*sessionsMap.put(ip, session);*/
 
-        Map<String, Object> attributes = session.getAttributes();
-        Object uid = attributes.get("uid");
-        Object id = attributes.get("id");
-        if (Objects.equals(id, 0L)) {
-            if (admin != null) {
-                Map<String, Object> attributes1 = admin.getAttributes();
-                session.getAttributes().putAll(attributes1);
+        try {
+            super.afterConnectionEstablished(session);
+            Map<String, Object> attributes = session.getAttributes();
+            Object uid = attributes.get("uid");
+            Object id = attributes.get("id");
+            if (Objects.equals(id, 0L)) {
+                if (admin != null) {
+                    Map<String, Object> attributes1 = admin.getAttributes();
+                    session.getAttributes().putAll(attributes1);
+                }
+                admin = session;
+                System.out.println("成功建立连接，管理员id：" + uid);
+            } else {
+                System.out.println("成功建立连接，读者id：" + uid);
+                sessionsMap.put(uid.toString(), session);
             }
-            admin = session;
-            System.out.println("成功建立连接，管理员id：" + uid);
-        } else {
-            System.out.println("成功建立连接，读者id：" + uid);
-            sessionsMap.put(uid.toString(), session);
+        } catch (Exception e) {
+
         }
 
     }
 
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-        super.handleMessage(session, message);
+        try {
+            super.handleMessage(session, message);
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        super.handleTextMessage(session, message);
-        if (sendHeartBeat(message)) return;
-        forwardMsg(message);
+        try {
+            super.handleTextMessage(session, message);
+            if (sendHeartBeat(message)) return;
+            forwardMsg(message);
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
     protected void handlePongMessage(WebSocketSession session, PongMessage message) throws Exception {
-        super.handlePongMessage(session, message);
+        try {
+            super.handlePongMessage(session, message);
+        } catch (Exception e) {
+
+        }
 
     }
 
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-        super.handleTransportError(session, exception);
+        try {
+            super.handleTransportError(session, exception);
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
@@ -108,32 +129,36 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
      */
     @Override
     public void forwardMsg(TextMessage message) throws IOException {
-        ChatVO chatVO = JSONUtil.toBean(message.getPayload(), ChatVO.class);
-        for (String s : sessionsMap.keySet()) {
-            WebSocketSession webSocketSession = sessionsMap.get(s);
-            if (chatVO.getMessageId() == null) {
-                if (admin == null) log.warn("-----当前管理员不在线----");
-                else if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey") + "")) {
-                    chatVO.setMessageId(admin.getId());
-                    chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
-                    chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
-                    chatService.saveChat(chatVO);
-                    admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+        try {
+            ChatVO chatVO = JSONUtil.toBean(message.getPayload(), ChatVO.class);
+            for (String s : sessionsMap.keySet()) {
+                WebSocketSession webSocketSession = sessionsMap.get(s);
+                if (chatVO.getMessageId() == null) {
+                    if (admin == null) log.warn("-----当前管理员不在线----");
+                    else if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey") + "")) {
+                        chatVO.setMessageId(admin.getId());
+                        chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
+                        chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
+                        chatService.saveChat(chatVO);
+                        admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
 
-                } else {
-                    // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
+                    } else {
+                        // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
+                    }
+                    return;
                 }
-                return;
-            }
           /*  if (webSocketSession.getId().equals(chatVO.getMessageId())) {
                 chatService.saveChat(chatVO);
                 webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
             }*/
-            // 改用ip作为key
-            if (s.equals(chatVO.getMessageId())) {
-                chatService.saveChat(chatVO);
-                webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+                // 改用ip作为key
+                if (s.equals(chatVO.getMessageId())) {
+                    chatService.saveChat(chatVO);
+                    webSocketSession.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+                }
             }
+        } catch (Exception e) {
+
         }
 
     }
