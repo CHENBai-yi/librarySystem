@@ -141,7 +141,7 @@ public class BookServiceImp implements BookService {
     @Override
     public String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException, RuntimeException {
         // String realPath = httpServletRequest.getServletContext().getRealPath("/");
-        String path = "/static/img";
+        String path = "/static/img/";
         String originalFilename = multipartFile.getOriginalFilename();
         if (StrUtil.isBlank(originalFilename)) {
             log.debug("上传图片名字为空！");
