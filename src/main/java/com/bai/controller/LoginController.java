@@ -3,6 +3,7 @@ package com.bai.controller;
 import com.bai.pojo.Admin;
 import com.bai.pojo.Reader;
 import com.bai.service.AdminService;
+import com.bai.service.Imp.ConsultServiceImpl;
 import com.bai.service.Imp.LogServiceImp;
 import com.bai.service.ReaderService;
 import com.bai.utils.constants.Constants;
@@ -29,11 +30,14 @@ public class LoginController {
     private ReaderService readerService;
     @Autowired
     private LogServiceImp logService;
+    @Autowired
+    private ConsultServiceImpl consultService;
 
     // 退出登录
     @RequestMapping("/logout.html")
     public String logut(HttpSession session) {
         session.invalidate();
+        consultService.admin_logout();
         return "redirect:/index";
     }
 

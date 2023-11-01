@@ -7,12 +7,12 @@ import com.bai.service.ChatService;
 import com.bai.service.ConsultService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -65,8 +65,10 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                 Object uname = attributes.get("uname");
                 stringBuilder.append(String.format(template2, uid, uid, uid, uid, uid, uid, uname, uname, logging_time));
             }
-
-            aVoid(admin, new TextMessage(JSONUtil.toJsonStr(ResponseEntity.ok(stringBuilder.toString()))));
+            HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+            stringObjectHashMap.put("status", 2);
+            stringObjectHashMap.put("body", stringBuilder.toString());
+            aVoid(admin, new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap)));
 
         }
 
@@ -146,7 +148,11 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         // Object id = attributes.get("id");
         // sessionsMap.remove(uid.toString());
         // if (Objects.equals(id, 0L)) admin = null;
-        extracted(session, false);
+        try {
+            extracted(session, false);
+        } catch (Exception e) {
+            log.debug("管理员关闭聊天窗口： {}", JSONUtil.toJsonStr(session.getAttributes()));
+        }
     }
 
     @Override
@@ -177,6 +183,11 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
 
                     } else {
                         // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
+                        HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+                        stringObjectHashMap.put("status", 3);
+                        stringObjectHashMap.put("body", chatVO.getSenderName());
+                        TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
+                        admin.sendMessage(textMessage);
                     }
                     return;
                 }
@@ -208,9 +219,13 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
 
         try {
             if ("heartbeat".equals(message.getPayload())) {
-                if (admin != null) admin.sendMessage(message);
+                HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+                stringObjectHashMap.put("status", 1);
+                stringObjectHashMap.put("body", "heartbeat");
+                TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
+                if (admin != null && admin.isOpen()) admin.sendMessage(textMessage);
                 sessionsMap.values().forEach(session -> {
-                    aVoid(session, message);
+                    if (session.isOpen()) aVoid(session, textMessage);
                 });
                 return true;
             }
@@ -218,6 +233,23 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             log.debug("心跳检测失败：{}", this.getClass().toString());
         }
 
+        return false;
+    }
+
+    public boolean admin_logout() {
+        try {
+            HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+            stringObjectHashMap.put("status", -1);
+            stringObjectHashMap.put("body", "当前管理员已下线！");
+            TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
+            sessionsMap.values().forEach(session -> {
+                aVoid(session, textMessage);
+            });
+            admin = null;
+            return true;
+        } catch (RuntimeException e) {
+            log.debug("心跳检测失败：{}", this.getClass().toString());
+        }
         return false;
     }
 }

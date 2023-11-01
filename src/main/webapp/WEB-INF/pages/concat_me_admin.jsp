@@ -323,6 +323,18 @@
             justify-content: left !important;
         }
     }
+
+    .alert-fixed-top {
+        position: fixed;
+        top: -100px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 9999;
+        text-align: center;
+        width: 200px; /* 设置弹窗宽度 */
+    }
 </style>
 <body>
 
@@ -331,9 +343,9 @@
 </div>
 <div class="theme-cyan" id="layout">
 	
-	<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">
-		<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>
-	</div>
+	<%--	<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">--%>
+	<%--		<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>--%>
+	<%--	</div>--%>
 	
 	<div class="sidebar border-end py-xl-4 py-3 px-xl-4 px-3">
 		<div class="tab-content">
@@ -346,91 +358,89 @@
 					<i class="zmdi zmdi-dialpad"></i>
 					<input class="form-control chat-search" placeholder="搜索..." type="text">
 				</div>
-				<ul class="chat-list">
-					<li class="header chat-all-header d-flex justify-content-between ps-3 pe-3 mb-1">
-						<span>最近聊天记录</span>
-						<div class="dropdown">
-							<a aria-expanded="false" aria-haspopup="true"
-							   class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle"
-							   data-toggle="dropdown" href="#" role="button"><i
-									class="zmdi zmdi-filter-list"></i></a>
-							<div class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" href="#">导入</a>
-								<a class="dropdown-item" href="#">全部清理</a>
-							</div>
+				<div class="header chat-all-header d-flex justify-content-between ps-3 pe-3 mb-1">
+					<span>最近聊天记录</span>
+					<div class="dropdown">
+						<a aria-expanded="false" aria-haspopup="true"
+						   class="btn btn-link px-1 py-0 border-0 text-muted dropdown-toggle"
+						   data-toggle="dropdown" href="#" role="button"><i
+								class="zmdi zmdi-filter-list"></i></a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">导入</a>
+							<a class="dropdown-item" href="#">全部清理</a>
 						</div>
-					</li>
-					<ul class="chat-list" id="online_area">
-						<c:if test="${online!=null and online.size()>0}">
-							<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
-							<c:forEach items="${online.keySet()}" var="k" varStatus="s">
-								<c:set value="${online[k]}" var="item"/>
-								<c:set value="${item.attributes}" var="attributes"/>
-								
-								<c:if test="${attributes['id'] ne 0}">
-									<li
-											<c:choose>
-												<c:when test="${readerId!=null and readerId eq item.attributes['uid']}">
-													<c:set value="${k}" var="firstOne"/>
-													<c:set value="${item.attributes['uid']}" var="uid"/>
-													<c:set value="${item.attributes['uname']}" var="uname"/>
-													class="online chat-title show active"
-												</c:when>
-												<c:otherwise>
-													class="online chat-title"
-												</c:otherwise>
-											</c:choose>
-											data-id="${k}">
-										<div class="hover_action">
-											<button class="btn btn-link text-info" data-original-title="标记为公开"
-											        data-toggle="tooltip"
-											        onclick="openChat('${k}')" type="button"><i
-													class="zmdi zmdi-eye"></i></button>
-											<button class="btn btn-link text-warning"
-											        data-answer="点击我来跟chatgpt聊天吧"
-											        data-original-title="修改聊天"
-											        data-title="新建聊天"
-											        onclick="editChat('${k}')"
-											        type="button"><i class="zmdi zmdi-edit"></i>
-											</button>
-											<button class="btn btn-link text-danger" data-original-title="移除聊天"
-											        data-toggle="tooltip"
-											        onclick="removeChat('${k}')" type="button"><i
-													class="zmdi zmdi-delete"></i>
-											</button>
-										</div>
-										<a class="card" href="#"
-										   onclick="changeSessionId('${k}','${attributes["uid"]}','${attributes["uname"]}')">
-											<div class="card-body">
-												<div class="media">
-													<div class="avatar me-3">
-														<div class="avatar rounded-circle no-image bg-primary text-light">
+					</div>
+				</div>
+				<ul class="chat-list" id="online_area">
+					<c:if test="${online!=null and online.size()>0}">
+						<c:set value='<%=request.getParameter("readerId")%>' var="readerId"/>
+						<c:forEach items="${online.keySet()}" var="k" varStatus="s">
+							<c:set value="${online[k]}" var="item"/>
+							<c:set value="${item.attributes}" var="attributes"/>
+							<c:if test="${attributes['id'] ne 0}">
+								<li
+										<c:choose>
+											<c:when test="${!empty readerId and readerId eq item.attributes['uid']}">
+												<c:set value="${k}" var="firstOne"/>
+												<c:set value="${item.attributes['uid']}" var="uid"/>
+												<c:set value="${item.attributes['uname']}" var="uname"/>
+												class="online chat-title show active"
+											</c:when>
+											<c:otherwise>
+												class="online chat-title"
+											</c:otherwise>
+										</c:choose>
+										data-id="${k}">
+									<div class="hover_action">
+										<button class="btn btn-link text-info" data-original-title="标记为公开"
+										        data-toggle="tooltip"
+										        onclick="openChat('${k}')" type="button"><i
+												class="zmdi zmdi-eye"></i></button>
+										<button class="btn btn-link text-warning"
+										        data-answer="点击我来跟chatgpt聊天吧"
+										        data-original-title="修改聊天"
+										        data-title="新建聊天"
+										        onclick="editChat('${k}')"
+										        type="button"><i class="zmdi zmdi-edit"></i>
+										</button>
+										<button class="btn btn-link text-danger" data-original-title="移除聊天"
+										        data-toggle="tooltip"
+										        onclick="removeChat('${k}')" type="button"><i
+												class="zmdi zmdi-delete"></i>
+										</button>
+									</div>
+									<a class="card" href="#"
+									   onclick="changeSessionId('${k}','${attributes["uid"]}','${attributes["uname"]}')">
+										<div class="card-body">
+											<div class="media">
+												<div class="avatar me-3">
+													<div class="avatar rounded-circle no-image bg-primary text-light">
 													<span class="msg-avatar">
                                         <img src="http://hoppinzq.com/zui/static/picture/0.jpg"
                                              class="avatar avatar-lg rounded-circle" style="filter: none">
                                     </span>
-														</div>
 													</div>
-													<div class="media-body overflow-hidden">
-														<div class="d-flex align-items-center mb-1">
-															<h6 class="text-truncate mb-0 me-auto chat-question-header">${attributes["uname"]}</h6>
-															<p class="small text-muted text-nowrap ms-4 mb-0">
-																<fmt:formatDate
-																		value="<%=new Date()%>"
-																		pattern="yyyy-MM-dd HH:mm:ss"/></p>
-														</div>
-														<div class="text-truncate chat-answer-header">
-															<font color="red">当前在线</font>
-														</div>
+												</div>
+												<div class="media-body overflow-hidden">
+													<div class="d-flex align-items-center mb-1">
+														<h6 class="text-truncate mb-0 me-auto chat-question-header">${attributes["uname"]}</h6>
+														<p class="small text-muted text-nowrap ms-4 mb-0">
+															<fmt:formatDate
+																	value="<%=new Date()%>"
+																	pattern="yyyy-MM-dd HH:mm:ss"/></p>
+													</div>
+													<div class="text-truncate chat-answer-header">
+														<font color="red">当前在线</font>
 													</div>
 												</div>
 											</div>
-										</a>
-									</li>
-								</c:if>
-							</c:forEach>
-						</c:if>
-					</ul>
+										</div>
+									</a>
+								</li>
+							</c:if>
+						</c:forEach>
+					</c:if>
+					<%--					</ul>--%>
 				</ul>
 			</div>
 			<div class="tab-pane fade" id="nav-tab-pages" role="tabpanel">
@@ -712,7 +722,28 @@
         // require(["orion/editor/edit"], function (edit) {
         //     edit({className: "code-editor"});
         // });
+        //获取地址栏参数
+        (function ($) {
+            $.getUrlParam = function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            }
+            $.tip = function (msg) {
+                var alertHtml = `<div class="alert alert-info alert-fixed-top" role="alert">\${msg}</div>`;
+                $(alertHtml).appendTo('body');
+                var alertBox = $('.alert-fixed-top');
+                alertBox.animate({top: '50px'}, 200, 'swing')
+                    .delay(5000)
+                    .animate({top: '-100px', opacity: 0}, 500, 'linear', function () {
+                        $(this).remove();
+                        $("style").remove();
+                    });
+            }
+        })(jQuery);
     })
+
 
     // function btn_clic(e) {
     //     console.log(e)
@@ -1436,31 +1467,44 @@
 
 // 监听WebSocket消息
             socket.addEventListener('message', (event) => {
-                console.log(event)
                 // 处理接收到的消息
                 let message = event.data;
                 // 在这里处理接收到的消息
-                console.log(message)
                 try {
                     let parse = JSON.parse(message);
-                    let body = parse.body;
-                    console.log(body)
-                    if (typeof body !== "undefined" || !!body) {
-                        $("#online_area").empty()
-                        $("#online_area").append(body)
-                        // window.location.reload(".chat-list")
+                    if (typeof parse.status !== "undefined") {
+                        let status = parse.status;
+                        if (status < 0) {
+                            return;
+                        } else if (status === 1 && "heartbeat" === parse.body) {
+                            lastHeartbeatResponse = Date.now();
+                            console.log(message)
+                            return
+                        } else if (status === 2) {
+                            let body = parse.body;
+                            if (typeof body !== "undefined" || !!body) {
+                                $("#online_area").empty()
+                                $("#online_area").append(body)
+                                let a = $("#online_area")[0]
+                                a.childNodes.forEach(e => {
+                                    let id = $(e).data('id');
+                                    let urlParam = $.getUrlParam("readerId");
+                                    console.log(e)
+                                    console.log(urlParam)
+                                    if (urlParam == id) e.classList.add("active")
+                                })
+                                return;
+                            }
+                        } else if (status === 3) {
+                            $.tip(parse.body + "发来一条信息");
+                            return;
+                        }
                     }
                 } catch (e) {
                     console.log("不是json")
                 }
-                if ("heartbeat" === message) {
-                    lastHeartbeatResponse = Date.now();
-                    console.log(message)
-                    return
-                }
-                console.log(message)
                 let query_param = window.location.search;
-                console.log(query_param)
+
                 if (!!query_param) {
                     const chatVo = JSON.parse(event.data)
                     let splite = query_param.split("=")[1];
@@ -1501,29 +1545,6 @@
             function stopHeartbeat() {
                 clearInterval(heartbeatInterval);
             }
-
-            // // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            // // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
-            // webMetaData.ws.onopen = function () {
-            //     console.log("建立连接")
-            // };
-            // webMetaData.ws.onmessage = function (event) {
-            //     const chatVo = JSON.parse(event.data)
-            //     buildMessage(0, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
-            //         chatVo.content, webMetaData.index, false);
-            // };
-            // webMetaData.ws.onclose = function () {
-            //     $.post(ip + "/v1/chat/completions/stopstream/" + webMetaData.userno)
-            //     setTimeout(function () {
-            //         connect(); // 重新连接
-            //     }, 2000);
-            // };
-            // webMetaData.ws.onerror = function () {
-            //     setTimeout(function () {
-            //         connect(); // 重新连接
-            //     }, 2000);
-            // };
         }
     }
 

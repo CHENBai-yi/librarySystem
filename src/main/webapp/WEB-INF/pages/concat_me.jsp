@@ -302,6 +302,18 @@
     .markdown-body table {
         display: table-row !important;
     }
+
+    .alert-fixed-top {
+        position: fixed;
+        top: -100px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 9999;
+        text-align: center;
+        width: 200px; /* 设置弹窗宽度 */
+    }
 </style>
 <body>
 <div class="zq_preloader zq_preloader_center">
@@ -569,6 +581,19 @@
         // require(["orion/editor/edit"], function (edit) {
         //     edit({className: "code-editor"});
         // });
+        (function ($) {
+            $.tip = function (msg) {
+                var alertHtml = `<div class="alert alert-danger alert-fixed-top" role="alert">\${msg}</div>`;
+                $(alertHtml).appendTo('body');
+                var alertBox = $('.alert-fixed-top');
+                alertBox.animate({top: '50px'}, 200, 'swing')
+                    .delay(5000)
+                    .animate({top: '-100px', opacity: 0}, 500, 'linear', function () {
+                        $(this).remove();
+                        $("style").remove();
+                    });
+            }
+        })(jQuery);
     })
 
     function apikey() {
@@ -1262,20 +1287,9 @@
      * websocket可以当作demo学习或者使用，本项目使用了sse，官网也是。
      * */
     function connect(type) {
-        <c:if test="${msg!=null}">
-        window.onload = () => {
-            var alertHtml = '<div class="alert alert-success alert-fixed-top" role="alert">请登录！</div>';
-            $(alertHtml).appendTo('body');
-            var alertBox = $('.alert-fixed-top');
-            alertBox.animate({top: '50px'}, 200, 'swing')
-                .delay(5000)
-                .animate({top: '-100px', opacity: 0}, 500, 'linear', function () {
-                    $(this).remove();
-                    $("style").remove();
-                });
-        }
+        <c:if test="${ empty sessionScope.readercard}">
+        <c:redirect url="/reader/tologin"/>
         </c:if>
-
         if (type == "sse") {
 
         } else {
@@ -1302,12 +1316,18 @@
                 // 处理接收到的消息
                 let message = event.data;
                 // 在这里处理接收到的消息
-                if ("heartbeat" === message) {
-                    lastHeartbeatResponse = Date.now();
-                    console.log(message)
-                    return
-                }
                 const chatVo = JSON.parse(message)
+                if (typeof chatVo.status !== "undefined") {
+                    let status = chatVo.status;
+                    if (status < 0) {
+                        $.tip(chatVo.body)
+                        return;
+                    } else if (status === 1 && "heartbeat" === chatVo.body) {
+                        lastHeartbeatResponse = Date.now();
+                        console.log(message)
+                        return
+                    }
+                }
                 webMetaData.messageContent.onlineFlag = chatVo.onlineFlag
                 buildMessage(2, "user-chat-question-" + webMetaData.index, __zqChat.getRealDate(new Date()), chatVo.senderName, "http://hoppinzq.com/zui/static/picture/0.jpg",
                     chatVo.content, webMetaData.index, false);
@@ -1317,10 +1337,9 @@
 
 // 监听WebSocket关闭
             socket.addEventListener('close', () => {
-                console.log('WebSocket连接已关闭');
-
                 // 停止心跳检测
                 stopHeartbeat();
+                console.log('WebSocket连接已关闭');
             });
 
 // 心跳检测函数

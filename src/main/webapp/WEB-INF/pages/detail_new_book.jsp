@@ -1295,6 +1295,7 @@
             },
             success: function ({code, msg}) {
                 // 删除评论成功后，使用过渡效果隐藏并移除评论
+                console.log(code, typeof code)
                 if (typeof code == 'undefined')
                     alert("请登录！！")
                 else {
@@ -1318,6 +1319,7 @@
 <script async data-website-id="3b09fa9c-69a7-4f1f-bde0-f8e512f7ef34" src="/static/js/script.js"></script>
 <script>
     <c:if test="${msg!=null}">
+    //登陆提示框
     window.onload = () => {
         var alertHtml = '<div class="alert alert-success alert-fixed-top" role="alert">${msg}！</div>';
         $(alertHtml).appendTo('body');
