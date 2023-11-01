@@ -738,7 +738,7 @@
                     .delay(5000)
                     .animate({top: '-100px', opacity: 0}, 500, 'linear', function () {
                         $(this).remove();
-                        $("style").remove();
+                        // $("style").remove();
                     });
             }
         })(jQuery);

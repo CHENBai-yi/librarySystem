@@ -178,9 +178,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                         chatVO.setMessageId(admin.getId());
                         chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                         chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
-                        chatService.saveChat(chatVO);
                         admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
-
                     } else {
                         // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
                         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
@@ -189,6 +187,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                         TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
                         admin.sendMessage(textMessage);
                     }
+                    chatService.saveChat(chatVO);
                     return;
                 }
           /*  if (webSocketSession.getId().equals(chatVO.getMessageId())) {
