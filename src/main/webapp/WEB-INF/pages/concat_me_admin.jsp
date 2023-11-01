@@ -343,9 +343,9 @@
 </div>
 <div class="theme-cyan" id="layout">
 	
-	<%--	<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">--%>
-	<%--		<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>--%>
-	<%--	</div>--%>
+	<div class="navigation navbar justify-content-center py-xl-4 py-md-3 py-0 px-3">
+		<button type="submit" class="btn sidebar-toggle-btn shadow-sm"><i class="zmdi zmdi-menu"></i></button>
+	</div>
 	
 	<div class="sidebar border-end py-xl-4 py-3 px-xl-4 px-3">
 		<div class="tab-content">
