@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bai.utils.constants.Constants" %><%--
   Created by IntelliJ IDEA.
   User: 云飘
   Date: 2020/6/4
@@ -10,6 +10,8 @@
 <html>
 <head>
 	<title>公告详情</title>
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
 	<style>
         .news {
             width: 650px;

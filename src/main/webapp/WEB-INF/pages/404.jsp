@@ -1,8 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.bai.utils.constants.Constants" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
 	<title>404 Not Find:(</title>
 	<style>
         ::-moz-selection {
@@ -86,6 +90,7 @@
             border: 0;
         }
 	</style>
+
 </head>
 <body>
 <div class="container">

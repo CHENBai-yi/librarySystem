@@ -1,3 +1,4 @@
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html; UTF-8" isELIgnored="false" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
@@ -9,7 +10,7 @@
 	<meta content="webkit|ie-comp|ie-stand" name="renderer">
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
-	<link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>我的图书馆 | xxx图书馆</title>
 	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"

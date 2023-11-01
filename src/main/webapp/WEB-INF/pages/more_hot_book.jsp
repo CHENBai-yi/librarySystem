@@ -14,7 +14,7 @@
 	<meta content="Drupal 7 (http://drupal.org)" name="Generator"/>
 	<link href="/portal/cn/fw/ydtj/jiaoshoutuijian" rel="canonical"/>
 	<link href="/portal/cn/node/979" rel="shortlink"/>
-	<link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>热门推荐阅读——对我最有影响的几本书</title>
 	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"

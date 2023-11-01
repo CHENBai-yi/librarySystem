@@ -14,9 +14,9 @@
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="Generator" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
-	<link rel="shortcut icon" href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico"
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
-	<title>XXXXXXXXXXXXXXXXXXXXXXXXXXXX大学图书馆</title>
+	<title>更多</title>
 	<link type="text/css" rel="stylesheet" href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css"
 	      media="all"/>
 	<link type="text/css" rel="stylesheet" href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css"

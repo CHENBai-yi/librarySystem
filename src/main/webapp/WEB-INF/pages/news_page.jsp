@@ -1,5 +1,6 @@
 <%@ page import="cn.hutool.core.date.DateUtil" %>
 <%@ page import="cn.hutool.core.util.ObjectUtil" %>
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
 	<link href="/portal/cn/news/0000002496" rel="canonical"/>
 	<link href="/portal/cn/node/6311" rel="shortlink"/>
-	<link href="https://www.lib.pku.edu.cn/portal/sites/default/files/favicon.ico" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>${news.newsTitle}</title>
 	<link type="text/css" rel="stylesheet" href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css"

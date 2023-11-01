@@ -86,4 +86,8 @@ public class Constants {
         public static final String CONCAT_ME_ADMIN = "/concat/me/backend";
 
     }
+
+    public static class StaticIcon {
+        public static final String icon_path = "/static/img/library.icon";
+    }
 }

@@ -15,6 +15,7 @@ import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
 import com.bai.utils.constants.Constants;
 import com.bai.utils.mapStruct.BookMap;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,11 +29,22 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class BookServiceImp implements BookService {
+    private static final String os_name = System.getProperty("os.name").toLowerCase();
+    private static String realPath;
     @Autowired
     LendMapper lendMapper;
     @Autowired
     private BookMapper bookMapper;
+
+    public BookServiceImp() {
+        if (os_name.contains("linux")) {
+            realPath = "~";
+        } else if (os_name.contains("windows")) {
+            realPath = "D:/tmp";
+        }
+    }
 
     @Override
     public List<Book> queryAllBook() {
@@ -128,10 +140,13 @@ public class BookServiceImp implements BookService {
 
     @Override
     public String uploadBookCoverImg(MultipartFile multipartFile, HttpServletRequest httpServletRequest) throws IOException, RuntimeException {
-        String realPath = httpServletRequest.getServletContext().getRealPath("/");
+        // String realPath = httpServletRequest.getServletContext().getRealPath("/");
         String path = "/static/img/";
         String originalFilename = multipartFile.getOriginalFilename();
-        if (StrUtil.isBlank(originalFilename)) throw new RuntimeException();
+        if (StrUtil.isBlank(originalFilename)) {
+            log.debug("上传图片名字为空！");
+            return "/static/img/showFailed.jpg";
+        }
         String fileSuffix = originalFilename.substring(originalFilename.lastIndexOf("."));
         String fileName = UUID.randomUUID().toString().replaceAll("-", "").concat(fileSuffix);
         File parent = new File(realPath, path);

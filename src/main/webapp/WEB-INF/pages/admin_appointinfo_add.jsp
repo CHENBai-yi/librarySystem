@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bai.utils.constants.Constants" %><%--
   Created by IntelliJ IDEA.
   User: 云飘
   Date: 2020/6/5
@@ -10,6 +10,8 @@
 <html>
 <head>
 	<title>发布预约信息</title>
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<script src="/static/js/jquery-3.2.1.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>

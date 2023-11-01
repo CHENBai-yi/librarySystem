@@ -12,7 +12,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>新书通报--图书详细信息</title>
-	
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
 	<link href='/static/css/main.min.css' id='_main-css' media='all' rel='stylesheet' type='text/css'/>
 	<link href='/static/css/bootstrap.min.css' id='_bootstrap-css' media='all' rel='stylesheet' type='text/css'/>
 	<link href='/static/css/font-awesome.min.css' id='_fontawesome-css' media='all' rel='stylesheet' type='text/css'/>

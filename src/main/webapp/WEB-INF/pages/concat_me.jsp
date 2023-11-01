@@ -9,7 +9,8 @@
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<meta content="HOPPINZQ的ChatGPT" name="description">
 	<title>聊天</title>
-	<link href="https://hoppinzq.com/zui/static/favicon/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon"/>
 	<link href="https://hoppinzq.com/chat/static/css/material-design-iconic-font.min.css" rel="stylesheet">
 	<link href="https://hoppinzq.com/chat/static/css/style.min.css" rel="stylesheet">
 	<link href="https://hoppinzq.com/static/css/plugins/editormd.min.css" rel="stylesheet"/>
