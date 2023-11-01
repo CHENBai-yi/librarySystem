@@ -40,7 +40,7 @@ public class BookServiceImp implements BookService {
 
     public BookServiceImp() {
         if (os_name.contains("linux")) {
-            realPath = "/";
+            realPath = "/media";
         } else if (os_name.contains("windows")) {
             realPath = "D:/tmp";
         }
