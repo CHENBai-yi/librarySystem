@@ -13,6 +13,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.sql.Date;
+import java.util.Optional;
 
 /**
  * Author:XY
@@ -45,7 +46,10 @@ public class LogServiceImp implements LogService {
             ipInfo.setCity(split[3]);
             ipInfo.setIsp(split[4]);
             ipInfo.setDate(new Date(System.currentTimeMillis()));
-            ipInfoDao.insert(ipInfo);
+            Optional<IpInfo> ipInfo1 = Optional.ofNullable(ipInfoDao.selectByPrimaryKey(ip));
+            if (ipInfo1.isPresent())
+                ipInfoDao.updateByPrimaryKey(ipInfo);
+            else ipInfoDao.insert(ipInfo);
         } catch (Exception e) {
             log.debug("LogServiceImp 28line--->登录ip解析出错");
         }

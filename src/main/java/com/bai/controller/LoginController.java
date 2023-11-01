@@ -37,7 +37,7 @@ public class LoginController {
     @RequestMapping("/logout.html")
     public String logut(HttpSession session) {
         session.invalidate();
-        consultService.admin_logout();
+        consultService.admin_logout(-1, "当前管理员已下线！");
         return "redirect:/index";
     }
 

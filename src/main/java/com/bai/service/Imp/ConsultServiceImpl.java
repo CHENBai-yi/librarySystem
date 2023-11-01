@@ -173,21 +173,26 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
             for (String s : sessionsMap.keySet()) {
                 WebSocketSession webSocketSession = sessionsMap.get(s);
                 if (chatVO.getMessageId() == null) {
-                    if (admin == null) log.warn("-----当前管理员不在线----");
-                    else if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey") + "")) {
+                    if (admin == null) {
+                        admin_logout(-2, "-----当前管理员不在线----");
+                        log.warn("-----当前管理员不在线----");
+                    } else {
                         chatVO.setMessageId(admin.getId());
                         chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                         chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
-                        admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
-                    } else {
-                        // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
-                        HashMap<String, Object> stringObjectHashMap = new HashMap<>();
-                        stringObjectHashMap.put("status", 3);
-                        stringObjectHashMap.put("body", chatVO.getSenderName());
-                        TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
-                        admin.sendMessage(textMessage);
+                        if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey") + "")) {
+                            admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
+                        } else {
+                            // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息
+                            HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+                            stringObjectHashMap.put("status", 3);
+                            stringObjectHashMap.put("body", chatVO.getSenderName());
+                            TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
+                            admin.sendMessage(textMessage);
+                        }
+                        chatService.saveChat(chatVO);
                     }
-                    chatService.saveChat(chatVO);
+
                     return;
                 }
           /*  if (webSocketSession.getId().equals(chatVO.getMessageId())) {
@@ -201,7 +206,7 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                 }
             }
         } catch (Exception e) {
-
+            log.error(e.getMessage());
         }
 
     }
@@ -235,16 +240,16 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
         return false;
     }
 
-    public boolean admin_logout() {
+    public boolean admin_logout(int status, String msg) {
         try {
             HashMap<String, Object> stringObjectHashMap = new HashMap<>();
-            stringObjectHashMap.put("status", -1);
-            stringObjectHashMap.put("body", "当前管理员已下线！");
+            stringObjectHashMap.put("status", status);
+            stringObjectHashMap.put("body", msg);
             TextMessage textMessage = new TextMessage(JSONUtil.toJsonStr(stringObjectHashMap));
             sessionsMap.values().forEach(session -> {
                 aVoid(session, textMessage);
             });
-            admin = null;
+            if (status == -1) admin = null;
             return true;
         } catch (RuntimeException e) {
             log.debug("心跳检测失败：{}", this.getClass().toString());

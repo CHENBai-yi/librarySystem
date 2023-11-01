@@ -1320,6 +1320,7 @@
                 if (typeof chatVo.status !== "undefined") {
                     let status = chatVo.status;
                     if (status < 0) {
+                        console.log(chatVo.body)
                         $.tip(chatVo.body)
                         return;
                     } else if (status === 1 && "heartbeat" === chatVo.body) {

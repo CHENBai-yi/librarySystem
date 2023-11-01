@@ -732,7 +732,7 @@
             }
             $.tip = function (msg) {
                 var alertHtml = `<div class="alert alert-info alert-fixed-top" role="alert">\${msg}</div>`;
-                $(alertHtml).appendTo('body');
+                $('body').append(alertHtml);
                 var alertBox = $('.alert-fixed-top');
                 alertBox.animate({top: '50px'}, 200, 'swing')
                     .delay(5000)
@@ -1496,6 +1496,7 @@
                                 return;
                             }
                         } else if (status === 3) {
+                            console.log(parse)
                             $.tip(parse.body + "发来一条信息");
                             return;
                         }
