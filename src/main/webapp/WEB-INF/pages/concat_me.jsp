@@ -1287,9 +1287,6 @@
      * websocket可以当作demo学习或者使用，本项目使用了sse，官网也是。
      * */
     function connect(type) {
-        <c:if test="${ empty sessionScope.readercard}">
-        <c:redirect url="/reader/tologin"/>
-        </c:if>
         if (type == "sse") {
 
         } else {
@@ -1320,7 +1317,6 @@
                 if (typeof chatVo.status !== "undefined") {
                     let status = chatVo.status;
                     if (status < 0) {
-                        console.log(chatVo.body)
                         $.tip(chatVo.body)
                         return;
                     } else if (status === 1 && "heartbeat" === chatVo.body) {

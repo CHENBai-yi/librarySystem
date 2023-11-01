@@ -722,6 +722,9 @@
         // require(["orion/editor/edit"], function (edit) {
         //     edit({className: "code-editor"});
         // });
+        window.addEventListener('popstate', function (event) {
+            location.reload();
+        });
         //获取地址栏参数
         (function ($) {
             $.getUrlParam = function (name) {
@@ -732,7 +735,7 @@
             }
             $.tip = function (msg) {
                 var alertHtml = `<div class="alert alert-info alert-fixed-top" role="alert">\${msg}</div>`;
-                $('body').append(alertHtml);
+                $(alertHtml).appendTo('body');
                 var alertBox = $('.alert-fixed-top');
                 alertBox.animate({top: '50px'}, 200, 'swing')
                     .delay(5000)
@@ -1436,8 +1439,8 @@
     }
 
     function changeSessionId(id, uid, uname) {
-        <%--window.location.href = `http://localhost:8080<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`--%>
-        window.location.href = `https://library.baiyichen.asia<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`
+        history.pushState({}, '', `<%=Constants.AccessPageUrl.CONCAT_ME_ADMIN%>?readerId=\${uid}`);
+        location.reload();
     }
 
 
@@ -1496,7 +1499,6 @@
                                 return;
                             }
                         } else if (status === 3) {
-                            console.log(parse)
                             $.tip(parse.body + "发来一条信息");
                             return;
                         }

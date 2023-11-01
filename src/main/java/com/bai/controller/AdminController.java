@@ -259,11 +259,12 @@ public class AdminController {
             ChatVO chatVO = bookService.getMsgVo(session);
             List<ChatVO> chatVOList = chatService.findAllRecoredsById(readerId);
             if (readerId != null) {
-                ConsultServiceImpl.admin.getAttributes().put("onlineKey", chatVO.getOnlineFlag());
                 String key = readerId.toString();
                 WebSocketSession session1 = sessionsMap.get(key);
                 consultServiceImp.aVoid(session1, new TextMessage(JSONUtil.toJsonStr(chatVO)));
-            }
+                ConsultServiceImpl.admin.getAttributes().put("onlineKey", chatVO.getOnlineFlag());
+            } else ConsultServiceImpl.admin.getAttributes().put("onlineKey", "");
+
             model.addAttribute("chatVOList", chatVOList);
             model.addAttribute("chatVo", chatVO);
 
