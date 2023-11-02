@@ -12,7 +12,7 @@
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
 	<link href="<c:url value="<%=Constants.StaticIcon.icon_index%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
-	<title>我的图书馆 | xxx图书馆</title>
+	<title>我的图书馆 | 登录</title>
 	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"
 	      type="text/css"/>
 	<link href="/static/css/css_k63pupoxloolfk6iyuhto-czl943ncprr4wiilqy3yw.css" media="all" rel="stylesheet"
