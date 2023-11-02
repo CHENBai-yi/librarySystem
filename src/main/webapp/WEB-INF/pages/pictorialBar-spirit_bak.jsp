@@ -31,45 +31,21 @@
         .cby div {
             margin: 20px 0 0 0;
         }
-
-        .sex_class {
-            display: flex;
-            position: relative;
-            margin: 0;
-            padding: 0;
-            bottom: 300px;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-evenly;
-            align-items: center;
-        }
 	</style>
 </head>
 <%--/static/img/1583851799.jpg--%>
 <body background=""
-      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top:120px;">
+      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top: 42px;">
 <c:set value="5" var="current" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-md-12" style="height: 350px" id="chart-container"></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-md-4" id="chart-container3"></div>
-		<div class="col-xs-8 col-md-8" id="chart-container2"></div>
+<div class="cby">
+	<div id="chart-container2" style="height: 600px;"></div>
+	<div style="display: flex;">
+		<div id="chart-container" style="width: 1400px"></div>
+		<div id="chart-container3" style="width: 1000px;height: 450px;"></div>
 	</div>
 </div>
-
-
-<%--<div class="cby" style="position: absolute;top: 100px;width: 100%;">--%>
-<%--	<div id="chart-container" style="height: 600px;"></div>--%>
-<%--	--%>
-<%--	<div class="sex_class">--%>
-<%--		<div id="chart-container3" style="width: 600px;height: 450px;"></div>--%>
-<%--		<div id="chart-container2" style="width: auto"></div>--%>
-<%--	</div>--%>
-<%--</div>--%>
 
 <script type="text/javascript">
     var charts = []
@@ -78,8 +54,7 @@
         var dom = document.getElementById('chart-container');
         var myChart = echarts.init(dom, null, {
             renderer: 'canvas',
-            useDirtyRect: false,
-            height: 350
+            useDirtyRect: false
         });
         var app = {};
 
@@ -103,20 +78,20 @@
                     seriesIndex: 0,
                     min: 0,
                     max: 400
-                },
+                }
             ],
             title: [
                 {
                     left: 'center',
                     text: '网站访问量'
-                }
+                },
             ],
             tooltip: {
                 trigger: 'axis'
             },
             xAxis: [
                 {
-                    data: dateList
+                    data: dateList,
                 }
             ],
             yAxis: [
@@ -124,7 +99,10 @@
             ],
             grid: [
                 {
-                    bottom: '25%'
+                    bottom: '60%'
+                },
+                {
+                    top: '60%'
                 }
             ],
             series: [
@@ -149,9 +127,7 @@
         var dom = document.getElementById('chart-container2');
         var myChart = echarts.init(dom, null, {
             renderer: 'canvas',
-            useDirtyRect: false,
-            width: 'auto',
-            height: 400
+            useDirtyRect: false
         });
         var app = {};
 
@@ -159,8 +135,7 @@
 
         option = {
             legend: {
-                top: 'top',
-                padding: [10, 10]
+                top: 'top'
             },
             toolbox: {
                 show: true,
@@ -176,7 +151,7 @@
                     name: 'Nightingale Chart',
                     type: 'pie',
                     radius: [50, 250],
-                    center: ['50%', '75%'],
+                    center: ['50%', '50%'],
                     roseType: 'area',
                     itemStyle: {
                         borderRadius: 8
@@ -196,9 +171,7 @@
         var dom = document.getElementById('chart-container3');
         var myChart = echarts.init(dom, null, {
             renderer: 'canvas',
-            useDirtyRect: false,
-            width: 'auto',
-            height: 400
+            useDirtyRect: false
         });
         var app = {};
 

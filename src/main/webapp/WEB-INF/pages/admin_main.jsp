@@ -17,7 +17,7 @@
 	<script src="/static/js/bootstrap.min.js"></script>
 	<script src="/static/js/js.cookie.js"></script>
 </head>
-<body background="/static/img/1583851799.jpg"
+<body background="<c:url value="/static/img/1583851799.jpg"/>"
       style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
 
 <jsp:include page="common_header_admin.jsp"/>

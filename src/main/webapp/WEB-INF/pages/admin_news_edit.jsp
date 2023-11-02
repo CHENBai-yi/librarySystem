@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<title>Title</title>
@@ -21,7 +22,7 @@
         }
 	</style>
 </head>
-<body background="/static/img/1583851799.jpg"
+<body background="<c:url value="/static/img/1583851799.jpg"/>"
       style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
 <c:set var="current" value="1" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
