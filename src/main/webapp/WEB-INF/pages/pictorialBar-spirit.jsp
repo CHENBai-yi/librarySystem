@@ -47,33 +47,37 @@
 </head>
 <%--/static/img/1583851799.jpg--%>
 <body background=""
-      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top:120px;">
+      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top:110px;">
 <c:set value="5" var="current" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
-<%--<div class="container-fluid">--%>
-<div style="padding-top: 171px;">
-	<div class="row">
-		<div class="col-xs-12 col-md-12" style="height: 350px"></div>
+
+<div class="col-xs-12 col-md-12">
+	<div class="panel  panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">网站访问频度</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-12 col-md-12" style="height: 350px" id="chart-container"></div>
+		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12 col-md-12" style="height: 350px" id="chart-container"></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-md-4" id="chart-container3"></div>
-		<div class="col-xs-8 col-md-8" id="chart-container2"></div>
+</div>
+<div class="col-xs-12 col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">读者与图书相关</h3>
+		</div>
+		<div class="panel-body" style="height: 450px;user-select: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+			<div class="col-xs-4 col-md-4" id="chart-container3"></div>
+			<div class="col-xs-8 col-md-8" id="chart-container2"></div>
+		</div>
 	</div>
 </div>
 
+<%--<div class="container-fluid">--%>
 
-<%--<div class="cby" style="position: absolute;top: 100px;width: 100%;">--%>
-<%--	<div id="chart-container" style="height: 600px;"></div>--%>
-<%--	--%>
-<%--	<div class="sex_class">--%>
-<%--		<div id="chart-container3" style="width: 600px;height: 450px;"></div>--%>
-<%--		<div id="chart-container2" style="width: auto"></div>--%>
-<%--	</div>--%>
-<%--</div>--%>
+
+
 
 <script type="text/javascript">
     var charts = []
@@ -128,7 +132,7 @@
             ],
             grid: [
                 {
-                    bottom: '25%'
+                    bottom: '10%'
                 }
             ],
             series: [

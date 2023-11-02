@@ -47,9 +47,10 @@ public class LogServiceImp implements LogService {
             ipInfo.setIsp(split[4]);
             ipInfo.setDate(new Date(System.currentTimeMillis()));
             Optional<IpInfo> ipInfo1 = Optional.ofNullable(ipInfoDao.selectByPrimaryKey(ip));
-            if (ipInfo1.isPresent())
-                ipInfoDao.updateByPrimaryKey(ipInfo);
-            else ipInfoDao.insert(ipInfo);
+            // if (ipInfo1.isPresent())
+            //     ipInfoDao.updateByPrimaryKey(ipInfo);
+            // else
+            ipInfoDao.insert(ipInfo);
         } catch (Exception e) {
             log.debug("LogServiceImp 28line--->登录ip解析出错");
         }

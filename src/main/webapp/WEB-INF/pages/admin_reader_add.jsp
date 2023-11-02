@@ -18,11 +18,11 @@
 </head>
 <body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
-background-attachment: fixed;">
+background-attachment: fixed;padding-top: 110px;">
 <c:set var="current" value="3" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
-<div class="col-xs-6 col-md-offset-3" style="padding-top: 100px;position: relative">
+<div class="col-xs-6 col-md-offset-3">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">添加读者</h3>
