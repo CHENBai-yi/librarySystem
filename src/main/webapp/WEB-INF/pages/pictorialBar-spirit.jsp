@@ -35,7 +35,7 @@
 </head>
 <%--/static/img/1583851799.jpg--%>
 <body background=""
-      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
+      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top: 42px;">
 <c:set value="5" var="current" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 

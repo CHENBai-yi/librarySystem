@@ -88,7 +88,7 @@ public class Constants {
     }
 
     public static class StaticIcon {
-        public static final String icon_path = "";
-        // public static final String icon_path = "/static/icon/library.icon";
+        public static final String icon_path = "/static/icon/library.icon";
+        public static final String icon_index = "/static/icon/librarys.icon";
     }
 }
