@@ -5256,7 +5256,7 @@
 														<tr>
 															<td style="width:132px;">
 																<p align="left">
-																	<a style="    text-decoration: none;color: inherit !important;background-color: white !important;"
+																	<a style="text-decoration: none;color: inherit !important;background: none !important;"
 																	   href="<c:url value="/xxtbcountclick?jmptype=${dataVos.classId}&isbn=${dataVos.isbn}&newbookid=${dataVos.bookId}"/> ">${dataVos.bookTitle}</a>
 																</p>
 															</td>

@@ -51,7 +51,11 @@
 <c:set value="5" var="current" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
-<div class="container-fluid">
+<%--<div class="container-fluid">--%>
+<div style="padding-top: 171px;">
+	<div class="row">
+		<div class="col-xs-12 col-md-12" style="height: 350px"></div>
+	</div>
 	<div class="row">
 		<div class="col-xs-12 col-md-12" style="height: 350px" id="chart-container"></div>
 	</div>

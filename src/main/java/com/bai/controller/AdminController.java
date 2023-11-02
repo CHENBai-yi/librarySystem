@@ -325,6 +325,3 @@ public class AdminController {
         return "redirect:/logginglist.html";
     }
 }
-/**
- * todo 1. 柱状图分析 2. chat心跳 3.评论区 4.读者推荐
- */

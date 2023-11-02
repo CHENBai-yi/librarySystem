@@ -11,7 +11,8 @@
      role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
-			<a class="navbar-brand" href="<c:url value="/admin_main.html"/>"
+			<%--			<a class="navbar-brand" href="<c:url value="/admin_main.html"/>"--%>
+			<a class="navbar-brand" href="<c:url value="/index"/>"
 			   style="font-family: 华文行楷; font-size: 250%; color: white">图书管理系统</a>
 		</div>
 		<div class="collapse navbar-collapse">
@@ -83,11 +84,6 @@
 				<li <c:if test="${current eq 7}">class="active"</c:if>>
 					<a href="<c:url value="/admin_repasswd.html"/>" style="color: white">
 						密码修改
-					</a>
-				</li>
-				<li>
-					<a href="<c:url value="/index"/>" style="color: white">
-						图书馆首页
 					</a>
 				</li>
 			</ul>
