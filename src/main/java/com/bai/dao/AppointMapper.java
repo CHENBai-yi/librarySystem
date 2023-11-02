@@ -35,4 +35,5 @@ public interface AppointMapper {
     // 修改预约信息
     void updateAppointInfo(AppointInfo appointInfo);
 
+    List<AppointInfo> queryInfoList();
 }

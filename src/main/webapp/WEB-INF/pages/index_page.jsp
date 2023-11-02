@@ -24,6 +24,9 @@
 	<link href="/static/css/css_2wj43g_m8tavtlgxdf6boz6fcu2l8otqn9hbyj0bzr0.css" media="all" rel="stylesheet"
 	      type="text/css"/>
 	<style>
+        a {
+            text-decoration: none !important;
+        }
 	</style>
 	<!--[if IE 9]>
 	<link type="text/css" rel="stylesheet" media="all" href="/static/css/ie9.css"/>
@@ -568,7 +571,7 @@
 														</li>
 														<li>
 															<p>
-																<a href="<c:url value="/reader_main.html"/>"
+																<a href="<c:url value="/mylend.html"/>"
 																   target="_blank"
 																   title="">个人借阅状态查询</a>
 															</p>
@@ -576,19 +579,21 @@
 														<%--todo 以下是待开发功能项--%>
 														<li>
 															<p>
-																<a href="/portal/cn/jyfw/jybl/cjygh" target="_blank"
+																<a href="<c:url value="/reader_books.html"/>"
+																   target="_blank"
 																   title="">出借与归还</a></p>
 														</li>
 														<li>
 															<p>
-																<a href="/portal/cn/jyfw/jybl/xjyyj" target="_blank"
+																<a href="<c:url value="/reader_appoint_show.html"/> "
+																   target="_blank"
 																   title="">续借与预约</a></p>
 														</li>
-														<li>
-															<p>
-																<a href="/portal/cn/fg/jieyueshuoming" target="_blank"
-																   title="">借阅分馆FAQ</a></p>
-														</li>
+														<%--														<li>--%>
+														<%--															<p>--%>
+														<%--																<a href="/portal/cn/fg/jieyueshuoming" target="_blank"--%>
+														<%--																   title="">借阅分馆FAQ</a></p>--%>
+														<%--														</li>--%>
 													</ul>
 												</li>
 												<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -621,12 +626,10 @@
 														</li>
 														<li>
 															<p>
-																<a href="<c:url value="<%=Constants.AccessPageUrl.WENMINGGONGYUE%>"/>"
-																   target="_blank"
-																   title="">加入我们</a>
+																<a title=""
+																   href="mailto:chenbaiyi.work@gmail.com?subject=好的建议与遇到的问题&body=说说你遇到的问题">更多问题</a>
 															</p>
 														</li>
-													
 													</ul>
 												</li>
 												<%--<li class="type-title col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -2031,7 +2034,8 @@
 								<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>回到顶部
 							</a> |
 						<li>
-							<a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
+							<a href="<c:url value="<%=Constants.AccessPageUrl.CONCATME%>"/>"
+							   style="cursor: help;">咨询台</a>
 						</li>
 					</ul>
 				</div>

@@ -10,8 +10,8 @@
 <nav class="navbar navbar-default" role="navigation" style="background-color:#122b40">
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
-			<a class="navbar-brand " href="<c:url value="/index"/>"><p class="text-primary"
-			                                                           style="font-family: 华文行楷; font-size: 200%; color: white ">
+			<a class="navbar-brand " href="<c:url value="/reader_main.html"/>"><p class="text-primary"
+			                                                                      style="font-family: 华文行楷; font-size: 200%; color: white ">
 				我的图书馆</p></a>
 		</div>
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">
@@ -47,6 +47,11 @@
 				<li <c:if test="${current eq 4}">class="active"</c:if>>
 					<a href="<c:url value="/reader_repasswd.html"/>" style="color: white">
 						密码修改
+					</a>
+				</li>
+				<li>
+					<a href="<c:url value="/index"/>" style="color: white">
+						图书馆首页
 					</a>
 				</li>
 			</ul>

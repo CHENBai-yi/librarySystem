@@ -2,6 +2,7 @@ package com.bai.controller;
 
 import com.bai.pojo.ClassInfo;
 import com.bai.pojo.News;
+import com.bai.pojo.Reader;
 import com.bai.pojo.vo.ChatVO;
 import com.bai.pojo.vo.RecommendedBooksVo;
 import com.bai.service.BookService;
@@ -56,7 +57,7 @@ public class IndexController {
     }
 
     @GetMapping(path = Constants.AccessPageUrl.CONCATME)
-    public String concatMe(Model model, HttpSession session) {
+    public String concatMe(Model model, HttpSession session, @SessionAttribute(value = "readercard", required = false) Reader readercard) {
         ChatVO chatVO = bookService.getMsgVo(session);
         List<ChatVO> chatVOList = chatService.findAllRecoredsById(chatVO.getSenderId());
         WebSocketSession admin = ConsultServiceImpl.admin;
@@ -67,7 +68,7 @@ public class IndexController {
         }
         model.addAttribute("chatVOList", chatVOList);
         model.addAttribute("chatVo", chatVO);
-
+        if (readercard == null) return "concat_me_admin";
         return "concat_me";
     }
 

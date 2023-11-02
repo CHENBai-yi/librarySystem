@@ -19,6 +19,7 @@ public class BookRecommendationVo {
     @Data
     public static class DataVo {
         private Long bookId;
+        private Integer classId;
         private String bookTitle;
         private String bookAuthor;
         private String publishYear;

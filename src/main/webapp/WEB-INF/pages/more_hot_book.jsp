@@ -5256,7 +5256,9 @@
 														<tr>
 															<td style="width:132px;">
 																<p align="left">
-																		${dataVos.bookTitle}</p>
+																	<a style="    text-decoration: none;color: inherit !important;background-color: white !important;"
+																	   href="<c:url value="/xxtbcountclick?jmptype=${dataVos.classId}&isbn=${dataVos.isbn}&newbookid=${dataVos.bookId}"/> ">${dataVos.bookTitle}</a>
+																</p>
 															</td>
 															<td style="width:104px;">
 																<p align="left">
@@ -5332,7 +5334,8 @@
 								<span aria-hidden="true" class="glyphicon glyphicon-menu-up"></span>回到顶部
 							</a> |
 						<li>
-							<a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
+							<a href="<c:url value="<%=Constants.AccessPageUrl.CONCATME%>"/>"
+							   style="cursor: help;">咨询台</a>
 						</li>
 					</ul>
 				</div>

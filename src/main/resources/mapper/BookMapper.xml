@@ -6,7 +6,7 @@
         select *
         from library.book_info
     </sql>
-    <select id="queryAllBook" resultType="com.bai.pojo.Book">
+    <select id="queryAllBook" resultType="com.bai.pojo.Book" useCache="false" flushCache="true">
         <include refid="select"/>
     </select>
     

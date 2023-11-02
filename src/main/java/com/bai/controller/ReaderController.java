@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReaderController {
@@ -79,7 +81,8 @@ public class ReaderController {
         List<Book> books = bookService.queryAllBook();
         Reader reader = (Reader) session.getAttribute("readercard");
         List<Lend> list = lendService.queryMyLend(reader.getReaderId());
-        model.addAttribute("myLendList", list);
+        Set<Long> collect = list.stream().filter(lend -> lend.getBackDate() == null).map(Lend::getBookId).collect(Collectors.toSet());
+        model.addAttribute("myLendList", collect);
         model.addAttribute("books", books);
         return "reader_books";
     }
@@ -132,13 +135,8 @@ public class ReaderController {
 
     // 借阅书籍
     @RequestMapping(Constants.AccessPageUrl.LENDBOOK)
-    public String addLend(String bookId, HttpSession session, RedirectAttributes redirectAttributes) {
-        Lend lend = new Lend();
-        lend.setLendDate(new Date());
-        lend.setBookId(Long.parseLong(bookId));
-        Reader reader = (Reader) session.getAttribute("readercard");
-        lend.setReaderId(reader.getReaderId());
-        lendService.addLend(lend, bookId);
+    public String addLend(String bookId, @SessionAttribute(value = "readercard", required = false) Reader reader, RedirectAttributes redirectAttributes) throws InterruptedException {
+        lendService.addLend(bookId, reader);
         return getReferer(redirectAttributes, 0);
     }
 
@@ -153,8 +151,8 @@ public class ReaderController {
 
     // 归还书本
     @RequestMapping(Constants.AccessPageUrl.RETURNBOOK)
-    public String backBook(String bookId, RedirectAttributes redirectAttributes) {
-        lendService.backBook(Long.parseLong(bookId));
+    public String backBook(@SessionAttribute(value = "readercard", required = false) Reader reader, String bookId, RedirectAttributes redirectAttributes) throws InterruptedException {
+        lendService.backBook(Long.parseLong(bookId), reader);
         return getReferer(redirectAttributes, 1);
     }
 

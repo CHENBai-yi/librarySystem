@@ -47,7 +47,6 @@ background-attachment: fixed;">
 				<td>${appointInfo.updateTime}</td>
 				<td>
 					<c:choose>
-						
 						<c:when test="${appointInfo.createTime !=null}">
 							发布成功
 						</c:when>
@@ -56,11 +55,11 @@ background-attachment: fixed;">
 						</c:otherwise>
 					</c:choose>
 				</td>
-				<td><a href="admin_appointinfo_edit.html" class="btn btn-sm btn-primary">编辑</a></td>
+				<td><a href="<c:url value="/admin_appointinfo_edit.html"/>" class="btn btn-sm btn-primary">编辑</a></td>
 			</tr>
 			</tbody>
 		</table>
-		<a href="admin_main.html" class="btn col-lg-2 btn-success">返回首页</a>
+		<a href="<c:url value="/admin_main.html"/> " class="btn col-lg-2 btn-success">返回首页</a>
 	</div>
 </div>
 </body>

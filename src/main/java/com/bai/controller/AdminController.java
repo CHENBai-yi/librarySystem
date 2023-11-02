@@ -190,7 +190,7 @@ public class AdminController {
     }
 
     // 跳转至添加预约信息页面
-    @RequestMapping("//admin_appoint_add.html")
+    @RequestMapping("/admin_appoint_add.html")
     public String ToaddAppointInfo() {
         return "admin_appointinfo_add";
     }

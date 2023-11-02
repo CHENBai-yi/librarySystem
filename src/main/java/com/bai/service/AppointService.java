@@ -14,6 +14,8 @@ public interface AppointService {
     // 获取预约信息
     AppointInfo queryInfo();
 
+    List<AppointInfo> queryInfoList();
+
     // 获取自习室信息
     List<RoomInfo> queryRoomInfo();
 

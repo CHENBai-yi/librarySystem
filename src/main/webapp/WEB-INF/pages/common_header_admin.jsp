@@ -62,7 +62,7 @@
 						<li><a href="<c:url value="/lendlist.html"/>">借还日志</a></li>
 						<li><a href="<c:url value="/admin_appoint_list.html"/>">预约日志</a></li>
 						<%--						todo 待实现--%>
-<%--						<li><a href="<c:url value="/logginglist.html"/>">操作日志</a></li>--%>
+						<%--						<li><a href="<c:url value="/logginglist.html"/>">操作日志</a></li>--%>
 						<li><a href="<c:url value="/logginglist.html"/>">登录日志</a></li>
 					</ul>
 				</li>
@@ -83,6 +83,11 @@
 				<li <c:if test="${current eq 7}">class="active"</c:if>>
 					<a href="<c:url value="/admin_repasswd.html"/>" style="color: white">
 						密码修改
+					</a>
+				</li>
+				<li>
+					<a href="<c:url value="/index"/>" style="color: white">
+						图书馆首页
 					</a>
 				</li>
 			</ul>

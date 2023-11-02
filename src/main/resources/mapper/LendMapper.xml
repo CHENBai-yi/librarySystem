@@ -22,6 +22,10 @@
     <update id="backBook" parameterType="Lend">
         update library.lend_list
         set back_date=now()
+        where book_id = #{bookId}
+          and reader_id = #{readerId};
+        update library.book_info
+        set `number`=`number` + 1
         where book_id = #{bookId};
     </update>
     

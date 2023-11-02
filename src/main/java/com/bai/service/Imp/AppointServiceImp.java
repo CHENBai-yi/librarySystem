@@ -28,6 +28,11 @@ public class AppointServiceImp implements AppointService {
     }
 
     @Override
+    public List<AppointInfo> queryInfoList() {
+        return appointMapper.queryInfoList();
+    }
+
+    @Override
     public List<RoomInfo> queryRoomInfo() {
         List<RoomInfo> roomInfos = appointMapper.queryRoomInfo();
         return roomInfos;

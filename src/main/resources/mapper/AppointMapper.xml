@@ -13,7 +13,7 @@
     
     
     <update id="updateAppointNum" parameterType="long">
-        update appoint_info
+        update library.appoint_info
         set appoint_num=appoint_num + 1;
     </update>
     
@@ -40,7 +40,10 @@
         select *
         from library.appoint_info;
     </select>
-    
+    <select id="queryInfoList" resultType="com.bai.pojo.AppointInfo">
+        select *
+        from library.appoint_info;
+    </select>
     <!--    -->
     <!--    <resultMap id="appointInfo" type="RoomInfo">-->
     <!--        <result property="room" column="room"/>-->

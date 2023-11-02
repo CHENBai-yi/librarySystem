@@ -102,7 +102,7 @@
         }
 	</style>
 </head>
-<body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
+<body background="<c:url value="/static/img/1583851799.jpg"/>" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;">
 
@@ -118,7 +118,7 @@ background-attachment: fixed;">
 		
 		<ul>
 			<c:forEach items="${news}" var="newitem">
-				<a href="news_detail.html?newsId=<c:out value="${newitem.newsId}"></c:out>">
+				<a href="<c:url value="/news_detail.html?newsId=${newitem.newsId}"/>">
 					<li>${newitem.newsTitle}
 						<span class="new-time">${newitem.createTime}</span>
 					</li>

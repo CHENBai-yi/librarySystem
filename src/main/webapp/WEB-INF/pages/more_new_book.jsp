@@ -54,7 +54,7 @@
 			<%--			todo 待开发--%>
 			<%--			<a href="http://newbooks.lib.pku.edu.cn/"><span class="menu-selected">新书通报</span></a>--%>
 			<%--			<a href="http://newbooks.lib.pku.edu.cn/bookclickorder.jsp"><span class="menu">热门浏览</span></a>--%>
-			<a href="/index" target="_self"><span class="menu">图书馆首页</span></a>
+			<a href="<c:url value="/index"/>" target="_self"><span class="menu">图书馆首页</span></a>
 		</div>
 	</div>
 </div>

@@ -88,37 +88,38 @@ background-attachment: fixed;">
 			<tbody>
 			<c:forEach items="${books}" var="book">
 				<tr>
-					<td><c:out value="${book.name}"></c:out></td>
-					<td><c:out value="${book.author}"></c:out></td>
-					<td><c:out value="${book.publish}"></c:out></td>
-					<td><c:out value="${book.ISBN}"></c:out></td>
-					<td><c:out value="${book.price}"></c:out></td>
-					<td><c:out value="${book.number}"></c:out></td>
-					
-					<c:set var="flag" value="false"/>
-					<c:forEach var="lend" items="${myLendList}">
-						<c:if test="${lend.bookId eq book.bookId && empty lend.backDate }">
-							<c:set var="flag" value="true"/>
-						</c:if>
-					</c:forEach>
-					<c:if test="${flag}">
-						<td><a href="returnbook.html?bookId=<c:out value="${book.bookId}"></c:out>">
-							<button type="button" class="btn btn-danger btn-xs">归还</button>
-						</a></td>
-					</c:if>
-					<c:if test="${not flag}">
-						<c:if test="${book.number>0}">
-							<td><a href="lendbook.html?bookId=<c:out value="${book.bookId}"></c:out>">
+					<td>${book.name}</td>
+					<td>${book.author}</td>
+					<td>${book.publish}</td>
+					<td>${book.ISBN}</td>
+					<td>${book.price}</td>
+					<td>${book.number}</td>
+					<c:choose>
+						<c:when test="${myLendList.contains(book.bookId)}">
+							<td><a href="<c:url value="/returnbook.html?bookId=${book.bookId}"/> ">
+								<button type="button" class="btn btn-danger btn-xs">归还</button>
+							</a>
+							</td>
+						</c:when>
+						<c:when test="${book.number>0}">
+							<td><a href="<c:url value="/lendbook.html?bookId=${book.bookId}"/>">
 								<button type="button" class="btn btn-primary btn-xs">借阅</button>
 							</a></td>
-						</c:if>
-						<c:if test="${book.number==0}">
+						</c:when>
+						<c:when test="${book.number<=0}">
 							<td>
-								<button type="button" class="btn btn-defalut btn-xs" disabled="disabled">已空</button>
+								<button type="button" class="btn btn-defalut btn-xs" disabled="disabled">已空
+								</button>
 							</td>
-						</c:if>
-					</c:if>
-					<td><a href="reader_book_detail.html?bookId=<c:out value="${book.bookId}"></c:out>">
+						</c:when>
+						<c:otherwise>
+							<td>
+								<button type="button" class="btn btn-defalut btn-xs" disabled="disabled">
+								</button>
+							</td>
+						</c:otherwise>
+					</c:choose>
+					<td><a href="<c:url value="/reader_book_detail.html?bookId=${book.bookId}"/>">
 						<button type="button" class="btn btn-success btn-xs">详情</button>
 					</a></td>
 				</tr>

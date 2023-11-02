@@ -40,9 +40,11 @@
     <delete id="delReader" parameterType="long">
         delete
         from library.reader_info
-        where reader_id = #{readerId}
+        where reader_id = #{readerId};
+        delete
+        from library.reader_card
+        where reader_id = #{readerId};
     </delete>
-    
     <update id="updateReader" parameterType="ReaderInfo">
         update library.reader_info
         set `name`=#{name},
@@ -50,7 +52,10 @@
             birth=#{birth},
             address=#{address},
             phone=#{phone}
-        where reader_id = #{readerId}
+        where reader_id = #{readerId};
+        update library.reader_card
+        set username=#{name}
+        where reader_id = #{readerId};
     </update>
     
     <update id="updatePassword" parameterType="Admin">

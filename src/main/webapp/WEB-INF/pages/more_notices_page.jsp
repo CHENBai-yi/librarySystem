@@ -498,7 +498,8 @@
 								<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>回到顶部
 							</a> |
 						<li>
-							<a href="/portal/cn/zxt/dianhua" style="cursor: help;">咨询台</a>
+							<a href="<c:url value="<%=Constants.AccessPageUrl.CONCATME%>"/>"
+							   style="cursor: help;">咨询台</a>
 						</li>
 					</ul>
 				</div>

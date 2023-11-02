@@ -105,9 +105,11 @@
     <resultMap id="dataVoMap" type="com.bai.pojo.vo.BookRecommendationVo$DataVo">
         <id property="bookId" column="book_id" jdbcType="BIGINT"/>
         <result property="bookTitle" column="name" jdbcType="VARCHAR"/>
+        <result property="classId" column="class_id" jdbcType="INTEGER"/>
         <result property="bookAuthor" column="author" jdbcType="VARCHAR"/>
         <result property="publishYear" column="publishYear" jdbcType="VARCHAR"/>
         <result property="isbn" column="ISBN" jdbcType="VARCHAR"/>
+        <result property="reason" column="recommendation_reason" jdbcType="VARCHAR"/>
         <result property="reason" column="recommendation_reason" jdbcType="VARCHAR"/>
     </resultMap>
     
