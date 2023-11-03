@@ -53,7 +53,7 @@
 
 
 <div class="col-xs-12 col-md-12">
-	<div class="panel  panel-default">
+	<div class="panel  panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">网站访问频度</h3>
 		</div>
@@ -63,7 +63,7 @@
 	</div>
 </div>
 <div class="col-xs-12 col-md-12">
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">读者与图书相关</h3>
 		</div>
