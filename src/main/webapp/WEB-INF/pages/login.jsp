@@ -126,18 +126,21 @@
                             $("#info").text("提示:" + data.msg);
                         } else if (data.stateCode.trim() === "0") {
                             $("#info").text("提示:账号或密码错误！");
-                        } else if (data.stateCode.trim() === "1") {
-                            $("#info").text("提示:登陆成功，跳转中...");
-                            window.location.href = "/admin_main.html";
-                        } else if (data.stateCode.trim() === "2") {
-                            if (remember) {
-                                rememberLogin(id, passwd, remember);
+                        } else {
+                            let page;
+                            if (data.stateCode.trim() === "1") {
+                                $("#info").text("提示:登陆成功，跳转中...");
+                                page = "/admin_main.html";
+                            } else if (data.stateCode.trim() === "2") {
+                                $("#info").text("提示:登陆成功，跳转中...");
+                                page = "/reader_admin";
+                            }
+                            if (checked) {
+                                rememberLogin(id, password, checked);
                             } else {
                                 Cookies.remove('loginStatus');
                             }
-                            $("#info").text("提示:登陆成功，跳转中...");
-                            window.location.href = "/reader_admin";
-
+                            window.location.href = page
                         }
                     }
                 })
