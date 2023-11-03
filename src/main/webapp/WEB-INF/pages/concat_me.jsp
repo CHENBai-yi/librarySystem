@@ -328,7 +328,7 @@
 					<div class="row align-items-center">
 						<div class="col-6 col-xl-4">
 							<div class="media">
-								<div class="avatar me-3 show-user-detail" data-original-title="ChatGPT Bot"
+								<div class="avatar me-3 show-user-detail"
 								     data-toggle="tooltip"
 								     title="">
 									<div class="avatar rounded-circle no-image bg-primary text-light">
@@ -1541,6 +1541,7 @@
      * botType:0用户 / 1 gpt机器人 / 2 :其他
      **/
     function buildMessage(botType, id, date, user, userImg, message, index, isHtml, messageId = null) {
+        if (!message) return
         message = message.trim();
         if (messageId == null) {
             messageId = __zqChat.uuid(32, 64);
