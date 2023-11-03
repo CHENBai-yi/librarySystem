@@ -23,21 +23,20 @@ public class LendServiceImp implements LendService {
 
     @Transactional
     @Override
-    public int addLend(String bookId, Reader reader) {
+    public synchronized int addLend(String bookId, Reader reader) {
         if (bookId != null && reader != null) {
             long parseLong = Long.parseLong(bookId);
-            Optional.ofNullable(bookService.getBookDetailById(parseLong))
-                    .ifPresent(action -> {
-                        int number = action.getNumber();
-                        if (number > 0) {
-                            Lend lend = new Lend();
-                            lend.setLendDate(new Date());
-                            lend.setBookId(Long.parseLong(bookId));
-                            lend.setReaderId(reader.getReaderId());
-                            lendMapper.decBookNum(parseLong);
-                            lendMapper.addLend(lend);
-                        }
-                    });
+            Optional.ofNullable(bookService.getBookDetailById(parseLong)).ifPresent(action -> {
+                int number = action.getNumber();
+                if (number > 0) {
+                    Lend lend = new Lend();
+                    lend.setLendDate(new Date());
+                    lend.setBookId(Long.parseLong(bookId));
+                    lend.setReaderId(reader.getReaderId());
+                    lendMapper.decBookNum(parseLong);
+                    lendMapper.addLend(lend);
+                }
+            });
         }
         return 0;
     }
@@ -49,7 +48,7 @@ public class LendServiceImp implements LendService {
 
     @Transactional
     @Override
-    public int backBook(long bookId, Reader reader) {
+    public synchronized int backBook(long bookId, Reader reader) {
         if (reader != null) {
             return lendMapper.backBook(bookId, reader.getReaderId());
         }
