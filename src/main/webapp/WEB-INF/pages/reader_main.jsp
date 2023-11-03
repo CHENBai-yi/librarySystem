@@ -112,7 +112,7 @@ background-attachment: fixed;">
 <div class="content" style="display: inline-block;overflow-x:hidden">
 	<div class="librarynew-title-text">公告通知
 	</div>
-	<a href="#" class="more">更多>></a>
+	<a href="<c:url value="<%=Constants.AccessPageUrl.JOURNALISM_URL%>"/>" class="more">更多>></a>
 	
 	<div class="new-titles">
 		

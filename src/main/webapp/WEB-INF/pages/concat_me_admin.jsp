@@ -468,7 +468,7 @@
 					<div class="row align-items-center">
 						<div class="col-6 col-xl-4">
 							<div class="media">
-								<div class="avatar me-3 show-user-detail" data-original-title="ChatGPT Bot"
+								<div class="avatar me-3 show-user-detail"
 								     data-toggle="tooltip"
 								     title="">
 									<div class="avatar rounded-circle no-image bg-primary text-light">
