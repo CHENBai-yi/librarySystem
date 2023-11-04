@@ -92,4 +92,9 @@ public class Constants {
         public static final String icon_path = "/static/icon/library.icon";
         public static final String icon_index = "/static/icon/librarys.icon";
     }
+
+    public static class UPLOAD_PATH {
+        public static final String LINUX_PATH = "/usr/local/tomcat";
+        public static final String WINDOW_PATH = "D:/tmp";
+    }
 }

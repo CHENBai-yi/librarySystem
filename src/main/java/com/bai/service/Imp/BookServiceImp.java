@@ -39,10 +39,10 @@ public class BookServiceImp implements BookService {
     private BookMapper bookMapper;
 
     public BookServiceImp() {
-        if (os_name.contains("linux")) {
-            realPath = "/usr/local/tomcat";
+        if (os_name.contains("linux") || os_name.contains("mac")) {
+            realPath = Constants.UPLOAD_PATH.LINUX_PATH;
         } else if (os_name.contains("windows")) {
-            realPath = "D:/tmp";
+            realPath = Constants.UPLOAD_PATH.WINDOW_PATH;
         }
     }
 
