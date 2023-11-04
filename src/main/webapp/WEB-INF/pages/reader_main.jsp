@@ -102,10 +102,6 @@
         }
 	</style>
 </head>
-<body background="<c:url value="/static/img/1583851799.jpg"/>" style=" background-repeat:no-repeat ;
-background-size:100% 100%;
-background-attachment: fixed;">
-
 <jsp:include page="common_header_reader.jsp"/>
 
 <%--=======================================================================--%>

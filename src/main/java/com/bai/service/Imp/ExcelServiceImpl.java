@@ -166,9 +166,9 @@ public class ExcelServiceImpl implements ExcelService {
     }
 
     public List<String[]> prettierChart() {
+
         List<DataSheetVo.PrettierChart> group = ipInfoDao.findAllGroupByDate();
-        if (group.isEmpty()) return new ArrayList<>();
-        group = group.subList(0, 7);
+        if (group.size() > 7) group = group.subList(0, 7);
         return group.stream().map(item -> new String[]{item.getName(), String.valueOf(item.getVal())}).collect(Collectors.toList());
     }
 

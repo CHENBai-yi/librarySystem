@@ -10,7 +10,8 @@
 <body background="<c:url value="/static/img/1583851799.jpg"/>" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;opacity: 0.9">
-<nav class="navbar navbar-default" role="navigation" style="background-color: black;border: none;">
+
+<nav class="navbar navbar-default" role="navigation" style="background-color: #122b40;border: none;">
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
 			<a class="navbar-brand " href="<c:url value="/reader_main.html"/>"><p class="text-primary"

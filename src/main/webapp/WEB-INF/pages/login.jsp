@@ -27,15 +27,11 @@
             padding: 0;
             margin: 0;
         }
-
-        .panel {
-            border: none !important;
-            background: none !important;
-        }
+	
 	</style>
 </head>
 <body background="/static/img/1583851799.jpg"
-      style="background-repeat: no-repeat; background-size: 100% 100%;background-attachment: fixed;opacity: 0.85;">
+      style="background-repeat: no-repeat; background-size: 100% 100%;background-attachment: fixed;opacity: 0.9;">
 <%--<c:if test="test=${!empty error}">--%>
 <%--    <script>--%>
 <%--        alert(${error});--%>
@@ -44,7 +40,7 @@
 <%--</c:if>--%>
 <h2 style="text-align: center; color: white; font-family: '华文行楷'; font-size: 500%">图 书 馆</h2>
 
-<div class="panel panel-default" id="login">
+<div class="panel panel-default" id="login" style=" border: none !important;background: none !important;">
 	<%--	<div style="color: #CCCCCC;left: 350px;position: relative;"><h3><a href="<c:url value="/reader_register.do"/>">注册</a></h3></div>--%>
 	<div class="panel-body">
 		<div class="form-group">

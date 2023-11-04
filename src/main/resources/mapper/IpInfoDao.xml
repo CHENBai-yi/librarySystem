@@ -25,7 +25,8 @@
     <select id="findAllGroupByDate" resultType="com.bai.pojo.vo.DataSheetVo$PrettierChart">
         select ip_info.date as name, count(*) as val
         from ip_info
-        group by ip_info.date;
+        group by ip_info.date
+        order by ip_info.date desc;
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete

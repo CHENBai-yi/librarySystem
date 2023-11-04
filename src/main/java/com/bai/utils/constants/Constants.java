@@ -84,8 +84,8 @@ public class Constants {
         public static final String CONCATME = "/concat/me";
         public static final String CONSULT = "/fw/consult";
         public static final String CONCAT_ME_ADMIN = "/concat/me/backend";
-        // public static final String IP = "ws://localhost:8080";
-        public static final String IP = "wss://library.baiyichen.asia";
+        public static final String IP = "ws://localhost:8080";
+        // public static final String IP = "wss://library.baiyichen.asia";
     }
 
     public static class StaticIcon {

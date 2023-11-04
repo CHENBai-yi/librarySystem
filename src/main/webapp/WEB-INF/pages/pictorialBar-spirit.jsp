@@ -92,8 +92,9 @@
         var option;
 
 // prettier-ignore
-        const data =
+        let data =
         ${pc}
+        if (!!data) data = data.reverse()
         const dateList = data.map(function (item) {
             return item[0];
         });

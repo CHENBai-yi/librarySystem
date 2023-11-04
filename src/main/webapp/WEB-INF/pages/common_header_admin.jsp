@@ -14,7 +14,7 @@
 		      background-repeat:no-repeat ;
 		      background-size:100% 100%;
 		      background-attachment: fixed;opacity: 0.9;">
-<nav style="position:fixed;z-index: 999;width: 100%;top: 0;background-color: black;border: none;"
+<nav style="position:fixed;z-index: 999;width: 100%;top: 0;background-color: #122b40;border: none;"
      class="navbar navbar-default"
      role="navigation">
 	<div class="container-fluid">
