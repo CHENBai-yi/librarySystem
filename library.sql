@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 04/11/2023 11:25:05
+ Date: 04/11/2023 16:38:20
 */
 
 SET NAMES utf8mb4;
@@ -66,14 +66,6 @@ INSERT INTO `appoint`
 VALUES (3, 17034480312, '李三', '自习室:二楼02号自习室座位号:3', 'Python3智能数据分析快速入门', '2020-06-11');
 INSERT INTO `appoint`
 VALUES (15, 123456, '乱臣贼子', '自习室:一楼05号自习室座位号:1', '三生三世 十里桃花', '2023-06-12');
-INSERT INTO `appoint`
-VALUES (17, 1703448012, '李明', '自习室:一楼05号自习室座位号:3', '11处特工皇妃', '2023-11-02');
-INSERT INTO `appoint`
-VALUES (18, 17034480531, 'Reader 82', '自习室:一楼05号自习室座位号:2', '11处特工皇妃', '2023-11-02');
-INSERT INTO `appoint`
-VALUES (19, 17034480453, 'Reader 4', '自习室:二楼02号自习室座位号:1', '大雪中的山庄', '2023-11-03');
-INSERT INTO `appoint`
-VALUES (20, 17034480650, 'aaa', '自习室:一楼06号自习室座位号:2', '大雪中的山庄', '2023-11-04');
 
 -- ----------------------------
 -- Table structure for appoint_info
@@ -104,9 +96,11 @@ CREATE TABLE `appoint_info`
 INSERT INTO `appoint_info`
 VALUES (1,
         '只能预约当天入馆，每位读者每日预约上限为5次；\r\n预约成功后需在15分钟内刷卡入馆，刷卡离馆后再次入馆需要重新预约；离馆时未刷卡将无法再次预约，需先到离馆出口刷卡释放预约权限。\r\n预约成功后15分钟内未能按时刷卡入馆，则预约取消，需要重新预约。\r\n闭馆前30分钟不可预约。',
-        '2023-06-21 00:00:00', 419, 500,
+        '2023-06-21 00:00:00', 421, 500,
         ' 图书馆主页预约\r\n\r\n进入图书馆主页→快捷菜单（或服务→空间服务）→空间预约，进入南开大学图书馆IC空间预约系统，用户名/密码为：校园卡号/校园卡查询密码。查看空闲座位→选择时间→跳转个人中心预约记录，即可完成预约。\r\n\r\n\r\n1.1.4 “飞书”预约办法\r\n\r\n采用“SSO登录”认证方式，输入“nankai”，进行南开大学统一身份认证；认证成功后，打开飞书→工作台→南开微应用→图书馆预约。',
         '在校学生/教职工', '2020-06-18', 'admin', '2023-06-21');
+INSERT INTO `appoint_info`
+VALUES (4, 'sfdas', '2023-11-04 00:00:00', NULL, 12, 'asasdf', 'sdfasdfasd', '2023-11-04', 'admin', NULL);
 
 -- ----------------------------
 -- Table structure for book_info
@@ -909,6 +903,90 @@ VALUES ('96845f34-462a-e751-7191-4af47ce24353', 17034480531, 123456, 'Reader 82a
         '2023-11-03 14:33:48', 'TEXT');
 INSERT INTO `chat`
 VALUES ('17034480531', 123456, 17034480531, 'admin', 'Reader 82adfsdf', 'p', '2023-11-03 14:33:59', 'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'dasf', '2023-11-04 12:01:15', 'TEXT');
+INSERT INTO `chat`
+VALUES ('70889d95-5205-1dd6-2b51-412a0dcf030d', 17034480450, 123456, 'Reader 1', 'admin', 'dfa ', '2023-11-04 12:01:30',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'asdfas', '2023-11-04 12:01:38', 'TEXT');
+INSERT INTO `chat`
+VALUES ('70889d95-5205-1dd6-2b51-412a0dcf030d', 17034480450, 123456, 'Reader 1', 'admin', '123', '2023-11-04 12:01:47',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', '123', '2023-11-04 12:01:51', 'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'asdfs', '2023-11-04 12:02:41', 'TEXT');
+INSERT INTO `chat`
+VALUES ('050c8775-768a-a033-828d-1fdae06c7cd8', 17034480450, 123456, 'Reader 1', 'admin', 'asdf', '2023-11-04 12:02:44',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', '123', '2023-11-04 12:02:48', 'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'erwer', '2023-11-04 12:02:53', 'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'werwer', '2023-11-04 12:02:56', 'TEXT');
+INSERT INTO `chat`
+VALUES ('050c8775-768a-a033-828d-1fdae06c7cd8', 17034480450, 123456, 'Reader 1', 'admin', '1212', '2023-11-04 12:02:59',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('b1953db6-27c2-5a5a-9791-7176184a4319', 17034480450, 123456, 'Reader 1', 'admin', 'a', '2023-11-04 15:00:51',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'a', '2023-11-04 15:00:58', 'TEXT');
+INSERT INTO `chat`
+VALUES ('f1fb920e-2849-868e-58ee-dea3730f2b18', 17034480450, 123456, 'Reader 1', 'admin', 'aaa', '2023-11-04 15:01:13',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('f1fb920e-2849-868e-58ee-dea3730f2b18', 17034480450, 123456, 'Reader 1', 'admin', 'aa', '2023-11-04 15:01:15',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('6468c4f4-2a73-daf5-05af-3e115a168c5a', 17034480450, 123456, 'Reader 1', 'admin', 'a', '2023-11-04 15:01:33',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('6468c4f4-2a73-daf5-05af-3e115a168c5a', 17034480450, 123456, 'Reader 1', 'admin', 'aa', '2023-11-04 15:01:35',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('ccd94380-3066-108f-4147-e3afbdbeeeb3', 17034480450, 123456, 'Reader 1', 'admin', '怒号', '2023-11-04 15:16:44',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('ccd94380-3066-108f-4147-e3afbdbeeeb3', 17034480450, 123456, 'Reader 1', 'admin', '你好', '2023-11-04 15:16:50',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('ccd94380-3066-108f-4147-e3afbdbeeeb3', 17034480450, 123456, 'Reader 1', 'admin', '你好', '2023-11-04 15:16:55',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('17034480450', 123456, 17034480450, 'admin', 'Reader 1', 'op', '2023-11-04 15:17:07', 'TEXT');
+INSERT INTO `chat`
+VALUES ('02334316-ec17-24ab-cc2e-a356a83d9df6', 17034480450, 123456, 'Reader 1', 'admin', '你好', '2023-11-04 15:17:13',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('02334316-ec17-24ab-cc2e-a356a83d9df6', 17034480450, 123456, 'Reader 1', 'admin', '123', '2023-11-04 15:17:28',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('2efd125a-354c-8681-aa32-a6bf92c8a572', 17034480450, 123456, 'Reader 1', 'admin', '你好', '2023-11-04 15:17:36',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('46e088d9-6f23-3ba2-1141-20978539a76f', 17034480450, 123456, 'Reader 1', 'admin', '-', '2023-11-04 15:20:07',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('46e088d9-6f23-3ba2-1141-20978539a76f', 17034480450, 123456, 'Reader 1', 'admin', '-', '2023-11-04 15:20:12',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('19a58c79-473a-faf5-7da1-23ed99f53fa7', 17034480450, 123456, 'Reader 1', 'admin', 'q', '2023-11-04 15:54:59',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('19a58c79-473a-faf5-7da1-23ed99f53fa7', 17034480450, 123456, 'Reader 1', 'admin', 'aaa', '2023-11-04 15:55:16',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('19a58c79-473a-faf5-7da1-23ed99f53fa7', 17034480450, 123456, 'Reader 1', 'admin', 'aa', '2023-11-04 15:55:27',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('19a58c79-473a-faf5-7da1-23ed99f53fa7', 17034480450, 123456, 'Reader 1', 'admin', 'aad', '2023-11-04 15:55:29',
+        'TEXT');
+INSERT INTO `chat`
+VALUES ('19a58c79-473a-faf5-7da1-23ed99f53fa7', 17034480450, 123456, 'Reader 1', 'admin', 'asd', '2023-11-04 15:55:30',
+        'TEXT');
 
 -- ----------------------------
 -- Table structure for class_info
@@ -981,7 +1059,7 @@ VALUES (22, '综合');
 DROP TABLE IF EXISTS `ip_info`;
 CREATE TABLE `ip_info`
 (
-    `id`         int                                                     NOT NULL AUTO_INCREMENT,
+    `id`         bigint                                                  NOT NULL AUTO_INCREMENT,
     `ip_address` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci  NOT NULL,
     `country`    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
     `region`     varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -1000,13 +1078,11 @@ CREATE TABLE `ip_info`
 -- Records of ip_info
 -- ----------------------------
 INSERT INTO `ip_info`
-VALUES (22, '39.144.140.79', '中国', '0', '0', '0', '移动', '2023-11-03 00:00:00');
+VALUES (30, '223.104.220.120', '中国', '0', '四川省', '成都市', '移动', '2023-11-04 00:00:00');
 INSERT INTO `ip_info`
-VALUES (23, '39.144.140.79', '中国', '0', '0', '0', '移动', '2023-11-03 00:00:00');
+VALUES (31, '223.104.220.120', '中国', '0', '四川省', '成都市', '移动', '2023-11-04 00:00:00');
 INSERT INTO `ip_info`
-VALUES (24, '223.85.60.78', '中国', '0', '四川省', '凉山', '移动', '2023-11-04 00:00:00');
-INSERT INTO `ip_info`
-VALUES (25, '223.85.60.78', '中国', '0', '四川省', '凉山', '移动', '2023-11-04 00:00:00');
+VALUES (32, '223.85.60.78', '中国', '0', '四川省', '凉山', '移动', '2023-11-04 00:00:00');
 
 -- ----------------------------
 -- Table structure for lend_list
@@ -1043,8 +1119,6 @@ INSERT INTO `lend_list`
 VALUES (324, 5, 17034480531, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
 VALUES (325, 7, 17034480531, '2023-11-02', '2023-11-02');
-INSERT INTO `lend_list`
-VALUES (326, 7, 17034480531, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
 VALUES (327, 7, 17034480531, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
@@ -1093,8 +1167,6 @@ INSERT INTO `lend_list`
 VALUES (349, 8, 17034480454, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
 VALUES (350, 8, 17034480531, '2023-11-02', '2023-11-02');
-INSERT INTO `lend_list`
-VALUES (351, 8, 17034480454, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
 VALUES (352, 8, 17034480454, '2023-11-02', '2023-11-02');
 INSERT INTO `lend_list`
@@ -1145,6 +1217,12 @@ INSERT INTO `lend_list`
 VALUES (375, 19, 17034480451, '2023-11-04', NULL);
 INSERT INTO `lend_list`
 VALUES (376, 1, 17034480650, '2023-11-04', '2023-11-04');
+INSERT INTO `lend_list`
+VALUES (377, 1, 17034480450, '2023-11-04', '2023-11-04');
+INSERT INTO `lend_list`
+VALUES (378, 1, 17034480450, '2023-11-04', '2023-11-04');
+INSERT INTO `lend_list`
+VALUES (379, 1, 17034480455, '2023-11-04', '2023-11-04');
 
 -- ----------------------------
 -- Table structure for news
@@ -1176,6 +1254,8 @@ VALUES (31, '管理员：李狗蛋', '测试数据',
 INSERT INTO `news`
 VALUES (32, 'admin', '11', ' mybatis  搜索  会员中心  消息 历史 创作中心  mybatis看这一篇就够了，简单全面一发入魂',
         '2023-11-02', NULL, 1);
+INSERT INTO `news`
+VALUES (33, 'admin', '萨芬', '阿是打发撒', '2023-11-04', NULL, 0);
 
 -- ----------------------------
 -- Table structure for reader_card
@@ -1394,8 +1474,6 @@ INSERT INTO `reader_card`
 VALUES (17034480547, 'Reader 98', '123123');
 INSERT INTO `reader_card`
 VALUES (17034480548, 'Reader 99', '123123');
-INSERT INTO `reader_card`
-VALUES (17034480650, 'aaaaa', '123');
 
 -- ----------------------------
 -- Table structure for reader_info
@@ -1616,8 +1694,6 @@ INSERT INTO `reader_info`
 VALUES (17034480547, 'Reader 98', '男', '2001-04-08', 'Address 98', 'Phone 98');
 INSERT INTO `reader_info`
 VALUES (17034480548, 'Reader 99', '女', '2001-04-09', 'Address 99', 'Phone 99');
-INSERT INTO `reader_info`
-VALUES (17034480650, 'aaaaa', '男', '2023-11-04', '美国纽约', '14781409656');
 
 -- ----------------------------
 -- Table structure for room
