@@ -16,7 +16,6 @@
 <c:set var="current" value="3" scope="request"/>
 <jsp:include page="common_header_reader.jsp"/>
 
-
 <div class="panel panel-default" style="width: 90%;margin-left: 5%;margin-top: 5%">
 	<div class="panel-heading">
 		<h3 class="panel-title">

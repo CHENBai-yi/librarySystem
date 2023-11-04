@@ -10,8 +10,8 @@
 	<script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
 </head>
-
-
+<c:set var="current" value="3" scope="request"/>
+<jsp:include page="common_header_reader.jsp"/>
 <div class="panel panel-primary" style="width: 600px;position: relative;top: 30px;left: 300px">
 	<div class="panel-heading">欢迎进行预约</div>
 	<div class="panel-body">

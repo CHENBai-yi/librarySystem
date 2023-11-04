@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
+@SessionAttributes("readercard")
 public class ReaderController {
 
     @Autowired
@@ -127,9 +128,12 @@ public class ReaderController {
     }
 
     @RequestMapping("/reader_edit_do_r.html")
-    public String updateReader(ReaderInfo readerInfo, String birth) {
+    public String updateReader(ReaderInfo readerInfo, String birth, Model model, @SessionAttribute("readercard") Reader reader) {
         readerInfo.setBirth(DateUtils.getDate(birth));
-        adminService.updateReader(readerInfo);
+        if (adminService.updateReader(readerInfo) > 0) {
+            reader.setUsername(readerInfo.getName());
+            model.addAttribute("readercard", reader);
+        }
         return "redirect:/reader_info.html";
     }
 

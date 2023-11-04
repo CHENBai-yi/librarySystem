@@ -27,7 +27,8 @@ public interface AdminService {
     void delReader(long readerId);
 
     // 修改读者信息
-    void updateReader(ReaderInfo readerInfo);
+    int
+    updateReader(ReaderInfo readerInfo);
 
     // 修改管理者的登录密码
     void updatePassword(String password, HttpSession session);

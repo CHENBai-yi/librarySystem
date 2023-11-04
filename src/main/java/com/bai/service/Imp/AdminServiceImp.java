@@ -65,9 +65,8 @@ public class AdminServiceImp implements AdminService {
     // 修改读者信息
 
     @Override
-    public void updateReader(ReaderInfo readerInfo) {
-        adminMapper.updateReader(readerInfo);
-
+    public int updateReader(ReaderInfo readerInfo) {
+        return adminMapper.updateReader(readerInfo);
     }
 
     // 修改管理者的密码
