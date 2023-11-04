@@ -320,7 +320,7 @@ public class AdminController {
     }
 
     @GetMapping("/deletelogging.html")
-    public String deletelogging(@RequestParam("serNum") String ip) {
+    public String deletelogging(@RequestParam("serNum") Long ip) {
         ipInfoDao.deleteByPrimaryKey(ip);
         return "redirect:/logginglist.html";
     }

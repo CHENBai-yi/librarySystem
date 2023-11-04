@@ -49,7 +49,7 @@
 </div>
 
 
-<div class="panel panel-default" style="position:relative;top: 80px;width: 90%;margin-left: 5%">
+<div class="panel panel-default" style="position:relative;top: 110px;width: 90%;margin-left: 5%">
 	<div class="panel-heading" style="
 	display: flex;
     flex-direction: row;

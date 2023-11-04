@@ -20,4 +20,5 @@ public class IpInfo implements Serializable {
     private String city;
     private String isp;
     private Date date;
+    private Long id;
 }

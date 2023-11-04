@@ -180,8 +180,8 @@ public class ConsultServiceImpl extends TextWebSocketHandler implements ConsultS
                         chatVO.setMessageId(admin.getId());
                         chatVO.setReceiverName(admin.getAttributes().get("uname").toString());
                         chatVO.setReceiverId(Long.parseLong(admin.getAttributes().get("uid").toString()));
-                        String onlineKey = admin.getAttributes().get("onlineKey").toString();
-                        if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && StrUtil.isNotBlank(onlineKey) && chatVO.getOnlineFlag().equals(admin.getAttributes().get("onlineKey").toString())) {
+                        String onlineKey = admin.getAttributes().get("onlineKey") + "";
+                        if (StrUtil.isNotBlank(chatVO.getOnlineFlag()) && StrUtil.isNotBlank(onlineKey) && chatVO.getOnlineFlag().equals(onlineKey)) {
                             admin.sendMessage(new TextMessage(JSONUtil.toJsonStr(chatVO)));
                         } else {
                             // todo 收集其他人向管理员发来的消息，并在admin的页面上展示其他人发来的消息

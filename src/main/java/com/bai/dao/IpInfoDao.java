@@ -6,7 +6,7 @@ import com.bai.pojo.vo.DataSheetVo;
 import java.util.List;
 
 public interface IpInfoDao {
-    int deleteByPrimaryKey(String ipAddress);
+    int deleteByPrimaryKey(Long id);
 
     int insert(IpInfo record);
 

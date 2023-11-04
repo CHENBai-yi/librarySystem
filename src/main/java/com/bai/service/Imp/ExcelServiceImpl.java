@@ -152,22 +152,23 @@ public class ExcelServiceImpl implements ExcelService {
     @Override
     public void getSheetData(Model model) throws JsonProcessingException {
         List<ReaderInfo> all = excelRepository.findAll();
-        Optional.ofNullable(all)
-                .ifPresent(readerInfos -> {
-                    int man = 0, wowen = 0;
-                    for (ReaderInfo readerInfo : readerInfos) {
-                        if ("男".equals(readerInfo.getSex())) man++;
-                        else wowen++;
-                        model.addAttribute("man", man);
-                        model.addAttribute("wowen", wowen);
-                    }
-                });
+        Optional.ofNullable(all).ifPresent(readerInfos -> {
+            int man = 0, wowen = 0;
+            for (ReaderInfo readerInfo : readerInfos) {
+                if ("男".equals(readerInfo.getSex())) man++;
+                else wowen++;
+                model.addAttribute("man", man);
+                model.addAttribute("wowen", wowen);
+            }
+        });
         model.addAttribute("pc", objectMapper.writeValueAsString(prettierChart()));
         model.addAttribute("nc", objectMapper.writeValueAsString(nightingaleChart()));
     }
 
     public List<String[]> prettierChart() {
         List<DataSheetVo.PrettierChart> group = ipInfoDao.findAllGroupByDate();
+        if (group.isEmpty()) return new ArrayList<>();
+        group = group.subList(0, 7);
         return group.stream().map(item -> new String[]{item.getName(), String.valueOf(item.getVal())}).collect(Collectors.toList());
     }
 

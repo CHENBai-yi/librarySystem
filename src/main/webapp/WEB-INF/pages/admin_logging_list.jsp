@@ -70,7 +70,7 @@
 					<td><c:out value="${alog.isp}"></c:out></td>
 					<td><c:out value="${alog.date}"></c:out></td>
 					<td>
-						<a href="deletelogging.html?serNum=<c:out value='${alog.ipAddress}'></c:out>">
+						<a href="deletelogging.html?serNum=<c:out value='${alog.id}'></c:out>">
 							<button type="button" class="btn btn-danger btn-xs">删除</button>
 						</a>
 					</td>
