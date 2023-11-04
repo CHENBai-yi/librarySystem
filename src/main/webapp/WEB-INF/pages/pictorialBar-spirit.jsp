@@ -46,7 +46,7 @@
 	</style>
 </head>
 <%--/static/img/1583851799.jpg--%>
-<body background=""
+<body background="<c:url value="/static/img/1583851799.jpg"/>"
       style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;padding-top:110px;">
 <c:set value="5" var="current" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
@@ -75,8 +75,6 @@
 </div>
 
 <%--<div class="container-fluid">--%>
-
-
 
 
 <script type="text/javascript">

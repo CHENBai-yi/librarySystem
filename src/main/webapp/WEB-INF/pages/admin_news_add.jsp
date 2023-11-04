@@ -1,10 +1,4 @@
-<%@ page import="com.bai.utils.constants.Constants" %><%--
-  Created by IntelliJ IDEA.
-  User: 云飘
-  Date: 2020/6/4
-  Time: 15:01
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.bai.utils.constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
@@ -21,8 +15,7 @@
         }
 	</style>
 </head>
-<body background="/static/img/1583851799.jpg"
-      style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
+
 <c:set var="current" value="1" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 

@@ -12,7 +12,7 @@ public interface AppointMapper {
     void addAppointInfo(AppointInfo appointInfo);
 
     // 获取预约信息
-    AppointInfo queryInfo();
+    List<AppointInfo> queryInfo();
 
     // 获取座位书本等信息
     List<RoomInfo> queryRoomInfo();

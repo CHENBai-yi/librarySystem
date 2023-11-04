@@ -27,10 +27,15 @@
             padding: 0;
             margin: 0;
         }
+
+        .panel {
+            border: none !important;
+            background: none !important;
+        }
 	</style>
 </head>
 <body background="/static/img/1583851799.jpg"
-      style="background-repeat: no-repeat; background-size: 100% 100%;background-attachment: fixed">
+      style="background-repeat: no-repeat; background-size: 100% 100%;background-attachment: fixed;opacity: 0.85;">
 <%--<c:if test="test=${!empty error}">--%>
 <%--    <script>--%>
 <%--        alert(${error});--%>

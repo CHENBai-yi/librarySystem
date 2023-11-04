@@ -320,7 +320,7 @@
                         }
 					</style>
 					<div id="pkusso-login-block"
-					     style="background-image:url('/static/img/reader_login.jpg');height: 99.5vh">
+					     style="background-image:url('/static/img/1583851799.jpg');height: 99.5vh">
 						<div class="container">
 							<div>
 								<div class="pkusso-login-form-header">

@@ -16,10 +16,9 @@
 	<%--        })--%>
 	<%--    </script>--%>
 </head>
-<body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
-background-size:100% 100%;
-background-attachment: fixed;padding-top: 110px;">
+
 <c:set var="current" value="3" scope="request"/>
+<c:set var="padding_add" value="true" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 
 <div class="col-xs-6 col-md-offset-3">

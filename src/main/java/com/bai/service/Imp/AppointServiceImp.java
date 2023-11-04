@@ -23,8 +23,10 @@ public class AppointServiceImp implements AppointService {
 
     @Override
     public AppointInfo queryInfo() {
-        AppointInfo appointInfo = appointMapper.queryInfo();
-        return appointInfo;
+        List<AppointInfo> appointInfo = appointMapper.queryInfo();
+        if (!appointInfo.isEmpty())
+            return appointInfo.get(0);
+        return null;
     }
 
     @Override

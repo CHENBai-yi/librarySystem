@@ -544,7 +544,8 @@
             onlineFlag: "${chatVo.onlineFlag}",
             </c:if>
 
-        }
+        },
+        address: "<%=Constants.AccessPageUrl.IP+"/fw/consult"%>"
     }
 
     $(function () {
@@ -1292,8 +1293,8 @@
 
         } else {
             // webMetaData.ws = new WebSocket("ws://localhost:8080" + webMetaData.userno);
-            webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
-            // webMetaData.ws = new WebSocket("ws://localhost:8080/fw/consult");
+            // webMetaData.ws = new WebSocket("wss://library.baiyichen.asia/fw/consult");
+            webMetaData.ws = new WebSocket(webMetaData.address);
 
             let socket = webMetaData.ws
 // 定义心跳间隔时间（以毫秒为单位）

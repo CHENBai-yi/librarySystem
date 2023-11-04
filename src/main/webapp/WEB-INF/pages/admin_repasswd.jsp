@@ -16,9 +16,7 @@
         })
 	</script>
 </head>
-<body background="/static/img/1583851799.jpg" style=" background-repeat:no-repeat ;
-background-size:100% 100%;
-background-attachment: fixed;">
+
 <c:set var="current" value="7" scope="request"/>
 <jsp:include page="common_header_admin.jsp"/>
 

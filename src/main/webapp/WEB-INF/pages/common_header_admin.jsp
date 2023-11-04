@@ -7,7 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<nav style="position:fixed;z-index: 999;width: 100%;background-color:#122b40;top: 0" class="navbar navbar-default"
+<%--#122b40--%>
+<body background="/static/img/1583851799.jpg"
+      style="
+      <c:if test="${padding_add}">padding-top: 110px;</c:if>
+		      background-repeat:no-repeat ;
+		      background-size:100% 100%;
+		      background-attachment: fixed;opacity: 0.9;">
+<nav style="position:fixed;z-index: 999;width: 100%;top: 0;background-color: black;border: none;"
+     class="navbar navbar-default"
      role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 8%;margin-right: 1%">

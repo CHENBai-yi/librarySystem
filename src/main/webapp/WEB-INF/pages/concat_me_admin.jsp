@@ -683,7 +683,8 @@
             senderId: "${chatVo.senderId}",
             senderName: "${chatVo.senderName}",
             onlineFlag: "${chatVo.onlineFlag}"
-        }
+        },
+        address: "<%=Constants.AccessPageUrl.IP+"/fw/consult"%>"
     }
 
 
@@ -1453,7 +1454,7 @@
         if (type == "sse") {
 
         } else {
-            webMetaData.ws = new WebSocket('wss://library.baiyichen.asia/fw/consult');  // 替换成你的WebSocket连接URL
+            webMetaData.ws = new WebSocket(webMetaData.address);  // 替换成你的WebSocket连接URL
             // webMetaData.ws = new WebSocket('ws://localhost:8080/fw/consult');  // 替换成你的WebSocket连接URL
             let socket = webMetaData.ws
 // 定义心跳间隔时间（以毫秒为单位）
