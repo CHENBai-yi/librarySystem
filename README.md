@@ -37,23 +37,5 @@
 
 ##### 页面展示
 
-![](library_images/屏幕截图 2023-11-04 233734.png)
-![](library_images/屏幕截图 2023-11-04 233810.png)
-![](library_images/屏幕截图 2023-11-04 233651.png)
-![](library_images/屏幕截图 2023-11-04 232621.png)
-![](library_images/屏幕截图 2023-11-04 232645.png)
-![](library_images/屏幕截图 2023-11-04 232827.png)
-![](library_images/屏幕截图 2023-11-04 232846.png)
-![](library_images/屏幕截图 2023-11-04 232935.png)
-![](library_images/屏幕截图 2023-11-04 233015.png)
-![](library_images/屏幕截图 2023-11-04 233358.png)
-
-![](library_images/屏幕截图 2023-11-04 233417.png)
-![](library_images/屏幕截图 2023-11-04 233523.png)
-![](library_images/屏幕截图 2023-11-04 233546.png)
-
-![](library_images/屏幕截图 2023-11-04 233835.png)
-![](library_images/屏幕截图 2023-11-04 234119.png)
-![](library_images/屏幕截图 2023-11-04 234237.png)
-![](library_images/屏幕截图 2023-11-05 002212.png)
+![输入图片说明](library_images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20232621.png)
 
