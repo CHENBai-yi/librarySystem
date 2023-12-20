@@ -14,7 +14,7 @@
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
 	<link href="/portal/cn/news/0000002496" rel="canonical"/>
 	<link href="/portal/cn/node/6311" rel="shortlink"/>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_PATH%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>${news.newsTitle}</title>
 	<link type="text/css" rel="stylesheet" href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css"

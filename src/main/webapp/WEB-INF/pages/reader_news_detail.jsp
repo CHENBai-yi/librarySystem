@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>公告详情</title>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_PATH%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<style>
         .news {

@@ -11,16 +11,17 @@
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<meta content="HOPPINZQ的ChatGPT" name="description">
 	<title>聊天</title>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_index%>"/>" rel="shortcut icon"
-	      type="image/vnd.microsoft.icon"/>
-	<link href="https://hoppinzq.com/chat/static/css/material-design-iconic-font.min.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/chat/static/css/style.min.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/static/css/plugins/editormd.min.css" rel="stylesheet"/>
-	<link href="https://hoppinzq.com/zq/preloader/zq_preloader.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/zui/static/css/sweetalert.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/spider/css/simple-bar.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/chat/static/css/jBox.all.min.css" rel="stylesheet">
-	<link href="https://hoppinzq.com/chat/static/css/pop.css" rel="stylesheet">
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_INDEX%>"/>" rel="shortcut icon"
+	      type="image/vnd.microsoft.icon">
+	<link href="<c:url value="/static/css/extcss/css_material-design-iconic-font.min.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_style.min.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_plugins_editormd.min.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_zq_preloader.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_sweetalert.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_simple-bar.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_jBox.all.min.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/extcss/css_pop.css"/>" rel="stylesheet">
+	<%--	<link href="https://hoppinzq.com/chat/static/css/style.min.css" rel="stylesheet">--%>
 </head>
 <style>
     a {
@@ -633,23 +634,23 @@
 	</div>
 </div>
 
-<script src="https://hoppinzq.com/video/assets/js/jquery-3.3.1.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/bootstrap.bundle.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/template.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/marked.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/prettify.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/raphael.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/underscore.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/sequence-diagram.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/flowchart.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/jquery.flowchart.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/editormd.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/zq.js"></script>
-<script src="https://hoppinzq.com/zui/static/js/sweetalert.min.js"></script>
-<script src="https://hoppinzq.com/zui/static/js/jquery.sweet-alert.custom.js"></script>
-<script src="https://hoppinzq.com/spider/js/simple-bar.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/jBox.all.min.js"></script>
-<script src="https://hoppinzq.com/chat/static/js/html2canvas.js"></script>
+<script src="<c:url value="/static/js/extjs/js_jquery-3.3.1.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_bootstrap.bundle.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_template.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_marked.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_prettify.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_raphael.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_underscore.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_sequence-diagram.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_flowchart.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_jquery.flowchart.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_editormd.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_zq.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_sweetalert.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_jquery.sweet-alert.custom.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_simple-bar.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_jBox.all.min.js"/>"></script>
+<script src="<c:url value="/static/js/extjs/js_html2canvas.js"/>"></script>
 <script>
     console.log("\n %c 前端代码 %c https://gitee.com/hoppin/chatgpt-front \n\n", "background: #35495e; padding: 1px; border-radius: 3px 0 0 3px; color: #fff", "background: #fadfa3; padding: 1px; border-radius: 0 3px 3px 0; color: #fff");
 
@@ -745,6 +746,19 @@
                         $(this).remove();
                         // $("style").remove();
                     });
+            }
+            $.speech = function (text, lang = 'zh-CN', volume = 1, rate = 1, pitch = 1) {
+                const utterance = new SpeechSynthesisUtterance();
+                utterance.text = text;
+                utterance.lang = lang;
+                utterance.volume = volume;
+                utterance.rate = rate;
+                utterance.pitch = pitch;
+                return new Promise((resolve, reject) => {
+                    utterance.onstart = () => resolve(utterance);
+                    utterance.onerror = (event) => reject(event.error);
+                    window.speechSynthesis.speak(utterance);
+                })
             }
         })(jQuery);
     })
@@ -1501,7 +1515,10 @@
                                 return;
                             }
                         } else if (status === 3) {
-                            $.tip(parse.body + "发来一条信息");
+                            $.speech(parse.body + " 发来一条消息")
+                                .then(u => {
+                                    $.tip(u.text)
+                                })
                             return;
                         }
                     }

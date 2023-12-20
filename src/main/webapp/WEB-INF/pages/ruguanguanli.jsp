@@ -12,7 +12,7 @@
 	<meta content="XXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="Generator"/>
 	<link href="/portal/cn/dzzn/gzzd/ruguanguanli" rel="canonical"/>
 	<link href="/portal/cn/node/5448" rel="shortlink"/>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_PATH%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>用户入馆管理办法</title>
 	<link href="/static/css/css_o9umxtgxxq9a2xbebn4tkpmgbu4lavzerjcrl8gozdw.css" media="all" rel="stylesheet"

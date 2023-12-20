@@ -40,6 +40,6 @@ public class BookQueryBo {
     private String collectmonth;
     private String language;
     private Integer listflag = 1;
-    private Integer pageSize = Constants._NEW_BOOK_PAGE_SIZE_;
+    private Integer pageSize = Constants.NEW_BOOK_PAGE_SIZE_;
 
 }

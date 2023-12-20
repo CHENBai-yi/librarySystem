@@ -11,8 +11,8 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 配置整合mybatis过程 -->
     <!-- 1.配置数据库相关参数properties的属性：${url} -->
-    <!--    <context:property-placeholder location="classpath:db.properties" />-->
-    <context:property-placeholder location="classpath:db2.properties"/>
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--    <context:property-placeholder location="classpath:db2.properties"/>-->
     <context:annotation-config/>
     <!-- 2.数据库连接池 -->
     <!--		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->

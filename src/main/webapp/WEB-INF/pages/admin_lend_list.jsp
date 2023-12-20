@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>借还日志</title>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_PATH%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<script src="/static/js/jquery-3.2.1.js"></script>

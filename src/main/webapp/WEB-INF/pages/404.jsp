@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_INDEX%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<title>404 Not Find:(</title>
 	<style>

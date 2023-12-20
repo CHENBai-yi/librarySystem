@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * Date:2023/4/27 17:00
  */
 @Slf4j
-public class Constants {
+public final class Constants {
     public static final int PAGESIZE = 2;
     public static final int HOME_PAGE_MSG_SIZE = 10;
     public static final int PAGING_NUM = 7;
@@ -17,9 +17,9 @@ public class Constants {
     public static final int RECOMMENDED_NEW_BOOK_SIZE = 3;
     public static final int RECOMMENDED_NEW_BOOK_RELATION_SIZE = 5;
     public static final String READER_REFERER = "reader_referer";
-    public static final int _NEW_BOOK_Date_INTERVAL_ = 2;
-    public static final int _NEW_BOOK_PAGE_SIZE_ = 5;
-    public static final int _NEW_BOOK_PAGE_SIZE_FOOTER_ = 11;
+    public static final int NEW_BOOK_DATE_INTERVAL = 2;
+    public static final int NEW_BOOK_PAGE_SIZE_ = 5;
+    public static final int NEW_BOOK_PAGE_SIZE_FOOTER_ = 11;
 
     public enum News {
         NOTICE("公告", 0), ACTIVITY("活动", 2), NEWS("新闻", 1);
@@ -84,13 +84,13 @@ public class Constants {
         public static final String CONCATME = "/concat/me";
         public static final String CONSULT = "/fw/consult";
         public static final String CONCAT_ME_ADMIN = "/concat/me/backend";
-        // public static final String IP = "ws://localhost:8080";
-        public static final String IP = "wss://library.baiyichen.asia";
+        public static final String IP = "ws://localhost:8080";
+        // public static final String IP = "wss://library.baiyichen.asia";
     }
 
     public static class StaticIcon {
-        public static final String icon_path = "/static/icon/library.icon";
-        public static final String icon_index = "/static/icon/librarys.icon";
+        public static final String ICON_PATH = "/static/icon/library.icon";
+        public static final String ICON_INDEX = "/static/icon/librarys.icon";
     }
 
     public static class UPLOAD_PATH {

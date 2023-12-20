@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>预约</title>
-	<link href="<c:url value="<%=Constants.StaticIcon.icon_path%>"/>" rel="shortcut icon"
+	<link href="<c:url value="<%=Constants.StaticIcon.ICON_PATH%>"/>" rel="shortcut icon"
 	      type="image/vnd.microsoft.icon"/>
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
@@ -66,6 +66,6 @@
 		<a href="reader_appoint.html" class="btn btn-success col-lg-2"
 		   style="position: relative;left: 300px; top: 30px;">我要预约</a>
 	</div>
-
-</body>
+	
+	</body>
 </html>
