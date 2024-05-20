@@ -36,6 +36,7 @@ public class LoginFilter implements Filter {
         accessUrl.add("/checklogin");
         accessUrl.add("/static/**");
         accessUrl.add("/webjars" + suffix);
+        accessUrl.add("/uploadBug");
         accessUrl.add(Constants.AccessPageUrl.XXTBCOUNTCLICK + suffix);
         accessUrl.add(Constants.AccessPageUrl.READER_CHECK_LOGIN_URL + suffix);
         accessUrl.add(Constants.AccessPageUrl.HOTTERTUIJIAN + suffix);
